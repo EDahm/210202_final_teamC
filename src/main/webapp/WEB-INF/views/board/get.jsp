@@ -66,8 +66,8 @@
 </div>
 <!-- /.row -->
 
-<div>
-	<form id="commentForm" name="commentForm" method="post">
+<div class="container">
+	<form id="replyForm" name="replyForm" method="post">
 		<br>
 		<br>
 		<div>
@@ -75,22 +75,25 @@
 				<span><strong>Comments</strong></span> <span id="cCnt"></span>
 			</div>
 			<div>
-				<table>
+				<table class="table">
 					<tr>
-						<td><textarea style="width: 1100px" rows="3" cols="30"
-								id="comment" name="comment" placeholder="댓글을 입력하세요"></textarea>
+						<td><textarea style="width:100%" rows="3" cols="30"
+								id="qr_replyer" name="comment" placeholder="댓글을 입력하세요."></textarea>
 							<br>
-							<div>
-								<a href='#' onClick="fn_comment('${result.code }')">등록</a>
-							</div></td>
+
+							<div class="form-group">
+								<button type="button" id="replyBtn" class="btn pull-right btn-success">등록</button>
+								<a id="replyBtn" href= "#" role="button" class="btn pull-right btn-success">등록</a>	
+							</div>
+							
+						</td>
 					</tr>
 				</table>
 			</div>
 		</div>
-		<input type="hidden" id="b_code" name="b_code" value="${result.code }" />
 	</form>
 </div>
-<div>
+<div class="container">
 	<form id="commentListForm" name="commentListForm" method="post">
 		<div id="commentList"></div>
 	</form>

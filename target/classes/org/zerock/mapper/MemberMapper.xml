@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.MemberMapper">
+
+	<select id="getList" resultType="org.zerock.domain.MemberVO">
+<![CDATA[
+select * from mber_tb
+]]>
+	</select>
+
+	<insert id="insert">
+		insert into mber_tb (m_num, m_email, m_password,
+		m_name, m_ncnm, m_contact)
+		values ('M' || seq_mber.nextval, #{m_email},
+		#{m_password}, #{m_name}, #{m_ncnm}, #{m_contact})
+	</insert>
+
+	<insert id="insertSelectKey">
+
+		<selectKey keyProperty="m_num" order="BEFORE"
+			resultType="String">
+			select 'M' || seq_mber.nextval from dual
+		</selectKey>
+
+		insert into mber_tb (m_num, m_email, m_password, m_name, m_ncnm,
+		m_contact)
+		values (#{m_num}, #{m_email}, #{m_password}, #{m_name},
+		#{m_ncnm}, #{m_contact})
+	</insert>
+
+	<select id="read" resultType="org.zerock.domain.MemberVO">
+		select * from mber_tb where m_num =
+		#{m_num}
+	</select>
+
+	<delete id="delete">
+		delete from mber_tb where m_num = #{m_num}
+	</delete>
+
+	<update id="update">
+		update mber_tb
+		set m_ncnm = #{m_ncnm},
+		m_contact = #{m_contact},
+		m_point = #{m_point}
+		where m_num = #{m_num}
+	</update>
+
+
+<sql id="criteria">
+	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		<foreach item='type' collection="typeArr">
+			<trim prefix="OR">
+				<choose>
+					<when test="type == 'M'.toString()">
+						m_num like '%' || #{keyword} || '%'
+					</when>
+					<when test="type == 'E'.toString()">
+						m_email like '%' || #{keyword} || '%'
+					</when>
+					<when test="type == 'N'.toString()">
+						m_name like '%' || #{keyword} || '%'
+					</when>
+					<when test="type == 'I'.toString()">
+						m_ncnm like '%' || #{keyword} || '%'
+					</when>
+					<when test="type == 'C'.toString()">
+						m_contact like '%' || #{keyword} || '%'
+					</when>
+				</choose>
+			</trim>
+		</foreach>
+	</trim>
+</sql>
+
+	<select id="getListWithPaging"
+		resultType="org.zerock.domain.MemberVO">
+		  <![CDATA[
+		  	select
+		  		m_num, m_regdate, m_email, m_name, m_ncnm, m_contact, m_type, m_point
+		  	from
+		  		(
+		  		select /*+INDEX_DESC(mber_tb pk_mber_tb) */
+		  			rownum rn, m_num, m_regdate, m_email, m_name, m_ncnm, m_contact, m_type, m_point
+		  		from
+		  			mber_tb
+		  		where
+		  		]]>
+
+		<include refid="criteria"></include>
+		  		
+		  		<![CDATA[
+		    	rownum <= #{pageNum} * #{amount}
+		    	)
+		    where rn > (#{pageNum} -1) * #{amount}
+		    ]]>
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) from mber_tb where
+
+		<include refid="criteria"></include>
+
+		m_num LIKE 'M%'
+	</select>
+
+</mapper>

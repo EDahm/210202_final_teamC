@@ -15,5 +15,5 @@ public class auctionVO {
 	private int a_crnt_prc; //현재가
 	private int a_wnng_prc; //낙찰가(바로 구매가격)
 	private String a_state; //경매상태
-	private Date a_prgrs_prd; //진행기간
+	private String a_prgrs_prd; //진행기간
 }

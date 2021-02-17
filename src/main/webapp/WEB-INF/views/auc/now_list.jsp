@@ -45,7 +45,7 @@
 							<td><c:out value="${nowlist.a_crnt_prc}" /></td>
 							<td><c:out value="${nowlist.a_wnng_prc}" /></td>
 							<td><c:out value="${nowlist.a_state}" /></td>
-							<td><fmt:formatDate pattern = "yyyy-MM-dd" value="${nowlist.a_prgrs_prd}" /></td>
+							<td><c:out value="${nowlist.a_prgrs_prd}" /></td>
 						</tr>
 					</c:forEach>
 				</table>

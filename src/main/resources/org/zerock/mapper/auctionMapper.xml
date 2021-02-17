@@ -37,7 +37,7 @@
 <!-- 경매 진행 등록 -->
 <insert id="aucAdd">
 	insert into auc_tb(a_bno, aa_bno, a_versifier, a_crnt_prc, a_wnng_prc, a_state, a_prgrs_prd)
-	values('A'||to_char(sysdate, 'YYYY-MM-DD')||'-'||seq_auc_aply.nextval, #{aa_bno}, #{a_versifier}, #{a_crnt_prc}, #{a_wnng_prc}, #{a_state}, #{a_prgrs_prd})
+	values('A'||to_char(sysdate, 'YYYY-MM-DD')||'-'||seq_auc_aply.nextval, #{aa_bno}, #{a_versifier}, #{a_crnt_prc}, #{a_wnng_prc}, #{a_state},to_date(#{a_prgrs_prd},'YYYY-MM-DD') )
 </insert>
 
 <!-- 경매 진행 전체 조회 -->

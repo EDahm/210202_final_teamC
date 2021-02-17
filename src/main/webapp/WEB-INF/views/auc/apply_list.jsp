@@ -41,7 +41,7 @@
 							<td><c:out value="${apply.c_num}" /></td>
 							<td><a href='/auc/apply_get?aa_bno=<c:out value="${apply.aa_bno}"/>'>
 									<c:out value="${apply.aa_item_nm}" /></a></td>
-							<td><fmt:formatDate pattern="yyyy/MM/dd" value="${apply.aa_hope_prd}" /></td>
+							<td><c:out value="${apply.aa_hope_prd}" /></td>
 						</tr>
 					</c:forEach>
 				</table>
@@ -85,12 +85,17 @@ $(document).ready(function(){
 		if(result === ''){
 			return;
 		}
-		if(parseInt(result)>0){
-			$(".modal-body").html("게시글"+parseInt(result)+ " 경매가 등록되었습니다.");
+		if(parseInt(result) > 0){
+			$(".modal-body").html(
+			"경매가 등록되었습니다.");
 		}
 		
 		$("#myModal").modal("show");
 		}
+	
+	$("#regBtn").on("click",function(){
+		self.location = "/auc/now_regi"
+	});
 });
 </script>	
 </body>

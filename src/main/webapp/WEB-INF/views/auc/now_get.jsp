@@ -49,7 +49,7 @@
 				</div>
 				<div>
 					<label>진행기간</label>
-					<input class="form-control" name="a_prgrs_prd" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${nowlist.a_prgrs_prd}"/>' readonly="readonly">
+					<input class="form-control" name="a_prgrs_prd" value='<c:out value="${nowlist.a_prgrs_prd}"/>' readonly="readonly">
 				</div>
 				<button data-oper='now_mod' onclick="location.href='/auc/now_mod?a_bno=<c:out value="${nowlist.a_bno}"/>'">수정</button>
 				<button data-oper='now_list' onclick="location.href='/auc/now_list'">목록</button>				

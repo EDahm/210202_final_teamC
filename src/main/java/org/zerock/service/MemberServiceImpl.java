@@ -77,5 +77,8 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.getTotalCount(cri);
 	}
 
+	
+
+
 
 }

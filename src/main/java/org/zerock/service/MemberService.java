@@ -20,4 +20,6 @@ public interface MemberService {
 	public List<MemberVO> getList(Criteria cri);
 	
 	public int getTotal(Criteria cri);
+	
+	
 }

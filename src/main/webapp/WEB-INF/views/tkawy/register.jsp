@@ -36,6 +36,7 @@
 					</div>
 					<div>
 						<label>수거예약업체(팝업창 검색기능ㅠㅠ)</label> <input name='t_vstng_cmpny'>
+						<button>검색</button>
 					</div>
 					<div>
 						<label>수거예약일자</label> <input name='t_date_vist'>

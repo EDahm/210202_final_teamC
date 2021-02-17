@@ -64,7 +64,7 @@
 	</div>
 	<!-- end panel -->
 </div>
-<!-- /.row -->
+<!-- /.row. -->
 
 <div class="container">
 	<form id="replyForm" name="replyForm" method="post">

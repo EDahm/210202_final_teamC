@@ -49,7 +49,7 @@
 				</div>
 				<div>
 					<label>희망기간</label><!-- datepicker 써야함 -->
-					<input class="form-control" name="aa_hope_prd" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${applyget.aa_hope_prd}"/>'readonly="readonly">
+					<input class="form-control" name="aa_hope_prd" value='<c:out value="${applyget.aa_hope_prd}"/>'readonly="readonly">
 				</div>
 				<button data-oper='apply_mod' onclick="location.href='/auc/apply_mod?aa_bno=<c:out value="${applyget.aa_bno}"/>'">수정</button>
 				<button data-oper='apply_list' onclick="location.href='/auc/apply_list'">목록</button>				

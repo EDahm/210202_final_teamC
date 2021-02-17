@@ -146,4 +146,39 @@
 	and c.a_crnt_prc = a.b_bid_price
 	and a.a_bno in (select c.a_bno from auc_tb where c.a_state = '진행중')
 </select>
+
+
+
+<!-- 업체 리스트 출력 -->
+<select id="aucComList" resultType="org.zerock.domain.aucComVO">
+	select * from auc_cmpny_tb where c_num is not null
+</select>
+
+<!-- 업체 리스트 조회 -->
+<select id="aucComGet" resultType="org.zerock.domain.aucComVO">
+	select * from auc_cmpny_tb where c_num = #{c_num}
+</select>
+
+<!-- 업체 리스트 수정 -->
+<update id="aucComMod">
+	update auc_cmpny_tb set
+	c_name = #{c_name},
+	c_email = #{c_email},
+	c_address = #{c_address},
+	c_contact = #{c_contact},
+	c_sector = #{c_sector}
+	where c_num = #{c_num}
+</update>
+
+<!-- 업체 리스트 삭제 -->
+<delete id="aucComDel">
+	delete from auc_cmpny_tb where c_num = #{c_num}
+</delete>
+
+<!-- 업체 리스트 등록 -->
+<insert id="aucComIns">
+insert into auc_cmpny_tb(c_num, c_name, c_email, c_address, c_contact, c_sector)
+values('C'||seq_auc_com.nextval, #{c_name}, #{c_email}, #{c_address}, #{c_contact}, #{c_sector})
+</insert>
+
 </mapper>

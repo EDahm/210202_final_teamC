@@ -1,5 +1,6 @@
 package org.zerock.controller;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.aucApplyVO;
+import org.zerock.domain.aucBidVO;
+import org.zerock.domain.aucComVO;
 import org.zerock.domain.aucShipVO;
 import org.zerock.domain.auctionVO;
 import org.zerock.service.auctionService;
@@ -89,6 +92,15 @@ public class AuctionController {
 		return "redirect:/auc/now_list";
 		
 	}
+
+	//진행 등록페이지
+	@GetMapping("/now_regi")
+	public void nowRegi() {
+	}
+	
+	
+	
+	////////////////////////////////////////////////////////////////////
 	
 	//신청 목록
 	@GetMapping("/apply_list")
@@ -150,11 +162,10 @@ public class AuctionController {
 			model.addAttribute("applyget", service.applyGet(aa_bno));
 			
 		}
+		
+		
+	////////////////////////////////////////////////////////////////////
 	
-	//진행 등록페이지
-	@GetMapping("/now_regi")
-	public void nowRegi() {
-	}
 	
 	//배송 전체 조회
 	@GetMapping("/ship_list")
@@ -217,4 +228,110 @@ public class AuctionController {
 			return "redirect:/auc/ship_list";
 			
 		}
+		
+		
+		///////////////////////////////////////////////////////////////////
+		
+	//업체 전체 조회
+		@GetMapping("/com_list")
+		public void aucComList(Model model) {
+			
+			log.info("aucComList");
+			model.addAttribute("com_list", service.aucComList());
+			
+		}
+		
+		//업체 등록페이지
+		@GetMapping("/com_regi")
+		public void aucComRegi() {
+			
+		}
+		
+		@PostMapping("/com_regi")
+		public String aucComRegi(aucComVO auccomvo, RedirectAttributes rttr) {
+			
+			log.info("register: " + auccomvo);
+			
+			service.aucComIns(auccomvo);
+			
+			rttr.addFlashAttribute("result", auccomvo.getC_num());
+			
+			return "redirect:/auc/com_list";
+		}
+		
+		//업체 단일 조회
+			@GetMapping({"/com_get", "/com_mod"})
+			public void comGet(@RequestParam("c_num") String c_num, Model model) {
+				
+				log.info("/com_get or com_mod");
+				model.addAttribute("comget", service.aucComGet(c_num));
+				
+			}
+			
+		//업체 수정
+			@PostMapping("/com_mod")
+			public String comMod(aucComVO auccomvo, RedirectAttributes rttr) {
+				log.info("modify:" + auccomvo);
+				
+				if(service.aucComMod(auccomvo)) {
+					rttr.addFlashAttribute("result","success");
+				}
+				
+				return "redirect:/auc/com_list" ;
+				
+			}
+			
+		//업체 삭제
+			@PostMapping("/com_rem")
+			public String comRemove(@RequestParam("c_num") String c_num, RedirectAttributes rttr) {
+				
+				log.info("remove..." + c_num);
+				
+				if(service.aucComDel(c_num)) {
+					rttr.addFlashAttribute("result","success");
+				}
+				
+				return "redirect:/auc/com_list";
+				
+			}
+			
+		/////////////////////////////////////////////////////////////
+			
+			//입찰정보 전체 조회
+			@GetMapping("/bid_list")
+			public void aucBidList(Model model) {
+				
+				log.info("aucbidList");
+				model.addAttribute("bid_list", service.bidGetList());
+				
+			}
+			
+			
+			//입찰정보 등록+적립
+			@PostMapping("/bid_regi")
+			public String aucBidRegi(aucBidVO aucbidvo, RedirectAttributes rttr) {
+				
+				log.info("register: " + aucbidvo);
+				
+				service.bidInsPoint(aucbidvo);
+				
+				rttr.addFlashAttribute("result", aucbidvo.getB_bid_price());
+				
+				return "redirect:/auc/now";
+			}
+			
+			//입찰정보 삭제
+			@PostMapping("/bid_rem")
+			public String bidRemove(@RequestParam("m_num") String m_num, @Param("b_bid_price") int b_bid_price, RedirectAttributes rttr) throws Exception {
+				
+				log.info("remove..." + m_num + " : " + b_bid_price);
+				
+				if(service.bidRemove(m_num, b_bid_price)) {
+					rttr.addFlashAttribute("result","success");
+				}
+				
+				return "redirect:/auc/now";
+				
+			}
+			
 }

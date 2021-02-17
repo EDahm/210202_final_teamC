@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
+import org.zerock.domain.aucComVO;
 import org.zerock.domain.aucShipVO;
 import org.zerock.domain.auctionVO;
 
@@ -85,6 +86,23 @@ public interface auctionService {
 	//입찰정보 전체 조회
 	public List<aucBidVO> bidGetList();
 	
+	
+	
+	//업체페이지
+	//업체정보 등록
+	public void aucComIns(aucComVO auccomvo);
+	
+	//업체정보 단일 조회
+	public aucComVO aucComGet(String c_num);
+	
+	//업체정보 전체조회
+	public List<aucComVO> aucComList();
+	
+	//업체정보 수정
+	public boolean aucComMod(aucComVO auccomvo);
+	
+	//업체정보 삭제
+	public boolean aucComDel(String c_num);
 	
 	
 }

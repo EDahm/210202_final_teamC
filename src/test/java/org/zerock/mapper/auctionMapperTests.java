@@ -25,26 +25,26 @@ public class auctionMapperTests {
 	
 //	@Test
 //	public void testGetList() {
-//		auMapper.aucList().forEach(auc -> log.info(auc));
+//		auMapper.aucComList().forEach(auc -> log.info(auc));
 //	}
 	
-	@Test
-	public void testInsert() {
-		
-		aucShipVO auc = new aucShipVO();
-		
-		auc.setA_bno("A2021-02-16");
-		auc.setC_num("C000000");
-		auc.setM_num("M100000");
-		auc.setS_shpng_addr("사창동");
-		auc.setS_shpng_cntct("010-0000-0000");
-		auc.setS_shpng_stts("배송준비중");
-		
-		auMapper.shipInsert(auc);
-		
-		log.info(auc);
-		
-	}
+//	@Test
+//	public void testInsert() {
+//		
+//		aucShipVO auc = new aucShipVO();
+//		
+//		auc.setA_bno("A2021-02-16");
+//		auc.setC_num("C000000");
+//		auc.setM_num("M100000");
+//		auc.setS_shpng_addr("사창동");
+//		auc.setS_shpng_cntct("010-0000-0000");
+//		auc.setS_shpng_stts("배송준비중");
+//		
+//		auMapper.shipInsert(auc);
+//		
+//		log.info(auc);
+//		
+//	}
 	
 //	@Test
 //	public void testRead() {

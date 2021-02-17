@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
+import org.zerock.domain.aucComVO;
 import org.zerock.domain.aucShipVO;
 import org.zerock.domain.auctionVO;
 
@@ -25,6 +26,8 @@ public interface auctionMapper {
 	//경매 신청 수정 m
 	public int aucApplyUpdate(aucApplyVO aucapplyvo);
 	
+	
+	
 	//경매 진행 등록 m
 	public void aucAdd(auctionVO auctionvo);
 	
@@ -42,6 +45,8 @@ public interface auctionMapper {
 	
 	//경매 진행 정보 삭제 m
 	public int aucDelete(String aa_bno);
+	
+	
 	
 	//배송정보 등록 m
 	public void shipInsert(aucShipVO aucshipvo);
@@ -61,6 +66,8 @@ public interface auctionMapper {
 	//배송정보 삭제 m 
 	public int shipDelete(String a_bno);
 	
+	
+	
 	//입찰하기+포인트적립(2점씩) m
 	public void bidInsert(aucBidVO aucbidvo);
 	
@@ -77,5 +84,21 @@ public interface auctionMapper {
 	//경매 현재가를 입찰한 회원 닉네임 가져오기 m
 	public String bidNowMember();
 	
+	
+	
+	//업체 등록
+	public void aucComIns(aucComVO auccomvo);
+
+	//업체 전체 조회
+	public List<aucComVO> aucComList();
+	
+	//업체 단일 조회
+	public aucComVO aucComGet(String c_num);
+	
+	//업체 수정
+	public int aucComMod(aucComVO auccomvo);
+	
+	//업체 삭제
+	public int aucComDel(String c_num);
 
 }

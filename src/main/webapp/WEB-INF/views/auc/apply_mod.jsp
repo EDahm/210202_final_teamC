@@ -10,7 +10,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="row">
 	<div class="col-lg-12">
-		<h1 class="page-header">경매 진행 조회</h1>
+		<h1 class="page-header">경매 진행 수정</h1>
 	</div>
 	<!-- /.col-lg-12 -->
 </div>
@@ -19,7 +19,7 @@
 	<div class="col-lg-12">
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				경매 신청
+				경매 진행정보 수정
 			</div>
 			<!-- /.panel-heading -->
 			

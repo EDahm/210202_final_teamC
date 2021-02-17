@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
+import org.zerock.domain.aucComVO;
 import org.zerock.domain.aucShipVO;
 import org.zerock.domain.auctionVO;
 import org.zerock.mapper.auctionMapper;
@@ -193,5 +194,44 @@ public class auctionServiceImpl implements auctionService {
 		
 		return aucMapper.bidList();
 	}
+	
+	@Override
+	public void aucComIns(aucComVO auccomvo) {
 
+		log.info("AUCTION COMPANY INSERT..");
+		
+		aucMapper.aucComIns(auccomvo);
+	}
+	
+	@Override
+	public List<aucComVO> aucComList() {
+		
+		log.info("AUCTION COMPANY LIST...");
+		
+		return aucMapper.aucComList();
+	}
+	
+	@Override
+	public aucComVO aucComGet(String c_num) {
+		
+		log.info("AUCTION COMPANY GET....");
+		
+		return aucMapper.aucComGet(c_num);
+	}
+	
+	@Override
+	public boolean aucComMod(aucComVO auccomvo) {
+
+		log.info("AUCTION COMPANY MODIFY...");
+		
+		return aucMapper.aucComMod(auccomvo)==1;
+	}
+
+	@Override
+	public boolean aucComDel(String c_num) {
+
+		log.info("AUCTION COMPANY REMOVE....");
+		
+		return aucMapper.aucComDel(c_num)== 1 ;
+	}
 }

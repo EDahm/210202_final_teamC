@@ -130,6 +130,13 @@
    <script type="text/javascript">
 				$(document).ready(function() {
 					
+					// 상단 등록 버튼(Register New Board) 처리
+					$("#regBtn").on("click", function() {
+
+						self.location = "/member/register";
+
+					});
+					
 					// 312p 추가
 					var actionForm = $("#actionForm");
 

@@ -64,7 +64,7 @@
 	</div>
 	<!-- end panel -->
 </div>
-<!-- /.row -->
+<!-- /.row. -->
 
 <div>
 	<form id="commentForm" name="commentForm" method="post">

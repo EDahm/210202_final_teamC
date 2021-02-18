@@ -48,6 +48,14 @@ display: none;
 display: none;
 }
 
+#name_type_check{
+display: none;
+}
+
+#ncnm_type_check{
+display: none;
+}
+
 /* 중복아이디 존재하지 않는 경우 */
 #id_input_re_1{
 color : green;
@@ -126,13 +134,14 @@ display : none;
 				<div>
 					<label>이름</label> <input name='m_name' id="name_input">
 					<span id="final_name_ck">이름을 입력해주세요.</span>
-					<span id="name_check"></span>
+					<span id="name_type_check">2글자 이상 6자 이하의 한글만 입력가능합니다.(숫자,영문,자음,공백 입력불가)</span>
 				</div>
 				<div>
 					<label>닉네임</label> <input name='m_ncnm' id="ncnm_input">
 					<span id="final_ncnm_ck">닉네임을 입력해주세요.</span>
 					<span id="ncnm_input_re_1">사용 가능한 닉네임입니다.</span>
 					<span id="ncnm_input_re_2">이미 존재하는 닉네임입니다.</span>
+					<span id="ncnm_type_check">2글자 이상 20자 이하의 한글,영문,숫자만 입력가능합니다.(공백,특수문자 입력불가)</span>
 				</div>
 				<div>
 				<label>연락처</label>
@@ -216,7 +225,43 @@ display : none;
 	            nameCheck = true;
 	        }
 	        
+	        for (var i=0; i<$("#name_input").val().length; i++)  { 
+	            var chk = $("#name_input").val().substring(i,i+1); 
+	            if(chk.match(/[0-9]|[a-z]|[A-Z]/)) { 
+	            	 $('#name_type_check').css('display','block');
+	 	            nameCheck = false;
+	            }
+	            if(chk.match(/([^가-힣\x20])/i)){
+	            	 $('#name_type_check').css('display','block');
+	 	            nameCheck = false;
+	            }
+	            if($("#name_input").val() == " "){
+	            	 $('#name_type_check').css('display','block');
+	 	            nameCheck = false;
+	            }
+	        } 
+	        if ($("#name_input").val().length <= 1 || $("#name_input").val().length > 6){
+	        	 $('#name_type_check').css('display','block');
+		            nameCheck = false;
+	        }
+	        
+	        
 	        /* 닉네임 유효성 검사 */
+	        for (var i=0; i<$("#ncnm_input").val().length; i++)  { 
+	            var chk = $("#ncnm_input").val().substring(i,i+1); 
+	            if(!chk.match( /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,20}$/)) { 
+	            	 $('#ncnm_type_check').css('display','block');
+	 	            ncnmCheck = false;
+	            }
+	            if($("#ncnm_input").val() == " "){
+	            	 $('#ncnm_type_check').css('display','block');
+	            	 ncnmCheck = false;
+	            }
+	        } 
+	        if ($("#ncnm_input").val().length <= 1 || $("#name_input").val().length > 20){
+	        	 $('#ncnm_type_check').css('display','block');
+	        	 ncnmCheck = false;
+	        }
 	        if(ncnm == ""){
 	            $('#final_ncnm_ck').css('display','block');
 	            ncnmCheck = false;
@@ -224,6 +269,7 @@ display : none;
 	            $('#final_ncnm_ck').css('display', 'none');
 	            ncnmCheck = true;
 	        }
+	        
 	        
 	        /* 연락처 유효성 검사 */
 	        if(contact == ""){

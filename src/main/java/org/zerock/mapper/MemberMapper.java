@@ -22,4 +22,9 @@ public interface MemberMapper {
 	public List<MemberVO> getListWithPaging(Criteria cri);
 	
 	public int getTotalCount(Criteria cri);
+	
+	public int idCheck(String email);
+	
+	public int ncnmCheck(String m_ncnm);
+	
 }

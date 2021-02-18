@@ -77,5 +77,18 @@ public class MemberServiceImpl implements MemberService{
 		return mapper.getTotalCount(cri);
 	}
 
+	@Override
+	public int idCheck(String email) {
+		return  mapper.idCheck(email);
+	}
+
+	@Override
+	public int ncnmCheck(String m_ncnm) {
+		return  mapper.ncnmCheck(m_ncnm);
+	}
+
+	
+
+
 
 }

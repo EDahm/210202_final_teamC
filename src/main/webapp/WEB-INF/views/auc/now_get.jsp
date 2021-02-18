@@ -55,7 +55,7 @@
 				<button data-oper='now_list' onclick="location.href='/auc/now_list'">목록</button>
 				
 				<form id='operForm' action="/auc/now_mod" method="get">
-                        		<input type='hidden' id='a_bno' name='aa_bno' value='<c:out value="${nowlist.a_bno}"/>'>
+                        		<input type='hidden' id='a_bno' name='a_bno' value='<c:out value="${nowlist.a_bno}"/>'>
                         		<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
                         		<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
                 </form>

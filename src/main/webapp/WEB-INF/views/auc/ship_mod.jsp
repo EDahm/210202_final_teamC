@@ -14,7 +14,6 @@
 <div>
 	<form role="form" action="/auc/ship_mod" method="post">
 	
-	<!-- add -->
 	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>	
 	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
 	

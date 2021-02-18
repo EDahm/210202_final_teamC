@@ -50,6 +50,11 @@
 				<button data-oper='com_mod' onclick="location.href='/auc/com_mod?c_num=<c:out value="${comget.c_num}"/>'">수정</button>
 				<button data-oper='com_list' onclick="location.href='/auc/com_list'">목록</button>				
 			</div>
+			<form id='operForm' action="/auc/com_mod" method= "get">
+	<input type='hidden' id='c_num' value='<c:out value="${comget.c_num}"/>'>
+	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+</form>	
 		</div>
 	</div>
 </div>

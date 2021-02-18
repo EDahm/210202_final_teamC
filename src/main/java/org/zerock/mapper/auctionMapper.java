@@ -85,6 +85,7 @@ public interface auctionMapper {
 	
 	//입찰정보 전체 조회 m
 	public List<aucBidVO> bidList();	
+	public List<aucBidVO> bidListWithPaging(Criteria cri);	
 	
 	//경매 현재가 수정 m
 	public int bidNowPrice();
@@ -99,6 +100,7 @@ public interface auctionMapper {
 
 	//업체 전체 조회
 	public List<aucComVO> aucComList();
+	public List<aucComVO> aucComListWithPaging(Criteria cri);
 	
 	//업체 단일 조회
 	public aucComVO aucComGet(String c_num);
@@ -116,5 +118,8 @@ public interface auctionMapper {
 	public int getTotalCountNow(Criteria cri);
 	////배송 조회페이지
 	public int getTotalCountShip(Criteria cri);
-
+	////업체 조회페이지
+	public int getTotalCountCom(Criteria cri);
+	////입찰 조회페이지
+	public int getTotalCountBid(Criteria cri);
 }

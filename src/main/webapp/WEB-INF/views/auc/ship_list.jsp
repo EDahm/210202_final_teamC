@@ -92,7 +92,7 @@ $(".moveShip").on("click", function(e){
 			$(this).attr("href")+"'>");
 					actionForm.attr("action","/auc/ship_get");
 					actionForm.submit();
-})
+});
 
 });
 

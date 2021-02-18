@@ -84,7 +84,7 @@ $(document).ready(function(){
 		if(operation === 'now_rem'){
 			formObj.attr("action","/auc/now_rem");
 		} else if(operation === 'now_list'){
-			formObj.attr("action". "/auc/now_list").attr("method", "get");
+			formObj.attr("action", "/auc/now_list").attr("method", "get");
 			var pageNumTag = $("input[name='pageNum']").clone();
 			var amountTag = $("input[name='amount']").clone();
 			

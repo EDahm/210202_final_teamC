@@ -64,7 +64,7 @@ function remaindTime() {
 //오늘날짜의 저녁 10시 - 종료시간기준
     var open = new Date(now.getFullYear(),now.getMonth(),now.getDate(),09,00,00);
 
-//오늘날짜의 오전9시 - 오픈시간기준
+//오늘날짜의 오전 9시 - 오픈시간기준
   
     var nt = now.getTime(); // 현재의 시간만 가져온다
     var ot = open.getTime(); // 오픈시간만 가져온다

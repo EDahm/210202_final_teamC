@@ -33,18 +33,14 @@ public class auctionMapperTests {
 	@Test
 	public void testInsert() {
 		
-		
-	
-			aucShipVO auc = new aucShipVO();
+		aucBidVO auc = new aucBidVO();
 			
-		auc.setA_bno("A2021-02-16");
-		auc.setC_num("C000000");
-		auc.setM_num("M100000");
-		auc.setS_shpng_addr("사창동");
-		auc.setS_shpng_cntct("010-0000-0000");
-		auc.setS_shpng_stts("배송준비중");
+		auc.setA_bno("A2021-02-18-162");
+		auc.setM_num("M100002");
+		auc.setB_bid_price(900); 
+		auc.setB_bid_time("1분");
 		
-		auMapper.shipInsert(auc);
+		auMapper.bidInsert(auc);
 		
 		log.info(auc);
 		

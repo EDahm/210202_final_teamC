@@ -12,7 +12,6 @@
 	<div class="col-lg-12">
 		<h1 class="page-header">경매 조회</h1>
 	</div>
-	<!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
 <div class="row">

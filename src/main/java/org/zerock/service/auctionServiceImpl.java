@@ -189,11 +189,11 @@ public class auctionServiceImpl implements auctionService {
 	}
 	
 	@Override
-	public List<aucBidVO> bidGetList() {
+	public List<aucBidVO> bidGetList(Criteria cri) {
 		
 		log.info("BID GET LIST........");
 		
-		return aucMapper.bidList();
+		return aucMapper.bidListWithPaging(cri);
 	}
 	
 	@Override
@@ -205,11 +205,11 @@ public class auctionServiceImpl implements auctionService {
 	}
 	
 	@Override
-	public List<aucComVO> aucComList() {
+	public List<aucComVO> aucComList(Criteria cri) {
 		
 		log.info("AUCTION COMPANY LIST...");
 		
-		return aucMapper.aucComList();
+		return aucMapper.aucComListWithPaging(cri);
 	}
 	
 	@Override
@@ -260,4 +260,16 @@ public class auctionServiceImpl implements auctionService {
 		log.info("get total count");
 		return aucMapper.getTotalCountShip(cri);
 	}
+	@Override
+	public int getTotalCom(Criteria cri) {
+		log.info("get total count");
+		return aucMapper.getTotalCountCom(cri);	
+	}
+	
+	@Override
+	public int getTotalBid(Criteria cri) {
+		 log.info("get total count");
+		return aucMapper.getTotalCountBid(cri);
+	}
+	
 }

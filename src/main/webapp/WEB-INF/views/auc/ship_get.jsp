@@ -43,6 +43,7 @@
 	<input type='hidden' id='a_bno' value='<c:out value="${shipget.a_bno}"/>'>
 	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
 	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
-</form>				
+</form>	
+			
 </body>
 </html>

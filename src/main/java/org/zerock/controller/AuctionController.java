@@ -270,10 +270,16 @@ public class AuctionController {
 		
 	//업체 전체 조회
 		@GetMapping("/com_list")
-		public void aucComList(Model model) {
+		public void aucComList(Criteria cri, Model model) {
 			
 			log.info("aucComList");
-			model.addAttribute("com_list", service.aucComList());
+			model.addAttribute("com_list", service.aucComList(cri));
+			
+			int total = service.getTotalCom(cri);
+			
+			log.info("total: "+ total);
+			
+			model.addAttribute("pageMaker", new PageDTO(cri, total));
 			
 		}
 		
@@ -297,7 +303,7 @@ public class AuctionController {
 		
 		//업체 단일 조회
 			@GetMapping({"/com_get", "/com_mod"})
-			public void comGet(@RequestParam("c_num") String c_num, Model model) {
+			public void comGet(@RequestParam("c_num") String c_num,@ModelAttribute("cri") Criteria cri, Model model) {
 				
 				log.info("/com_get or com_mod");
 				model.addAttribute("comget", service.aucComGet(c_num));
@@ -306,12 +312,15 @@ public class AuctionController {
 			
 		//업체 수정
 			@PostMapping("/com_mod")
-			public String comMod(aucComVO auccomvo, RedirectAttributes rttr) {
+			public String comMod(aucComVO auccomvo, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 				log.info("modify:" + auccomvo);
 				
 				if(service.aucComMod(auccomvo)) {
 					rttr.addFlashAttribute("result","success");
 				}
+				
+				rttr.addAttribute("pageNum", cri.getPageNum());
+				rttr.addAttribute("amount", cri.getAmount());
 				
 				return "redirect:/auc/com_list" ;
 				
@@ -319,13 +328,16 @@ public class AuctionController {
 			
 		//업체 삭제
 			@PostMapping("/com_rem")
-			public String comRemove(@RequestParam("c_num") String c_num, RedirectAttributes rttr) {
+			public String comRemove(@RequestParam("c_num") String c_num, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
 				
 				log.info("remove..." + c_num);
 				
 				if(service.aucComDel(c_num)) {
 					rttr.addFlashAttribute("result","success");
 				}
+				
+				rttr.addAttribute("pageNum", cri.getPageNum());
+				rttr.addAttribute("amount", cri.getAmount());
 				
 				return "redirect:/auc/com_list";
 				
@@ -335,10 +347,17 @@ public class AuctionController {
 			
 			//입찰정보 전체 조회
 			@GetMapping("/bid_list")
-			public void aucBidList(Model model) {
+			public void aucBidList(Criteria cri, Model model) {
 				
 				log.info("aucbidList");
-				model.addAttribute("bid_list", service.bidGetList());
+				model.addAttribute("bid_list", service.bidGetList(cri));
+				
+				int total = service.getTotalBid(cri);
+				
+				log.info("total: "+ total);
+				
+				model.addAttribute("pageMaker", new PageDTO(cri, total));
+				
 				
 			}
 			
@@ -358,7 +377,7 @@ public class AuctionController {
 			
 			//입찰정보 삭제
 			@PostMapping("/bid_rem")
-			public String bidRemove(@RequestParam("m_num") String m_num, @Param("b_bid_price") int b_bid_price, RedirectAttributes rttr) throws Exception {
+			public String bidRemove(@RequestParam("m_num") String m_num, @Param("b_bid_price") int b_bid_price, @ModelAttribute Criteria cri, RedirectAttributes rttr) throws Exception {
 				
 				log.info("remove..." + m_num + " : " + b_bid_price);
 				
@@ -366,7 +385,10 @@ public class AuctionController {
 					rttr.addFlashAttribute("result","success");
 				}
 				
-				return "redirect:/auc/now";
+				rttr.addAttribute("pageNum", cri.getPageNum());
+				rttr.addAttribute("amount", cri.getAmount());
+				
+				return "redirect:/auc/bid_list";
 				
 			}
 			

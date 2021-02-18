@@ -88,7 +88,7 @@ public interface auctionService {
 	public boolean bidRemove(@Param("m_num") String m_num, @Param("b_bid_price") int b_bid_price) throws Exception;
 	
 	//입찰정보 전체 조회
-	public List<aucBidVO> bidGetList();
+	public List<aucBidVO> bidGetList(Criteria cri);
 	
 	
 	
@@ -100,7 +100,7 @@ public interface auctionService {
 	public aucComVO aucComGet(String c_num);
 	
 	//업체정보 전체조회
-	public List<aucComVO> aucComList();
+	public List<aucComVO> aucComList(Criteria cri);
 	
 	//업체정보 수정
 	public boolean aucComMod(aucComVO auccomvo);
@@ -113,5 +113,7 @@ public interface auctionService {
 	public int getTotalApply(Criteria cri);
 	public int getTotalNow(Criteria cri);
 	public int getTotalShip(Criteria cri);
+	public int getTotalCom(Criteria cri);
+	public int getTotalBid(Criteria cri);
 	
 }

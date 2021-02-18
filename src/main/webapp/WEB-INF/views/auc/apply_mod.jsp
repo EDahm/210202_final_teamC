@@ -81,7 +81,7 @@ $(document).ready(function(){
 			
 		} else if(operation === 'apply_list'){
 			
-			formObj.attr("action". "/auc/apply_list").attr("method", "get");
+			formObj.attr("action", "/auc/apply_list").attr("method", "get");
 			var pageNumTag = $("input[name='pageNum']").clone();
 			var amountTag = $("input[name='amount']").clone();
 			

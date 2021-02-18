@@ -60,6 +60,29 @@ color : red;
 display : none;
 }
 
+/* 중복아이디 존재하지 않는 경우 */
+#ncnm_input_re_1{
+color : green;
+display : none;
+}
+
+/* 중복아이디 존재하는 경우 */
+#ncnm_input_re_2{
+color : red;
+display : none;
+}
+
+/* 비밀번호 확인 일치 유효성 검사 */
+#pwck_input_re_1{
+color : green;
+display : none;
+}
+
+#pwck_input_re_2{
+color : red;
+display : none;
+}
+
 </style>
 
 <div>
@@ -73,13 +96,14 @@ display : none;
 		<h3>회원가입-일반가입</h3>
 		<hr>
 		<div>
-			<form role="form" id="#join_form" action="/member/register" method="post">
+			<form role="form" id="join_form" action="/member/register" method="post">
 				<div style="display:flex;">
 					<label>이메일주소</label> <input id="email_input" name='m_email'>
 					<div id="mail_check_button" style="border: 1px solid grey; width: 120px; text-align:center;">인증번호 전송</div>
 					<span id="id_input_re_1">사용 가능한 아이디입니다.</span>
 					<span id="id_input_re_2">아이디가 이미 존재합니다.</span>
 					<span id="final_mail_ck">이메일을 입력해주세요.</span>
+					<span id="mail_input_box_warn"></span>
 				</div>
 
 				<div id="mail_check_wrap">
@@ -96,14 +120,19 @@ display : none;
 				<div>
 					<label>비밀번호확인</label> <input type="password" id="pwd2" name='re_m_password'>
 					<span id="final_pwck_ck">비밀번호를 확인해주세요.</span>
+					<span id="pwck_input_re_1">비밀번호가 일치합니다.</span>
+                	<span id="pwck_input_re_2">비밀번호가 일치하지 않습니다.</span>
 				</div>
 				<div>
 					<label>이름</label> <input name='m_name' id="name_input">
 					<span id="final_name_ck">이름을 입력해주세요.</span>
+					<span id="name_check"></span>
 				</div>
 				<div>
 					<label>닉네임</label> <input name='m_ncnm' id="ncnm_input">
-					<span id="final_name_ck">이름을 입력해주세요.</span>
+					<span id="final_ncnm_ck">닉네임을 입력해주세요.</span>
+					<span id="ncnm_input_re_1">사용 가능한 닉네임입니다.</span>
+					<span id="ncnm_input_re_2">이미 존재하는 닉네임입니다.</span>
 				</div>
 				<div>
 				<label>연락처</label>
@@ -131,6 +160,7 @@ display : none;
 	var pwckcorCheck = false;	//비밀번호 일치 확인
 	var nameCheck = false;		//이름
 	var ncnmCheck = false;		//닉네임
+	var ncnmckCheck = false;	//닉네임 중복 검사
 	var contactCheck = false;	//연락처
 	
 	
@@ -139,7 +169,7 @@ display : none;
 		/* 회원가입 버튼(회원가입 기능 작동) */
 		$("#join_button").click(function(){
 			
-			/*var mail = $("#email_input").val();		//이메일 입력란
+			var mail = $("#email_input").val();		//이메일 입력란
 			var pw = $("#pwd1").val();				//비밀번호 입력란
 			var pwck = $("#pw2").val();				//비밀번호 확인 입력란
 			var name = $("#name_input").val();		//이름 입력란
@@ -148,16 +178,73 @@ display : none;
 			
 			
 			/* 메일(ID) 유효성 검사 */
-			/*if (mail == ""){
+			if (mail == ""){
 				$("#final_mail_ck").css('display', 'block');
 				mailCheck = false;
 			}else{
 				$("final_mail_ck").css('display', 'none');
 				mailCheck = true;
-			} */
+			}
 			
-			$("#join_form").attr("action", "/member/register");
-			$("#join_form").submit();
+			
+			/* 비밀번호 유효성 검사 */
+	        if(pw == ""){
+	            $('#final_pw_ck').css('display','block');
+	            pwCheck = false;
+	        }else{
+	            $('#final_pw_ck').css('display', 'none');
+	            pwCheck = true;
+	        }
+			
+			
+	        /* 비밀번호 확인 유효성 검사 */
+	        if(pwck == ""){
+	            $('#final_pwck_ck').css('display','block');
+	            pwckCheck = false;
+	        }else{
+	            $('#final_pwck_ck').css('display', 'none');
+	            pwckCheck = true;
+	        }
+	        
+	        
+	        /* 이름 유효성 검사 */
+	        if(name == ""){
+	            $('#final_name_ck').css('display','block');
+	            nameCheck = false;
+	        }else{
+	            $('#final_name_ck').css('display', 'none');
+	            nameCheck = true;
+	        }
+	        
+	        /* 닉네임 유효성 검사 */
+	        if(ncnm == ""){
+	            $('#final_ncnm_ck').css('display','block');
+	            ncnmCheck = false;
+	        }else{
+	            $('#final_ncnm_ck').css('display', 'none');
+	            ncnmCheck = true;
+	        }
+	        
+	        /* 연락처 유효성 검사 */
+	        if(contact == ""){
+	            $('#final_contact_ck').css('display','block');
+	            contactCheck = false;
+	        }else{
+	            $('#final_contact_ck').css('display', 'none');
+	            contactCheck = true;
+	        }
+
+	    	if(mailCheck && mailckCheck && mailnumCheck && pwCheck && pwckCheck && pwckcorCheck && nameCheck && ncnmCheck && ncnmckCheck && contactCheck){
+	    		
+			
+	    		$("#join_form").attr("action", "/member/register");
+	    		$("#join_form").submit();
+	    		
+	    	}
+	    	
+	    	return false;
+
+			
 		});
 		
 		
@@ -170,6 +257,18 @@ display : none;
 			var email = $("#email_input").val(); //입력한 이메일
 			var checkBox = $("#mail_check_input"); // 인증번호 입력란
 			var boxWrap = $(".mail_check_input_box"); // 인증번호 입력란 박스
+			var warnMsg = $("#mail_input_box_warn");	//이메일 형식 경고글
+
+			
+			 /* 이메일 형식 유효성 검사 */
+		    if(mailFormCheck(email)){
+		        warnMsg.html("이메일이 전송 되었습니다. 이메일을 확인해주세요.");
+		        warnMsg.css("display", "inline-block");
+		    } else {
+		        warnMsg.html("올바르지 못한 이메일 형식입니다.");
+		        warnMsg.css("display", "inline-block");
+		        return false;
+		    } 
 
 			$.ajax({
 
@@ -197,16 +296,130 @@ display : none;
 		    if(inputCode == code){
 		    	checkResult.html("인증번호가 일치합니다.");
 		    	checkResult.attr("class", "correct");
+		    	mailnumCheck = true;
 		    } else {
 		    	checkResult.html("인증번호를 다시 확인해주세요.");
 		    	checkResult.attr("class", "incorrect");
+		    	mailnumCheck = false;
 		    }
 
 		});
+		
+		/* 이메일아이디 중복검사 */
+		$("#email_input").on("propertychange change keyup paste input", function(){
+			//console.log("keyup 테스트"); 
+			var email = $('#email_input').val(); // email_input에 입력되는 값 
+			var data = {email : email} // '컨트롤에 넘길 데이터 이름' : '데이터(email_input에 입력되는 값)' 
+			
+			$.ajax({
+				type : "post", 
+				url : "/member/memberIdChk", 
+				data : data,
+				success : function(result){
+					//console.log("성공 여부" + result);
+					if(result != 'fail'){
+						$('#id_input_re_1').css("display","inline-block"); 
+						$('#id_input_re_2').css("display", "none"); 
+						mailckCheck = true;
+					} else { 
+						$('#id_input_re_2').css("display","inline-block"); 
+						$('#id_input_re_1').css("display", "none");
+						mailckCheck = false;
+					}
 
+				}
+				
+			}); // ajax 종료
 
+	});
+		
+		
+		
+		/* 닉네임 중복검사 */
+		$('#ncnm_input').on("propertychange change keyup paste input", function(){ 
+			
+			/* console.log("keyup 테스트"); */
+			
+			var m_ncnm = $("#ncnm_input").val();
+			var data = {m_ncnm : m_ncnm}		//컨트롤러 매개변수 이름이랑 일치해주니까 오류안남
+			
+			$.ajax({
+				type : "post",
+				url : "/member/memberNcnmChk",
+				data : data,
+				success : function(result){
+					//console.log("성공여부" + result);
+					if(result != 'fail'){
+						$('#ncnm_input_re_1').css("display","inline-block"); 
+						$('#ncnm_input_re_2').css("display", "none"); 
+						ncnmckCheck = true;
+					} else { 
+						$('#ncnm_input_re_2').css("display","inline-block"); 
+						$('#ncnm_input_re_1').css("display", "none");
+						ncnmckCheck = false;
+					}
+				}
+			}); //ajax 종료
+			
+			
+		});// function 종료
+		
+		
+		/* 비밀번호 확인 일치 유효성 검사 */
+		 
+		$('#pwd2').on("propertychange change keyup paste input", function(){
+			  
+			var pw = $('#pwd1').val();
+			var pwck = $('#pwd2').val();
+			$('#final_pwck_ck').css('display', 'none');
+			
+			if(pw == pwck){
+				$("#pwck_input_re_1").css('display', 'block');
+				$("#pwck_input_re_2").css('display', 'none');
+				pwckcorCheck = true;
+			} else {
+				$("#pwck_input_re_1").css('display', 'none');
+				$("#pwck_input_re_2").css('display', 'block');
+				pwckcorCheck = false;
+			}
+		    
+		});  
+		
+		
+		/* 입력 이메일 형식 유효성 검사 */
+		function mailFormCheck(email){
+			var form = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+		    return form.test(email);
+			
+		}
+		
+		
+		/* 비밀번호 형식 유효성 */
+		$("#pwd1").change(function(){
+		    checkPassword($('#pwd1').val(),$('#email_input').val());
+		});
+		
+		function checkPassword(m_password, m_email){
+		    
+		    if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,25}$/.test(m_password)){            
+		        alert('숫자+영문자+특수문자 조합으로 8자리 이상 사용해야 합니다.');
+		        $('#pwd1').val('').focus();
+		        return false;
+		    }  
+		    
+		    return true;
+		}
+		
 /////////////////////////////////////////////////////////////////////
 	});
+	
+	
+ 	/* 연락처 자동 하이픈(-) 삽입 */
+	$(document).on("keyup", "#tel_input", function() { 
+		$(this).val( $(this).val().replace(/[^0-9]/g, "").replace(/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,"$1-$2-$3").replace("--", "-") ); 
+		
+	});
+
 </script>
 
 

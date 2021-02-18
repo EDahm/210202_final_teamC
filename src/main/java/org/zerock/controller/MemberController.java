@@ -182,4 +182,52 @@ public class MemberController {
 
 	}
 	
+	
+
+	
+	/* 아이디 중복 검사 */
+	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)
+	@ResponseBody
+	public String memberIdchkPOST(String email) throws Exception{
+		
+		 log.info("memberIdChk() 진입");
+		 
+		 int result = service.idCheck(email);
+		 
+		 log.info("결과값 = " + result);
+		 
+		 if(result != 0) {
+			 
+			 return "fail";		//중복 아이디 존재
+		 
+		 } else {
+			 
+			 return "success";
+		 }
+		
+	}
+	
+	
+	/* 닉네임 중복 검사 */
+	@RequestMapping(value = "/memberNcnmChk", method = RequestMethod.POST)
+	@ResponseBody
+	public String memberNcnmchkPOST(String m_ncnm) throws Exception{
+		
+		 log.info("memberNcnmChk() 진입");
+		
+		 int result = service.ncnmCheck(m_ncnm);
+		 
+		 log.info("결과값 = " + result);
+		 
+		 if(result != 0) {
+			 
+			 return "fail";		//중복 아이디 존재
+		 
+		 } else {
+			 
+			 return "success";
+		 }
+	}
+	
+	
 }

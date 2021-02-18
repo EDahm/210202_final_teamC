@@ -23,5 +23,8 @@ public interface MemberMapper {
 	
 	public int getTotalCount(Criteria cri);
 	
+	public int idCheck(String email);
+	
+	public int ncnmCheck(String m_ncnm);
 	
 }

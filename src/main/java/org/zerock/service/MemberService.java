@@ -21,5 +21,7 @@ public interface MemberService {
 	
 	public int getTotal(Criteria cri);
 	
+	public int idCheck(String email);
 	
+	public int ncnmCheck(String m_ncnm);
 }

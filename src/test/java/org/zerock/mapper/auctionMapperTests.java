@@ -1,12 +1,14 @@
 package org.zerock.mapper;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
 import org.zerock.domain.aucShipVO;
@@ -28,23 +30,25 @@ public class auctionMapperTests {
 //		auMapper.aucComList().forEach(auc -> log.info(auc));
 //	}
 	
-//	@Test
-//	public void testInsert() {
-//		
-//		aucShipVO auc = new aucShipVO();
-//		
-//		auc.setA_bno("A2021-02-16");
-//		auc.setC_num("C000000");
-//		auc.setM_num("M100000");
-//		auc.setS_shpng_addr("사창동");
-//		auc.setS_shpng_cntct("010-0000-0000");
-//		auc.setS_shpng_stts("배송준비중");
-//		
-//		auMapper.shipInsert(auc);
-//		
-//		log.info(auc);
-//		
-//	}
+	@Test
+	public void testInsert() {
+		
+		
+	
+			aucShipVO auc = new aucShipVO();
+			
+		auc.setA_bno("A2021-02-16");
+		auc.setC_num("C000000");
+		auc.setM_num("M100000");
+		auc.setS_shpng_addr("사창동");
+		auc.setS_shpng_cntct("010-0000-0000");
+		auc.setS_shpng_stts("배송준비중");
+		
+		auMapper.shipInsert(auc);
+		
+		log.info(auc);
+		
+	}
 	
 //	@Test
 //	public void testRead() {
@@ -83,6 +87,21 @@ public class auctionMapperTests {
 //		String test = auMapper.bidNowMember();
 //		
 //		log.info("닉네임 : " + test);
+//	}
+	
+//	@Test
+//	public void testPaging() {
+//		
+//		Criteria cri = new Criteria();
+//		
+//		cri.setPageNum(3);
+//		cri.setAmount(10);
+//		
+//		
+//		List<aucShipVO> auc = auMapper.shipListWithPaging(cri);
+//		
+//		auc.forEach(aucc -> log.info(aucc.getA_bno()));
+//		
 //	}
 	
 }

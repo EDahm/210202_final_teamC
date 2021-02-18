@@ -13,6 +13,11 @@
 </div>
 <div>
 	<form role="form" action="/auc/ship_mod" method="post">
+	
+	<!-- add -->
+	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>	
+	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+	
 				<div>			
 					<input type=hidden class="form-control" name="a_bno" value='<c:out value="${shipget.a_bno}"/>'  readonly="readonly">
 				</div>
@@ -57,9 +62,16 @@ $(document).ready(function(){
 		
 		if(operation === 'ship_rem'){
 			formObj.attr("action","/auc/ship_rem");
+			
 		} else if(operation === 'ship_list'){
-			self.location="/auc/ship_list";
-			return;
+			//move to list
+			formObj.attr("action", "/auc/ship_list").attr("method","get");
+			var pageNumTag = $("input[name='pageNum']").clone();
+			var amountTag = $("input[name='amount']").clone();
+			
+			formObj.empty();
+			formObj.append(pageNumTag);
+			formObj.append(amountTag);
 		}
 		formObj.submit();
 	});

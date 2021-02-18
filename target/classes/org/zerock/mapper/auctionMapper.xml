@@ -10,14 +10,29 @@
 
 <!-- 경매 신청 조회 -->
 <select id="aucApplySelect" resultType="org.zerock.domain.aucApplyVO">
-	select * from auc_aply_tb where aa_bno = #{aa_bno}
+	select aa_bno, c_num, aa_hope_prd, aa_item_nm, aa_markt_prc, aa_weight, aa_cntry_orgn from auc_aply_tb where aa_bno = #{aa_bno}
 </select>
 
 <!-- 경매 신청 전체 조회 -->
 <select id="aucApplyList"  resultType="org.zerock.domain.aucApplyVO">
-	select * from auc_aply_tb where aa_bno is not null
+	select aa_bno, c_num, aa_hope_prd, aa_item_nm, aa_markt_prc, aa_weight, aa_cntry_orgn from auc_aply_tb where aa_bno is not null
 </select>
 
+<select id="aucApplyListWithPaging" resultType="org.zerock.domain.aucApplyVO">
+<![CDATA[
+	select
+		aa_bno, c_num, aa_hope_prd, aa_item_nm, aa_markt_prc, aa_weight, aa_cntry_orgn
+	from
+		(
+		select /*+INDEX_DESC(auc_aply_tb PK_AUC_APLY_TB)*/
+			rownum rn, aa_bno, c_num, aa_hope_prd, aa_item_nm, aa_markt_prc, aa_weight, aa_cntry_orgn
+		from
+			auc_aply_tb
+		where rownum <= #{pageNum} * #{amount}
+		)
+	where rn > (#{pageNum} -1) * #{amount}		
+]]>
+</select>
 <!-- 경매 신청 삭제 -->
 <delete id="aucApplyDel">
 	delete from auc_aply_tb where aa_bno = #{aa_bno}
@@ -26,7 +41,7 @@
 <!-- 경매 신청 수정 -->
 <update id="aucApplyUpdate">
 	update auc_aply_tb set 
-	aa_hope_prd = #{aa_hope_prd},
+	aa_hope_prd = to_date(#{aa_hope_prd},'YYYY-MM-DD'),
 	aa_item_nm = #{aa_item_nm},
 	aa_markt_prc = #{aa_markt_prc},
 	aa_weight = #{aa_weight},
@@ -41,8 +56,24 @@
 </insert>
 
 <!-- 경매 진행 전체 조회 -->
-<select id="aucing" resultType="org.zerock.domain.auctionVO">
+<select id="aucIng" resultType="org.zerock.domain.auctionVO">
 	select * from auc_tb where a_state = '진행중'
+</select>
+
+<select id="aucListWithPaging" resultType="org.zerock.domain.auctionVO">
+<![CDATA[
+	select
+		a_bno, aa_bno, a_versifier, a_crnt_prc, a_wnng_prc, a_state, a_prgrs_prd 
+	from
+		(
+		select /*+INDEX_DESC(auc_tb PK_AUC_TB)*/
+			rownum rn, a_bno, aa_bno, a_versifier, a_crnt_prc, a_wnng_prc, a_state, a_prgrs_prd
+		from
+			auc_tb
+		where rownum <= #{pageNum} * #{amount}
+		)
+	where rn > (#{pageNum} -1) * #{amount}		
+]]>
 </select>
 
 <select id="aucList" resultType="org.zerock.domain.auctionVO">
@@ -100,6 +131,22 @@
 <!-- 배송 정보 전체 조회 -->
 <select id="shipList" resultType="org.zerock.domain.aucShipVO">
 	select * from shpng_tb where a_bno is not null
+</select>
+
+<select id="shipListWithPaging" resultType="org.zerock.domain.aucShipVO">
+<![CDATA[
+	select
+		a_bno, c_num, m_num, s_shpng_addr, s_shpng_cntct, s_shpng_stts 
+	from
+		(
+		select /*+INDEX_DESC(shpng_tb PK_SHPNG_TB)*/
+			rownum rn, a_bno, c_num, m_num, s_shpng_addr, s_shpng_cntct, s_shpng_stts
+		from
+			shpng_tb
+		where rownum <= #{pageNum} * #{amount}
+		)
+	where rn > (#{pageNum} -1) * #{amount}		
+]]>
 </select>
 
 <!-- 배송정보 삭제 -->
@@ -181,4 +228,16 @@ insert into auc_cmpny_tb(c_num, c_name, c_email, c_address, c_contact, c_sector)
 values('C'||seq_auc_com.nextval, #{c_name}, #{c_email}, #{c_address}, #{c_contact}, #{c_sector})
 </insert>
 
+<!-- 데이터 개수 처리 -->
+<select id="getTotalCountApply" resultType="int">
+	select count(*) from auc_aply_tb where aa_bno is not null
+</select>
+
+<select id="getTotalCountNow" resultType="int">
+	select count(*) from auc_tb where a_bno is not null
+</select>
+
+<select id="getTotalCountShip"	resultType="int">
+	select count(*) from shpng_tb where a_bno is not null
+</select>
 </mapper>

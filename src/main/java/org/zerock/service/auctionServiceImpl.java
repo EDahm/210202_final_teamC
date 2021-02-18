@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
 import org.zerock.domain.aucComVO;
@@ -54,11 +55,11 @@ public class auctionServiceImpl implements auctionService {
 	}
 	
 	@Override
-	public List<auctionVO> nowGetList() {
+	public List<auctionVO> nowGetList(Criteria cri) {
 
 		log.info("getList.......");
 		
-		return aucMapper.aucList();
+		return aucMapper.aucListWithPaging(cri);
 	}
 	
 	@Override
@@ -104,11 +105,11 @@ public class auctionServiceImpl implements auctionService {
 	}
 	
 	@Override
-	public List<aucApplyVO> applyGetList() {
+	public List<aucApplyVO> applyGetList(Criteria cri) {
 
-		log.info("APPLY GET LIST......");
+		log.info("APPLY GET LIST......" + cri);
 		
-		return aucMapper.aucApplyList();
+		return aucMapper.aucApplyListWithPaging(cri);
 		
 	}
 	
@@ -145,11 +146,11 @@ public class auctionServiceImpl implements auctionService {
 	}
 	
 	@Override
-	public List<aucShipVO> shipGetList() {
+	public List<aucShipVO> shipGetList(Criteria cri) {
 
 		log.info("SHIP GET LIST......");
 		
-		return aucMapper.shipList();
+		return aucMapper.shipListWithPaging(cri);
 	}
 	
 	@Override
@@ -233,5 +234,30 @@ public class auctionServiceImpl implements auctionService {
 		log.info("AUCTION COMPANY REMOVE....");
 		
 		return aucMapper.aucComDel(c_num)== 1 ;
+	}
+	
+	@Override
+	public int getTotalApply(Criteria cri) {
+		log.info("get total count apply");
+		return aucMapper.getTotalCountApply(cri);
+	}
+	
+	@Override
+	public List<auctionVO> nowStateList() {
+		log.info("AUCTION NOW ING GET....");
+		
+		return aucMapper.aucIng();
+	}
+	
+	@Override
+	public int getTotalNow(Criteria cri) {
+		log.info("get total count now....");
+		return aucMapper.getTotalCountNow(cri);
+	}
+	
+	@Override
+	public int getTotalShip(Criteria cri) {
+		log.info("get total count");
+		return aucMapper.getTotalCountShip(cri);
 	}
 }

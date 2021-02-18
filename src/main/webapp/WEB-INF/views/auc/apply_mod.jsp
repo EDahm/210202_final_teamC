@@ -25,6 +25,9 @@
 			
 			<div>
 			<form role="form" action="/auc/apply_mod" method="post">
+			
+			<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+			<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
 				<div>
 					<label>신청번호</label>
 					<input class="form-control" name="aa_bno" value='<c:out value="${applyget.aa_bno}"/>' readonly="readonly">
@@ -75,9 +78,16 @@ $(document).ready(function(){
 		
 		if(operation === 'apply_rem'){
 			formObj.attr("action","/auc/apply_rem");
+			
 		} else if(operation === 'apply_list'){
-			self.location="/auc/apply_list";
-			return;
+			
+			formObj.attr("action". "/auc/apply_list").attr("method", "get");
+			var pageNumTag = $("input[name='pageNum']").clone();
+			var amountTag = $("input[name='amount']").clone();
+			
+			formObj.empty();
+			formObj.append(pageNumTag);
+			formObj.append(amountTag);
 		}
 		formObj.submit();
 	});

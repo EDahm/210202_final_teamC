@@ -7,6 +7,7 @@
 <head>
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">경매 진행 조회</h1>
@@ -53,10 +54,33 @@
 				</div>
 				<button data-oper='apply_mod' onclick="location.href='/auc/apply_mod?aa_bno=<c:out value="${applyget.aa_bno}"/>'">수정</button>
 				<button data-oper='apply_list' onclick="location.href='/auc/apply_list'">목록</button>				
+				<form id='operForm' action="/auc/apply_mod" method="get">
+                        		<input type='hidden' id='bno' name='aa_bno' value='<c:out value="${applyget.aa_bno}"/>'>
+                        		<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+                        		<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+                </form>
 			</div>
 		</div>
 	</div>
 </div>
-				
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		var operForm = $("#operForm");
+  		
+  		$("button[data-oper='apply_mod']").on("click",function(e){
+  			
+  			operForm.attr("action","/auc/apply_mod").submit();
+  			
+  		});
+  		
+  		$("button[data-oper='apply_list']").on("click",function(e){
+  			
+  			operForm.find("#bno").remove();
+  			operForm.attr("action","/auc/apply_list")
+  			operForm.submit();
+  			
+  		});
+  	});
+  </script>				
 </body>
 </html>

@@ -9,7 +9,7 @@
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div>
-<h1>배송조회</h1>
+<h1>배 송 조 회</h1>
 </div>
 <div>
 	<form role="form" action="/auc/ship_mod" method="post">

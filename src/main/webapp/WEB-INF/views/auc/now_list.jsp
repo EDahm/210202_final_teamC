@@ -38,7 +38,7 @@
 
 					<c:forEach items="${now_list}" var="nowlist">
 						<tr>
-							<td><a href='/auc/now_get?a_bno=<c:out value="${nowlist.a_bno}"/>'>
+							<td><a class='moveNow' href='<c:out value="${nowlist.a_bno}"/>'>
 									<c:out value="${nowlist.a_bno}" /></a></td>						
 							<td><c:out value="${nowlist.aa_bno}" /></td>
 							<td><c:out value="${nowlist.a_versifier}" /></td>
@@ -49,10 +49,56 @@
 						</tr>
 					</c:forEach>
 				</table>
+								<div>
+					<ul>
+					
+						<c:if test="${pageMaker.prev}">
+							<li class="paginate_button"><a href="${pageMaker.startPage -1}">Previous</a></li>
+						</c:if>
+						
+						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+							<li class="paginate_button ${pagemaker.cri.pageNum == num ? "active" : "" } ">
+							<a href="${num}"></a></li>
+						</c:forEach>
+						
+						<c:if test="${pageMaker.next}">
+							<li class="paginate_button"><a href="${pageMaker.endPage +1 }">Next</a></li>
+						</c:if>
+					</ul>
+				</div>
+				<!-- 페이징 끝 -->
+				<form id="actionForm" action="/auc/now_list" method='get'>
+					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>			
+				</form>
 			</div>
 		</div>
 	</div>
 </div>	
-			
+<script type="text/javascript">
+$(document).ready(function(){
+		
+	var actionForm = $("#actionForm");
+	
+	$(".paginate_button a").on("click", function(e){
+		
+		e.preventDefault();
+		
+		console.log('click');
+		
+		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+		actionForm.submit();
+	});
+	
+	$(".moveNow").on("click", function(e){
+		
+		e.preventDefault();
+		actionForm.append("<input type='hidden' name='a_bno' value='"+
+				$(this).attr("href")+"'>");
+		actionForm.attr("action","/auc/now_get");
+		actionForm.submit();
+	})
+});
+</script>				
 </body>
 </html>

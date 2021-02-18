@@ -39,12 +39,35 @@
 						<tr>
 							<td><c:out value="${apply.aa_bno}" /></td>
 							<td><c:out value="${apply.c_num}" /></td>
-							<td><a href='/auc/apply_get?aa_bno=<c:out value="${apply.aa_bno}"/>'>
+							<td><a class='moveApply' href='<c:out value="${apply.aa_bno}"/>'>
 									<c:out value="${apply.aa_item_nm}" /></a></td>
 							<td><c:out value="${apply.aa_hope_prd}" /></td>
 						</tr>
 					</c:forEach>
 				</table>
+				
+				<div>
+					<ul>
+					
+						<c:if test="${pageMaker.prev}">
+							<li class="paginate_button"><a href="${pageMaker.startPage -1}">Previous</a></li>
+						</c:if>
+						
+						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+							<li class="paginate_button ${pagemaker.cri.pageNum == num ? "active" : "" } ">
+							<a href="${num}"></a></li>
+						</c:forEach>
+						
+						<c:if test="${pageMaker.next}">
+							<li class="paginate_button"><a href="${pageMaker.endPage +1 }">Next</a></li>
+						</c:if>
+					</ul>
+				</div>
+				<!-- 페이징 끝 -->
+				<form id="actionFormApply" action="/auc/apply_list" method='get'>
+					<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+					<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>			
+				</form>
 			</div>
 		</div>
 	</div>
@@ -81,8 +104,10 @@ $(document).ready(function(){
 	
 	checkModal(result);
 	
+	history.replaceState({}, null, null);
+	
 	function checkModal(result){
-		if(result === ''){
+		if(result === '' || history.state){
 			return;
 		}
 		if(parseInt(result) > 0){
@@ -95,6 +120,27 @@ $(document).ready(function(){
 	
 	$("#regBtn").on("click",function(){
 		self.location = "/auc/now_regi"
+	});
+	
+	var actionForm = $("#actionFormApply");
+	
+	$(".paginate_button a").on("click", function(e){
+		
+		e.preventDefault();
+		
+		console.log('click');
+		
+		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
+		actionForm.submit();
+	});
+	
+	$(".moveApply").on("click", function(e){
+		
+		e.preventDefault();
+		actionForm.append("<input type='hidden' name='aa_bno' value='"+
+				$(this).attr("href")+"'>");
+		actionForm.attr("action","/auc/apply_get");
+		actionForm.submit();
 	});
 });
 </script>	

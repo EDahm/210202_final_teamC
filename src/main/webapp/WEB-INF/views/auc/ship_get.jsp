@@ -13,7 +13,6 @@
 </div>
 <div>
 				<div>
-			
 					<input type=hidden class="form-control" name="a_bno" value='<c:out value="${shipget.a_bno}"/>'>
 				</div>
 				<div>

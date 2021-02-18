@@ -52,7 +52,14 @@
 					<input class="form-control" name="a_prgrs_prd" value='<c:out value="${nowlist.a_prgrs_prd}"/>' readonly="readonly">
 				</div>
 				<button data-oper='now_mod' onclick="location.href='/auc/now_mod?a_bno=<c:out value="${nowlist.a_bno}"/>'">수정</button>
-				<button data-oper='now_list' onclick="location.href='/auc/now_list'">목록</button>				
+				<button data-oper='now_list' onclick="location.href='/auc/now_list'">목록</button>
+				
+				<form id='operForm' action="/auc/now_mod" method="get">
+                        		<input type='hidden' id='a_bno' name='aa_bno' value='<c:out value="${nowlist.a_bno}"/>'>
+                        		<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+                        		<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+                </form>
+								
 			</div>
 		</div>
 	</div>

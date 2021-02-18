@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +15,7 @@
                 <div>
                     <div>
                         <div>
-                        	<img src="/resources/img/mikan.jpg">
+                        	<img src='/resources/img/dog_hachi_sasareta.png'/>
                         </div>
                     </div>
                 </div>
@@ -23,7 +25,7 @@
                         <div>
                         <div>
                            <span>입찰 수</span>
-                           <span>3 명</span>
+                           <span><c:out value="${countBid}"/>명</span>
                         </div>
                         <div >
                         	<p class="time-title">경매 마감까지 남은 시간</p>
@@ -37,7 +39,12 @@
                         </div>
                         </div>
                         <div>
-                        현재가
+                        </div>
+                        <div>
+                        <div>현재가</div>
+                        <div> 원 </div>
+                        <div>현재입찰자</div>
+                        <div><c:out value="${bestmember}"/>님</div>
                         </div>
                         <button id="popup_bid">입찰하기</button>
                         <a href="#">바로 구매하기</a>

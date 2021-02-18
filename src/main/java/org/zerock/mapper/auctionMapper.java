@@ -122,4 +122,7 @@ public interface auctionMapper {
 	public int getTotalCountCom(Criteria cri);
 	////입찰 조회페이지
 	public int getTotalCountBid(Criteria cri);
+	
+	//입찰자 수 카운트
+	public int getCountBid(Criteria cri);
 }

@@ -272,4 +272,11 @@ public class auctionServiceImpl implements auctionService {
 		return aucMapper.getTotalCountBid(cri);
 	}
 	
+	@Override
+	public int getCountBid(Criteria cri) {
+		log.info("GET COUNT BID.....");
+		
+		return aucMapper.getCountBid(cri);
+	}
+	
 }

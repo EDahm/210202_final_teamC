@@ -35,10 +35,10 @@ public class auctionMapperTests {
 		
 		aucBidVO auc = new aucBidVO();
 			
-		auc.setA_bno("A2021-02-18-162");
+		auc.setA_bno("A2021-02-18-180");
 		auc.setM_num("M100002");
 		auc.setB_bid_price(900); 
-		auc.setB_bid_time("1분");
+		auc.setB_bid_time("1");
 		
 		auMapper.bidInsert(auc);
 		

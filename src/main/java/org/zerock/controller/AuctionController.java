@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.MemberVO;
 import org.zerock.domain.PageDTO;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
@@ -31,11 +32,12 @@ public class AuctionController {
 	
 	//진행페이지
 	@GetMapping("/now")
-	public void now(Model model) {
+	public void now(Criteria cri,@ModelAttribute("bm") MemberVO bm , Model model) {
 		
 		log.info("now");
 		model.addAttribute("now", service.nowStateList());
-		
+		model.addAttribute("countBid", service.getCountBid(cri));
+		model.addAttribute("bestmember", service.nowBestMember());
 	}
 	
 	//경매 전체 조회

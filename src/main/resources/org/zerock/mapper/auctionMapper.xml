@@ -284,4 +284,8 @@ values('C'||seq_auc_com.nextval, #{c_name}, #{c_email}, #{c_address}, #{c_contac
 <select id="getTotalCountBid"	resultType="int">
 	select count(*) from bid_tb where a_bno is not null
 </select>
+
+<select id="getCountBid" resultType="int">
+	select count(*) from bid_tb where a_bno = (select a_bno from auc_tb where a_state = '진행중')
+</select>
 </mapper>

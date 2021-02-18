@@ -90,6 +90,9 @@ public interface auctionService {
 	//입찰정보 전체 조회
 	public List<aucBidVO> bidGetList(Criteria cri);
 	
+	//입찰자 수 카운트
+	public int getCountBid(Criteria cri);
+	
 	
 	
 	//업체페이지

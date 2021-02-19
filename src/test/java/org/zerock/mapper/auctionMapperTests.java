@@ -33,14 +33,16 @@ public class auctionMapperTests {
 //	@Test
 //	public void testInsert() {
 //		
-//		aucBidVO auc = new aucBidVO();
+//		aucApplyVO auc = new aucApplyVO();
 //			
-//		auc.setA_bno("A2021-02-18-180");
-//		auc.setM_num("M100002");
-//		auc.setB_bid_price(900); 
-//		auc.setB_bid_time("1");
+//		auc.setC_num("C100200");
+//		auc.setAa_hope_prd(new Date());
+//		auc.setAa_item_nm("커피");
+//		auc.setAa_markt_prc(20000);
+//		auc.setAa_weight("10kg");
+//		auc.setAa_cntry_orgn("한국");
 //		
-//		auMapper.bidInsert(auc);
+//		auMapper.aucApplyIns(auc);
 //		
 //		log.info(auc);
 //		

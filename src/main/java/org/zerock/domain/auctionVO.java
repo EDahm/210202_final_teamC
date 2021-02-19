@@ -1,5 +1,6 @@
 package org.zerock.domain;
 
+
 import lombok.Data;
 
 @Data

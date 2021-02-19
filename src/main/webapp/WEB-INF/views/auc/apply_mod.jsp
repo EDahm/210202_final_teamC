@@ -56,7 +56,10 @@
 				</div>
 				<div>
 					<label>희망기간</label><!-- datepicker 써야함 -->
-					<input class="form-control" name="aa_hope_prd" value='<c:out value="${applyget.aa_hope_prd}"/>'>
+					<input type="hidden">
+					<fmt:parseDate var="aa_hope_prd" value="${applyget.aa_hope_prd}" pattern="yyyy-MM-dd" />
+					<input type='date' class="form-control" name='aa_hope_prd' value='<fmt:formatDate pattern="yyyy-MM-dd"
+					value="${aa_hope_prd}" />'>
 				</div>
 				<button type="submit" data-oper='apply_mod'>수정</button>
 				<button type="submit" data-oper='apply_rem'>삭제</button>

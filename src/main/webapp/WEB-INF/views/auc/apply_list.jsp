@@ -41,7 +41,9 @@
 							<td><c:out value="${apply.c_num}" /></td>
 							<td><a class='moveApply' href='<c:out value="${apply.aa_bno}"/>'>
 									<c:out value="${apply.aa_item_nm}" /></a></td>
-							<td><c:out value="${apply.aa_hope_prd}" /></td>
+							<!-- <td><c:out value="${apply.aa_hope_prd}" /></td> -->
+							<td> <fmt:parseDate value="${apply.aa_hope_prd}" pattern="yyyy-MM-dd HH:mm:ss" var="hopeprd"/>
+							 <fmt:formatDate value="${hopeprd}" pattern="yyyy-MM-dd"/>
 						</tr>
 					</c:forEach>
 				</table>

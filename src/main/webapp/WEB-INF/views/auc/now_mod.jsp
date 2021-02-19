@@ -61,7 +61,10 @@
 				</div>
 				<div>
 					<label>진행기간</label> <!-- datepicker님 도와주세요 -->
-					<input class="form-control" name="a_prgrs_prd" value='<c:out value="${nowlist.a_prgrs_prd}"/>'>
+					<input type="hidden">
+					<fmt:parseDate var="a_prgrs_prd" value="${nowlist.a_prgrs_prd}" pattern="yyyy-MM-dd" />
+					<input type='date' class="form-control" name='a_prgrs_prd' value='<fmt:formatDate pattern="yyyy-MM-dd"
+					value="${a_prgrs_prd}" />'>
 				</div>
 				<button type="submit" data-oper='now_mod'>수정</button>
 				<button type="submit" data-oper='now_rem'>삭제</button>

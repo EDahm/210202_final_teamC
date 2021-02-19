@@ -21,7 +21,7 @@
 <select id="aucApplyListWithPaging" resultType="org.zerock.domain.aucApplyVO">
 <![CDATA[
 	select
-		aa_bno, c_num, aa_hope_prd, aa_item_nm, aa_markt_prc, aa_weight, aa_cntry_orgn
+		aa_bno, c_num,  aa_hope_prd, aa_item_nm, aa_markt_prc, aa_weight, aa_cntry_orgn
 	from
 		(
 		select /*+INDEX_DESC(auc_aply_tb PK_AUC_APLY_TB)*/
@@ -231,7 +231,7 @@
 		declare
 		begin
 	insert into bid_tb(a_bno, m_num, b_bid_price, b_bid_time)
-	values (#{a_bno}, #{m_num}, #{b_bid_price}, #{b_bid_time});
+	values (#{a_bno}, #{m_num}, #{b_bid_price}, sysdate);
 	
 	update mber_tb set m_point = m_point + 2 where m_num = #{m_num}; 
 	end

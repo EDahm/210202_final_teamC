@@ -99,6 +99,12 @@
 			
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	$("#regBtn").on("click",function(){
+		self.location = "/auc/com_regi"
+	});
+	
+	
 	var actionForm = $("#actionForm");
 
 	$(".paginate_button a").on("click", function(e){

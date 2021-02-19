@@ -6,7 +6,7 @@
 <html>
 <head>
 </head>
-<body>
+<body>	
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">경매 신청하기</h1>
@@ -44,15 +44,13 @@
 				</div>
 				<div>
 					<label>희망기간</label><!-- datepicker 써야함 -->
-					<input class="form-control" name="aa_hope_prd">
+					<input type="date" name="aa_hope_prd">
 				</div>
-				
 				<button type="submit">신청</button>
 				<button type="reset">리셋</button>				
 			</form>
 		</div>
 	</div>
 </div>
-				
 </body>
 </html>

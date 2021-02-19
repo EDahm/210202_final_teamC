@@ -44,8 +44,8 @@
 					<input name="a_state">
 				</div>
 				<div>
-					<label>진행기간</label><!-- datepicker 써야함 -->
-					<input class="form-control" name="a_prgrs_prd">
+					<label>진행기간</label>
+					<input type="date" name="a_prgrs_prd">
 				</div>
 				
 				<button type="submit">신청</button>

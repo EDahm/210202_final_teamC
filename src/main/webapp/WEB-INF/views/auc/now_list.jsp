@@ -44,7 +44,8 @@
 							<td><c:out value="${nowlist.a_crnt_prc}" /></td>
 							<td><c:out value="${nowlist.a_wnng_prc}" /></td>
 							<td><c:out value="${nowlist.a_state}" /></td>
-							<td><c:out value="${nowlist.a_prgrs_prd}" /></td>
+							<td><fmt:parseDate value="${nowlist.a_prgrs_prd}" pattern="yyyy-MM-dd HH:mm:ss" var="prgrsprd"/>
+							 <fmt:formatDate value="${prgrsprd}" pattern="yyyy-MM-dd"/>
 						</tr>
 					</c:forEach>
 				</table>

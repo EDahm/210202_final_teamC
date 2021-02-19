@@ -30,21 +30,21 @@ public class auctionMapperTests {
 //		auMapper.aucComList().forEach(auc -> log.info(auc));
 //	}
 	
-	@Test
-	public void testInsert() {
-		
-		aucBidVO auc = new aucBidVO();
-			
-		auc.setA_bno("A2021-02-18-180");
-		auc.setM_num("M100002");
-		auc.setB_bid_price(900); 
-		auc.setB_bid_time("1");
-		
-		auMapper.bidInsert(auc);
-		
-		log.info(auc);
-		
-	}
+//	@Test
+//	public void testInsert() {
+//		
+//		aucBidVO auc = new aucBidVO();
+//			
+//		auc.setA_bno("A2021-02-18-180");
+//		auc.setM_num("M100002");
+//		auc.setB_bid_price(900); 
+//		auc.setB_bid_time("1");
+//		
+//		auMapper.bidInsert(auc);
+//		
+//		log.info(auc);
+//		
+//	}
 	
 //	@Test
 //	public void testRead() {
@@ -77,13 +77,13 @@ public class auctionMapperTests {
 //		log.info("success : " + a);
 //	}
 //	
-//	@Test
-//	public void testNow() {
-//		
-//		String test = auMapper.bidNowMember();
-//		
-//		log.info("닉네임 : " + test);
-//	}
+	@Test
+	public void testNow() {
+		
+		int test = auMapper.bidNowPrice();
+		
+		log.info("result : " + test);
+	}
 	
 //	@Test
 //	public void testPaging() {

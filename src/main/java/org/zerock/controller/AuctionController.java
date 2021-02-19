@@ -32,7 +32,7 @@ public class AuctionController {
 	
 	//진행페이지
 	@GetMapping("/now")
-	public void now(Criteria cri,@ModelAttribute("bm") MemberVO bm , Model model) {
+	public void now(Criteria cri, Model model) {
 		
 		log.info("now");
 		model.addAttribute("now", service.nowStateList());
@@ -87,6 +87,8 @@ public class AuctionController {
 		
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		
 		return "redirect:/auc/now_list";
 		
@@ -104,6 +106,8 @@ public class AuctionController {
 		
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		
 		return "redirect:/auc/now_list";
 		
@@ -163,6 +167,8 @@ public class AuctionController {
 		
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		
 		return "redirect:/auc/apply_list";
 		
@@ -179,6 +185,8 @@ public class AuctionController {
 		
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
+		rttr.addAttribute("type", cri.getType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		
 		return "redirect:/auc/apply_list";
 		
@@ -245,6 +253,8 @@ public class AuctionController {
 			
 			rttr.addAttribute("pageNum", cri.getPageNum());
 			rttr.addAttribute("amount", cri.getAmount());
+			rttr.addAttribute("type", cri.getType());
+			rttr.addAttribute("keyword", cri.getKeyword());
 			
 			return "redirect:/auc/ship_list" ;
 			
@@ -262,6 +272,8 @@ public class AuctionController {
 			
 			rttr.addAttribute("pageNum", cri.getPageNum());
 			rttr.addAttribute("amount", cri.getAmount());
+			rttr.addAttribute("type", cri.getType());
+			rttr.addAttribute("keyword", cri.getKeyword());
 			
 			return "redirect:/auc/ship_list";
 			
@@ -389,8 +401,19 @@ public class AuctionController {
 				
 				rttr.addAttribute("pageNum", cri.getPageNum());
 				rttr.addAttribute("amount", cri.getAmount());
+				rttr.addAttribute("type", cri.getType());
+				rttr.addAttribute("keyword", cri.getKeyword());
 				
 				return "redirect:/auc/bid_list";
+				
+			}
+			
+			@GetMapping("/bid_now")
+			public void bidNowPrice() {
+				
+				log.info("SUCCESS BID CHANGE PRICE...");
+				
+				service.nowPrice();
 				
 			}
 			

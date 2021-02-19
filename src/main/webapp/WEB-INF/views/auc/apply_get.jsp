@@ -57,6 +57,8 @@
                         		<input type='hidden' id='bno' name='aa_bno' value='<c:out value="${applyget.aa_bno}"/>'>
                         		<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
                         		<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+                        		<input type='hidden' name='keyword' value='<c:out value="${cri.keyword }"/>'>
+                        		<input type='hidden' name='type' value='<c:out value="${cri.type }"/>'>
                 </form>
 			</div>
 		</div>

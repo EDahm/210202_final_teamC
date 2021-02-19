@@ -21,6 +21,9 @@
 			<div class="panel-heading">
 				입찰 리스트				
 			</div>
+			<form action="/auc/bid_now" method="get">
+			<button type="submit" data-oper="bid_now" > test </button>
+			</form>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<table class="table table-striped table-bordered table-hover">
@@ -46,6 +49,27 @@
 						</tr>
 					</c:forEach>
 				</table>
+				
+					<div>
+					<div>
+						<form id='searchForm' action="/auc/bid_list" method="get">
+							<select name='type'>
+								<option value=""
+									<c:out value="${pageMaker.cri.type == null? 'selected':''}"/>>--</option>
+								<option value="T"
+									<c:out value="${pageMaker.cri.type eq T? 'selected':''}"/>>경매번호</option>
+								<option value="C"
+									<c:out value="${pageMaker.cri.type eq C? 'selected':''}"/>>회원번호</option>
+								<option value="W"
+									<c:out value="${pageMaker.cri.type eq W? 'selected':''}"/>>입찰상태</option>								
+							</select>
+						<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'/>
+						<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>'/>
+						<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>'/>						
+						<button>Search</button>
+						</form>
+					</div>
+				</div>
 								<div class='pull-right'>
 					<ul class="pagination">
 						
@@ -72,6 +96,8 @@
 			<form id='actionForm' action="/auc/bid_list" method='get'>
 				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+				<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>			
+					<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
 			</form>	
 <script type="text/javascript">
 $(document).ready(function(){
@@ -94,6 +120,28 @@ $(document).ready(function(){
 		
 		self.location = "/auc/now_regi"
 	});
+	
+var searchForm = $("#searchForm");
+	
+	$("#searchForm button").on("click", function(e){
+	
+		if(!searchForm.find("option:selected").val()){
+			alert("검색종류를 선택하세요");
+			return false;
+		}
+	
+		if(!searchForm.find("input[name='keyword']").val()){
+			alert("키워드를 입력하세요");
+			return false;
+		}
+		
+		searchForm.find("input[name='pageNum']").val("1");
+		e.preventDefault();
+		
+		searchForm.submit();
+	
+	});
+	
 });
 </script>	
 </body>

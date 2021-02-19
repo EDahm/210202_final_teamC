@@ -28,7 +28,29 @@
 			rownum rn, aa_bno, c_num, aa_hope_prd, aa_item_nm, aa_markt_prc, aa_weight, aa_cntry_orgn
 		from
 			auc_aply_tb
-		where rownum <= #{pageNum} * #{amount}
+		where 
+]]>
+	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		<foreach item='type' collection="typeArr">
+			<trim prefix="OR">
+				<choose>
+					<when test="type == 'T'.toString()">
+						aa_item_nm like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'C'.toString()">
+						c_num like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'W'.toString()">
+						aa_hope_prd like '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</trim>
+		</foreach>	
+	</trim>
+	
+	<![CDATA[
+	
+	rownum <= #{pageNum} * #{amount}
 		)
 	where rn > (#{pageNum} -1) * #{amount}		
 ]]>
@@ -61,7 +83,8 @@
 
 <!-- 경매 진행 전체 조회 -->
 <select id="aucIng" resultType="org.zerock.domain.auctionVO">
-	select * from auc_tb where a_state = '진행중'
+	select a_bno, aa_bno, a_versifier, a_crnt_prc, a_wnng_prc, a_state, a_prgrs_prd
+	from auc_tb where a_state = '진행중'
 </select>
 
 <select id="aucListWithPaging" resultType="org.zerock.domain.auctionVO">
@@ -74,7 +97,29 @@
 			rownum rn, a_bno, aa_bno, a_versifier, a_crnt_prc, a_wnng_prc, a_state, a_prgrs_prd
 		from
 			auc_tb
-		where rownum <= #{pageNum} * #{amount}
+		where 
+	]]>
+	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		<foreach item='type' collection="typeArr">
+			<trim prefix="OR">
+				<choose>
+					<when test="type == 'T'.toString()">
+						a_bno like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'C'.toString()">
+						a_state like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'W'.toString()">
+						a_prgrs_prd like '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</trim>
+		</foreach>	
+	</trim>
+	
+	<![CDATA[
+	
+	rownum <= #{pageNum} * #{amount}
 		)
 	where rn > (#{pageNum} -1) * #{amount}		
 ]]>
@@ -147,7 +192,29 @@
 			rownum rn, a_bno, c_num, m_num, s_shpng_addr, s_shpng_cntct, s_shpng_stts
 		from
 			shpng_tb
-		where rownum <= #{pageNum} * #{amount}
+		where	
+		]]>
+	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		<foreach item='type' collection="typeArr">
+			<trim prefix="OR">
+				<choose>
+					<when test="type == 'T'.toString()">
+						a_bno like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'C'.toString()">
+						c_num like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'W'.toString()">
+						s_shpng_stts like '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</trim>
+		</foreach>	
+	</trim>
+	
+	<![CDATA[
+	
+	rownum <= #{pageNum} * #{amount}
 		)
 	where rn > (#{pageNum} -1) * #{amount}		
 ]]>
@@ -193,7 +260,29 @@
 			rownum rn, a_bno, m_num, b_bid_price, b_bid_time, b_bid_state
 		from
 			bid_tb
-		where rownum <= #{pageNum} * #{amount}
+		where 
+		]]>
+	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		<foreach item='type' collection="typeArr">
+			<trim prefix="OR">
+				<choose>
+					<when test="type == 'T'.toString()">
+						a_bno like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'C'.toString()">
+						m_num like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'W'.toString()">
+						b_bid_state like '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</trim>
+		</foreach>	
+	</trim>
+	
+	<![CDATA[
+	
+	rownum <= #{pageNum} * #{amount}
 		)
 	where rn > (#{pageNum} -1) * #{amount}		
 ]]>
@@ -231,7 +320,29 @@
 			rownum rn, c_num, c_name, c_email, c_address, c_contact, c_sector
 		from
 			auc_cmpny_tb
-		where rownum <= #{pageNum} * #{amount}
+		where		
+		]]>
+	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		<foreach item='type' collection="typeArr">
+			<trim prefix="OR">
+				<choose>
+					<when test="type == 'T'.toString()">
+						c_num like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'C'.toString()">
+						c_name like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'W'.toString()">
+						c_sector like '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</trim>
+		</foreach>	
+	</trim>
+	
+	<![CDATA[
+	
+	rownum <= #{pageNum} * #{amount}
 		)
 	where rn > (#{pageNum} -1) * #{amount}		
 ]]>

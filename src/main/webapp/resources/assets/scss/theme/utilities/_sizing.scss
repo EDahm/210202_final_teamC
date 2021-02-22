@@ -1,0 +1,46 @@
+//
+// sizing.scss
+//
+
+// Responsive sizing
+
+@each $size, $value in $sizes {
+  .minw-#{$size} {
+    min-width: $value !important;
+  }
+
+  .minh-#{$size} {
+    min-height: $value !important;
+  }
+}
+
+@each $breakpoint, $value in $grid-breakpoints {
+  @if $breakpoint !='xs' {
+    @include media-breakpoint-up(#{$breakpoint}) {
+      @each $size, $sizeValue in $sizes {
+        .w-#{$breakpoint}-#{$size} {
+          width: $sizeValue !important;
+        }
+
+        .h-#{$breakpoint}-#{$size} {
+          height: $sizeValue !important;
+        }
+
+        .minw-#{$breakpoint}-#{$size} {
+          min-width: $sizeValue !important;
+        }
+
+        .minh-#{$breakpoint}-#{$size} {
+          min-height: $sizeValue !important;
+        }
+      }
+    }
+  }
+}
+
+
+// Viewport units
+
+.vw-50 {
+  width: 50vw !important;
+}

@@ -1,0 +1,15 @@
+//
+// badge.scss
+//
+
+.badge {
+  letter-spacing: $badge-letter-spacing;
+}
+
+
+// Contextual classes
+
+.badge-white {
+  background-color: $white;
+  color: $body-color;
+}

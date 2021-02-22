@@ -1,0 +1,25 @@
+//
+// shadow.scss
+//
+
+.shadow-border {
+  box-shadow: $box-shadow-border !important;
+}
+
+.shadow-border-inset {
+  box-shadow: $box-shadow-border-inset !important;
+}
+
+
+// Hover
+
+.shadow-hover {
+  @if $enable-transitions {
+    transition: $transition-lg;
+    transition-property: box-shadow;
+  }
+
+  @include hover {
+    box-shadow: $box-shadow-lg !important;
+  }
+}

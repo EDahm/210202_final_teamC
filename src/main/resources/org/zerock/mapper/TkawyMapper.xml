@@ -43,6 +43,12 @@ select * from tkawy_tb
 	<delete id="delete">
 		delete from tkawy_tb where t_bno = #{t_bno}
 	</delete>
+	
+	<update id="updateCanceled">
+	update tkawy_tb
+	set t_progress='수거취소'
+	where t_bno = #{t_bno}
+	</update>
 
 	<update id="update">
 		{call
@@ -50,7 +56,8 @@ select * from tkawy_tb
 		begin
 		update tkawy_tb
 		set t_progress=
-		'수거완료'
+		'수거완료',
+		t_done_date = sysdate
 		where t_bno =
 		#{t_bno};
 
@@ -92,11 +99,11 @@ select * from tkawy_tb
 		resultType="org.zerock.domain.TkawyVO">
 		  <![CDATA[
 		  	select
-		  		t_bno, m_num, t_regdate, t_contact, t_plastic, t_plastic_cap, t_vstng_cmpny, t_date_vist, t_progress
+		  		t_bno, m_num, t_regdate, t_contact, t_plastic, t_plastic_cap, t_vstng_cmpny, t_date_vist, t_done_date, t_progress
 		  	from
 		  		(
 		  		select /*+INDEX_DESC(tkawy_tb pk_tkawy_tb) */
-		  			rownum rn, t_bno, m_num, t_regdate, t_contact, t_plastic, t_plastic_cap, t_vstng_cmpny, t_date_vist, t_progress
+		  			rownum rn, t_bno, m_num, t_regdate, t_contact, t_plastic, t_plastic_cap, t_vstng_cmpny, t_date_vist, t_done_date, t_progress
 		  		from
 		  			tkawy_tb
 		  		where
@@ -119,5 +126,9 @@ select * from tkawy_tb
 	
 	t_bno LIKE 'T%'
 	</select>
+	
+	
+
+	
 
 </mapper>

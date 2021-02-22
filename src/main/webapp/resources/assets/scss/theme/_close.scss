@@ -1,0 +1,18 @@
+//
+// close.scss
+//
+
+*:not(.toast-header):not(.alert) > .close {
+  position: absolute;
+  top: $close-spacer;
+  right: $close-spacer;
+  z-index: $zindex-fixed;
+  display: inline-flex;
+}
+
+.close {
+  @if $enable-transitions {
+    transition: $transition-base;
+    transition-property: color;
+  }
+}

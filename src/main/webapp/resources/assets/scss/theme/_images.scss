@@ -1,0 +1,48 @@
+//
+// images.scss
+//
+
+// Comparision
+
+.img-comp {
+  position: relative;
+}
+
+.img-comp-back .img-comp-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.img-comp-front {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 50%;
+  border-right: $border-width * 2 solid $white;
+  overflow: hidden;
+}
+
+.img-comp-front .img-comp-img {
+  max-height: 100%;
+  width: auto;
+}
+
+.img-comp-handle {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.img-comp-input {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+
+  &::-ms-tooltip {
+    display: none;
+  }
+}

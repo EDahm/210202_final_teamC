@@ -1,0 +1,69 @@
+//
+// border.scss
+//
+
+// Responsive widths
+
+@each $breakpoint, $value in $grid-breakpoints {
+
+  @include media-breakpoint-up($breakpoint) {
+
+    // Additive 
+
+    .border-#{$breakpoint} {
+      border: $border-width solid $border-color !important;
+    }
+
+    .border-top-#{$breakpoint} {
+      border-top: $border-width solid $border-color !important;
+    }
+
+    .border-right-#{$breakpoint} {
+      border-right: $border-width solid $border-color !important;
+    }
+
+    .border-bottom-#{$breakpoint} {
+      border-bottom: $border-width solid $border-color !important;
+    }
+
+    .border-left-#{$breakpoint} {
+      border-left: $border-width solid $border-color !important;
+    }
+
+    // Substractive
+
+    .border-#{$breakpoint}-0 {
+      border: 0 !important;
+    }
+
+    .border-top-#{$breakpoint}-0 {
+      border-top: 0 !important;
+    }
+
+    .border-right-#{$breakpoint}-0 {
+      border-right: 0 !important;
+    }
+
+    .border-bottom-#{$breakpoint}-0 {
+      border-bottom: 0 !important;
+    }
+
+    .border-left-#{$breakpoint}-0 {
+      border-left: 0 !important;
+    }
+  }
+}
+
+
+// Colors
+
+.border-gray-700 {
+  border-color: $gray-700 !important;
+}
+
+
+// Widths
+
+.border-2 {
+  border-width: $border-width * 2 !important;
+}

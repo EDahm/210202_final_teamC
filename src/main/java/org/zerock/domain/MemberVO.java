@@ -16,4 +16,5 @@ public class MemberVO {
 	private String m_contact;
 	private String m_type;
 	private int m_point;
+	private char enable;
 }

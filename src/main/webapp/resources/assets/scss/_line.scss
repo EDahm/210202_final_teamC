@@ -1,0 +1,43 @@
+//
+// line.scss
+//
+
+.line {
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  transform: translateY(-50%);
+  display: block;
+  width: $line-width;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  border-top: $border-width solid;
+  color: $line-color;
+}
+
+.line::after {
+  content: "";
+  position: inherit;
+  top: inherit;
+  transform: inherit;
+  width: $line-circle-size;
+  height: $line-circle-size;
+  background-color: currentColor;
+  border-radius: 50%;
+}
+
+.line-left {
+  right: 100%;
+}
+
+.line-left::after {
+  left: 0;
+}
+
+.line-right {
+  left: 100%;
+}
+
+.line-right::after {
+  right: 0;
+}

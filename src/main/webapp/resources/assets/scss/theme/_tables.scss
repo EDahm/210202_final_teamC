@@ -1,0 +1,48 @@
+//
+// table.scss
+//
+
+.table thead th {
+  padding-top: $table-head-padding-y;
+  padding-bottom: $table-head-padding-y;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+  vertical-align: middle;
+  border-width: $table-border-width;
+}
+
+.table tbody th {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold;
+}
+
+.table tbody td, .table tbody th {
+
+  @if $enable-transitions {
+    transition: $transition-base;
+  }
+}
+
+
+// Sizing
+
+.table-lg thead th {
+  padding: $table-head-padding-y-lg $table-cell-padding-lg;
+}
+
+.table-lg tbody td {
+  padding: $table-cell-padding-lg;
+}
+
+.table-sm thead th {
+  padding: $table-head-padding-y-sm $table-cell-padding-sm;
+  font-size: $font-size-xs;
+}
+
+.table-sm tbody th {
+  font-size: $font-size-xs;
+}
+
+.table-sm tbody td {
+  font-size: $font-size-sm;
+}

@@ -78,13 +78,22 @@ public class MemberServiceImpl implements MemberService{
 	}
 
 	@Override
-	public int idCheck(String email) {
+	public int idCheck(String email) throws Exception {
 		return  mapper.idCheck(email);
 	}
 
 	@Override
-	public int ncnmCheck(String m_ncnm) {
+	public int ncnmCheck(String m_ncnm) throws Exception {
+		
 		return  mapper.ncnmCheck(m_ncnm);
+	}
+
+	@Override
+	public boolean withdraw(String m_num) {
+
+		log.info("withdraw...." + m_num);
+		
+		return mapper.withdraw(m_num) == 1;
 	}
 
 	

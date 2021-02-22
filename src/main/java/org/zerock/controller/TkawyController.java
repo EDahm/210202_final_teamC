@@ -25,6 +25,12 @@ public class TkawyController {
 	
 	private TkawyService service;
 	
+	
+	@GetMapping("/main")
+	public void tkawyMain() {
+		
+	}
+	
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
 		
@@ -76,6 +82,18 @@ public class TkawyController {
 		
 		return "redirect:/tkawy/list" + cri.getListLink();
 	}
+	
+	@PostMapping("/modifycanceled")
+	public String modifyCanceled(@RequestParam("t_bno") String t_bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		
+		log.info("modifyCanceled..." + t_bno);
+		if (service.modifyCanceled(t_bno)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		
+		return "redirect:/tkawy/list" + cri.getListLink();
+	}
+	
 	
 	
 	@PostMapping("/remove")

@@ -1,0 +1,320 @@
+//
+// card.scss
+//
+
+.card > * {
+  flex-shrink: 0;
+}
+
+
+// Sizing
+
+.card .card-footer {
+  padding: $card-spacer-x;
+}
+
+.card-xl .card-body,
+.card-xl .card-footer {
+  padding: $card-spacer-x-xl;
+}
+
+.card-lg .card-body,
+.card-lg .card-footer {
+  padding: $card-spacer-x-lg;
+}
+
+.card-sm .card-body,
+.card-sm .card-footer {
+  padding: $card-spacer-x-sm;
+}
+
+
+// Body
+
+.card-body {
+  flex: 0 0 auto;
+}
+
+
+// Footer
+
+.card-footer {
+  background-color: transparent;
+}
+
+
+// Overlay
+
+.card-img-overlay {
+  display: flex;
+
+  > * {
+    flex: 1;
+  }
+}
+
+a.card-img-overlay {
+  color: inherit;
+
+  @include hover {
+    text-decoration: $link-hover-decoration;
+  }
+}
+
+.card-img-overlay-hover {
+  opacity: 0;
+
+  @if $enable-transitions {
+    transition: $transition-fade;
+  }
+}
+
+.card:hover .card-img-overlay-hover {
+  opacity: 1;
+}
+
+
+// Image
+
+.card-img {
+  position: relative;
+}
+
+
+// Image hover
+
+.card-img-hover {
+  display: block;
+
+  > * {
+    float: left;
+  }
+}
+
+.card-img-hover .card-img-top {
+  transition: $transition-fade;
+}
+
+.card-img-hover .card-img-back {
+  opacity: 0;
+}
+
+.card-img-hover .card-img-front {
+  margin-left: -100%;
+}
+
+.card-img:hover .card-img-hover .card-img-back {
+  opacity: 1;
+}
+
+.card-img:hover .card-img-hover .card-img-front {
+  opacity: 0;
+}
+
+
+// Background
+
+.card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-bg ~ * {
+  z-index: 1;
+}
+
+.card-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% + .25rem);
+  height: 100%;
+
+  @if $enable-transitions {
+    transition: $transition-lg;
+    transition-property: -webkit-transform, transform;
+  }
+}
+
+.card:hover > .card-bg > .card-bg-img {
+  transform: translateX(-.25rem);
+}
+
+
+// Circle
+
+.card-circle {
+  position: absolute;
+  top: $card-extras-spacer;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: $card-circle-size;
+  height: $card-circle-size;
+  background-color: $card-circle-bg;
+  border-radius: 50%;
+  color: $card-circle-color;
+}
+
+.card-circle-lg {
+  width: $card-circle-size-lg;
+  height: $card-circle-size-lg;
+}
+
+.card-circle-sm {
+  width: $card-circle-size-sm;
+  height: $card-circle-size-sm;
+}
+
+.card-circle-left {
+  left: $card-extras-spacer;
+}
+
+.card-circle-right {
+  right: $card-extras-spacer;
+}
+
+.card-circle-top-right {
+  top: 0;
+  right: 0;
+}
+
+
+// Badge
+
+.card-badge {
+  position: absolute;
+  top: $card-extras-spacer;
+  z-index: 1;
+}
+
+.card-badge-left {
+  left: 0;
+}
+
+.card-badge-right {
+  right: 0;
+}
+
+
+// Price
+
+.card-price {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.card-price-left {
+  left: 0;
+}
+
+.card-price-right {
+  right: 0;
+}
+
+.card-price-left + .card-badge-left {
+  top: 3.75rem;
+}
+
+.card-price-right + .card-badge-right {
+  top: 3.75rem;
+}
+
+
+// Actions
+
+.card-actions {
+  position: absolute;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: $card-extras-spacer;
+}
+
+.card-actions .card-action {
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(0.5rem);
+
+  @if $enable-transitions {
+    transition: $transition-base;
+    transition-property: -webkit-transform, transform, opacity;
+
+    &:nth-child(2) {
+      transition-delay: 0.075s;
+    }
+
+    &:nth-child(3) {
+      transition-delay: 0.15s;
+    }
+  }
+}
+
+.card-actions .card-action + .card-action {
+  margin-left: .5rem;
+}
+
+.card-img:hover .card-actions .card-action {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+// Action
+
+.card-action {
+  position: absolute;
+  top: $card-extras-spacer;
+  z-index: 1;
+}
+
+.card-action-left {
+  left: $card-extras-spacer;
+}
+
+.card-action-right {
+  right: $card-extras-spacer;
+}
+
+
+// Button
+
+.card-btn {
+  position: absolute;
+  bottom: 0;
+  opacity: 0;
+
+  @if $enable-transitions {
+    transition: $transition-fade;
+  }
+}
+
+.card-img:hover .card-btn {
+  opacity: 1;
+}
+
+
+// Collapse
+
+.card-collapse {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+}
+
+.card-collapse-parent {
+  position: relative;
+  transition: transform .35s ease, -webkit-transform .35s ease; // equal to collapse transition
+}

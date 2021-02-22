@@ -1,0 +1,205 @@
+//
+// type.scss
+//
+
+// Import fonts
+
+@font-face {
+  font-family: "Jost";
+  src:
+    url(../fonts/jost/Jost-400-Book.woff2) format("woff2"),
+    url(../fonts/jost/Jost-400-Book.woff) format("woff"),
+    url(../fonts/jost/Jost-400-Book.ttf) format("truetype")
+}
+
+@font-face {
+  font-family: "Jost";
+  font-style: italic;
+  src:
+    url(../fonts/jost/Jost-400-BookItalic.woff2) format("woff2"),
+    url(../fonts/jost/Jost-400-BookItalic.woff) format("woff"),
+    url(../fonts/jost/Jost-400-BookItalic.ttf) format("truetype")
+}
+
+@font-face {
+  font-family: "Jost";
+  font-weight: 500;
+  src:
+    url(../fonts/jost/Jost-500-Medium.woff2) format("woff2"),
+    url(../fonts/jost/Jost-500-Medium.woff) format("woff"),
+    url(../fonts/jost/Jost-500-Medium.ttf) format("truetype")
+}
+
+@font-face {
+  font-family: "Jost";
+  font-weight: 600;
+  src:
+    url(../fonts/jost/Jost-600-Semi.woff2) format("woff2"),
+    url(../fonts/jost/Jost-600-Semi.woff) format("woff"),
+    url(../fonts/jost/Jost-600-Semi.ttf) format("truetype")
+}
+
+
+// Responsive sizing
+
+@include media-breakpoint-down(sm) {
+  h1, .h1 {
+    font-size: $h1-font-size-sm;
+  }
+
+  h2, .h2 {
+    font-size: $h2-font-size-sm;
+  }
+
+  h3, .h3 {
+    font-size: $h3-font-size-sm;
+  }
+
+  h4, .h4 {
+    font-size: $h4-font-size-sm;
+  }
+
+  h5, .h5 {
+    font-size: $h5-font-size-sm;
+  }
+
+  .display-1 {
+    font-size: $display1-size-sm;
+  }
+
+  .display-4 {
+    font-size: $display4-size-sm;
+  }
+}
+
+
+// Heading
+
+.heading-xxxs {
+  font-size: $font-size-xxxs;
+  font-weight: $headings-font-weight;
+  letter-spacing: $letter-spacing-lg;
+  text-transform: uppercase;
+}
+
+.heading-xxs {
+  font-size: $font-size-xxs;
+  font-weight: $headings-font-weight;
+  letter-spacing: $letter-spacing-lg;
+  text-transform: uppercase;
+}
+
+
+// Small
+
+small {
+  font-weight: inherit;
+}
+
+
+// Strong
+
+strong {
+  font-weight: $font-weight-bold;
+}
+
+
+// Blockquote
+
+.blockquote > p {
+  font-style: italic;
+
+  &::before {
+    content: open-quote;
+  }
+
+  &::after {
+    content: close-quote;
+  }
+}
+
+.blockquote-footer::before {
+  display: none;
+}
+
+.blockquote-2 {
+  padding: $blockquote-2-padding;
+  border-left: $border-width * 3 solid $primary;
+}
+
+.blockquote-2 > p {
+  font-size: $blockquote-2-font-size;
+
+  &::before {
+    content: open-quote;
+  }
+
+  &::after {
+    content: close-quote;
+  }
+}
+
+
+// List
+
+.list-styled {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.list-styled-item + .list-styled-item {
+  margin-top: $list-styled-spacing;
+}
+
+.list-styled-link {
+  display: block;
+  color: $list-styled-link-color;
+
+  @include hover-focus {
+    color: $list-styled-link-hover-color;
+  }
+
+  &.active {
+    color: $list-styled-link-active-color;
+  }
+}
+
+
+// Links
+
+.link-underline {
+  position: relative;
+  display: inline-block;
+  padding-left: $link-underline-padding-x;
+  padding-right: $link-underline-padding-x;
+  font-weight: $font-weight-bold;
+  color: $link-underline-color;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-bottom: $border-width solid;
+    transform-origin: left center;
+    transition: $transition-lg;
+    transition-property: -webkit-transform, transform;
+  }
+
+  @include hover {
+    color: $link-underline-hover-color;
+
+    &::before {
+      transform-origin: right center;
+      transform: scaleX(0);
+    }
+  }
+}
+
+
+// Lists
+
+ol, ul, dl {
+  margin-bottom: $spacer;
+}

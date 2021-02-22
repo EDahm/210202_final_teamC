@@ -16,6 +16,8 @@ public interface MemberMapper {
 	public MemberVO read(String m_num);
 	
 	public int delete(String m_num);
+
+	public int withdraw(String m_num);
 	
 	public int update(MemberVO member);
 	
@@ -26,5 +28,6 @@ public interface MemberMapper {
 	public int idCheck(String email);
 	
 	public int ncnmCheck(String m_ncnm);
+	
 	
 }

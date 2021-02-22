@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getList" resultType="org.zerock.domain.MemberVO">
 <![CDATA[
-select * from mber_tb
+select * from mber_tb where enable = 1
 ]]>
 	</select>
 
@@ -45,6 +45,12 @@ select * from mber_tb
 		m_contact = #{m_contact},
 		m_point = #{m_point}
 		where m_num = #{m_num}
+	</update>
+	
+	<update id="withdraw">
+	update mber_tb
+	set enable = 0
+	where m_num = #{m_num}
 	</update>
 
 
@@ -85,7 +91,7 @@ select * from mber_tb
 		  			rownum rn, m_num, m_regdate, m_email, m_name, m_ncnm, m_contact, m_type, m_point
 		  		from
 		  			mber_tb
-		  		where
+		  		where enable = 1 and
 		  		]]>
 
 		<include refid="criteria"></include>
@@ -102,7 +108,7 @@ select * from mber_tb
 
 		<include refid="criteria"></include>
 
-		m_num LIKE 'M%'
+		enable = 1
 	</select>
 	
 	
@@ -119,8 +125,6 @@ select * from mber_tb
 	select count(*) from mber_tb where m_ncnm = #{m_ncnm}
 	
 	</select>
-	
-	
 	
 
 </mapper>

@@ -1,0 +1,27 @@
+//
+// simplebar.scss
+//
+
+[data-simplebar] {
+  overflow-y: auto;
+}
+
+
+// Track
+
+.simplebar-track.simplebar-vertical {
+  width: $simplebar-track-width;
+  background-color: $simplebar-track-bg;
+}
+
+
+// Scrollbar
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar {
+  right: 0;
+  width: inherit;
+}
+
+.simplebar-scrollbar {
+  background-color: $simplebar-scrollbar-bg;
+}

@@ -23,4 +23,6 @@ public interface TkawyMapper {
 	public List<TkawyVO> getListWithPaging(Criteria cri);
 	
 	public int getTotalCount(Criteria cri);
+
+	public int updateCanceled(String t_bno);
 }

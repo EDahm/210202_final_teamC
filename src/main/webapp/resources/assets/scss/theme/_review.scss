@@ -1,0 +1,40 @@
+//
+// review.scss
+//
+
+.review {
+  position: relative;
+  padding-left: $review-spacer;
+}
+
+.review:not(.review-child) {
+  padding-right: $review-spacer;
+  border: $review-border-width solid $review-border-color;
+}
+
+.review-child {
+  border-top: $review-border-width solid $review-border-color;
+
+  &::before {
+    content: "\e946";
+    position: absolute;
+    top: $review-spacer + $avatar-size-xl / 2;
+    left: 0;
+    font-family: "Feather";
+    font-size: $font-size-lg;
+    transform: translateY(-50%);
+
+    @include media-breakpoint-up(md) {
+      top: $review-spacer + $avatar-size-xxl / 2;
+    }
+  }
+}
+
+.review + .review {
+  margin-top: $review-margin-bottom;
+}
+
+.review-body {
+  padding-top: $review-spacer;
+  padding-bottom: $review-spacer;
+}

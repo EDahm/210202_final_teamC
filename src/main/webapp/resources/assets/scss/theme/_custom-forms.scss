@@ -1,0 +1,223 @@
+//
+// custom-forms.scss
+//
+
+.custom-control {
+  padding-left: 0;
+}
+
+.custom-control .custom-control-label {
+  color: $custom-control-label-color;
+  cursor: pointer;
+
+  &::before, &::after {
+    top: calc((1em * #{$line-height-base} - #{$custom-control-indicator-size}) / 2);
+  }
+}
+
+.custom-control .custom-control-input:checked ~ .custom-control-label {
+  color: $custom-control-label-checked-color;
+}
+
+.custom-control .custom-control-input:disabled ~ .custom-control-label {
+  text-decoration: line-through;
+}
+
+
+// Checkbox, radio
+
+.custom-checkbox .custom-control-label,
+.custom-radio .custom-control-label {
+  padding-left: $custom-control-indicator-size + $custom-control-gutter;
+
+  &::before, &::after {
+    left: 0;
+  }
+
+  // Empty
+
+  &:empty {
+    padding-left: $custom-control-indicator-size;
+  }
+}
+
+
+// Colors
+
+.custom-control-color .custom-control-label {
+  padding-left: $custom-control-color-indicator-size + $custom-control-gutter;
+
+  &::before, &::after {
+    left: 0;
+    top: calc((1em * #{$line-height-base} - #{$custom-control-color-indicator-size}) / 2);
+    width: $custom-control-color-indicator-size;
+    height: $custom-control-color-indicator-size;
+    border-radius: 50%;
+  }
+
+  &::before {
+    background-color: currentColor !important;
+    color: inherit !important;
+  }
+
+  // Empty
+
+  &:empty {
+    padding-left: $custom-control-color-indicator-size;
+  }
+}
+
+.custom-control-color .custom-control-input:checked ~ .custom-control-label {
+
+  &::before {
+    background-color: currentColor;
+  }
+
+  &::after {
+    background-color: fade-out(black, .95);
+    background-image: $custom-checkbox-indicator-icon-checked;
+  }
+}
+
+.custom-control-color .custom-control-input:disabled ~ .custom-control-label {
+  text-decoration: none;
+
+  > span {
+    color: $custom-control-label-disabled-color !important;
+    text-decoration: line-through;
+  }
+}
+
+
+// Text
+
+.custom-control-text .custom-control-label {
+
+  &::before, &::after {
+    display: none;
+  }
+}
+
+
+// Image
+
+.custom-control-img .custom-control-label {
+  width: $custom-control-img-size;
+  opacity: .8;
+
+  &::before {
+    display: none;
+  }
+
+  &::after {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    border-bottom: $border-width * 2 solid $body-color;
+  }
+}
+
+.custom-control-img .custom-control-input:checked ~ .custom-control-label {
+  opacity: 1;
+
+  &::after {
+    display: block;
+  }
+}
+
+
+// Size
+
+.custom-control-size .custom-control-label {
+  min-width: $custom-control-size-width;
+  padding: $custom-control-size-spacing;
+  text-align: center;
+  border: $border-width solid $custom-control-size-border-color;
+
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+.custom-control-size .custom-control-input:checked ~ .custom-control-label {
+  border-color: currentColor;
+}
+
+.custom-control-size .custom-control-input[disabled] ~ .custom-control-label {
+  background-color: $light;
+}
+
+
+
+// Select
+
+.custom-select-xs {
+  height: $btn-height-xs;
+  padding: $input-padding-y-xs $input-padding-x-xs + $custom-select-indicator-padding $input-padding-y-xs $input-padding-x-xs;
+  font-size: $input-font-size-xs;
+  background: $custom-select-background-xs;
+}
+
+.custom-select-xxs {
+  height: $btn-height-xxs;
+  padding: $input-padding-y-xxs $input-padding-x-xxs + $custom-select-indicator-padding $input-padding-y-xxs $input-padding-x-xxs;
+  font-size: $input-font-size-xxs;
+  background: $custom-select-background-xxs;
+}
+
+
+// Switch
+
+.custom-switch .custom-control-label {
+  padding-left: $custom-switch-width + $custom-control-gutter;
+
+  &::before {
+    left: 0;
+    border: $border-width solid $primary;
+    background-color: transparent;
+  }
+
+  &::after {
+    top: add(($font-size-base * $line-height-base - $custom-switch-indicator-size) / 2, $custom-control-indicator-border-width * 2);
+    left: ($custom-control-indicator-size - $custom-switch-indicator-size) / 2;
+    background-color: $primary;
+  }
+}
+
+.custom-switch .custom-control-input:focus ~ .custom-control-label {
+
+  &::before {
+    border-color: $primary;
+  }
+}
+
+.custom-switch .custom-control-input:active:not(:checked):not(:disabled) ~ .custom-control-label {
+
+  &::before {
+    border-color: $primary;
+    background-color: transparent;
+  }
+}
+
+.custom-switch .custom-control-input:checked ~ .custom-control-label {
+
+  &::before {
+    border-color: $primary;
+    background-color: $primary;
+  }
+
+  &::after {
+    background-color: $white;
+  }
+}
+
+.custom-switch .custom-control-input:disabled ~ .custom-control-label {
+  opacity: $btn-disabled-opacity;
+
+  &::before {
+    background-color: transparent;
+  }
+}

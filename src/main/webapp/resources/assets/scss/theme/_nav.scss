@@ -1,0 +1,114 @@
+//
+// nav.scss
+//
+
+// Link
+
+.nav-link {
+  font-weight: $font-weight-bold;
+  color: $nav-link-color;
+
+  &.active {
+    color: $nav-link-active-color;
+
+    @include hover-focus {
+      color: $nav-link-active-color;
+    }
+  }
+
+  @include hover {
+    color: $nav-link-hover-color;
+  }
+}
+
+.nav-link.active {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: .75rem;
+    right: .75rem;
+    bottom: .25rem;
+    border-top: $border-width solid $navbar-light-active-color;
+  }
+}
+
+
+// Unstyled
+
+.nav-unstyled .nav-link {
+
+  &.active::before {
+    display: none;
+  }
+}
+
+
+// Vertical
+
+.nav-vertical {
+  flex-direction: column;
+}
+
+.nav-vertical .nav-link {
+  padding-left: 0;
+  padding-right: 0;
+
+  &.active::before {
+    display: none;
+  }
+}
+
+
+// Divided
+
+.nav-divided .nav-item + .nav-item {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    height: .75rem;
+    border-width: 0 0 0 $border-width;
+    border-style: solid;
+    border-color: $border-color;
+    transform: translateY(-50%);
+  }
+}
+
+
+// Tabs
+
+.nav.nav-tabs .nav-link {
+  padding: $nav-tabs-link-padding-y $nav-tabs-link-padding-x;
+
+  + .nav-link {
+    margin-left: $nav-tabs-link-spacer;
+  }
+
+  &::before {
+    left: 0;
+    right: 0;
+    bottom: -$border-width !important;
+  }
+}
+
+
+// Overflow
+
+.nav-overflow {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding-bottom: $border-width;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.nav-overflow .nav-link {
+  white-space: nowrap;
+}

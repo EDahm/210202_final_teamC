@@ -1,0 +1,7 @@
+//
+// breadcrumb.scss
+//
+
+.breadcrumb-item + .breadcrumb-item::before {
+  font-family: Feather;
+}

@@ -1,0 +1,62 @@
+//
+// list-group.scss
+//
+
+.list-group-item {
+  flex-shrink: 0; // IE fix
+}
+
+
+// Sizing
+
+.list-group-lg .list-group-item {
+  padding: $list-group-item-padding-y-lg $list-group-item-padding-x-lg;
+}
+
+.list-group-sm .list-group-item {
+  padding: $list-group-item-padding-y-sm $list-group-item-padding-x-sm;
+}
+
+
+// Flush
+
+.list-group-flush .list-group-item {
+  border: 0;
+}
+
+.list-group-flush .list-group-item + .list-group-item {
+  border-top: $list-group-border-width solid $list-group-border-color;
+}
+
+
+// Flush y
+
+.list-group-flush-y .list-group-item {
+
+  &:first-child {
+    padding-top: 0;
+    border-top: none;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+
+// Flush x
+
+.list-group-flush-x .list-group-item {
+  padding-left: 0;
+  padding-right: 0;
+  border-left: none;
+  border-right: none;
+}
+
+
+// Strong
+
+.list-group-strong .list-group-item.active {
+  font-weight: $font-weight-bold;
+}

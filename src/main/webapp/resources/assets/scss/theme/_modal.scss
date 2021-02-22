@@ -1,0 +1,75 @@
+//
+// modal.scss
+//
+
+// IE fix
+
+.modal-content > * {
+  flex-shrink: 0;
+}
+
+
+// Body
+
+.modal-body {
+  flex-grow: 0;
+}
+
+
+// Header
+
+.modal-header {
+  padding: $modal-header-padding-y $modal-header-padding-x;
+}
+
+
+// Footer
+
+.modal-footer {
+  justify-content: flex-start;
+  padding: $modal-footer-padding-y $modal-footer-padding-x;
+  border-width: 0;
+}
+
+
+// Modal dialog vertical
+//
+// Creates a vertically aligned version of the modal dialog
+
+.modal-dialog-vertical {
+  height: 100%;
+  max-width: $modal-dialog-vertical-width;
+  margin: 0;
+}
+
+.modal-dialog-vertical .modal-content {
+  height: inherit;
+  overflow-y: auto;
+}
+
+.modal.fade .modal-dialog-vertical {
+  transform: translateX(-100%);
+}
+
+.modal.show .modal-dialog-vertical {
+  transform: translateX(0);
+}
+
+
+// Positioning
+
+.modal.fixed-right {
+  padding-right: 0 !important;
+}
+
+.modal.fixed-right .modal-dialog-vertical {
+  margin-left: auto;
+}
+
+.modal.fixed-right.fade .modal-dialog-vertical {
+  transform: translateX(100%);
+}
+
+.modal.fixed-right.show .modal-dialog-vertical {
+  transform: translateX(0);
+}

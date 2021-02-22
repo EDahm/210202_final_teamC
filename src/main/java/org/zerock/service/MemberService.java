@@ -15,13 +15,16 @@ public interface MemberService {
 	
 	public boolean remove(String m_num);
 	
+	public boolean withdraw(String m_num);
+	
 	//public List<MemberVO> getList();
 	
 	public List<MemberVO> getList(Criteria cri);
 	
 	public int getTotal(Criteria cri);
 	
-	public int idCheck(String email);
+	public int idCheck(String email) throws Exception;
 	
-	public int ncnmCheck(String m_ncnm);
+	public int ncnmCheck(String m_ncnm) throws Exception;
+	
 }

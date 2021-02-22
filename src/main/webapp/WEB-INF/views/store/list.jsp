@@ -144,7 +144,7 @@
 									<option value="T"
 										<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>업체명</option>
 									<option value="A"
-										<c:out value="${pageMaker.cri.type eq 'M'?'selected':''}"/>>업체주소</option>
+										<c:out value="${pageMaker.cri.type eq 'A'?'selected':''}"/>>업체주소</option>
 									<option value="C"
 										<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>연락처</option>
 								</select> <input type='text' name='keyword'

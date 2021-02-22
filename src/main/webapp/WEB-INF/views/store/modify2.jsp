@@ -149,8 +149,8 @@
 									<div>
 										<label>수거진행상태</label>
 											<select name = "s_progress">
-											<option value="진행중" selected>진행중</option>
-											<option value="정지">정지</option>
+											<option value="진행중">진행중</option>
+											<option value="정지" selected>정지</option>
 											</select>
 									</div>
 
@@ -198,7 +198,7 @@
 				formObj.attr("action", "/store/remove");
 			} else if (operation === 'list') {
 				//move to list
-				formObj.attr("action", "/store/list").attr("method", "get");
+				formObj.attr("action", "/store/list2").attr("method", "get");
 				var pageNumTag = $("input[name='pageNum']").clone();
 				var amountTag = $("input[name='amount']").clone();
 				var keywordTag = $("input[name='keyword']").clone();

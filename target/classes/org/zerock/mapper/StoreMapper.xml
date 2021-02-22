@@ -6,12 +6,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="getList" resultType="org.zerock.domain.StoreVO">
 <![CDATA[
-select * from store_tb where s_progress = '수거진행'
+select * from store_tb where s_progress = '진행중'
 ]]>
 	</select>
 	<select id="getList2" resultType="org.zerock.domain.StoreVO">
 <![CDATA[
-select * from store_tb where s_progress = '수거정지'
+select * from store_tb where s_progress = '정지'
 ]]>
 	</select>
 
@@ -69,7 +69,7 @@ select * from store_tb where s_progress = '수거정지'
 		  			rownum rn, t_vstng_cmpny, s_address, s_contact, s_biz_h
 		  		from
 		  			store_tb
-		  		where s_progress = '수거진행' and
+		  		where s_progress = '진행중' and
 		  		]]>
 
 		<include refid="criteria"></include>
@@ -87,7 +87,7 @@ select * from store_tb where s_progress = '수거정지'
 	
 	<include refid="criteria"></include>
 	
-	s_progress = '수거진행'
+	s_progress = '진행중'
 	</select>
 	
 	
@@ -102,7 +102,7 @@ select * from store_tb where s_progress = '수거정지'
 		  			rownum rn, t_vstng_cmpny, s_address, s_contact, s_biz_h
 		  		from
 		  			store_tb
-		  		where s_progress = '수거정지' and
+		  		where s_progress = '정지' and
 		  		]]>
 
 		<include refid="criteria"></include>
@@ -120,7 +120,7 @@ select * from store_tb where s_progress = '수거정지'
 	
 	<include refid="criteria"></include>
 	
-	s_progress = '수거정지'
+	s_progress = '정지'
 	</select>
 	
 	

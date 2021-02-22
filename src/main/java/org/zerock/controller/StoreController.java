@@ -40,6 +40,7 @@ public class StoreController {
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
+	
 	@GetMapping("/list2")
 	public void list2(Criteria cri, Model model) {
 		
@@ -92,6 +93,16 @@ public class StoreController {
 		return "redirect:/store/list" + cri.getListLink();
 	}
 	
+	@PostMapping("/modify2")
+	public String modify2(StoreVO store, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		log.info("modify2: " + store);
+		
+		if (service.modify(store)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		
+		return "redirect:/store/list2" + cri.getListLink();
+	}
 	
 	
 	@PostMapping("/remove")

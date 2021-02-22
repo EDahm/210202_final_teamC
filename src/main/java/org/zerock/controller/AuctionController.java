@@ -1,5 +1,7 @@
 package org.zerock.controller;
 
+import java.io.File;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.MemberVO;
@@ -142,7 +145,7 @@ public class AuctionController {
 	//신청 등록페이지
 	@GetMapping("/apply_regi")
 	public void applyRegi() {
-		
+	
 	}
 	
 	@PostMapping("/apply_regi")
@@ -408,6 +411,7 @@ public class AuctionController {
 				
 			}
 			
+			//입찰정보 현재 최고가 갱신
 			@GetMapping("/bid_now")
 			public void bidNowPrice() {
 				
@@ -416,5 +420,6 @@ public class AuctionController {
 				service.nowPrice();
 				
 			}
+	
 			
 }

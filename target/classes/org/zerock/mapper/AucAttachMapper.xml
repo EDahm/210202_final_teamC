@@ -4,7 +4,7 @@
 
 <insert id="insert">
  insert into auc_attach_tb(aa_uuid, aa_upload_path, aa_file_name, aa_file_type, aa_bno)
- values (#{aa_uuid}, #{aa_upload_path},#{aa_file_type},#{aa_bno})
+ values (#{aa_uuid}, #{aa_upload_path},#{aa_file_name}, #{aa_file_type}, #{aa_bno})
 </insert>
 
 <delete id="delete">
@@ -14,5 +14,9 @@
 <select id="findByAa_bno" resultType="org.zerock.domain.AucAttachVO">
 	select * from auc_attach_tb where aa_bno = #{aa_bno}
 </select>
+
+<delete id="deleteAll">
+	delete auc_attach_tb where aa_bno = #{aa_bno}
+</delete>
 
 </mapper>

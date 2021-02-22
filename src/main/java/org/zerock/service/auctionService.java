@@ -3,6 +3,7 @@ package org.zerock.service;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.zerock.domain.AucAttachVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
@@ -118,5 +119,8 @@ public interface auctionService {
 	public int getTotalShip(Criteria cri);
 	public int getTotalCom(Criteria cri);
 	public int getTotalBid(Criteria cri);
+	
+	//첨부파일 관련
+	public List<AucAttachVO> getAttachList(String aa_bno);
 	
 }

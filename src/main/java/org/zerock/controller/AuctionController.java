@@ -1,8 +1,15 @@
 package org.zerock.controller;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,8 +17,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.zerock.domain.AucAttachVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.PageDTO;
 import org.zerock.domain.aucApplyVO;
@@ -152,6 +161,11 @@ public class AuctionController {
 		
 		log.info("register: " + aucapplyvo);
 		
+		if(aucapplyvo.getAttachList() != null) {
+			
+			aucapplyvo.getAttachList().forEach(attach -> log.info(attach));
+		}
+		
 		service.applyIns(aucapplyvo);
 		
 		rttr.addFlashAttribute("result", aucapplyvo.getAa_bno());
@@ -181,16 +195,51 @@ public class AuctionController {
 		
 		log.info("remove..." + aa_bno);
 		
+		List<AucAttachVO> attachList = service.getAttachList(aa_bno);
+				
 		if(service.applyRem(aa_bno)) {
+			
+			//delete Attach Files
+			aucDeleteFiles(attachList);
+			
 			rttr.addFlashAttribute("result","success");
 		}
 		
-		rttr.addAttribute("pageNum", cri.getPageNum());
-		rttr.addAttribute("amount", cri.getAmount());
-		rttr.addAttribute("type", cri.getType());
-		rttr.addAttribute("keyword", cri.getKeyword());
+//		rttr.addAttribute("pageNum", cri.getPageNum());
+//		rttr.addAttribute("amount", cri.getAmount());
+//		rttr.addAttribute("type", cri.getType());
+//		rttr.addAttribute("keyword", cri.getKeyword());
 		
 		return "redirect:/auc/apply_list";
+		
+	}
+	
+	//신청 첨부파일 삭제
+	private void aucDeleteFiles(List<AucAttachVO> attachList) {
+		
+		if(attachList == null || attachList.size() == 0) {
+			return;
+		}
+		
+		log.info("delete attach files.....................");
+		log.info(attachList);
+		
+		attachList.forEach(attach -> {
+			try {
+				Path file = Paths.get("C:\\upload\\"+attach.getAa_upload_path()+"\\" + attach.getAa_uuid()+"_"+attach.getAa_file_name());
+				
+				Files.deleteIfExists(file);
+				
+				if(Files.probeContentType(file).startsWith("image")) {
+					
+					Path thumbNail = Paths.get("c:\\upload\\" + attach.getAa_upload_path()+"\\s_" + attach.getAa_uuid()+"_"+attach.getAa_file_name());
+					
+					Files.delete(thumbNail);
+				}
+			} catch(Exception e) {
+				log.error("delete file error" + e.getMessage());
+			}
+		});
 		
 	}
 	
@@ -202,6 +251,17 @@ public class AuctionController {
 			model.addAttribute("applyget", service.applyGet(aa_bno));
 			
 		}
+		
+	//신청 첨부파일 관련
+	@GetMapping(value = "/getAttachList", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@ResponseBody
+	public ResponseEntity<List<AucAttachVO>> getAttachList(String aa_bno){
+		
+		log.info("getAttachList " + aa_bno);
+		
+		return new ResponseEntity<>(service.getAttachList(aa_bno), HttpStatus.OK);
+		
+	}
 		
 		
 	////////////////////////////////////////////////////////////////////

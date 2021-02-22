@@ -2,6 +2,8 @@ package org.zerock.domain;
 
 
 
+import java.util.List;
+
 import lombok.Data;
 
 @Data
@@ -15,5 +17,7 @@ public class aucApplyVO {
 	private int aa_markt_prc; //시장가격
 	private String aa_weight; //중량
 	private String aa_cntry_orgn; //원산지
+	
+	private List<AucAttachVO> attachList;
 	
 }

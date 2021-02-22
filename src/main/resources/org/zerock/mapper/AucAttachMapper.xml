@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.AucAttachMapper">
+
+<insert id="insert">
+ insert into auc_attach_tb(aa_uuid, aa_upload_path, aa_file_name, aa_file_type, aa_bno)
+ values (#{aa_uuid}, #{aa_upload_path},#{aa_file_type},#{aa_bno})
+</insert>
+
+<delete id="delete">
+	delete from auc_attach_tb where aa_uuid = #{aa_uuid}
+</delete>
+
+<select id="findByAa_bno" resultType="org.zerock.domain.AucAttachVO">
+	select * from auc_attach_tb where aa_bno = #{aa_bno}
+</select>
+
+</mapper>

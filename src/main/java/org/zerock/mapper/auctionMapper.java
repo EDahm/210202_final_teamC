@@ -3,6 +3,7 @@ package org.zerock.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.zerock.domain.AucAttachVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
@@ -28,6 +29,7 @@ public interface auctionMapper {
 	
 	//경매 신청 수정 m
 	public int aucApplyUpdate(aucApplyVO aucapplyvo);
+	
 	
 	
 	

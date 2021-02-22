@@ -5,6 +5,7 @@
 <%@include file="../includes/header.jsp"%>
 
 
+
 <style>
 #final_contact_ck{
 display: none;
@@ -59,7 +60,7 @@ display: none;
 						<span id="final_plastic_ck">개수를 확인해주세요.</span>
 					<div>
 						<label>수거예약업체(팝업창 검색기능ㅠㅠ)</label> <input name='t_vstng_cmpny' id="cmpny_input">
-						<button disabled = "disabled")>검색</button>
+						<button id="searchCmpny">검색</button>
 						<span id="final_cmpny_ck">수거업체를 선택해주세요.</span>
 						
 					</div>
@@ -211,7 +212,28 @@ return false;
 
 
 });
+
+
+$(function(){
+
+	  $('#searchCmpny').click(function(event) {
+		  oPopupOpen();
+	  });
+	  
+
+	});
+	
+function oPopupOpen() {
+	var url = "/store/list.do";
+	var winWidth = 1000;
+	var winHeight = 500;
+	var popupOption = "width=" + winWidth + ", height=" + winHeight;
+	window.open(url,"",popupOption);
+}
+
+
 });
+
 
 /* 연락처 자동 하이픈(-) 삽입 */
 

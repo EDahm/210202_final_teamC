@@ -77,5 +77,13 @@ public class TkawyServiceImpl implements TkawyService{
 		return mapper.getTotalCount(cri);
 	}
 
+	@Override
+	public boolean modifyCanceled(String t_bno) {
+		
+		log.info("modifyCanceled...." + t_bno);
+		
+		return mapper.updateCanceled(t_bno) == 1;
+	}
+
 
 }

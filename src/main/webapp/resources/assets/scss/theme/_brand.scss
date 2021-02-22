@@ -1,0 +1,16 @@
+//
+// brand.scss
+//
+
+.brand {
+  display: block;
+  padding: $brand-padding-y $brand-padding-x;
+  background-color: $brand-bg;
+  box-shadow: $brand-box-shadow;
+}
+
+.brand-img {
+  max-height: 1.5rem;
+  max-width: 100%;
+  width: auto;
+}

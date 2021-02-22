@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.StoreMapper">
+
+	<select id="getList" resultType="org.zerock.domain.StoreVO">
+<![CDATA[
+select * from store_tb where s_progress = '수거진행'
+]]>
+	</select>
+	<select id="getList2" resultType="org.zerock.domain.StoreVO">
+<![CDATA[
+select * from store_tb where s_progress = '수거정지'
+]]>
+	</select>
+
+	<insert id="insert">
+		insert into store_tb (t_vstng_cmpny, s_address, s_contact, s_biz_h)
+		values (#{t_vstng_cmpny}, #{s_address}, #{s_contact}, #{s_biz_h})
+	</insert>
+
+
+	<select id="read" resultType="org.zerock.domain.StoreVO">
+		select * from store_tb where t_vstng_cmpny = #{t_vstng_cmpny} 
+	</select>
+
+	<delete id="delete">
+		delete from store_tb where t_vstng_cmpny = #{t_vstng_cmpny}
+	</delete>
+	
+	<update id="update">
+		update store_tb 
+		set s_address = #{s_address},
+		s_contact = #{s_contact},
+		s_biz_h = #{s_biz_h},
+		s_progress = #{s_progress}
+		where t_vstng_cmpny = #{t_vstng_cmpny}
+	</update>
+
+<sql id="criteria">
+	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		<foreach item='type' collection="typeArr">
+			<trim prefix="OR">
+				<choose>
+					<when test="type == 'T'.toString()">
+						t_vstng_cmpny like '%' || #{keyword} || '%'
+					</when>
+					<when test="type == 'A'.toString()">
+						s_address like '%' || #{keyword} || '%'
+					</when>
+					<when test="type == 'C'.toString()">
+						S_contact like '%' || #{keyword} || '%'
+					</when>
+				</choose>
+			</trim>
+		</foreach>
+	</trim>
+</sql>
+
+	<select id="getListWithPaging"
+		resultType="org.zerock.domain.StoreVO">
+		  <![CDATA[
+		  	select
+		  		t_vstng_cmpny, s_address, s_contact, s_biz_h
+		  	from
+		  		(
+		  		select /*+INDEX_DESC(store_tb pk_store_tb) */
+		  			rownum rn, t_vstng_cmpny, s_address, s_contact, s_biz_h
+		  		from
+		  			store_tb
+		  		where s_progress = '수거진행' and
+		  		]]>
+
+		<include refid="criteria"></include>
+		  		
+		  		<![CDATA[
+		    	rownum <= #{pageNum} * #{amount}
+		    	)
+		    where rn > (#{pageNum} -1) * #{amount}
+		    ]]>
+	</select>
+	
+	
+	<select id="getTotalCount" resultType="int">
+	select count(*) from store_tb where 
+	
+	<include refid="criteria"></include>
+	
+	s_progress = '수거진행'
+	</select>
+	
+	
+	<select id="getListWithPaging2"
+		resultType="org.zerock.domain.StoreVO">
+		  <![CDATA[
+		  	select
+		  		t_vstng_cmpny, s_address, s_contact, s_biz_h
+		  	from
+		  		(
+		  		select /*+INDEX_DESC(store_tb pk_store_tb) */
+		  			rownum rn, t_vstng_cmpny, s_address, s_contact, s_biz_h
+		  		from
+		  			store_tb
+		  		where s_progress = '수거정지' and
+		  		]]>
+
+		<include refid="criteria"></include>
+		  		
+		  		<![CDATA[
+		    	rownum <= #{pageNum} * #{amount}
+		    	)
+		    where rn > (#{pageNum} -1) * #{amount}
+		    ]]>
+	</select>
+	
+	
+	<select id="getTotalCount2" resultType="int">
+	select count(*) from store_tb where 
+	
+	<include refid="criteria"></include>
+	
+	s_progress = '수거정지'
+	</select>
+	
+	
+
+	
+
+</mapper>

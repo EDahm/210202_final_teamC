@@ -1,0 +1,20 @@
+//
+// pagination.scss
+//
+
+.pagination {
+  margin-bottom: 0;
+  font-weight: $font-weight-bold;
+}
+
+.pagination-sm {
+  font-size: $pagination-font-size-sm;
+}
+
+.pagination .page-link {
+  border-width: 0 0 $pagination-border-width 0;
+}
+
+.pagination .page-link-arrow {
+  border-width: 0;
+}

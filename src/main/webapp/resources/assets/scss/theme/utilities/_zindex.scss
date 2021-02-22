@@ -1,0 +1,11 @@
+//
+// zindex.scss
+//
+
+.zindex-1 {
+  z-index: 1 !important;
+}
+
+.zindex-fixed {
+  z-index: $zindex-fixed !important;
+}

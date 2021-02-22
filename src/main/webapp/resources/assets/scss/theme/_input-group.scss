@@ -1,0 +1,42 @@
+//
+// input-group.scss
+//
+
+// Merge
+
+.input-group-merge .form-control {
+  border-right-width: 0;
+}
+
+.input-group-merge .input-group-append > * {
+  border-left-width: 0;
+
+  @if $enable-transitions {
+    transition: $transition-base;
+    transition-property: border;
+  }
+}
+
+.input-group-merge .form-control ~ .input-group-append > * {
+  border-color: $input-border-color !important;
+}
+
+.input-group-merge .form-control:focus ~ .input-group-append > * {
+  border-color: $input-focus-border-color !important;
+}
+
+.input-group-merge .form-control-light ~ .input-group-append > * {
+  border-color: $white !important;
+}
+
+.input-group-merge .form-control-light:focus ~ .input-group-append > * {
+  border-color: $white !important;
+}
+
+
+// Sizing
+
+.input-group .form-control-sm ~ .input-group-append .input-group-text {
+  padding: $input-padding-y-sm $input-padding-x-sm;
+  font-size: $input-font-size-sm;
+}

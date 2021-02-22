@@ -1,0 +1,14 @@
+//
+// list.scss
+//
+
+.lift {
+  @if $enable-transitions {
+    transition: $transition-lg;
+    transition-property: -webkit-transform, transform, box-shadow;
+  }
+
+  @include hover-focus {
+    transform: translateY(-.25rem);
+  }
+}

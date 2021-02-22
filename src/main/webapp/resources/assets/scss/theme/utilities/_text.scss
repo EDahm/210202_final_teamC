@@ -1,0 +1,180 @@
+//
+// text.scss
+//
+
+// Font size
+
+.font-size-lg {
+  font-size: $font-size-lg !important;
+}
+
+.font-size-base {
+  font-size: $font-size-base !important;
+}
+
+.font-size-sm {
+  font-size: $font-size-sm !important;
+}
+
+.font-size-xs {
+  font-size: $font-size-xs !important;
+}
+
+.font-size-xxs {
+  font-size: $font-size-xxs !important;
+}
+
+.font-size-xxxs {
+  font-size: $font-size-xxxs !important;
+}
+
+.font-size-h1 {
+  font-size: $h1-font-size !important;
+}
+
+.font-size-h2 {
+  font-size: $h2-font-size !important;
+}
+
+.font-size-h3 {
+  font-size: $h3-font-size !important;
+}
+
+.font-size-h4 {
+  font-size: $h4-font-size !important;
+}
+
+.font-size-h5 {
+  font-size: $h5-font-size !important;
+}
+
+.font-size-h6 {
+  font-size: $h6-font-size !important;
+}
+
+@include media-breakpoint-down(sm) {
+
+  .font-size-h1 {
+    font-size: $h1-font-size-sm !important;
+  }
+
+  .font-size-h2 {
+    font-size: $h2-font-size-sm !important;
+  }
+
+  .font-size-h3 {
+    font-size: $h3-font-size-sm !important;
+  }
+
+  .font-size-h4 {
+    font-size: $h4-font-size-sm !important;
+  }
+
+  .font-size-h5 {
+    font-size: $h5-font-size-sm !important;
+  }
+}
+
+
+// Letter spacing
+
+.letter-spacing-lg {
+  letter-spacing: $letter-spacing-lg !important;
+}
+
+.letter-spacing-xl {
+  letter-spacing: $letter-spacing-xl !important;
+}
+
+
+// Text color
+
+.text-gray-300 {
+  color: $gray-300 !important;
+
+  &[href]:hover {
+    color: $gray-350 !important;
+  }
+}
+
+.text-gray-350 {
+  color: $gray-350 !important;
+
+  &[href]:hover {
+    color: $gray-400 !important;
+  }
+}
+
+.text-gray-400 {
+  color: $gray-400 !important;
+
+  &[href]:hover {
+    color: $gray-450 !important;
+  }
+}
+
+.text-gray-450 {
+  color: $gray-450 !important;
+
+  &[href]:hover {
+    color: $gray-500 !important;
+  }
+}
+
+.text-gray-500 {
+  color: $gray-500 !important;
+
+  &[href]:hover {
+    color: $gray-600 !important;
+  }
+}
+
+.text-body[href] {
+
+  @include hover-focus {
+    color: $gray-700 !important;
+  }
+}
+
+.text-muted[href] {
+
+  @include hover-focus {
+    color: $gray-500 !important;
+  }
+}
+
+
+// Text decoration
+
+.text-decoration-underline {
+  text-decoration: underline !important;
+}
+
+a.text-decoration-underline {
+
+  @include hover-focus {
+    text-decoration: none !important;
+  }
+}
+
+.text-decoration-line-through {
+  text-decoration: line-through !important;
+}
+
+
+// Style
+
+.font-style-normal {
+  font-style: normal !important;
+}
+
+
+// Line height
+
+.line-height-base {
+  line-height: $line-height-base !important;
+}
+
+.line-height-fixed {
+  line-height: $font-size-base * $line-height-base !important;
+}

@@ -101,6 +101,19 @@ public class MemberController {
 		return "redirect:/member/list" + cri.getListLink();
 	}
 
+	
+	@PostMapping("/withdraw")
+	public String withdraw(@RequestParam("m_num") String m_num, @ModelAttribute("cri") Criteria cri,
+			RedirectAttributes rttr) {
+		
+		log.info("withdraw..." + m_num);
+		if (service.withdraw(m_num)) {
+			rttr.addFlashAttribute("result", "success");
+		}
+		
+		return "redirect:/member/list" + cri.getListLink();
+	}
+
 	@RequestMapping(value = "/sendMail", method = RequestMethod.GET)
 	public void sendMailTest() throws Exception {
 
@@ -183,7 +196,6 @@ public class MemberController {
 	}
 	
 	
-
 	
 	/* 아이디 중복 검사 */
 	@RequestMapping(value = "/memberIdChk", method = RequestMethod.POST)

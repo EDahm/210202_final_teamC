@@ -1,0 +1,94 @@
+//
+// forms.scss
+//
+
+.form-control {
+  background-clip: border-box;
+
+  @if $enable-transitions {
+    transition: $transition-base;
+    transition-property: border;
+  }
+}
+
+
+// Group
+
+.form-group-overflow {
+  max-height: $form-group-limited-height;
+  overflow: hidden;
+}
+
+
+// Sizing 
+
+.form-control-xs {
+  height: calc(#{$input-font-size-xs} * #{$line-height-base} + #{$input-padding-y-xs} * 2 + #{$input-border-width * 2});
+  padding: $input-padding-y-xs $input-padding-x-xs;
+  font-size: $input-font-size-xs;
+}
+
+.form-control-xxs {
+  height: calc(#{$input-font-size-xxs} * #{$line-height-base} + #{$input-padding-y-xxs} * 2 + #{$input-border-width * 2});
+  padding: $input-padding-y-xxs $input-padding-x-xxs;
+  font-size: $input-font-size-xxs;
+}
+
+
+// Colors
+
+.form-control-gray-700 {
+  background-color: $gray-700;
+  border-color: $gray-700;
+  color: $white;
+
+  &::placeholder {
+    color: $gray-350;
+  }
+
+  &:focus {
+    background-color: $gray-700;
+    border-color: $gray-700;
+    color: $white;
+  }
+}
+
+.form-control-light {
+  background-color: transparent;
+  border-color: $white;
+  color: $white;
+
+  &::placeholder {
+    color: fade-out($white, .25);
+  }
+
+  @include hover-focus {
+    background-color: transparent;
+    border-color: $white;
+    color: $white;
+  }
+
+}
+
+.form-control-dark {
+  background-color: fade-out($dark, .6);
+  border-color: transparent;
+  color: $white;
+
+  &::placeholder {
+    color: $white;
+  }
+
+  @include hover-focus {
+    background-color: fade-out($dark, .6);
+    border-color: transparent;
+    color: $white;
+  }
+}
+
+
+// Underline
+
+.form-control-underline {
+  border-width: 0 0 $border-width 0;
+}

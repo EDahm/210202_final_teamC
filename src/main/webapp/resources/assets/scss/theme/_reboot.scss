@@ -1,0 +1,12 @@
+//
+// reboot.scss
+//
+
+// Link
+
+a {
+  @if $enable-transitions {
+    transition: $transition-base;
+    transition-property: color;
+  }
+}

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.Criteria;
-import org.zerock.domain.MemberVO;
 import org.zerock.domain.PageDTO;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;

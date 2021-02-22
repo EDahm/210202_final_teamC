@@ -1,0 +1,109 @@
+//
+// background.scss
+//
+
+// Hover
+
+.bg-hover {
+  @if $enable-transitions {
+    transition: $transition-lg;
+  }
+}
+
+
+// Sizing
+
+.bg-cover {
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
+
+  &.bg-hover:hover {
+    background-position: calc(50% - .75rem) center !important;
+  }
+}
+
+.bg-w-100 {
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: 100% auto !important;
+}
+
+.bg-h-100 {
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: auto 100% !important;
+}
+
+
+// Positioning
+
+.bg-left {
+  background-position: center left !important;
+}
+
+
+// Clip content
+
+.bg-clip-content {
+  background-clip: content-box !important;
+}
+
+
+// Images
+
+.bg-pattern {
+  background-image: url(../img/patterns/pattern-1.svg) !important;
+}
+
+
+// Colors
+
+.bg-white-90 {
+  background-color: fade-out($white, .1) !important;
+}
+
+.bg-dark-0 {
+  background-color: fade-out($dark, 1) !important;
+
+  &.bg-hover:hover {
+    background-color: fade-out($dark, .9) !important;
+  }
+}
+
+.bg-dark-5 {
+  background-color: fade-out($dark, 0.95) !important;
+
+  &.bg-hover:hover {
+    background-color: fade-out($dark, .85) !important;
+  }
+}
+
+.bg-dark-10 {
+  background-color: fade-out($dark, 0.9) !important;
+}
+
+.bg-dark-20 {
+  background-color: fade-out($dark, 0.8) !important;
+}
+
+.bg-dark-40 {
+  background-color: fade-out($dark, 0.6) !important;
+}
+
+
+// Soft colors
+
+@each $color, $value in $theme-colors {
+
+  .bg-#{$color}-soft {
+    background-color: tint($value, 90%) !important;
+  }
+}
+
+
+// None
+
+.bg-none {
+  background: none !important;
+}

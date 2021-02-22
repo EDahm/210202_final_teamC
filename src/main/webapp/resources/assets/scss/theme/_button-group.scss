@@ -1,0 +1,40 @@
+//
+// button-group.scss
+//
+
+// Justified
+
+.btn-group-justified {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-group-justified > .btn,
+.btn-group-justified > .btn-group {
+  width: 100%;
+}
+
+.btn-group-justified > .btn:not(:first-child),
+.btn-group-justified > .btn-group:not(:first-child) {
+  margin-left: -$border-width;
+}
+
+@each $breakpoint, $value in $grid-breakpoints {
+  @media (max-width: $value - 1) {
+    .btn-group-justified.btn-group-expand-#{$breakpoint} {
+      flex-direction: column;
+
+      > .btn:not(:first-child),
+      > .btn-group:not(:first-child) {
+        margin-top: -$border-width;
+        margin-left: 0;
+      }
+
+      > .btn-group > .dropdown-menu {
+        position: relative !important;
+        transform: none !important;
+        width: 100%;
+      }
+    }
+  }
+}

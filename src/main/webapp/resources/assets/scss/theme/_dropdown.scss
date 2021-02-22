@@ -1,0 +1,92 @@
+//
+// dropdown.scss
+//
+
+.dropdown {
+  display: inline-block;
+}
+
+
+// Menu
+
+.dropdown-menu {
+  background-clip: border-box;
+}
+
+
+// Card
+
+.dropdown-menu .card-lg .card-body {
+
+  .dropright {
+    padding-left: $card-spacer-x-lg;
+    padding-right: $card-spacer-x-lg;
+    margin-left: -$card-spacer-x-lg;
+    margin-right: -$card-spacer-x-lg;
+  }
+}
+
+.position-static .dropdown-menu .card-body {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+// Item
+
+.dropdown-item {
+  font-size: $dropdown-link-font-size;
+
+  @if $enable-transitions {
+    transition-property: color, background-color;
+  }
+}
+
+.dropdown-item + .dropdown-item {
+  border-top: $border-width solid $border-color;
+}
+
+.dropdown-menu-lg .dropdown-item {
+  padding: $dropdown-item-padding-y-lg $dropdown-item-padding-x-lg;
+  font-size: $dropdown-link-font-size-lg;
+}
+
+
+// Toggle
+
+.dropdown-toggle, .dropright-toggle {
+  overflow: hidden; // IE fix
+
+  &::after {
+    float: right;
+    margin-left: $caret-spacing;
+    font-family: "Feather";
+    border: 0;
+  }
+}
+
+.dropdown-toggle::after {
+  content: "\e92e";
+}
+
+.dropright-toggle::after {
+  content: "\e930";
+}
+
+.dropdown-toggle[data-toggle="collapse"] {
+
+  &::after {
+    @if $enable-transitions {
+      transition: $transition-base;
+    }
+
+    transform-origin: center center;
+  }
+}
+
+.dropdown-toggle[data-toggle="collapse"][aria-expanded="true"] {
+
+  &::after {
+    transform: rotate(180deg);
+  }
+}

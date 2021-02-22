@@ -1,0 +1,22 @@
+//
+// fancybox.scss
+//
+
+// Buttons
+
+.fancybox-button {
+  background-color: $fancybox-backdrop-bg;
+}
+
+
+// Background 
+
+.fancybox-bg {
+  background-color: $fancybox-backdrop-bg;
+  transition: $transition-fade;
+  transition-property: opacity;
+}
+
+.fancybox-is-open .fancybox-bg {
+  opacity: $fancybox-backdrop-opacity;
+}

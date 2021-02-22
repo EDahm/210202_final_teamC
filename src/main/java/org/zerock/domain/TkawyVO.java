@@ -15,5 +15,8 @@ public class TkawyVO {
 	private int t_plastic_cap;
 	private String t_vstng_cmpny;
 	private String t_date_vist;
+	private String t_done_date;
 	private String t_progress;
+	
+
 }

@@ -20,4 +20,6 @@ public interface TkawyService {
 	public List<TkawyVO> getList(Criteria cri);
 	
 	public int getTotal(Criteria cri);
+
+	public boolean modifyCanceled(String t_bno);
 }

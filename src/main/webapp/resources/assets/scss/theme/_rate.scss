@@ -1,0 +1,20 @@
+//
+// rate.scss
+//
+
+.rate-item {
+  color: $rate-color;
+  white-space: nowrap;
+
+  @include hover {
+    color: $rate-hover-color;
+  }
+}
+
+.rate-item::after {
+  content: attr(data-count);
+}
+
+.rate-item + .rate-item {
+  margin-left: $rate-spacing;
+}

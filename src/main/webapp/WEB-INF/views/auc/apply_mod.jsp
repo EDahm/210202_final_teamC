@@ -25,6 +25,11 @@
 			
 			<div>
 			<form role="form" action="/auc/apply_mod" method="post">
+			
+			<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+			<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+			<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
+			<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
 				<div>
 					<label>신청번호</label>
 					<input class="form-control" name="aa_bno" value='<c:out value="${applyget.aa_bno}"/>' readonly="readonly">
@@ -51,7 +56,10 @@
 				</div>
 				<div>
 					<label>희망기간</label><!-- datepicker 써야함 -->
-					<input class="form-control" name="aa_hope_prd" value='<c:out value="${applyget.aa_hope_prd}"/>'>
+					<input type="hidden">
+					<fmt:parseDate var="aa_hope_prd" value="${applyget.aa_hope_prd}" pattern="yyyy-MM-dd" />
+					<input type='date' class="form-control" name='aa_hope_prd' value='<fmt:formatDate pattern="yyyy-MM-dd"
+					value="${aa_hope_prd}" />'>
 				</div>
 				<button type="submit" data-oper='apply_mod'>수정</button>
 				<button type="submit" data-oper='apply_rem'>삭제</button>
@@ -75,9 +83,21 @@ $(document).ready(function(){
 		
 		if(operation === 'apply_rem'){
 			formObj.attr("action","/auc/apply_rem");
+			
 		} else if(operation === 'apply_list'){
-			self.location="/auc/apply_list";
-			return;
+			
+			formObj.attr("action", "/auc/apply_list").attr("method", "get");
+			var pageNumTag = $("input[name='pageNum']").clone();
+			var amountTag = $("input[name='amount']").clone();
+			var keywordTag = $("input[name='keyword']").clone();
+			var typeTag = $("input[name='type']").clone();
+			
+			formObj.empty();
+			
+			formObj.append(pageNumTag);
+			formObj.append(amountTag);
+			formObj.append(keywordTag);
+			formObj.append(typeTag);
 		}
 		formObj.submit();
 	});

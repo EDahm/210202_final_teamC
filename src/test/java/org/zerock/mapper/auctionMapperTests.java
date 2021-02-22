@@ -1,12 +1,14 @@
 package org.zerock.mapper;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
 import org.zerock.domain.aucShipVO;
@@ -31,16 +33,16 @@ public class auctionMapperTests {
 //	@Test
 //	public void testInsert() {
 //		
-//		aucShipVO auc = new aucShipVO();
+//		aucApplyVO auc = new aucApplyVO();
+//			
+//		auc.setC_num("C100200");
+//		auc.setAa_hope_prd(new Date());
+//		auc.setAa_item_nm("커피");
+//		auc.setAa_markt_prc(20000);
+//		auc.setAa_weight("10kg");
+//		auc.setAa_cntry_orgn("한국");
 //		
-//		auc.setA_bno("A2021-02-16");
-//		auc.setC_num("C000000");
-//		auc.setM_num("M100000");
-//		auc.setS_shpng_addr("사창동");
-//		auc.setS_shpng_cntct("010-0000-0000");
-//		auc.setS_shpng_stts("배송준비중");
-//		
-//		auMapper.shipInsert(auc);
+//		auMapper.aucApplyIns(auc);
 //		
 //		log.info(auc);
 //		
@@ -77,12 +79,27 @@ public class auctionMapperTests {
 //		log.info("success : " + a);
 //	}
 //	
+	@Test
+	public void testNow() {
+		
+		int test = auMapper.bidNowPrice();
+		
+		log.info("result : " + test);
+	}
+	
 //	@Test
-//	public void testNow() {
+//	public void testPaging() {
 //		
-//		String test = auMapper.bidNowMember();
+//		Criteria cri = new Criteria();
 //		
-//		log.info("닉네임 : " + test);
+//		cri.setPageNum(3);
+//		cri.setAmount(10);
+//		
+//		
+//		List<aucShipVO> auc = auMapper.shipListWithPaging(cri);
+//		
+//		auc.forEach(aucc -> log.info(aucc.getA_bno()));
+//		
 //	}
 	
 }

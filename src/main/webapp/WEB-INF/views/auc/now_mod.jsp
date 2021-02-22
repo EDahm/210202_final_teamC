@@ -25,6 +25,11 @@
 			
 			<div>
 				<form role="form" action="/auc/now_mod" method="post">
+				
+				<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+				<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+				<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
+				<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
 				<div>
 					<label>경매번호</label>
 					<input class="form-control" name="a_bno" value='<c:out value="${nowlist.a_bno}"/>' readonly="readonly">
@@ -56,7 +61,10 @@
 				</div>
 				<div>
 					<label>진행기간</label> <!-- datepicker님 도와주세요 -->
-					<input class="form-control" name="a_prgrs_prd" value='<c:out value="${nowlist.a_prgrs_prd}"/>'>
+					<input type="hidden">
+					<fmt:parseDate var="a_prgrs_prd" value="${nowlist.a_prgrs_prd}" pattern="yyyy-MM-dd" />
+					<input type='date' class="form-control" name='a_prgrs_prd' value='<fmt:formatDate pattern="yyyy-MM-dd"
+					value="${a_prgrs_prd}" />'>
 				</div>
 				<button type="submit" data-oper='now_mod'>수정</button>
 				<button type="submit" data-oper='now_rem'>삭제</button>
@@ -81,8 +89,18 @@ $(document).ready(function(){
 		if(operation === 'now_rem'){
 			formObj.attr("action","/auc/now_rem");
 		} else if(operation === 'now_list'){
-			self.location="/auc/now_list";
-			return;
+			formObj.attr("action", "/auc/now_list").attr("method", "get");
+			var pageNumTag = $("input[name='pageNum']").clone();
+			var amountTag = $("input[name='amount']").clone();
+			var keywordTag = $("input[name='keyword']").clone();
+			var typeTag = $("input[name='type']").clone();
+			
+			formObj.empty();
+			
+			formObj.append(pageNumTag);
+			formObj.append(amountTag);
+			formObj.append(keywordTag);
+			formObj.append(typeTag);
 		}
 		formObj.submit();
 	});

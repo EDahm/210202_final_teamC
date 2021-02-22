@@ -13,7 +13,6 @@
 </div>
 <div>
 				<div>
-			
 					<input type=hidden class="form-control" name="a_bno" value='<c:out value="${shipget.a_bno}"/>'>
 				</div>
 				<div>
@@ -40,7 +39,13 @@
 				<button data-oper='ship-mod' onclick="location.href='/auc/ship_mod?a_bno=<c:out value="${shipget.a_bno}"/>'"> 수정 </button>
 				<button data-oper='ship-list' onclick="location.href='/auc/ship_list'">배송목록</button>				
 		</div>
-
-				
+<form id='operForm' action="/auc/ship_mod" method= "get">
+	<input type='hidden' id='a_bno' value='<c:out value="${shipget.a_bno}"/>'>
+	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+	<input type='hidden' name='keyword' value='<c:out value="${cri.keyword }"/>'>
+                        		<input type='hidden' name='type' value='<c:out value="${cri.type }"/>'>
+</form>	
+			
 </body>
 </html>

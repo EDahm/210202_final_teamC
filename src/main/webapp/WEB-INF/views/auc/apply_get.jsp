@@ -7,11 +7,12 @@
 <head>
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">경매 진행 조회</h1>
 	</div>
-	<!-- /.col-lg-12 -->
 </div>
 <!-- /.row -->
 <div class="row">
@@ -48,15 +49,44 @@
 					<input class="form-control" name="aa_cntry_orgn" value='<c:out value="${applyget.aa_cntry_orgn}"/>'readonly="readonly">
 				</div>
 				<div>
-					<label>희망기간</label><!-- datepicker 써야함 -->
-					<input class="form-control" name="aa_hope_prd" value='<c:out value="${applyget.aa_hope_prd}"/>'readonly="readonly">
+					<label>희망기간</label>
+					<input type="hidden">
+					<fmt:parseDate var="aa_hope_prd" value="${applyget.aa_hope_prd}" pattern="yyyy-MM-dd" />
+					<input type='date' class="form-control" name='aa_hope_prd' value='<fmt:formatDate pattern="yyyy-MM-dd"
+					value="${aa_hope_prd}" />' readonly="readonly">
+					
 				</div>
 				<button data-oper='apply_mod' onclick="location.href='/auc/apply_mod?aa_bno=<c:out value="${applyget.aa_bno}"/>'">수정</button>
 				<button data-oper='apply_list' onclick="location.href='/auc/apply_list'">목록</button>				
+				<form id='operForm' action="/auc/apply_mod" method="get">
+                        		<input type='hidden' id='bno' name='aa_bno' value='<c:out value="${applyget.aa_bno}"/>'>
+                        		<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+                        		<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+                        		<input type='hidden' name='keyword' value='<c:out value="${cri.keyword }"/>'>
+                        		<input type='hidden' name='type' value='<c:out value="${cri.type }"/>'>
+                </form>
 			</div>
 		</div>
 	</div>
 </div>
-				
+  <script type="text/javascript">
+  	$(document).ready(function(){
+  		var operForm = $("#operForm");
+  		
+  		$("button[data-oper='apply_mod']").on("click",function(e){
+  			
+  			operForm.attr("action","/auc/apply_mod").submit();
+  			
+  		});
+  		
+  		$("button[data-oper='apply_list']").on("click",function(e){
+  			
+  			operForm.find("#bno").remove();
+  			operForm.attr("action","/auc/apply_list")
+  			operForm.submit();
+  			
+  		});
+  	});
+  </script>				
 </body>
 </html>

@@ -25,6 +25,12 @@
 			
 			<div>
 			<form role="form" action="/auc/com_mod" method="post">
+				<!-- add -->
+	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>	
+	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+	<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
+	<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
+	
 				<div>
 					<label>업체번호</label>
 					<input class="form-control" name="c_num" value='<c:out value="${comget.c_num}"/>' readonly="readonly">
@@ -72,8 +78,18 @@ $(document).ready(function(){
 		if(operation === 'com_rem'){
 			formObj.attr("action","/auc/com_rem");
 		} else if(operation === 'com_list'){
-			self.location="/auc/com_list";
-			return;
+			formObj.attr("action", "/auc/com_list").attr("method","get");
+			var pageNumTag = $("input[name='pageNum']").clone();
+			var amountTag = $("input[name='amount']").clone();
+			var keywordTag = $("input[name='keyword']").clone();
+			var typeTag = $("input[name='type']").clone();
+			
+			formObj.empty();
+			
+			formObj.append(pageNumTag);
+			formObj.append(amountTag);
+			formObj.append(keywordTag);
+			formObj.append(typeTag);
 		}
 		formObj.submit();
 	});

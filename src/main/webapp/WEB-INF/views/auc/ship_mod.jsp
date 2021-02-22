@@ -9,10 +9,16 @@
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <div>
-<h1>배송조회</h1>
+<h1>배 송 조 회</h1>
 </div>
 <div>
 	<form role="form" action="/auc/ship_mod" method="post">
+	
+	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>	
+	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+			<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
+			<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
+	
 				<div>			
 					<input type=hidden class="form-control" name="a_bno" value='<c:out value="${shipget.a_bno}"/>'  readonly="readonly">
 				</div>
@@ -57,9 +63,21 @@ $(document).ready(function(){
 		
 		if(operation === 'ship_rem'){
 			formObj.attr("action","/auc/ship_rem");
+			
 		} else if(operation === 'ship_list'){
-			self.location="/auc/ship_list";
-			return;
+			//move to list
+			formObj.attr("action", "/auc/ship_list").attr("method","get");
+			var pageNumTag = $("input[name='pageNum']").clone();
+			var amountTag = $("input[name='amount']").clone();
+			var keywordTag = $("input[name='keyword']").clone();
+			var typeTag = $("input[name='type']").clone();
+			
+			formObj.empty();
+			
+			formObj.append(pageNumTag);
+			formObj.append(amountTag);
+			formObj.append(keywordTag);
+			formObj.append(typeTag);
 		}
 		formObj.submit();
 	});

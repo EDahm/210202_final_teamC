@@ -50,9 +50,34 @@
 				<button data-oper='com_mod' onclick="location.href='/auc/com_mod?c_num=<c:out value="${comget.c_num}"/>'">수정</button>
 				<button data-oper='com_list' onclick="location.href='/auc/com_list'">목록</button>				
 			</div>
+			<form id='operForm' action="/auc/com_mod" method= "get">
+	<input type='hidden' id='c_num' value='<c:out value="${comget.c_num}"/>'>
+	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+	<input type='hidden' name='keyword' value='<c:out value="${cri.keyword }"/>'>
+    <input type='hidden' name='type' value='<c:out value="${cri.type }"/>'>
+</form>	
 		</div>
 	</div>
 </div>
-				
+		  <script type="text/javascript">
+  	$(document).ready(function(){
+  		var operForm = $("#operForm");
+  		
+  		$("button[data-oper='com_mod']").on("click",function(e){
+  			
+  			operForm.attr("action","/auc/com_mod").submit();
+  			
+  		});
+  		
+  		$("button[data-oper='com_list']").on("click",function(e){
+  			
+  			operForm.find("#c_num").remove();
+  			operForm.attr("action","/auc/com_list")
+  			operForm.submit();
+  			
+  		});
+  	});
+  </script>						
 </body>
 </html>

@@ -25,32 +25,27 @@
 			<form role="form" action="/auc/now_regi" method="post">
 				<div>
 					<label>신청번호</label>
-					<input class="form-control" name="c_num">
+					<input class="form-control" name="aa_bno">
 				</div>
 				<div>
 					<label>시작가</label>
-					<input class="form-control" name="aa_item_nm">
+					<input class="form-control" name="a_versifier">
 				</div>
 				<div>
 					<label>현재가</label>
-					<input class="form-control" name="aa_markt_prc">
+					<input class="form-control" name="a_crnt_prc">
 				</div>
 				<div>
 					<label>바로 구매가격</label>
-					<input class="form-control" name="aa_weight">
+					<input class="form-control" name="a_wnng_prc">
 				</div>
 				<div>
 					<label>경매상태</label>
-					<select name="aa_cntry_orgn">
-						<option> 준비중 </option>
-						<option> 진행중 </option>
-						<option> 종료	 </option>
-						<option> 유찰 </option>
-					</select>
+					<input name="a_state">
 				</div>
 				<div>
-					<label>진행기간</label><!-- datepicker 써야함 -->
-					<input class="form-control" name="aa_hope_prd">
+					<label>진행기간</label>
+					<input type="date" name="a_prgrs_prd">
 				</div>
 				
 				<button type="submit">신청</button>

@@ -3,6 +3,7 @@ package org.zerock.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
 import org.zerock.domain.aucComVO;
@@ -20,6 +21,8 @@ public interface auctionMapper {
 	//경매 신청 전체 조회 m
 	public List<aucApplyVO> aucApplyList();
 	
+	public List<aucApplyVO> aucApplyListWithPaging(Criteria cri);
+	
 	//경매 신청 삭제 m
 	public int aucApplyDel(String aa_bno);
 	
@@ -33,6 +36,7 @@ public interface auctionMapper {
 	
 	//경매 진행 전체 조회 m
 	public List<auctionVO> aucList();
+	public List<auctionVO> aucListWithPaging(Criteria cri);
 	
 	//경매 진행 단일 조회 m
 	public auctionVO aucSelect(String aa_bno);
@@ -45,6 +49,9 @@ public interface auctionMapper {
 	
 	//경매 진행 정보 삭제 m
 	public int aucDelete(String aa_bno);
+	
+	//진행중인 경매 정보만 출력
+	public List<auctionVO> aucIng();
 	
 	
 	
@@ -62,6 +69,7 @@ public interface auctionMapper {
 	
 	//배송정보 전체 조회 m
 	public List<aucShipVO> shipList();
+	public List<aucShipVO> shipListWithPaging(Criteria cri);
 	
 	//배송정보 삭제 m 
 	public int shipDelete(String a_bno);
@@ -77,6 +85,7 @@ public interface auctionMapper {
 	
 	//입찰정보 전체 조회 m
 	public List<aucBidVO> bidList();	
+	public List<aucBidVO> bidListWithPaging(Criteria cri);	
 	
 	//경매 현재가 수정 m
 	public int bidNowPrice();
@@ -91,6 +100,7 @@ public interface auctionMapper {
 
 	//업체 전체 조회
 	public List<aucComVO> aucComList();
+	public List<aucComVO> aucComListWithPaging(Criteria cri);
 	
 	//업체 단일 조회
 	public aucComVO aucComGet(String c_num);
@@ -100,5 +110,19 @@ public interface auctionMapper {
 	
 	//업체 삭제
 	public int aucComDel(String c_num);
-
+	
+	//데이터개수처리
+	////신청 조회페이지
+	public int getTotalCountApply(Criteria cri);
+	////진행 조회페이지
+	public int getTotalCountNow(Criteria cri);
+	////배송 조회페이지
+	public int getTotalCountShip(Criteria cri);
+	////업체 조회페이지
+	public int getTotalCountCom(Criteria cri);
+	////입찰 조회페이지
+	public int getTotalCountBid(Criteria cri);
+	
+	//입찰자 수 카운트
+	public int getCountBid(Criteria cri);
 }

@@ -3,6 +3,7 @@ package org.zerock.service;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.zerock.domain.Criteria;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
 import org.zerock.domain.aucComVO;
@@ -26,7 +27,7 @@ public interface auctionService {
 	public boolean nowRemove(String a_bno);
 	
 	//경매진행 전체 조회
-	public List<auctionVO> nowGetList();
+	public List<auctionVO> nowGetList(Criteria cri);
 	
 	//경매 현재가 닉네임 호출
 	public String nowBestMember();
@@ -36,6 +37,9 @@ public interface auctionService {
 	
 	//경매진행 상태 변경
 	public boolean nowStateUp(String a_bno, String a_state);
+	
+	//진행중인 경매 정보만 출력
+	public List<auctionVO> nowStateList();
 	
 	
 	//신청페이지
@@ -47,7 +51,7 @@ public interface auctionService {
 	public aucApplyVO applyGet(String aa_bno);
 	
 	//경매신청 전체조회
-	public List<aucApplyVO> applyGetList();
+	public List<aucApplyVO> applyGetList(Criteria cri);
 	
 	//경매신청 수정
 	public boolean applyMod(aucApplyVO aucapplyvo);
@@ -65,7 +69,7 @@ public interface auctionService {
 	public aucShipVO shipGet(String a_bno);
 	
 	//배송정보 전체조회
-	public List<aucShipVO> shipGetList();
+	public List<aucShipVO> shipGetList(Criteria cri);
 	
 	//배송정보 수정
 	public boolean shipMod(aucShipVO aucshipvo);
@@ -84,7 +88,10 @@ public interface auctionService {
 	public boolean bidRemove(@Param("m_num") String m_num, @Param("b_bid_price") int b_bid_price) throws Exception;
 	
 	//입찰정보 전체 조회
-	public List<aucBidVO> bidGetList();
+	public List<aucBidVO> bidGetList(Criteria cri);
+	
+	//입찰자 수 카운트
+	public int getCountBid(Criteria cri);
 	
 	
 	
@@ -96,7 +103,7 @@ public interface auctionService {
 	public aucComVO aucComGet(String c_num);
 	
 	//업체정보 전체조회
-	public List<aucComVO> aucComList();
+	public List<aucComVO> aucComList(Criteria cri);
 	
 	//업체정보 수정
 	public boolean aucComMod(aucComVO auccomvo);
@@ -104,5 +111,12 @@ public interface auctionService {
 	//업체정보 삭제
 	public boolean aucComDel(String c_num);
 	
+	
+	//데이터개수세기
+	public int getTotalApply(Criteria cri);
+	public int getTotalNow(Criteria cri);
+	public int getTotalShip(Criteria cri);
+	public int getTotalCom(Criteria cri);
+	public int getTotalBid(Criteria cri);
 	
 }

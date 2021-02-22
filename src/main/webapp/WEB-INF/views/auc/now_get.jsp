@@ -49,10 +49,21 @@
 				</div>
 				<div>
 					<label>진행기간</label>
-					<input class="form-control" name="a_prgrs_prd" value='<c:out value="${nowlist.a_prgrs_prd}"/>' readonly="readonly">
+					<fmt:parseDate var="a_prgrs_prd" value="${nowlist.a_prgrs_prd}" pattern="yyyy-MM-dd" />
+					<input type='date' class="form-control" name='a_prgrs_prd' value='<fmt:formatDate pattern="yyyy-MM-dd"
+					value="${a_prgrs_prd}" />' readonly="readonly">
 				</div>
 				<button data-oper='now_mod' onclick="location.href='/auc/now_mod?a_bno=<c:out value="${nowlist.a_bno}"/>'">수정</button>
-				<button data-oper='now_list' onclick="location.href='/auc/now_list'">목록</button>				
+				<button data-oper='now_list' onclick="location.href='/auc/now_list'">목록</button>
+				
+				<form id='operForm' action="/auc/now_mod" method="get">
+                        		<input type='hidden' id='a_bno' name='a_bno' value='<c:out value="${nowlist.a_bno}"/>'>
+                        		<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+                        		<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+                        		<input type='hidden' name='keyword' value='<c:out value="${cri.keyword }"/>'>
+                        		<input type='hidden' name='type' value='<c:out value="${cri.type }"/>'>
+                </form>
+								
 			</div>
 		</div>
 	</div>

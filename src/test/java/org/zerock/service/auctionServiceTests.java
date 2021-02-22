@@ -9,6 +9,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.Criteria;
 //import org.us.domain.aucBidVO;
 import org.zerock.domain.auctionVO;
 
@@ -41,11 +42,11 @@ public class auctionServiceTests {
 //		log.info("생성된 게시물 번호 : " + aucvo.getAa_bno());
 //	}
 	
-//	@Test
-//	public void testGetList() { //안됨 ㅠㅠ
-//		
-//		service.getList().forEach(auction -> log.info(auction));
-//	}
+	@Test
+	public void testGetList() {
+		
+		service.shipGetList(new Criteria(2,10)).forEach(auction -> log.info(auction));
+	}
 //	
 //	@Test
 //	public void testGet() {
@@ -89,9 +90,9 @@ public class auctionServiceTests {
 //		
 //	}
 	
-	@Test 
-	public void testState() {
-		
-		log.info(service.nowStateUp("A2021-02-12-120", "진행완료"));
-	}
+//	@Test 
+//	public void testState() {
+//		
+//		log.info(service.nowStateUp("A2021-02-12-120", "진행완료"));
+//	}
 }

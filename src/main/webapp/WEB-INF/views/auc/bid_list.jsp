@@ -32,7 +32,6 @@
 							<th>입찰가격</th>
 							<th>입찰시간</th>
 							<th>입찰상태</th>
-							<th>삭제하기</th>
 						</tr>
 					</thead>
 
@@ -41,9 +40,8 @@
 							<td><c:out value="${bid.a_bno}" /></td>
 							<td><c:out value="${bid.m_num}" /></td>
 							<td><c:out value="${bid.b_bid_price}" /></td>
-							<td><c:out value="${b_bid_time}" /></td>
-							<td><c:out value="${b_bid_state}" /></td>
-							<td><button type="button" value ="${bid.m_num},${bid.b_bid_price}"> X </button>
+							<td><c:out value="${bid.b_bid_time}" /></td>
+							<td><c:out value="${bid.b_bid_state}" /></td>
 						</tr>
 					</c:forEach>
 				</table>
@@ -136,14 +134,6 @@ var searchForm = $("#searchForm");
 	
 	});
 	
-	function bid_rem(m_num, b_bid_num){
-		var msg = confirm("입찰내역을 삭제하시겠습니까?");
-		if (msg == true){
-			service.bidRemobe(m_num, b_bid_price);
-		} else {
-			return false;
-		}
-	}
 });
 </script>	
 

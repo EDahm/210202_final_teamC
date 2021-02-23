@@ -67,6 +67,8 @@
 							<li class="list-styled-item"><a class="list-styled-link"
 								href="/auc/now_list">진행중인 경매관리</a></li>
 							<li class="list-styled-item"><a class="list-styled-link"
+								href="/auc/bid_list">입찰 관리</a></li>
+							<li class="list-styled-item"><a class="list-styled-link"
 								href="/auc/apply_list">경매신청관리</a></li>
 							<li class="list-styled-item"><a class="list-styled-link"
 								href="/auc/ship_list">배송관리</a></li>

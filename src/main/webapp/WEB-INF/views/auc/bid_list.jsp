@@ -3,11 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%@include file="../includes/header.jsp"%>
+<%@include file="../includes/nav.jsp"%>
+
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">입찰 리스트</h1>
@@ -22,7 +20,7 @@
 				입찰 리스트				
 			</div>
 			<form action="/auc/bid_now" method="get">
-			<button type="submit" data-oper="bid_now" > test </button>
+			<button type="button" data-oper="bid_now" name="bidNow" > test </button>
 			</form>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
@@ -45,7 +43,7 @@
 							<td><c:out value="${bid.b_bid_price}" /></td>
 							<td><c:out value="${b_bid_time}" /></td>
 							<td><c:out value="${b_bid_state}" /></td>
-							<td><button id='delBtn' type="button" data-oper='bid_rem'> X </button></td>
+							<td><button type="button" value ="${bid.m_num},${bid.b_bid_price}"> X </button>
 						</tr>
 					</c:forEach>
 				</table>
@@ -93,6 +91,9 @@
 		</div>
 	</div>
 </div>
+
+</div>
+</div>
 			<form id='actionForm' action="/auc/bid_list" method='get'>
 				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
@@ -112,15 +113,8 @@ $(document).ready(function(){
 		
 		actionForm.find("input[name='pageNum']").val($(this).attr("href"));
 		actionForm.submit();
-		});	
+		});
 
-	$("#delBtn").on("click",function(e){
-		
-		e.preventDefault();
-		
-		self.location = "/auc/now_regi"
-	});
-	
 var searchForm = $("#searchForm");
 	
 	$("#searchForm button").on("click", function(e){
@@ -142,7 +136,15 @@ var searchForm = $("#searchForm");
 	
 	});
 	
+	function bid_rem(m_num, b_bid_num){
+		var msg = confirm("입찰내역을 삭제하시겠습니까?");
+		if (msg == true){
+			service.bidRemobe(m_num, b_bid_price);
+		} else {
+			return false;
+		}
+	}
 });
 </script>	
-</body>
-</html>
+
+<%@include file="../includes/footer.jsp"%>

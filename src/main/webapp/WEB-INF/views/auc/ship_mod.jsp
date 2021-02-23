@@ -3,11 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%@include file="../includes/header.jsp"%>
+<%@include file="../includes/nav.jsp"%>
+
 <div>
 <h1>배 송 조 회</h1>
 </div>
@@ -48,7 +46,8 @@
 				<button type="submit" data-oper='ship_list'>목록</button>
 				</form>				
 		</div>
-
+	</div>
+</div>
 <script type="text/javascript">
 $(document).ready(function(){
 	
@@ -83,5 +82,5 @@ $(document).ready(function(){
 	});
 });
 </script>								
-</body>
-</html>
+
+<%@include file="../includes/footer.jsp"%>

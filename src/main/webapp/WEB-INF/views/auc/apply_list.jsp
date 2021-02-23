@@ -18,8 +18,10 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				신청 리스트
-				<button id='regBtn' type="button" class="btn btn-xs pull-right">새
-					경매 등록</button>
+				<button id='NowRegiBtn' type="button" class="btn btn-xs pull-right">
+					경매 진행 등록</button>
+				<button id='ApplyBtn' type="button" class="btn btn-xs pull-right">
+					경매 신청하기</button>
 			</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
@@ -103,8 +105,12 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	$("#regBtn").on("click",function(){
+	$("#NowRegiBtn").on("click",function(){
 		self.location = "/auc/now_regi"
+	});
+
+	$("#ApplyBtn").on("click",function(){
+		self.location = "/auc/apply_regi"
 	});
 	
 	var actionForm = $("#actionFormApply");

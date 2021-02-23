@@ -3,10 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
+<%@include file="../includes/header.jsp"%>
+<%@include file="../includes/nav.jsp"%>
+
 <div class="row">
 	<div class="col-lg-12">
 		<h2 class="page-header">얼쑤좋다!</h2>
@@ -56,6 +55,8 @@
 		</div>
 	</div>
 </div>
-				
-</body>
-</html>
+
+</div>
+</div>
+
+<%@include file="../includes/footer.jsp"%>

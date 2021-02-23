@@ -288,7 +288,7 @@
 						href="/member/register"><i class="fas fa-sign-in-alt"></i> SignUp
 					</a></li>
 					<li class="nav-item ml-lg-n4"><a class="nav-link"
-						href="#"> <i class="fe fe-user"></i> MyPages
+						href="/mypages"> <i class="fe fe-user"></i> MyPages
 					</a></li>
 					<li class="nav-item ml-lg-n4"><a class="nav-link"
 						href="/admin/main"><i class="fas fa-cog"></i>

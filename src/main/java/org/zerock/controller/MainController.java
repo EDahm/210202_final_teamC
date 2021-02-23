@@ -28,6 +28,12 @@ public class MainController {
 		
 	}
 	
+	@GetMapping("/mypages")
+	public void mypages() {
+		
+		
+	}
+	
 	
 
 }

@@ -238,8 +238,8 @@
 	{call
 		declare
 		begin
-	insert into bid_tb(a_bno, m_num, b_bid_price, b_bid_time)
-	values (#{a_bno}, #{m_num}, #{b_bid_price}, sysdate);
+	insert into bid_tb(a_bno, m_num, b_bid_price)
+	values (#{a_bno}, #{m_num}, #{b_bid_price});
 	
 	update mber_tb set m_point = m_point + 2 where m_num = #{m_num}; 
 	end

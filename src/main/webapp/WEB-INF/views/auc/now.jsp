@@ -52,7 +52,7 @@
                         <input name="a_bno" value='<c:out value="${now.a_bno}"/>' readonly="readonly">
                         <input name="m_num" value="M100009" readonly="readonly">
                         <input name="b_bid_price">
-                        <input name="b_bid_time">
+                        <input type="hidden" name="b_bid_time">
                         <input type="hidden" name="b_bid_state">
                         <button data-oper='bid_regi'>입찰하기</button>
                         </form>

@@ -15,6 +15,7 @@ public interface auctionMapper {
 	
 	//경매 신청 m
 	public void aucApplyIns(aucApplyVO aucapplyvo);
+	public void aucApplyInsKey(aucApplyVO aucapplyvo);
 	
 	//경매 신청 조회 m
 	public aucApplyVO aucApplySelect(String aa_bno);

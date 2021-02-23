@@ -3,26 +3,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">경매 조회</h1>
-	</div>
-</div>
-<!-- /.row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
+<%@include file="../includes/header.jsp"%>
+<%@include file="../includes/nav.jsp"%>
+
+
+<div>
+	<div>
+		<div>
+			<div>
 				경매 리스트
 			</div>
 			<!-- /.panel-heading -->
-			<div class="panel-body">
-				<table class="table table-striped table-bordered table-hover">
+			<div>
+				<table>
 					<thead>
 						<tr>
 							<th>경매번호</th> 
@@ -97,6 +90,9 @@
 		</div>
 	</div>
 </div>	
+</div>
+</div>
+
 <script type="text/javascript">
 $(document).ready(function(){
 		
@@ -143,5 +139,5 @@ $(document).ready(function(){
 	});
 });
 </script>				
-</body>
-</html>
+
+<%@include file="../includes/footer.jsp"%>

@@ -11,7 +11,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 
 <!-- Favicons -->
@@ -243,9 +243,9 @@
 								<div class="card-body">
 									<ul class="list-styled font-size-sm">
 										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/about.html">About</a></li>
+											href=" /auc/now">경매 참여하기</a></li>
 										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/contact-us.html">Contact Us</a></li>
+											href="#">참여한 경매내역 확인 아직 페이지 못만듬</a></li>
 										<li class="list-styled-item"><a class="list-styled-link"
 											href=" /resources/store-locator.html">Store Locator</a></li>
 										<li class="list-styled-item"><a class="list-styled-link"

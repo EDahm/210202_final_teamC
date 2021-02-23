@@ -69,6 +69,108 @@
 		</div>
 	</div>
 </div>
+
+<div class='bigPictureWrapper'>
+	<div class='bigPicture'>
+	</div>
+</div>
+
+<style>
+.bigPictureWrapper{
+	position : absolute;
+	display : none;
+	justify-content : center;
+	align-items : center;
+	top : 0%;
+	width : 100%;
+	height : 100%;
+	background-color : gray;
+	z-index : 100;
+	background:rgba(255,255,255,0.5);
+}
+
+.bigPicture{
+	position : relative;
+	display : flex;
+	justify-content : center;
+	align-items : center;
+}
+
+.bigPicture img{
+	width:600px;
+}
+</style>
+
+<div>
+	<div>
+		<div>
+		
+			<div>첨부 이미지</div>
+			<div>
+			
+				<div class='uploadResult'>
+					<ul>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+$(document).ready(function(){
+ 	(function(){
+  		var aa_bno = '<c:out value="${applyget.aa_bno}"/>';
+  
+  		$.getJSON("/auc/getAttachList", {aa_bno : aa_bno}, function(arr){
+  			
+  			console.log(arr);
+  			
+  			var str = "";
+  			
+  			$(arr).each(function(i, attach){
+  				
+  				var fileCallPath = encodeURIComponent(attach.aa_upload_path+"/s_"+attach.aa_uuid+"_"+attach.aa_file_name);
+
+					str += "<li data-path='"+attach.aa_upload_path+"' data-uuid='"+attach.aa_uuid+"' data-filename='"+attach.aa_file_name+"' data-type='"+attach.aa_file_type+"' ><div>";
+					str += "<img src='/display?fileName="+fileCallPath+"'>";
+					str += "</div>";
+					str + "</li>";
+					
+  			});
+  			
+  			$(".uploadResult ul").html(str);
+  		}); 
+  	})();
+ 	
+ 	$(".uploadResult").on("click","li",function(e){
+ 		console.log("view image");
+ 		
+ 		var liObj = $(this);
+ 		
+ 		var path = encodeURIComponent(liObj.data("path")+"/"+liObj.data("uuid")+"_"+liObj.data("filename"));
+ 		
+ 		showImage(path.replace(new RegExp(/\\/g),"/"));
+ 	});
+ 	
+ 	function showImage(fileCallPath){
+ 	 		
+ 		$(".bigPictureWrapper").css("display","flex").show();
+ 		
+ 		$(".bigPicture").html("<img src='/display?fileName="+fileCallPath+"'>")
+ 		.animate({width:'100%',height:'100%'}, 1000);
+ 	}
+ 	
+ 	$(".bigPictureWrapper").on("click", function(e){
+ 		
+ 		$(".bigPicture").animate({width:'0%',height: '0%'}, 1000);
+ 		setTimeout(function(){
+ 			$('.bigPictureWrapper').hide();
+ 		}, 1000);
+ 		
+ 	});
+});
+</script>
   <script type="text/javascript">
   	$(document).ready(function(){
   		var operForm = $("#operForm");
@@ -86,6 +188,7 @@
   			operForm.submit();
   			
   		});
+
   	});
   </script>				
 </body>

@@ -8,6 +8,14 @@
 	values('AA'||to_char(sysdate, 'YYYY-MM-DD')||'-'||seq_auc_aply.nextval, #{c_num}, #{aa_hope_prd}, #{aa_item_nm}, #{aa_markt_prc}, #{aa_weight}, #{aa_cntry_orgn})
 </insert>
 
+<insert id="aucApplyInsKey">
+	<selectKey keyProperty="aa_bno" order="BEFORE" resultType="String">
+		select 'AA'||to_char(sysdate, 'YYYY-MM-DD')||'-'||seq_auc_aply.nextval from dual
+	</selectKey>
+	insert into auc_aply_tb(aa_bno, c_num, aa_hope_prd, aa_item_nm, aa_markt_prc, aa_weight, aa_cntry_orgn)
+	values(#{aa_bno}, #{c_num}, #{aa_hope_prd}, #{aa_item_nm}, #{aa_markt_prc}, #{aa_weight}, #{aa_cntry_orgn})
+</insert>
+
 <!-- 경매 신청 조회 -->
 <select id="aucApplySelect" resultType="org.zerock.domain.aucApplyVO">
 	select aa_bno, c_num, aa_hope_prd, aa_item_nm, aa_markt_prc, aa_weight, aa_cntry_orgn from auc_aply_tb where aa_bno = #{aa_bno}

@@ -3,24 +3,33 @@ package org.zerock.service;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.zerock.domain.AucAttachVO;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
 import org.zerock.domain.aucComVO;
 import org.zerock.domain.aucShipVO;
 import org.zerock.domain.auctionVO;
+import org.zerock.mapper.AucAttachMapper;
 import org.zerock.mapper.auctionMapper;
 
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Service
-@AllArgsConstructor
+//@AllArgsConstructor
 public class auctionServiceImpl implements auctionService {
 	
+	@Setter(onMethod_ = @Autowired)
 	private auctionMapper aucMapper;
+	
+	@Setter(onMethod_ = @Autowired)
+	private AucAttachMapper attachMapper;
 	
 	@Override
 	public void nowRegi(auctionVO auctionvo) {
@@ -86,12 +95,23 @@ public class auctionServiceImpl implements auctionService {
 		return aucMapper.aucStaUpdate(a_bno, a_state) == 1;
 	}
 	
+	@Transactional
 	@Override
 	public void applyIns(aucApplyVO aucapplyvo) {
 
 		log.info("APPLY INSERT........");
 		
-		aucMapper.aucApplyIns(aucapplyvo);
+		aucMapper.aucApplyInsKey(aucapplyvo);
+		
+		if(aucapplyvo.getAttachList() == null || aucapplyvo.getAttachList().size() <= 0) {
+			return;
+		}
+		
+		aucapplyvo.getAttachList().forEach(attach -> {
+			attach.setAa_bno(aucapplyvo.getAa_bno());
+			attachMapper.insert(attach);
+			
+		});
 		
 	}
 	
@@ -113,18 +133,32 @@ public class auctionServiceImpl implements auctionService {
 		
 	}
 	
+	@Transactional
 	@Override
 	public boolean applyMod(aucApplyVO aucapplyvo) {
 
 		log.info("APPLY MODIFY....");
 		
-		return aucMapper.aucApplyUpdate(aucapplyvo) == 1;
+		attachMapper.deleteAll(aucapplyvo.getAa_bno());
+		
+		boolean modifyResult = aucMapper.aucApplyUpdate(aucapplyvo) == 1;
+		
+		if(modifyResult && aucapplyvo.getAttachList() != null && aucapplyvo.getAttachList().size() > 0) {
+			aucapplyvo.getAttachList().forEach(attach -> {
+				attach.setAa_bno(aucapplyvo.getAa_bno());
+				attachMapper.insert(attach);
+			});
+		}
+		
+		return modifyResult;
 	}
 	
 	@Override
 	public boolean applyRem(String aa_bno) {
 
 		log.info("APPLY REMOVE.....");
+		
+		attachMapper.deleteAll(aa_bno);
 		
 		return aucMapper.aucApplyDel(aa_bno)==1;
 	}
@@ -279,4 +313,11 @@ public class auctionServiceImpl implements auctionService {
 		return aucMapper.getCountBid(cri);
 	}
 	
+	@Override
+	public List<AucAttachVO> getAttachList(String aa_bno) {
+		
+		log.info("get Attach list by aa_bno" + aa_bno);
+		
+		return attachMapper.findByAa_bno(aa_bno);
+	}
 }

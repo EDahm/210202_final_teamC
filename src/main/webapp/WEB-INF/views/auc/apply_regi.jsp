@@ -123,17 +123,17 @@
  				
  				console.dir(jobj);
  				
- 				str += "<input type='hidden' name='attachList["+i+"].fileName'value='"+jobj.data("filename")+"'>";
- 				str += "<input type='hidden' name='attachList["+i+"].uuid'value='"+jobj.data("uuid")+"'>";
- 				str += "<input type='hidden' name='attachList["+i+"].uploadPath'value='"+jobj.data("path")+"'>";
- 				str += "<input type='hidden' name='attachList["+i+"].fileType'value='"+jobj.data("type")+"'>";
+ 				str += "<input type='hidden' name='attachList["+i+"].aa_file_name'value='"+jobj.data("filename")+"'>";
+ 				str += "<input type='hidden' name='attachList["+i+"].aa_uuid'value='"+jobj.data("uuid")+"'>";
+ 				str += "<input type='hidden' name='attachList["+i+"].aa_upload_path'value='"+jobj.data("path")+"'>";
+ 				str += "<input type='hidden' name='attachList["+i+"].aa_file_type'value='"+jobj.data("type")+"'>";
  				
  			});
  			
  			formObj.append(str).submit();
  		});
  		
- 		var regex = new RegExp("(.*?)\.(exe|sh|zip|alz)$");
+ 		var regex = new RegExp("(.*?)\.(exe|sh|zip|alz|pdf)$");
 		var maxSize = 5242880; //5MB
 			
 		function checkExtension(fileName, fileSize){
@@ -170,6 +170,8 @@
  			
  			}
  			
+ 			
+ 			
  			function showUploadResult(uploadResultArr){
  				
  				if(!uploadResultArr || uploadResultArr.length == 0){ return; }
@@ -182,9 +184,12 @@
 
  					var fileCallPath = encodeURIComponent(obj.uploadPath+"/s_"+obj.uuid+"_"+obj.fileName);
 
- 					str += "<li><div>";
+ 					str += "<li data-path='"+obj.uploadPath+"'";
+ 					str +=" data-uuid='"+obj.uuid+"' data-filename='"+obj.fileName+"' data-type='"+obj.image+"'"
+ 					str +" ><div>";
  					str += "<span> "+ obj.fileName + "</span>";
- 					str += "<button type='button' data-file=\'"+fileCallPath+"\'data-type='image' class='btn btn-warning btn-circle'> x </button><br>";
+ 					str += "<button type='button' data-file=\'"+fileCallPath+"\' "
+ 					str += "data-type='image' class='btn btn-warning btn-circle'> x </button><br>";
  					str += "<img src='/display?fileName="+fileCallPath+"'>";
  					str += "</div>";
  					str + "</li>";

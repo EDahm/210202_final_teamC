@@ -3,18 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">배송 조회</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
+<%@include file="../includes/header.jsp"%>
+<%@include file="../includes/nav.jsp"%>
+
 <div class="row">
 	<div class="col-lg-12">
 		<div class="panel panel-default">
@@ -86,6 +77,8 @@
 		</div>
 	</div>
 </div>	
+</div>
+</div>
 			<form id='actionFormShip' action="/auc/ship_list" method='get'>
 				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
@@ -141,5 +134,5 @@ $("#searchForm button").on("click", function(e){
 });
 
 </script>		
-</body>
-</html>
+
+<%@include file="../includes/footer.jsp"%>

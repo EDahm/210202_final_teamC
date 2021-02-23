@@ -69,13 +69,13 @@
 						<!-- Links -->
 						<ul class="list-styled">
 							<li class="list-styled-item"><a class="list-styled-link"
-								href="#">메인경매관리</a></li>
+								href="/auc/now_list">진행중인 경매관리</a></li>
 							<li class="list-styled-item"><a class="list-styled-link"
-								href="#">경매신청목록</a></li>
+								href="/auc/apply_list">경매신청관리</a></li>
 							<li class="list-styled-item"><a class="list-styled-link"
-								href="#">배송관리</a></li>
+								href="/auc/ship_list">배송관리</a></li>
 							<li class="list-styled-item"><a class="list-styled-link"
-								href="#">경매업체</a></li>
+								href="/auc/com_list">경매업체관리</a></li>
 
 						</ul>
 

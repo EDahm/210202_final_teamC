@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.QnaReplyMapper">
+
+<select id="getList" resultType="org.zerock.domain.QnaReplyVO">
+	<![CDATA[
+		select * from qna_reply_tb where q_bno > 0
+	]]>
+</select>
+
+ 	<insert id="insert">
+		insert into qna_reply_tb (qr_rno, q_bno, qr_reply, qr_replyer, qr_regdate)
+		values (seq_qna_reply.nextval, #{q_bno}, #{qr_reply}, #{qr_replyer}, sysdate)
+	</insert>
+
+ 	<select id="read" resultType="org.zerock.domain.QnaReplyVO">
+		select * from qna_reply_tb where qr_rno = #{qr_rno}
+	</select>
+	
+	<delete id="delete">
+		delete from qna_reply_tb
+		where qr_rno = #{qr_rno}
+	</delete>
+	
+	<update id="update">
+	    update qna_reply_tb
+	    set 	qr_reply = #{qr_reply}, qr_regdate = sysdate
+		where qr_rno = #{qr_rno}
+		<!-- and pw = #{pw} -->
+	 </update>
+	 
+	<select id="getListWithPaging"
+		resultType="org.zerock.domain.QnaReplyVO">
+	
+	 <![CDATA[
+	 select  qr_rno, q_bno, qr_reply, qr_reply, qr_regdate
+	 from 
+	   (
+	    select /*+INDEX(qna_reply_tb idx_reply) */ 
+	      rownum rn, qr_rno, q_bno, qr_reply, qr_replyer, qr_regdate
+	    from qna_reply_tb
+	    where q_bno =  #{q_bno}
+	    and qr_rno > 0
+	    and rownum <= #{cri.pageNum} * #{cri.amount}
+	   ) where rn > (#{cri.pageNum} -1) * #{cri.amount}
+	]]>
+	</select>
+	
+	<select id="getCountByBno" resultType="int">
+	<![CDATA[
+		select count(qr_rno) from qna_reply_tb where q_bno = #{q_bno}
+	]]>
+	</select>
+	 
+</mapper>

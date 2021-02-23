@@ -75,34 +75,57 @@
 
 				<!-- Nav -->
 				<ul class="navbar-nav mx-auto">
-					<li class="nav-item dropdown">
+					<li class="nav-item dropdown position-static">
 						<!-- Toggle --> <a class="nav-link" data-toggle="dropdown"
 						href="#">About</a> <!-- Menu -->
-						<div class="dropdown-menu">
+						<div class="dropdown-menu w-100">
+								<!-- Tab content -->
 							<div class="card card-lg">
 								<div class="card-body">
-									<ul class="list-styled font-size-sm">
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/index.html">Default</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/index-classic.html">Classic</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/index-fashion.html">Fashion</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/index-boxed.html">Boxed</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/index-simple.html">Simple</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/index-asymmetric.html">Asymmetric</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/index-sidenav.html">Sidenav</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/index-landing.html">Landing</a></li>
-									</ul>
+									<div class="tab-content">
+										<div class="tab-pane fade show active" id="navTab">
+											<div class="container">
+												<div class="row">
+													<div class="col-6 col-md">
+
+														<!-- Heading -->
+														<div class="mb-5 font-weight-bold">Plastic Project</div>
+
+														<!-- Links -->
+														<ul class="list-styled mb-6 mb-md-0 font-size-sm">
+															<li class="list-styled-item"><a
+																class="list-styled-link" href="/tkawy/main">플라스틱 프로젝트 소개</a></li>
+															<li class="list-styled-item"><a
+																class="list-styled-link" href="#">참여하기</a></li>
+														</ul>
+
+													</div>
+													
+													
+													
+													
+													<div class="col-4 d-none d-lg-block">
+
+														<!-- Card -->
+														<div class="card">
+
+															<!-- Image -->
+															<img class="card-img"
+																src=" /resources/assets/img/recycling_menu.jpg"
+																alt="...">
+
+														
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-
 
 					</li>
 					<li class="nav-item dropdown position-static">
@@ -235,30 +258,55 @@
 						</div>
 
 					</li>
-					<li class="nav-item dropdown">
+					<li class="nav-item dropdown position-static">
 						<!-- Toggle --> <a class="nav-link" data-toggle="dropdown"
 						href="#">Auction</a> <!-- Menu -->
-						<div class="dropdown-menu">
+						<div class="dropdown-menu w-100">
+								<!-- Tab content -->
 							<div class="card card-lg">
 								<div class="card-body">
-									<ul class="list-styled font-size-sm">
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /auc/now">경매 참여하기</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href="#">참여한 경매내역 확인 아직 페이지 못만듬</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/store-locator.html">Store Locator</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/faq.html">FAQ</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/coming-soon.html">Coming Soon</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/404.html">404</a></li>
-									</ul>
+									<div class="tab-content">
+										<div class="tab-pane fade show active" id="navTab">
+											<div class="container">
+												<div class="row">
+													<div class="col-6 col-md">
+
+														<!-- Heading -->
+														<div class="mb-5 font-weight-bold">Auction</div>
+
+														<!-- Links -->
+														<ul class="list-styled mb-6 mb-md-0 font-size-sm">
+															<li class="list-styled-item"><a
+																class="list-styled-link" href="#">Imperfect, I'm PERFECT!</a></li>
+															<li class="list-styled-item"><a
+																class="list-styled-link" href="/auc/now">경매 참여하기</a></li>
+														</ul>
+
+													</div>
+													
+													
+													
+													
+													<div class="col-4 d-none d-lg-block">
+
+														<!-- Card -->
+														<div class="card">
+
+															<!-- Image -->
+															<img class="card-img"
+																src=" /resources/assets/img/auction_menu.jpg"
+																alt="...">
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
-
 
 					</li>
 					<li class="nav-item dropdown">

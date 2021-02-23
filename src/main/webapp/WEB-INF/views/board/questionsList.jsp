@@ -34,7 +34,8 @@
 							<td><a class='move' href='<c:out value="${board.q_bno}"/>'>
 							<c:out value="${board.q_title}" /><b>[  <c:out value="${board.q_replyCnt}" />  ]</b></a></td>
 							<td><c:out value="${board.q_ncnm}" /></td>
-							<td><c:out value="${board.q_regdate}" /></td>			
+							<td><fmt:formatDate pattern="yyyy-MM-dd"
+										value="${board.q_regdate}" /></td>			
 						</tr>
 					</c:forEach>
 				</table>

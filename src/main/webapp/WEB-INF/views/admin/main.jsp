@@ -72,21 +72,16 @@
       </p>
 
       <!-- Links -->
-      <ul class="list-styled">
-        <li class="list-styled-item">
-          <a class="list-styled-link" href="#">메인경매관리</a>
-        </li>
-        <li class="list-styled-item">
-          <a class="list-styled-link" href="#">경매신청목록</a>
-        </li>
-        <li class="list-styled-item">
-          <a class="list-styled-link" href="#">배송관리</a>
-        </li>
-        <li class="list-styled-item">
-          <a class="list-styled-link" href="#">경매업체</a>
-        </li>
-        
-      </ul>
+		<ul class="list-styled">
+			<li class="list-styled-item"><a class="list-styled-link"
+			href="/auc/now_list">진행중인 경매관리</a></li>
+			<li class="list-styled-item"><a class="list-styled-link"
+			href="/auc/apply_list">경매신청관리</a></li>
+			<li class="list-styled-item"><a class="list-styled-link"
+			href="/auc/ship_list">배송관리</a></li>
+			<li class="list-styled-item"><a class="list-styled-link"
+			href="/ayc/com_list">경매업체관리</a></li>
+		</ul>
 
       <!-- Heading -->
       <p class="mt-7 mb-5 font-size-xxs font-weight-bold text-uppercase">

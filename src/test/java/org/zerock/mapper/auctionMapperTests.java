@@ -79,27 +79,27 @@ public class auctionMapperTests {
 //		log.info("success : " + a);
 //	}
 //	
-	@Test
-	public void testNow() {
-		
-		int test = auMapper.bidNowPrice();
-		
-		log.info("result : " + test);
-	}
-	
 //	@Test
-//	public void testPaging() {
+//	public void testNow() {
 //		
-//		Criteria cri = new Criteria();
+//		int test = auMapper.bidNowPrice();
 //		
-//		cri.setPageNum(3);
-//		cri.setAmount(10);
-//		
-//		
-//		List<aucShipVO> auc = auMapper.shipListWithPaging(cri);
-//		
-//		auc.forEach(aucc -> log.info(aucc.getA_bno()));
-//		
+//		log.info("result : " + test);
 //	}
+	
+	@Test
+	public void testPaging() {
+		
+		Criteria cri = new Criteria();
+		
+		cri.setPageNum(3);
+		cri.setAmount(10);
+		
+		
+		List<aucShipVO> auc = auMapper.shipListWithPaging(cri);
+		
+		auc.forEach(aucc -> log.info(aucc.getA_bno()));
+		
+	}
 	
 }

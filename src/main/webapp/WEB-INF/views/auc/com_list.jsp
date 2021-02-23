@@ -3,11 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%@include file="../includes/header.jsp"%>
+<%@include file="../includes/nav.jsp"%>
+
 <div class="row">
 	<div class="col-lg-12">
 		<h1 class="page-header">경매 업체 조회</h1>
@@ -89,7 +87,8 @@
 		</div>
 	</div>
 </div>
-
+</div>
+</div>
 			<form id='actionForm' action="/auc/com_list" method='get'>
 				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
@@ -149,5 +148,5 @@ var searchForm = $("#searchForm");
 
 	});
 </script>	
-</body>
-</html>
+
+<%@include file="../includes/footer.jsp"%>

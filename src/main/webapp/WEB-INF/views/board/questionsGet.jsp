@@ -46,8 +46,9 @@
 				</div>
 				
 				<div class="form-group">
-					<label>작성일</label> <input class="form-control" name='q_regdate'
-						value='<c:out value="${board.q_regdate}"/>'>
+					<label>작성일</label> 
+					<input class="form-control" name='q_regdate' value='<fmt:formatDate pattern="yyyy-MM-dd"
+							value="${board.q_regdate}" />' readonly="readonly">
 				</div>
 				
 				<button data-oper='questionsModify' class="btn btn-default">수정</button>

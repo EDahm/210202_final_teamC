@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.QuestionsBoardMapper">
+
+	<sql id="criteria">
+		<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+			<foreach item='type' collection="typeArr">
+				<trim prefix="OR">
+					<choose>
+						<when test="type == 'T'.toString()">
+							q_title like '%' || #{keyword} || '%'
+						</when>
+						<when test="type == 'C'.toString()">
+							q_content like '%' || #{keyword} || '%'
+						</when>
+						<when test="type == 'W'.toString()">
+							q_ncnm like '%' || #{keyword} || '%'
+						</when>
+					</choose>
+				</trim>
+			</foreach>
+		</trim>
+	</sql>
+
+	<select id="getList" resultType="org.zerock.domain.QuestionsBoardVO">
+		<![CDATA[
+			select * from qna_tb where q_bno > 0
+		]]>
+	</select>
+
+ 	<insert id="insert">
+		insert into qna_tb (q_bno, q_title, q_content, q_ncnm, q_regdate)
+		values (seq_qna.nextval, #{q_title}, #{q_content}, #{q_ncnm}, sysdate)
+	</insert>
+
+ 	<select id="read" resultType="org.zerock.domain.QuestionsBoardVO">
+		select * from qna_tb where q_bno = #{q_bno}
+	</select>
+	
+	<select id="getListWithPaging"
+		resultType="org.zerock.domain.QuestionsBoardVO">
+
+	<![CDATA[
+		select
+			q_bno, q_title, q_content, q_ncnm, q_regdate
+		from
+       (
+		select /*+INDEX_DESC(qna_tb pk_qna_tb) */
+			rownum rn, q_bno, q_title, q_content, q_ncnm, q_regdate
+		from qna_tb
+		where
+	]]>
+		
+	<include refid="criteria"></include>
+	
+	<![CDATA[
+		rownum <= #{pageNum} * #{amount}
+		)
+		where rn > (#{pageNum} -1) * #{amount}
+	]]>
+		
+	</select>
+
+	<select id="getTotalCount" resultType="int">
+		select count(*) 
+		from qna_tb
+		where
+	<include refid="criteria"></include>
+		q_bno > 0
+	</select>	
+	
+	<delete id="delete">
+		delete from qna_tb
+		where q_bno = #{q_bno}
+	</delete>
+	
+	<update id="update">
+	    update qna_tb
+	    set 	q_title = #{q_title},
+	    		q_content = #{q_content},
+	    		q_ncnm = #{q_ncnm},
+	    		q_regdate = sysdate
+		where q_bno = #{q_bno}
+		<!-- and pw = #{pw} -->
+	 </update>
+	 
+	 <update id="updateReplyCnt">
+		update qna_tb set q_replycnt = q_replycnt + #{amount} where q_bno = #{q_bno}
+	</update>  	
+	
+	<!-- 조회수 -->
+	<update id="getHits" parameterType="Long">
+		update qna_tb set q_hits = q_hits + 1 where q_bno = #{q_bno}
+	</update>
+	 
+</mapper>

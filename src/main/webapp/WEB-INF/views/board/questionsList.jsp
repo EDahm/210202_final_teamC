@@ -7,13 +7,16 @@
 <head>
 <link rel="icon" type="image/png" href="http://example.com/myicon.png">
 </head>
+
+
+<div class="container">
 <div class="row">
-	<div class="col-lg-12">
+	<div class="col-12 text-center">
 		<div class="panel panel-default">
-			<div class="panel-heading">QnA List Page
+			<div class="panel-heading">
+			<h3 class="mb-3">QnA 게시판</h3>
 			<button id='regBtn' type="button" class="btn btn-xs pull-right">새글 작성</button>
 			</div>
-			<!-- /.panel-heading -->
 			<div class="panel-body">
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
@@ -93,7 +96,7 @@
 	</div>
 <!-- 	/.col-lg-6 -->
 </div>
-
+</div>
 <script type="text/javascript">
 $(document).ready(function() {
 

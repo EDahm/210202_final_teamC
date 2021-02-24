@@ -300,21 +300,21 @@ $(document).ready(function() {
 		  next = true;
 		}
 		
-		var str = "<ul class='pagination pull-right'>";
+		var str = "<ul class='pagination pagination-sm text-gray-400'>";
 		
 		if(prev){
-			str+= "<li class='page-item'><a class='page-link' href='"+(startNum -1)+"'>Previous</a></li>";
+			str+= "<li class='page-item'><a class='page-link page-link-arrow' href='"+(startNum -1)+"'><i class='fa fa-caret-left'></i></a></li>";
 		}
 		
 		for(var i = startNum ; i <= endNum; i++){
 		  
 			var active = pageNum == i? "active":"";
 			
-			str+= "<li class='page-item "+active+" '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
+			str+= "<li class='page-item active"+active+" '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
 		}
 		
 		if(next){
-			str+= "<li class='page-item'><a class='page-link' href='"+(endNum + 1)+"'>Next</a></li>";
+			str+= "<li class='page-item'><a class='page-link page-link-arrow' href='"+(endNum + 1)+"'><i class='fa fa-caret-right'></i></a></li>";
 		}
 		
 		str += "</ul></div>";

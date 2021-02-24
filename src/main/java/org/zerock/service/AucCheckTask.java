@@ -16,12 +16,12 @@ public class AucCheckTask {
 	private auctionMapper aucMapper;
 		
 	
-	@Scheduled(cron="0 0 0 31 12 7")
-	public void checkBidPrice() throws Exception{
-		
-		log.warn("UPDATE BID NOW PRICE...");
-		
-		aucMapper.bidNowPrice();
-		
-	}
+//	@Scheduled(cron="0 0 0 31 12 7")
+//	public void checkBidPrice() throws Exception{
+//		
+//		log.warn("UPDATE BID NOW PRICE...");
+//		
+//		aucMapper.bidNowPrice();
+//		
+//	}
 }

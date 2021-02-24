@@ -54,7 +54,7 @@
 				<div>
 						<div>
 
-							<form id='searchForm' action="/store/list" method='get'>
+							<form id='searchForm' action="/store/listforsearch" method='get'>
 								<select name='type'>
 									<option value=""
 										<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
@@ -116,7 +116,7 @@
 					</div>
 					<!-- end Pagination -->
 
-					<form id='actionForm' action="/store/list" method='get'>
+					<form id='actionForm' action="/store/listforsearch" method='get'>
 						<input type='hidden' name='pageNum'
 							value='${pageMaker.cri.pageNum}'> <input type='hidden'
 							name='amount' value='${pageMaker.cri.amount}'> <input

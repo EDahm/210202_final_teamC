@@ -38,14 +38,14 @@
 
 			<!-- Item -->
 			<div class="w-100 bg-cover"
-				style="background-image: url(/resources/assets/img/covers/cover-23.jpg);">
+				style="background-image: url(/resources/assets/img/main2.jpg);">
 				<div class="container d-flex flex-column">
 					<div class="row align-items-center justify-content-end py-12"
 						style="min-height: 550px;">
 						<div class="col-12 col-md-6 col-lg-5 col-xl-4 offset-md-n1">
 
 							<!-- Heading -->
-							<h1 class="mb-5">Summer Collection</h1>
+							<h1 class="mb-5">일반쓰레기...? 아니 이건 재활용 되는건가!?!?!?</h1>
 
 							<!-- Text -->
 							<p class="mb-8 font-size-lg text-gray-500">So called give,

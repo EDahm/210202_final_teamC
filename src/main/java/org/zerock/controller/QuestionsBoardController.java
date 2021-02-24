@@ -25,7 +25,6 @@ public class QuestionsBoardController {
 	private QuestionsBoardService service;
 
 	@GetMapping("/questionsList")
-
 	public void list(Criteria cri, Model model) {
 		
 		log.info("questionsList: " + cri);

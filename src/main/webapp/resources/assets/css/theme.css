@@ -138,11 +138,11 @@ sup {
   top: -.5em; }
 
 a {
-  color: #ff6f61;
+  color: #000;
   text-decoration: none;
   background-color: transparent; }
   a:hover {
-    color: #ff2915;
+    color: #000;
     text-decoration: none; }
 
 a:not([href]) {
@@ -1152,24 +1152,22 @@ pre {
   color: #111; }
   .table th,
   .table td {
-    padding: 1.5rem;
+    padding: 1rem;
     vertical-align: top;
-    border-top: 1px solid #e5e5e5; }
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+     }
   .table thead th {
     vertical-align: bottom;
-    border-bottom: 2px solid #e5e5e5; }
+    border-top: 2px solid #444444; }
   .table tbody + tbody {
-    border-top: 2px solid #e5e5e5; }
+    border-top: 1px solid #e5e5e5; }
 
 .table-sm th,
 .table-sm td {
   padding: 1.25rem; }
 
-.table-bordered {
-  border: 1px solid #e5e5e5; }
-  .table-bordered th,
-  .table-bordered td {
-    border: 1px solid #e5e5e5; }
+
   .table-bordered thead th,
   .table-bordered thead td {
     border-bottom-width: 2px; }
@@ -4579,7 +4577,7 @@ button.bg-danger:focus {
   background-color: #ff412e !important; }
 
 .bg-light {
-  background-color: #f5f5f5 !important; }
+  background-color: #f5f5f5; }
 
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,
@@ -5646,7 +5644,7 @@ button.bg-dark:focus {
 
 .mb-10,
 .my-10 {
-  margin-bottom: 4rem !important; }
+  margin-bottom: 4rem; }
 
 .ml-10,
 .mx-10 {

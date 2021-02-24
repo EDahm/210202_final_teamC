@@ -89,14 +89,18 @@
 													<div class="col-6 col-md">
 
 														<!-- Heading -->
-														<div class="mb-5 font-weight-bold">Plastic Project</div>
+														<div class="mb-5 font-weight-bold">얼쑤[EARTH]좋다</div>
 
 														<!-- Links -->
 														<ul class="list-styled mb-6 mb-md-0 font-size-sm">
 															<li class="list-styled-item"><a
-																class="list-styled-link" href="/tkawy/main">플라스틱 프로젝트 소개</a></li>
+																class="list-styled-link" href="#">제로웨이스트</a></li>
 															<li class="list-styled-item"><a
-																class="list-styled-link" href="#">참여하기</a></li>
+																class="list-styled-link" href="#">얼쑤좋다 사업소개가튼거</a></li>
+															<li class="list-styled-item"><a
+																class="list-styled-link" href="/storelocation">오프라인 제로웨이스트 상점</a></li>
+															<li class="list-styled-item"><a
+																class="list-styled-link" href="#">제휴문의</a></li>
 														</ul>
 
 													</div>
@@ -309,24 +313,65 @@
 						</div>
 
 					</li>
-					<li class="nav-item dropdown">
+					
+								<li class="nav-item dropdown position-static">
 						<!-- Toggle --> <a class="nav-link" data-toggle="dropdown"
 						href="#">Board</a> <!-- Menu -->
-						<div class="dropdown-menu">
+						<div class="dropdown-menu w-100">
+								<!-- Tab content -->
 							<div class="card card-lg">
 								<div class="card-body">
-									<ul class="list-styled font-size-sm">
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/blog.html">Blog</a></li>
-										<li class="list-styled-item"><a class="list-styled-link"
-											href=" /resources/blog-post.html">Blog Post</a></li>
-									</ul>
+									<div class="tab-content">
+										<div class="tab-pane fade show active" id="navTab">
+											<div class="container">
+												<div class="row">
+													<div class="col-6 col-md">
+
+														<!-- Heading -->
+														<div class="mb-5 font-weight-bold">Board</div>
+
+														<!-- Links -->
+														<ul class="list-styled mb-6 mb-md-0 font-size-sm">
+															<li class="list-styled-item"><a
+																class="list-styled-link" href="#">Notice</a></li>
+															<li class="list-styled-item"><a
+																class="list-styled-link" href="/board/questionsList">큐앤에이</a></li>
+														</ul>
+
+													</div>
+													
+													
+													
+													
+													<div class="col-4 d-none d-lg-block">
+
+														<!-- Card -->
+														<div class="card">
+
+															<!-- Image -->
+															<img class="card-img"
+																src=" /resources/assets/img/auction_menu.jpg"
+																alt="...">
+
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 
-
 					</li>
+				
+				
+				
+				
+				
+				
+				
 				</ul>
 
 				<!-- Nav -->

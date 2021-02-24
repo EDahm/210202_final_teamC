@@ -89,14 +89,18 @@
 													<div class="col-6 col-md">
 
 														<!-- Heading -->
-														<div class="mb-5 font-weight-bold">Plastic Project</div>
+														<div class="mb-5 font-weight-bold">얼쑤[EARTH]좋다</div>
 
 														<!-- Links -->
 														<ul class="list-styled mb-6 mb-md-0 font-size-sm">
 															<li class="list-styled-item"><a
-																class="list-styled-link" href="/tkawy/main">플라스틱 프로젝트 소개</a></li>
+																class="list-styled-link" href="#">제로웨이스트</a></li>
 															<li class="list-styled-item"><a
-																class="list-styled-link" href="#">참여하기</a></li>
+																class="list-styled-link" href="#">얼쑤좋다 사업소개가튼거</a></li>
+															<li class="list-styled-item"><a
+																class="list-styled-link" href="/storelocation">오프라인 제로웨이스트 상점</a></li>
+															<li class="list-styled-item"><a
+																class="list-styled-link" href="#">제휴문의</a></li>
 														</ul>
 
 													</div>

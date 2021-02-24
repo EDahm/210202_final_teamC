@@ -153,7 +153,7 @@
 
 	<!-- Map (replace the API key to enable) -->
 	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnKt8_N4-FKOnhI_pSaDL7g_g-XI1-R9E"></script>
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQOOsu7TTfYKr4dn07EmexYx4P0PJcYLs"></script>
 
 	<!-- Theme JS -->
 	<!-- build:js /resources/assets/js/theme.min.js -->

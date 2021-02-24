@@ -16,6 +16,7 @@ public class AucCheckTask {
 	private auctionMapper aucMapper;
 		
 	
+<<<<<<< HEAD
 	/*
 	 * @Scheduled(cron="0 0 0 31 12 7") public void checkBidPrice() throws
 	 * Exception{
@@ -26,4 +27,14 @@ public class AucCheckTask {
 	 * 
 	 * }
 	 */
+=======
+//	@Scheduled(cron="0 0 0 31 12 7")
+//	public void checkBidPrice() throws Exception{
+//		
+//		log.warn("UPDATE BID NOW PRICE...");
+//		
+//		aucMapper.bidNowPrice();
+//		
+//	}
+>>>>>>> branch 'develop' of https://github.com/EDahm/210202_final_teamC.git
 }

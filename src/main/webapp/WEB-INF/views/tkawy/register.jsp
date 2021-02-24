@@ -224,7 +224,7 @@ $(function(){
 	});
 	
 function oPopupOpen() {
-	var url = "/store/list.do";
+	var url = "/store/listforsearch.do";
 	var winWidth = 1000;
 	var winHeight = 500;
 	var popupOption = "width=" + winWidth + ", height=" + winHeight;

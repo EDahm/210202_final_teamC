@@ -25,7 +25,6 @@ border-bottom : 1px solid black;
 			<div class="col-12 text-center">
 				<h3 class="mb-10">QnA 게시판</h3>
 			</div>
-
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-3">

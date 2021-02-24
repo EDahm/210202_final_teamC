@@ -30,13 +30,9 @@ border-bottom : 1px solid black;
 		<div class="row">
 			<div class="col-12 col-md-3">
 				<nav class="mb-10 mb-md-0">
-					<div
-						class="list-group list-group-sm list-group-strong list-group-flush-x">
-						<a
-							class="list-group-item list-group-item-action dropright-toggle "
-							href="#"> 공지사항 </a> <a
-							class="list-group-item list-group-item-action dropright-toggle "
-							href="/board/questionsList"> 게시판 </a>
+					<div class="list-group list-group-sm list-group-strong list-group-flush-x">
+						<a class="list-group-item list-group-item-action dropright-toggle "	href="#"> 공지사항 </a> 
+						<a class="list-group-item list-group-item-action dropright-toggle "	href="/board/questionsList"> 게시판 </a>
 					</div>
 				</nav>
 			</div>
@@ -101,7 +97,8 @@ border-bottom : 1px solid black;
 							<option value="TWC"
 								<c:out value="${pageMaker.cri.type eq 'TWC'?'selected':''}"/>>제목
 								or 내용 or 작성자</option>
-						</select> <input type='text' name='keyword'
+						</select> 
+						<input type='text' name='keyword'
 							value='<c:out value="${pageMaker.cri.keyword}"/>' /> <input
 							type='hidden' name='pageNum'
 							value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input

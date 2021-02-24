@@ -34,6 +34,12 @@ public class MainController {
 		
 	}
 	
+	@GetMapping("/storelocation")
+	public void storeLocation() {
+		
+		
+	}
+	
 	
 
 }

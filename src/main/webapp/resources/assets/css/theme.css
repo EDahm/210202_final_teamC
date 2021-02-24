@@ -4579,7 +4579,7 @@ button.bg-danger:focus {
   background-color: #ff412e !important; }
 
 .bg-light {
-  background-color: #f5f5f5 !important; }
+  background-color: #f5f5f5; }
 
 a.bg-light:hover, a.bg-light:focus,
 button.bg-light:hover,
@@ -5646,7 +5646,7 @@ button.bg-dark:focus {
 
 .mb-10,
 .my-10 {
-  margin-bottom: 4rem !important; }
+  margin-bottom: 4rem; }
 
 .ml-10,
 .mx-10 {

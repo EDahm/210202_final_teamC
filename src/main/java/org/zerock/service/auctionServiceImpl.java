@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.AucAttachVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.MemberVO;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
 import org.zerock.domain.aucComVO;
@@ -96,11 +97,10 @@ public class auctionServiceImpl implements auctionService {
 	}
 	
 	@Override
-	public auctionVO nowStateGet(String a_bno) {
-
-		log.info("Now State Get.........");
+	public aucApplyVO nowItemGet() {
+		log.info("apply infomation get....");
 		
-		return aucMapper.aucIngSel(a_bno);
+		return aucMapper.aucNowItem();
 	}
 	
 	
@@ -336,5 +336,13 @@ public class auctionServiceImpl implements auctionService {
 		log.info("get Attach list by aa_bno" + aa_bno);
 		
 		return attachMapper.findByAa_bno(aa_bno);
+	}
+	
+	@Override
+	public List<MemberVO> bidNcnmShow() {
+		
+		log.info("get Bid Nickname.........");
+				
+		return aucMapper.bidNcnm();
 	}
 }

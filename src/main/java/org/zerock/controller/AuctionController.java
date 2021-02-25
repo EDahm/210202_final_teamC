@@ -52,6 +52,7 @@ public class AuctionController {
 		model.addAttribute("now", service.nowStateList());
 		model.addAttribute("countBid", service.getCountBid(cri));
 		model.addAttribute("bestmember", service.nowBestMember());
+		model.addAttribute("apply",service.nowItemGet());
 	
 	}
 	
@@ -437,6 +438,7 @@ public class AuctionController {
 				log.info("total: "+ total);
 				
 				model.addAttribute("pageMaker", new PageDTO(cri, total));
+				model.addAttribute("bid_ncnm", service.bidNcnmShow());
 				
 				
 			}

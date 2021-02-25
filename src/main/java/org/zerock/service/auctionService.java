@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.zerock.domain.AucAttachVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.MemberVO;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
 import org.zerock.domain.aucComVO;
@@ -42,7 +43,8 @@ public interface auctionService {
 	//진행중인 경매 정보만 출력
 	public auctionVO nowStateList();
 	
-	public auctionVO nowStateGet(String a_bno);
+	public aucApplyVO nowItemGet();
+	
 	
 	
 	//신청페이지
@@ -99,6 +101,8 @@ public interface auctionService {
 	//입찰자 수 카운트
 	public int getCountBid(Criteria cri);
 	
+	//입찰자 닉네임 표시ㅠㅠ
+	public List<MemberVO> bidNcnmShow();
 	
 	
 	//업체페이지

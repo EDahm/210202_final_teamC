@@ -12,8 +12,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 댓글 등록 -->
  	<insert id="insert">
-		insert into qna_reply_tb (qr_rno, q_bno, qr_reply, qr_replyer, qr_regdate)
-		values (seq_qna_reply.nextval, #{q_bno}, #{qr_reply}, #{qr_replyer}, sysdate)
+		insert into qna_reply_tb (qr_rno, q_bno, qr_reply, qr_replyer)
+		values (seq_qna_reply.nextval, #{q_bno}, #{qr_reply}, #{qr_replyer})
 	</insert>
 
 	<!-- 댓글 1개 조회 -->
@@ -23,24 +23,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 댓글  삭제 -->
 	<delete id="delete">
-		delete from qna_reply_tb
-		where qr_rno = #{qr_rno}
+		delete from qna_reply_tb where qr_rno = #{qr_rno}
 	</delete>
 	
 	<!-- 댓글 수정 -->
 	<update id="update">
 	    update qna_reply_tb
-	    set 	qr_reply = #{qr_reply}, qr_regdate = sysdate
+	    set    qr_reply = #{qr_reply}, qr_regdate = sysdate
 		where qr_rno = #{qr_rno}
-		<!-- and pw = #{pw} -->
 	 </update>
 	 
 	<!-- 댓글 목록 가져오기 -->
-	<select id="getListWithPaging"
-		resultType="org.zerock.domain.QnaReplyVO">
+	<select id="getListWithPaging" resultType="org.zerock.domain.QnaReplyVO">
 	
 	 <![CDATA[
-	 select  qr_rno, q_bno, qr_reply, qr_reply, qr_regdate
+	 select  qr_rno, q_bno, qr_reply, qr_replyer, qr_regdate
 	 from 
 	   (
 	    select /*+INDEX(qna_reply_tb idx_reply) */ 
@@ -69,4 +66,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateReplyCnt">
 		update qna_tb set q_replyCnt = q_replyCnt + 1 where q_bno = #{q_bno}
 	</update>
+	
 </mapper>

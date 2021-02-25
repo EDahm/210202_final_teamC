@@ -34,10 +34,6 @@
 							<label>작성자</label> <input class="form-control" name='q_ncnm'>
 						</div>
 
-						<!-- <div class="form-group">
-						<label>비밀번호</label> <input class="form-control" name='pw'>
-					</div>-->
-
 						<button type="submit" class="btn btn-default">등록</button>
 					</form>
 

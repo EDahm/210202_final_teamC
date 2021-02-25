@@ -56,8 +56,11 @@ position: unset;
 						<button data-oper='questionsList' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">목록</button>
 						<button data-oper='questionsRemove' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">삭제</button>
 	
-						<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
-			    		<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+						<input type='hidden' id='q_bno' name='q_bno' value='<c:out value="${board.q_bno}"/>'> 
+						<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'> 
+						<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+						<input type='hidden' name='keyword'	value='<c:out value="${cri.keyword}"/>'>
+						<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
 					</form>
 				</div>
 			
@@ -108,42 +111,7 @@ position: unset;
 		</div>
 	</div>
 </div>
-
 </section>
-<!-- /.row -->
-<!-- <script type="text/javascript">
-
-$(document).ready(function() {
-
- 	  var formObj = $("form");
-
-	  $('button').on("click", function(e){
-	    
-		e.preventDefault();
-	    
-	    var operation = $(this).data("oper");
-	    
-	    console.log(operation);
-	    
-	    if(operation === 'remove'){
-	      formObj.attr("action", "/board/applyRemove");
-	      
-	    } else if(operation === 'list'){
-	      //move to list
-	      formObj.attr("action", "/board/applyList").attr("method","get");
-	      formObj.empty();
-	      
-		} else if(operation === 'applyModify'){
-		  formObj.attr("action", "/board/applyModify").attr("method","post");
-		  formObj.empty();
-		
-		}
-	    
-	    formObj.submit();
-	  });
-
-});
-</script> -->
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -181,7 +149,7 @@ $(document).ready(function() {
 	  
 	  
 		for (var i = 0, len = list.length || 0; i < len; i++) {
-		    str +="<li class='left clearfix' data-qr_rno='"+list[i].qr_rno+"'>";
+		    str +="<li class='left clearfix' data-rno='"+list[i].qr_rno+"'>";
 		    str +="  <div><div class='header'><strong class='primary-font'>[<span class='test'>"
 		 	   +list[i].qr_rno+"</span>] "+list[i].qr_replyer+"</strong>"; 
 		    str +="    <small class='pull-right text-muted'>"
@@ -265,24 +233,6 @@ $(document).ready(function() {
 		console.log(data);
 	});
 	
-
-	
-	
-	var operForm = $("#operForm");
-	
-	$("button[data-oper='questionsModify']").on("click", function(e) {
-		operForm.attr("action", "/board/questionsModify").submit();
-	});
-	
-	$("button[data-oper='questionsList']").on("click", function(e) {
-		operForm.find("#q_bno").remove();
-		operForm.attr("action", "/board/questionsList").attr("method","get").submit();
-	});
-	
-	$("button[data-oper='questionsRemove']").on("click", function(e){
-		operForm.attr("action", "/board/questionsRemove").submit();
-	});
-	
 	var pageNum = 1;
 	var replyPageFooter = $("#replyList");
 	
@@ -331,6 +281,7 @@ $(document).ready(function() {
 	replyPageFooter.on("click","li a", function(e){
 		
 		e.preventDefault();
+		
 		console.log("page click");
 		
 		var targetPageNum = $(this).attr("href");
@@ -341,6 +292,26 @@ $(document).ready(function() {
 		
 		showList(pageNum);
 	}); 
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+
+	var operForm = $("#operForm");
+
+	$("button[data-oper='questionsModify']").on("click", function(e) {
+		operForm.attr("action", "/board/questionsModify").submit();
+	});
+
+	$("button[data-oper='questionsList']").on("click", function(e) {
+		operForm.find("#q_bno").remove();
+		operForm.attr("action", "/board/questionsList").attr("method","get").submit();
+	});
+
+	$("button[data-oper='questionsRemove']").on("click", function(e){
+		operForm.attr("action", "/board/questionsRemove").submit();
+	});
 });
 </script>
 <%@include file="../includes/footer.jsp"%>

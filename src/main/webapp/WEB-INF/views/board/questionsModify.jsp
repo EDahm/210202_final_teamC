@@ -1,12 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
 
-<div class="row">
-   <div class="col-lg-12">
-      <h1 class="page-header">Board Read</h1>
+<div>
+   <div>
+      <h1>Board Read</h1>
    </div>
    <!-- /.col-lg-12 -->
 </div>
@@ -20,7 +19,7 @@
          <!-- /.panel-heading -->
          <div class="panel-body">
          
-         <form role="form" action="/board/modify" method="post">
+         <form role="form" action="/board/questionsModify" method="post">
          <!-- 319p 추가 -->
          <input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
          <input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
@@ -31,45 +30,45 @@
          <!-- 346p 끝 -->
          
             <div class="form-group">
-               <label>q_bno</label> 
+               <label>번호</label> 
                <input class="form-control" name='q_bno'
                value='<c:out value="${board.q_bno }"/>' readonly="readonly">
             </div>
             
             <div class="form-group">
-               <label>q_title</label> 
+               <label>제목</label> 
                <input class="form-control" name='q_title'
                value='<c:out value="${board.q_title }"/>' >
             </div>
             
             <div class="form-group">
-               <label>Text area</label>
+               <label>내용</label>
                <textarea class="form-control" rows="5" name='q_content' >
                <c:out value="${board.q_content}" /></textarea>
             </div>
             
             <div class="form-group">
-               <label>Writer</label> 
+               <label>작성자</label> 
                <input class="form-control" name='q_ncnm'
                value='<c:out value="${board.q_ncnm}"/>'
                readonly="readonly">
             </div>
             
             <div class="form-group">
-               <label>RegDate</label>
+               <label>작성날짜</label>
                <input class="form-control" name='q_regdate'
-                 value='<fmt:formatDate pattern = "yyyy/MM/dd" value = "${board.q_regdate}" />' readonly="readonly">
+                 value='<fmt:formatDate pattern = "yyyy-MM-dd" value = "${board.q_regdate}" />' readonly="readonly">
             </div>
             
             
-            <button type="submit" data-oper='modify'
-            class="btn btn-default">Modify</button>
+            <!-- <button data-oper='modify' class="btn btn-default">Modify</button>
+            <button data-oper='list' class="btn btn-info">List</button> -->
             
-            <button type="submit" data-oper='remove'
-            class="btn btn-danger">Remove</button>
+            <button type="submit" data-oper='questionsModify' class="btn btn-default">수정</button>
             
-            <button type="submit" data-oper='list'
-            class="btn btn-info">List</button>
+            <button type="submit" data-oper='questionsRemove' class="btn btn-danger">삭제</button>
+            
+            <button type="submit" data-oper='questionsList' class="btn btn-info">목록</button>
                
          </form>
          
@@ -97,7 +96,7 @@ $(document).ready(function() {
        
        console.log(operation);
        
-       if(operation === 'remove'){
+       if(operation === 'questionsRemove'){
          formObj.attr("action", "/board/questionsRemove");
          
        }else if(operation === 'list'){
@@ -116,31 +115,10 @@ $(document).ready(function() {
          formObj.append(keywordTag);
          formObj.append(typeTag);     
          
-       }else if(operation === 'modify'){
+       }else if(operation === 'questionsModify'){
            
            console.log("submit clicked");
            
            var str = "";
-           
-           $(".uploadResult ul li").each(function(i, obj){
-             
-             var jobj = $(obj);
-             
-             console.dir(jobj);
-             
-             str += "<input type='hidden' name='attachList["+i+"].fileName' value='"+jobj.data("filename")+"'>";
-             str += "<input type='hidden' name='attachList["+i+"].uuid' value='"+jobj.data("uuid")+"'>";
-             str += "<input type='hidden' name='attachList["+i+"].uploadPath' value='"+jobj.data("path")+"'>";
-             str += "<input type='hidden' name='attachList["+i+"].fileType' value='"+ jobj.data("type")+"'>";
-             
-           });
-           formObj.append(str).submit();
-        }
-    
-       formObj.submit();
-     });
-
-});
 </script>
-
 <%@include file="../includes/footer.jsp"%>

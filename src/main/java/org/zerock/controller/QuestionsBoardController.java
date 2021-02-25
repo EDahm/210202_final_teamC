@@ -82,10 +82,13 @@ public class QuestionsBoardController {
 
 	@PostMapping("/questionsRemove")
 	public String remove(@RequestParam("q_bno") Long q_bno, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		
 		log.info("questionsRemove... " + q_bno);
+		
 		if (service.remove(q_bno)) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
 		rttr.addAttribute("type", cri.getType());

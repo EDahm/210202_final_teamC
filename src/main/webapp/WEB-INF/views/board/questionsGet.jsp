@@ -18,8 +18,8 @@ position: unset;
 <section class="pt-7 pb-12">
 	<div class="container">
 		<div class="row">
-			<div class="col-12 text-left">
-				<h3 class="mb-10">Test</h3>
+			<div class="col-12 text-center">
+				<h3 class="mb-10">QnA 게시판</h3>
 			</div>
 		</div>
 		<div class="row">
@@ -32,15 +32,24 @@ position: unset;
 				</nav>		
 			</div>
 			
-			<div class="col-12 col-md-9 col-lg-8 offset-lg-1" style="border:1px solid #e5e5e5; border-radius:15px;">
-				<div class="table table-boardered table-hover" id="board2" style="font-size:0.8rem;" style="border:1px solid #e5e5e5;">
+			<div class="col-12 col-md-9 col-lg-8 offset-lg-1">
+			<button data-oper='questionsModify' class="btn btn-secondary btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin-bottom:20px;">수정</button>
+						<button data-oper='questionsList' class="btn btn-secondary btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin: 0px 10px 20px 10px;">목록</button>
+						<button data-oper='questionsRemove' class="btn btn-secondary btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin-bottom:20px;">삭제</button>
+	
+						<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+			    		<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+			    <div style = "border:1px solid #e5e5e5; border-radius:7px;">
+				<div class="table table-boardered table-hover" id="board2" style="font-size:0.8rem; padding: 0 20px;">
 					<form id='operForm' action="/board/questionsGet" method="post">
+					<div style="height: 3rem; line-height: 5rem; padding-left : 1.5rem;">
 						<a class="mmmmm" href="/board/questionsList" style="color:#28a745;">QnA게시판 ></a>
+						</div>
 						<!-- 제목 -->
 						<div class="form-group" style="margin-bottom:0;">
 							<input class="form-control" style="border:none; font-size:1.5rem; background-color:white; height:50px;"name='q_title' value='<c:out value="${board.q_title}"/>' readonly="readonly">
-							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:0.8rem;" name='q_ncnm' value='<c:out value="${board.q_ncnm}"/>' readonly="readonly">
-							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:0.3rem; border-bottom:1px solid #e5e5e5;" name='q_regdate' value='<fmt:formatDate pattern="yyyy-MM-dd" value="${board.q_regdate}" />' readonly="readonly"><br>
+							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:1rem;" name='q_ncnm' value='<c:out value="${board.q_ncnm}"/>' readonly="readonly">
+							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:2rem; padding-bottom : 1rem; font-size:0.3rem; border-bottom:1px solid #e5e5e5; color: grey;" name='q_regdate' value='<fmt:formatDate pattern="yyyy-MM-dd" value="${board.q_regdate}" />' readonly="readonly"><br>
 						</div>	
 						<!-- 내용 -->
 						<div class="form-group">
@@ -52,39 +61,23 @@ position: unset;
 							<input class="form-control" type="hidden" style="border:none;" name='q_bno' value='<c:out value="${board.q_bno}"/>' readonly="readonly">
 						</div>
 						
-						<button data-oper='questionsModify' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">수정</button>
-						<button data-oper='questionsList' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">목록</button>
-						<button data-oper='questionsRemove' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">삭제</button>
-	
-						<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
-			    		<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+						
 					</form>
-				</div>
+					</div>
+				
 			
 			<!-- /.panel-body -->
 		
-		<div class="modal">
-		
-			<div class="form-group">
-				<label>댓글</label>
-				<input class="form-control" name='qr_reply' value=''>
-			</div>
-			<div class="form-group">
-				<label>작성자</label>
-				<input class="form-control" name='qr_replyer' value=''>
-			</div>
-			
-			<button id='modalRegisterBtn' type="button" class="btn btn-primary">등록</button>
-		
-		</div>
 		
 		<!-- /.panel -->
-		<div class="panel-heading">
-			<i class="fa fa-comments fa-fw"></i> Reply
+		<div class="panel-heading" style = "padding: 1.5rem; padding-top: 0rem;">
+			<i class="fa fa-comments fa-fw"></i> 댓글
+			
 		<!-- 718p -->
 		<!-- <button id='addReplyBtn' class='btn btn-primary btn-xs pull-right'>New Reply</button> -->
 		</div>      
 		
+		<div>
 		
 		<!-- /.panel-heading -->
 		<div class="panel-body modal">        
@@ -106,8 +99,28 @@ position: unset;
 		</div>
 		<div class="panel-footer" id="replyList"></div>
 		</div>
+		</div>
+		
+		
+		<div class="modal">
+		<div>
+			<div class="form-group">
+				<label>댓글</label>
+				<input class="form-control" name='qr_reply' value=''>
+			</div>
+			<div class="form-group">
+				<label>작성자</label>
+				<input class="form-control" name='qr_replyer' value=''>
+			</div>
+			
+			<button id='modalRegisterBtn' type="button" class="btn btn-primary">등록</button>
+		</div>
+		
+		</div>
+		
 	</div>
-</div>
+		</div>
+				</div>
 
 </section>
 <!-- /.row -->

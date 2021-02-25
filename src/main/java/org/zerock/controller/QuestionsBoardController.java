@@ -46,23 +46,32 @@ public class QuestionsBoardController {
 	public String register(QuestionsBoardVO board, RedirectAttributes rttr) {
 
 		log.info("questionsRegister: " + board);
+		
 		service.register(board);
+		
 		rttr.addFlashAttribute("result", board.getQ_bno());
+		
 		return "redirect:/board/questionsList";
 	}
 	
 	@GetMapping({"/questionsGet","/questionsModify"})
 	public void get(@RequestParam("q_bno") Long q_bno, @ModelAttribute("cri") Criteria cri, Model model) {
+		
 		log.info("/questionsGet or questionsModify");
+		
+		model.addAttribute("board", service.getHits(q_bno));
 		model.addAttribute("board", service.get(q_bno));
 	}
 	
 	@PostMapping("/questionsModify")
 	public String modify(QuestionsBoardVO board, @ModelAttribute("cri") Criteria cri, RedirectAttributes rttr) {
+		
 		log.info("questionsModify:" + board);
+		
 		if (service.modify(board)) {
 			rttr.addFlashAttribute("result", "success");
 		}
+		
 		rttr.addAttribute("pageNum", cri.getPageNum());
 		rttr.addAttribute("amount", cri.getAmount());
 		rttr.addAttribute("type", cri.getType());

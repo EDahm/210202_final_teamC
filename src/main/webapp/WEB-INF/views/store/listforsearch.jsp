@@ -80,7 +80,8 @@
 
 						<c:forEach items="${listforsearch}" var="store">
 							<tr>
-								<td><c:out value="${store.t_vstng_cmpny}" /></td>
+								<td><a href="#" style="cursor: point;"><input style="border:none; background: none; color: #44A379;" name='t_vstng_cmpny'	value='<c:out value="${store.t_vstng_cmpny }" />' readonly="readonly"></a></td>
+								<td><button style="border:none; background: none;"><c:out value="${store.t_vstng_cmpny}" /></button></td>
 								<td><c:out value="${store.s_address}" /></td>
 							</tr>
 						</c:forEach>
@@ -133,56 +134,54 @@
 
 
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
+	$(document).ready(function() {
+		
+		
+	// 312p 추가
+	var actionForm = $("#actionForm");
 
+	$(".paginate_button a").on(
+			"click",
+			function(e) {
 
-						// 312p 추가
-						var actionForm = $("#actionForm");
+				e.preventDefault();
 
-						$(".paginate_button a").on(
-								"click",
-								function(e) {
+				console.log('click');
 
-									e.preventDefault();
+				actionForm.find("input[name='pageNum']")
+						.val($(this).attr("href"));
+				actionForm.submit();
+			});
+	// 312p 끝
 
-									console.log('click');
+	
 
-									actionForm.find("input[name='pageNum']")
-											.val($(this).attr("href"));
-									actionForm.submit();
-								});
-						// 312p 끝
+	var searchForm = $("#searchForm");
 
-						
+	$("#searchForm button").on(
+			"click",
+			function(e) {
 
-						var searchForm = $("#searchForm");
+				if (!searchForm.find("option:selected")
+						.val()) {
+					alert("검색종류를 선택하세요");
+					return false;
+				}
 
-						$("#searchForm button").on(
-								"click",
-								function(e) {
+				if (!searchForm.find(
+						"input[name='keyword']").val()) {
+					alert("키워드를 입력하세요");
+					return false;
+				}
 
-									if (!searchForm.find("option:selected")
-											.val()) {
-										alert("검색종류를 선택하세요");
-										return false;
-									}
+				searchForm.find("input[name='pageNum']")
+						.val("1");
+				e.preventDefault();
 
-									if (!searchForm.find(
-											"input[name='keyword']").val()) {
-										alert("키워드를 입력하세요");
-										return false;
-									}
+				searchForm.submit();
+			});
 
-									searchForm.find("input[name='pageNum']")
-											.val("1");
-									e.preventDefault();
-
-									searchForm.submit();
-								});
-
-					});
+});
 </script>
 
 

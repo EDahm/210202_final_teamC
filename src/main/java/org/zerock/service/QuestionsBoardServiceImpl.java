@@ -66,6 +66,11 @@ public class QuestionsBoardServiceImpl implements QuestionsBoardService{
 		
 		return mapper.delete(q_bno) == 1;
 	}
-
+	
+	@Override
+	public boolean getHits(Long q_bno) {
+		
+		return mapper.getHits(q_bno);
+	}
 
 }

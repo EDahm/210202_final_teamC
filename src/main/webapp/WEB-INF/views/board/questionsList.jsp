@@ -25,18 +25,13 @@ border-bottom : 1px solid black;
 			<div class="col-12 text-center">
 				<h3 class="mb-10">QnA 게시판</h3>
 			</div>
-
 		</div>
 		<div class="row">
 			<div class="col-12 col-md-3">
 				<nav class="mb-10 mb-md-0">
-					<div
-						class="list-group list-group-sm list-group-strong list-group-flush-x">
-						<a
-							class="list-group-item list-group-item-action dropright-toggle "
-							href="#"> 공지사항 </a> <a
-							class="list-group-item list-group-item-action dropright-toggle "
-							href="/board/questionsList"> 게시판 </a>
+					<div class="list-group list-group-sm list-group-strong list-group-flush-x">
+						<a class="list-group-item list-group-item-action dropright-toggle "	href="#"> 공지사항 </a> 
+						<a class="list-group-item list-group-item-action dropright-toggle "	href="/board/questionsList"> 게시판 </a>
 					</div>
 				</nav>
 			</div>
@@ -52,22 +47,18 @@ border-bottom : 1px solid black;
 							<th>작성자</th>
 							<th>작성일</th>
 							<th>조회수</th>
-							<!-- <th>수정날짜</th> -->
-							<!-- <th>비밀번호</th> -->
 						</tr>
 					</thead>
 
 					<c:forEach items="${questionsList}" var="board">
 						<tr>
 							<td><c:out value="${board.q_bno}" /></td>
+							<!-- 조회하면 이동 시 페이지 처리 -->
 							<td><a class='move' href='<c:out value="${board.q_bno}"/>'>
-									<c:out value="${board.q_title}" /><b>[ <c:out
-											value="${board.q_replyCnt}" /> ]
-								</b>
-							</a></td>
+									<c:out value="${board.q_title}" /><b>[ <c:out value="${board.q_replyCnt}" /> ]</b></a></td>
 							<td><c:out value="${board.q_ncnm}" /></td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${board.q_regdate}" /></td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.q_regdate}" /></td>
+							<td><c:out value="${board.q_hits}" /></td> <!-- 조회수  -->
 						</tr>
 					</c:forEach>
 				</table>
@@ -101,7 +92,8 @@ border-bottom : 1px solid black;
 							<option value="TWC"
 								<c:out value="${pageMaker.cri.type eq 'TWC'?'selected':''}"/>>제목
 								or 내용 or 작성자</option>
-						</select> <input type='text' name='keyword'
+						</select> 
+						<input type='text' name='keyword'
 							value='<c:out value="${pageMaker.cri.keyword}"/>' /> <input
 							type='hidden' name='pageNum'
 							value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
@@ -214,8 +206,8 @@ border-bottom : 1px solid black;
 
 									}
 
-									searchForm.find("input[name='pageNum']")
-											.val("1");
+									searchForm.find("input[name='pageNum']").val("1");
+									
 									e.preventDefault();
 
 									searchForm.submit();

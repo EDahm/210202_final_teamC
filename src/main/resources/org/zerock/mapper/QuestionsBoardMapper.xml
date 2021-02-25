@@ -23,18 +23,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</foreach>
 		</trim>
 	</sql>
-	
-	<select id="getListWithPaging"
-		resultType="org.zerock.domain.QuestionsBoardVO">
+
+	<select id="getListWithPaging" resultType="org.zerock.domain.QuestionsBoardVO">
 
 	<![CDATA[
 		select
-			q_bno, q_title, q_content, q_ncnm, q_regdate, q_replyCnt, q_hits
+			q_bno, q_title, q_content, q_ncnm, q_regdate, q_replycnt, q_hits
 		from
        (
 		select /*+INDEX_DESC(qna_tb pk_qna_tb) */
-			rownum rn, q_bno, q_title, q_content, q_ncnm, q_regdate, q_replyCnt, q_hits
-		from qna_tb
+			rownum rn, q_bno, q_title, q_content, q_ncnm, q_regdate, q_replycnt, q_hits
+		from 
+			qna_tb
 		where
 	]]>
 		
@@ -63,14 +63,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
  	<insert id="insert">
-		insert into qna_tb (q_bno, q_title, q_content, q_ncnm, q_regdate)
-		values (seq_qna.nextval, #{q_title}, #{q_content}, #{q_ncnm}, sysdate)
+		insert into qna_tb (q_bno, q_title, q_content, q_ncnm)
+		values (seq_qna.nextval, #{q_title}, #{q_content}, #{q_ncnm})
+	</insert>
+	
+	<insert id="insertSelectKey">
+
+		<selectKey keyProperty="q_bno" order="BEFORE" resultType="long">
+			select seq_qna.nextval from dual
+		</selectKey>
+
+		insert into qna_tb (q_bno,q_title,q_content, q_ncnm)
+		values (#{q_bno}, #{q_title}, #{q_content}, #{q_ncnm})
 	</insert>
 
  	<select id="read" resultType="org.zerock.domain.QuestionsBoardVO">
 		select * from qna_tb where q_bno = #{q_bno}
 	</select>
-
+	
 	<delete id="delete">
 		delete from qna_tb where q_bno = #{q_bno}
 	</delete>
@@ -82,6 +92,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    		q_ncnm = #{q_ncnm},
 	    		q_regdate = sysdate
 		where q_bno = #{q_bno}
+		<!-- and pw = #{pw} -->
 	 </update>
 	 
 	 <update id="updateReplyCnt">

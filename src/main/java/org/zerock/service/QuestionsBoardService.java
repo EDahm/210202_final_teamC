@@ -9,11 +9,11 @@ public interface QuestionsBoardService {
 
 	public void register(QuestionsBoardVO board);
 	
-	public QuestionsBoardVO get(Long ano);
+	public QuestionsBoardVO get(Long q_bno);
 	
 	public boolean modify(QuestionsBoardVO board);
 	
-	public boolean remove(Long ano);
+	public boolean remove(Long q_bno);
 	
 	public List<QuestionsBoardVO> getList(Criteria cri);
 	

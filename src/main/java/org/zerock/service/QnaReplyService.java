@@ -10,13 +10,13 @@ public interface QnaReplyService {
 
 	public int register(QnaReplyVO vo);
 	
-	public QnaReplyVO get(Long bno);
+	public QnaReplyVO get(Long qr_rno); // q_bno였음 확인
 	
 	public int modify(QnaReplyVO vo);
 	
-	public int remove(Long bno);
+	public int remove(Long qr_rno); // q_bno였음 확인
 	
-	public List<QnaReplyVO> getList(Criteria cri, Long bno);
+	public List<QnaReplyVO> getList(Criteria cri, Long q_bno);
 	
-	public ReplyPageDTO getListPage(Criteria cri, Long bno);
+	public ReplyPageDTO getListPage(Criteria cri, Long q_bno);
 }

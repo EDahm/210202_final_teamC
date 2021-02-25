@@ -2,6 +2,7 @@ package org.zerock.mapper;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -87,19 +88,32 @@ public class auctionMapperTests {
 //		log.info("result : " + test);
 //	}
 	
-	@Test
-	public void testPaging() {
-		
-		Criteria cri = new Criteria();
-		
-		cri.setPageNum(3);
-		cri.setAmount(10);
-		
-		
-		List<aucShipVO> auc = auMapper.shipListWithPaging(cri);
-		
-		auc.forEach(aucc -> log.info(aucc.getA_bno()));
-		
-	}
+//	@Test
+//	public void testPaging() {
+//		
+//		Criteria cri = new Criteria();
+//		
+//		cri.setPageNum(3);
+//		cri.setAmount(10);
+//		
+//		
+//		List<aucShipVO> auc = auMapper.shipListWithPaging(cri);
+//		
+//		auc.forEach(aucc -> log.info(aucc.getA_bno()));
+//		
+//	}
 	
+	
+	@Test
+	public void testCreate() {
+			
+			aucBidVO vo = new aucBidVO();
+			
+			vo.setA_bno("A2021-02-19-209");
+			vo.setM_num("M100002");
+			vo.setB_bid_price(500);
+			
+			auMapper.bidInsert(vo);
+
+	}
 }

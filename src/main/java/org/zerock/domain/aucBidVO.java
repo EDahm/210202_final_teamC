@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class aucBidVO {
 
+	private Long b_bno; //입찰번호
 	private String a_bno; //경매번호
 	private String m_num; //회원번호
 

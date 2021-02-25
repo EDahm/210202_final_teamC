@@ -27,6 +27,7 @@
 				<table class="table table-striped table-bordered table-hover">
 					<thead>
 						<tr>
+							<th>입찰번호</th> 
 							<th>경매번호</th> 
 							<th>회원번호</th>
 							<th>입찰가격</th>
@@ -37,6 +38,7 @@
 
 					<c:forEach items="${bid_list}" var="bid">
 						<tr>
+							<td><c:out value="${bid.b_bno}" /></td>
 							<td><c:out value="${bid.a_bno}" /></td>
 							<td><c:out value="${bid.m_num}" /></td>
 							<td><c:out value="${bid.b_bid_price}" /></td>

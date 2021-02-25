@@ -80,7 +80,7 @@
 
 						<c:forEach items="${listforsearch}" var="store">
 							<tr>
-								<td><c:out value="${store.t_vstng_cmpny}" /></td>
+								<td><button style="border:none; background: none;"><c:out value="${store.t_vstng_cmpny}" /></button></td>
 								<td><c:out value="${store.s_address}" /></td>
 							</tr>
 						</c:forEach>

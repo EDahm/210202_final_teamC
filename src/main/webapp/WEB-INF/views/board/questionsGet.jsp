@@ -8,6 +8,13 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
+<style>
+.modal {
+display: contents; 
+position: unset;
+}
+</style>
+
 <section class="pt-7 pb-12">
 	<div class="container">
 		<div class="row">
@@ -97,7 +104,7 @@
 			</ul>
 		<!-- ./ end ul -->
 		</div>
-		<div class="panel-footer"></div>
+		<div class="panel-footer" id="replyList"></div>
 		</div>
 	</div>
 </div>
@@ -277,7 +284,7 @@ $(document).ready(function() {
 	});
 	
 	var pageNum = 1;
-	var replyPageFooter = $(".panel-footer");
+	var replyPageFooter = $("#replyList");
 	
 	function showReplyPage(q_replyCnt){
 	 

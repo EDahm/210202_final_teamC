@@ -16,13 +16,6 @@ public class AucCheckTask {
 	private auctionMapper aucMapper;
 		
 	
-<<<<<<< HEAD
-//<<<<<<< HEAD
-//=======
-=======
-<<<<<<< HEAD
-=======
->>>>>>> branch 'develop' of https://github.com/EDahm/210202_final_teamC.git
 	/*
 	 * @Scheduled(cron="0 0 0 31 12 7") public void checkBidPrice() throws
 	 * Exception{
@@ -33,11 +26,6 @@ public class AucCheckTask {
 	 * 
 	 * }
 	 */
-<<<<<<< HEAD
-//>>>>>>> branch 'develop' of https://github.com/EDahm/210202_final_teamC.git
-=======
->>>>>>> branch 'develop' of https://github.com/EDahm/210202_final_teamC.git
->>>>>>> branch 'develop' of https://github.com/EDahm/210202_final_teamC.git
 //	@Scheduled(cron="0 0 0 31 12 7")
 //	public void checkBidPrice() throws Exception{
 //		

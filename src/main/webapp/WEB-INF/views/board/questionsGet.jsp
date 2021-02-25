@@ -25,34 +25,29 @@
 				</nav>		
 			</div>
 			
-			<div class="col-12 col-md-9 col-lg-8 offset-lg-1" style="border:1px solid #e5e5e5;">
+			<div class="col-12 col-md-9 col-lg-8 offset-lg-1" style="border:1px solid #e5e5e5; border-radius:15px;">
 				<div class="table table-boardered table-hover" id="board2" style="font-size:0.8rem;" style="border:1px solid #e5e5e5;">
 					<form id='operForm' action="/board/questionsGet" method="post">
-						<a class="mmmmm" href="/board/questionsList">QnA게시판 ></a>
-						<div class="form-group">
-							<input class="form-control" style="border:none; background-color:white;"name='q_title' value='<c:out value="${board.q_title}"/>' readonly="readonly">
-						</div>
-				
-						<!-- 작성자, 작성날짜 -->
-						<div class="form-group">
-							<input class="form-control" style="border:none;" name='q_ncnm' value='<c:out value="${board.q_ncnm}"/>' readonly="readonly">
-							<input class="form-control" style="border:none;" name='q_regdate' value='<fmt:formatDate pattern="yyyy-MM-dd"
-									value="${board.q_regdate}" />' readonly="readonly">
-						</div>
-						
+						<a class="mmmmm" href="/board/questionsList" style="color:#28a745;">QnA게시판 ></a>
+						<!-- 제목 -->
+						<div class="form-group" style="margin-bottom:0;">
+							<input class="form-control" style="border:none; font-size:1.5rem; background-color:white; height:50px;"name='q_title' value='<c:out value="${board.q_title}"/>' readonly="readonly">
+							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:0.8rem;" name='q_ncnm' value='<c:out value="${board.q_ncnm}"/>' readonly="readonly">
+							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:0.3rem; border-bottom:1px solid #e5e5e5;" name='q_regdate' value='<fmt:formatDate pattern="yyyy-MM-dd" value="${board.q_regdate}" />' readonly="readonly"><br>
+						</div>	
 						<!-- 내용 -->
 						<div class="form-group">
-							<input class="form-control" style="border:none;" name='q_content' value='<c:out value="${board.q_content}"/>' readonly="readonly">
+							<input class="form-control" style="border:none; background:white; border-bottom:1px solid #e5e5e5; height:200px; font-size:1rem;" name='q_content' value='<c:out value="${board.q_content}"/>' readonly="readonly">
 						</div>
 					
 						<!-- 게시글 번호 hidden -->
 						<div class="form-group"> 
 							<input class="form-control" type="hidden" style="border:none;" name='q_bno' value='<c:out value="${board.q_bno}"/>' readonly="readonly">
 						</div>
-					
-						<button data-oper='questionsModify' class="btn btn-default">수정</button>
-						<button data-oper='questionsList' class="btn btn-info">목록</button>
-						<button data-oper='questionsRemove' class="btn btn-default">삭제</button>
+						
+						<button data-oper='questionsModify' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">수정</button>
+						<button data-oper='questionsList' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">목록</button>
+						<button data-oper='questionsRemove' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">삭제</button>
 	
 						<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
 			    		<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>

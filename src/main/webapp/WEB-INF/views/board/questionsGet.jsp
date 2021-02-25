@@ -47,15 +47,11 @@ position: unset;
 						</div>
 						<!-- 제목 -->
 						<div class="form-group" style="margin-bottom:0;">
-<<<<<<< HEAD
-							<input class="form-control" style="border:none; font-size:1.5rem; background-color:white; height:50px;" name='q_title' value='<c:out value="${board.q_title}"/>' readonly="readonly">
-							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:0.8rem;" name='q_ncnm' value='<c:out value="${board.q_ncnm}"/>' readonly="readonly">
-							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:0.3rem; border-bottom:1px solid #e5e5e5;" name='q_regdate' value='<fmt:formatDate pattern="yyyy/MM/dd" value="${board.q_regdate}" />' readonly="readonly"><br>
-=======
+
 							<input class="form-control" style="border:none; font-size:1.5rem; background-color:white; height:50px;"name='q_title' value='<c:out value="${board.q_title}"/>' readonly="readonly">
 							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:1rem;" name='q_ncnm' value='<c:out value="${board.q_ncnm}"/>' readonly="readonly">
-							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:2rem; padding-bottom : 1rem; font-size:0.3rem; border-bottom:1px solid #e5e5e5; color: grey;" name='q_regdate' value='<fmt:formatDate pattern="yyyy-MM-dd" value="${board.q_regdate}" />' readonly="readonly"><br>
->>>>>>> branch 'develop' of https://github.com/EDahm/210202_final_teamC.git
+							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:2rem; padding-bottom : 1rem; font-size:0.3rem; border-bottom:1px solid #e5e5e5; color: grey;" name='q_regdate' value='<fmt:formatDate pattern="yyyy/MM/dd" value="${board.q_regdate}" />' readonly="readonly"><br>
+
 						</div>	
 						<!-- 내용 -->
 						<div class="form-group">
@@ -66,8 +62,7 @@ position: unset;
 						<div class="form-group"> 
 							<input class="form-control" type="hidden" style="border:none;" name='q_bno' value='<c:out value="${board.q_bno}"/>' readonly="readonly">
 						</div>
-						
-<<<<<<< HEAD
+
 						<button data-oper='questionsModify' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">수정</button>
 						<button data-oper='questionsList' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">목록</button>
 						<button data-oper='questionsRemove' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">삭제</button>

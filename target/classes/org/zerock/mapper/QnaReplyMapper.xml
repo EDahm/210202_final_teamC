@@ -4,26 +4,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.QnaReplyMapper">
 
-<select id="getList" resultType="org.zerock.domain.QnaReplyVO">
-	<![CDATA[
-		select * from qna_reply_tb where q_bno > 0
-	]]>
-</select>
-
+	<select id="getList" resultType="org.zerock.domain.QnaReplyVO">
+		<![CDATA[
+			select * from qna_reply_tb where q_bno > 0
+		]]>
+	</select>
+	
+	<!-- 댓글 등록 -->
  	<insert id="insert">
 		insert into qna_reply_tb (qr_rno, q_bno, qr_reply, qr_replyer, qr_regdate)
 		values (seq_qna_reply.nextval, #{q_bno}, #{qr_reply}, #{qr_replyer}, sysdate)
 	</insert>
 
+	<!-- 댓글 1개 조회 -->
  	<select id="read" resultType="org.zerock.domain.QnaReplyVO">
 		select * from qna_reply_tb where qr_rno = #{qr_rno}
 	</select>
 	
+	<!-- 댓글  삭제 -->
 	<delete id="delete">
 		delete from qna_reply_tb
 		where qr_rno = #{qr_rno}
 	</delete>
 	
+	<!-- 댓글 수정 -->
 	<update id="update">
 	    update qna_reply_tb
 	    set 	qr_reply = #{qr_reply}, qr_regdate = sysdate
@@ -31,6 +35,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- and pw = #{pw} -->
 	 </update>
 	 
+	<!-- 댓글 목록 가져오기 -->
 	<select id="getListWithPaging"
 		resultType="org.zerock.domain.QnaReplyVO">
 	
@@ -48,6 +53,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	]]>
 	</select>
 	
+	<!-- 댓글 총 개수 가져오기(페이징) -->
 	<select id="getCountByBno" resultType="int">
 	<![CDATA[
 		select count(qr_rno) from qna_reply_tb where q_bno = #{q_bno}

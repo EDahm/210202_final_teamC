@@ -29,11 +29,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<![CDATA[
 		select
-			q_bno, q_title, q_content, q_ncnm, q_regdate
+			q_bno, q_title, q_content, q_ncnm, q_regdate, q_replyCnt, q_hits
 		from
        (
 		select /*+INDEX_DESC(qna_tb pk_qna_tb) */
-			rownum rn, q_bno, q_title, q_content, q_ncnm, q_regdate
+			rownum rn, q_bno, q_title, q_content, q_ncnm, q_regdate, q_replyCnt, q_hits
 		from qna_tb
 		where
 	]]>

@@ -23,21 +23,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</foreach>
 		</trim>
 	</sql>
-
-	<select id="getList" resultType="org.zerock.domain.QuestionsBoardVO">
-		<![CDATA[
-			select * from qna_tb where q_bno > 0
-		]]>
-	</select>
-
- 	<insert id="insert">
-		insert into qna_tb (q_bno, q_title, q_content, q_ncnm, q_regdate)
-		values (seq_qna.nextval, #{q_title}, #{q_content}, #{q_ncnm}, sysdate)
-	</insert>
-
- 	<select id="read" resultType="org.zerock.domain.QuestionsBoardVO">
-		select * from qna_tb where q_bno = #{q_bno}
-	</select>
 	
 	<select id="getListWithPaging"
 		resultType="org.zerock.domain.QuestionsBoardVO">
@@ -62,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	]]>
 		
 	</select>
-
+	
 	<select id="getTotalCount" resultType="int">
 		select count(*) 
 		from qna_tb
@@ -71,9 +56,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		q_bno > 0
 	</select>	
 	
+	<select id="getList" resultType="org.zerock.domain.QuestionsBoardVO">
+		<![CDATA[
+			select * from qna_tb where q_bno > 0
+		]]>
+	</select>
+
+ 	<insert id="insert">
+		insert into qna_tb (q_bno, q_title, q_content, q_ncnm, q_regdate)
+		values (seq_qna.nextval, #{q_title}, #{q_content}, #{q_ncnm}, sysdate)
+	</insert>
+
+ 	<select id="read" resultType="org.zerock.domain.QuestionsBoardVO">
+		select * from qna_tb where q_bno = #{q_bno}
+	</select>
+
 	<delete id="delete">
-		delete from qna_tb
-		where q_bno = #{q_bno}
+		delete from qna_tb where q_bno = #{q_bno}
 	</delete>
 	
 	<update id="update">
@@ -83,7 +82,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    		q_ncnm = #{q_ncnm},
 	    		q_regdate = sysdate
 		where q_bno = #{q_bno}
-		<!-- and pw = #{pw} -->
 	 </update>
 	 
 	 <update id="updateReplyCnt">

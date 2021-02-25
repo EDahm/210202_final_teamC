@@ -12,12 +12,12 @@ import lombok.extern.log4j.Log4j;
 @Component
 public class AucCheckTask {
 
-//	@Setter(onMethod_ = @Autowired)
-//	private auctionMapper aucMapper;
+	@Setter(onMethod_ = @Autowired)
+	private auctionMapper aucMapper;
 		
 	
-<<<<<<< HEAD
-=======
+//<<<<<<< HEAD
+//=======
 	/*
 	 * @Scheduled(cron="0 0 0 31 12 7") public void checkBidPrice() throws
 	 * Exception{
@@ -28,7 +28,7 @@ public class AucCheckTask {
 	 * 
 	 * }
 	 */
->>>>>>> branch 'develop' of https://github.com/EDahm/210202_final_teamC.git
+//>>>>>>> branch 'develop' of https://github.com/EDahm/210202_final_teamC.git
 //	@Scheduled(cron="0 0 0 31 12 7")
 //	public void checkBidPrice() throws Exception{
 //		

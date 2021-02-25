@@ -54,4 +54,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	]]>
 	</select>
 	 
+	 <!-- qna_tb의 q_replyCnt 구하기 -->
+	<select id="getReplyCount" resultType="int">
+		select q_replyCnt from qna_tb where q_bno = #{q_bno}
+	</select>
+	 
+	  <!-- 댓글 등록 시 댓글 수 +1-->
+	<update id="updateReplyCnt">
+		update qna_tb set q_replyCnt = q_replyCnt + 1 where q_bno = #{q_bno}
+	</update>
 </mapper>

@@ -47,22 +47,18 @@ border-bottom : 1px solid black;
 							<th>작성자</th>
 							<th>작성일</th>
 							<th>조회수</th>
-							<!-- <th>수정날짜</th> -->
-							<!-- <th>비밀번호</th> -->
 						</tr>
 					</thead>
 
 					<c:forEach items="${questionsList}" var="board">
 						<tr>
 							<td><c:out value="${board.q_bno}" /></td>
+							<!-- 조회하면 이동 시 페이지 처리 -->
 							<td><a class='move' href='<c:out value="${board.q_bno}"/>'>
-									<c:out value="${board.q_title}" /><b>[ <c:out
-											value="${board.q_replyCnt}" /> ]
-								</b>
-							</a></td>
+									<c:out value="${board.q_title}" /><b>[ <c:out value="${board.q_replyCnt}" /> ]</b></a></td>
 							<td><c:out value="${board.q_ncnm}" /></td>
-							<td><fmt:formatDate pattern="yyyy-MM-dd"
-									value="${board.q_regdate}" /></td>
+							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.q_regdate}" /></td>
+							<td><c:out value="${board.q_hits}" /></td> <!-- 조회수  -->
 						</tr>
 					</c:forEach>
 				</table>
@@ -210,8 +206,8 @@ border-bottom : 1px solid black;
 
 									}
 
-									searchForm.find("input[name='pageNum']")
-											.val("1");
+									searchForm.find("input[name='pageNum']").val("1");
+									
 									e.preventDefault();
 
 									searchForm.submit();

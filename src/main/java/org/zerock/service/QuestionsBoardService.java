@@ -18,4 +18,6 @@ public interface QuestionsBoardService {
 	public List<QuestionsBoardVO> getList(Criteria cri);
 	
 	public int getTotal(Criteria cri);
+	
+	public boolean getHits(Long q_bno);
 }

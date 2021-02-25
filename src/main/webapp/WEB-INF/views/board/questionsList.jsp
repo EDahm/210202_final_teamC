@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -7,17 +6,6 @@
 <head>
 <link rel="icon" type="image/png" href="http://example.com/myicon.png">
 </head>
-
-
-<!-- <style>
-#board1{
-border-top : 1px solid black;
-border-bottom : 1px solid black;
-}
-.table th, .table td {
-	border-bottom: 1px solid #444444;
-}
-</style> -->
 
 <section class="pt-7 pb-12">
 	<div class="container">
@@ -72,33 +60,19 @@ border-bottom : 1px solid black;
 
 				<!-- <화면에서 검색 조건 처리> -->
 				<div class="col-auto">
-					<form id='searchForm' style="text-align: center;"
-						action="/board/questionsList" method='get'>
+					<form id='searchForm' style="text-align: center;" action="/board/questionsList" method='get'>
 						<select name='type'>
-							<option value=""
-								<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
-							<option value="T"
-								<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
-							<option value="C"
-								<c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>내용</option>
-							<option value="W"
-								<c:out value="${pageMaker.cri.type eq 'W'?'selected':''}"/>>작성자</option>
-							<option value="TC"
-								<c:out value="${pageMaker.cri.type eq 'TC'?'selected':''}"/>>제목
-								or 내용</option>
-							<option value="TW"
-								<c:out value="${pageMaker.cri.type eq 'TW'?'selected':''}"/>>제목
-								or 작성자</option>
-							<option value="TWC"
-								<c:out value="${pageMaker.cri.type eq 'TWC'?'selected':''}"/>>제목
-								or 내용 or 작성자</option>
+							<option value="" <c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
+							<option value="T" <c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>제목</option>
+							<option value="C" <c:out value="${pageMaker.cri.type eq 'C'?'selected':''}"/>>내용</option>
+							<option value="W" <c:out value="${pageMaker.cri.type eq 'W'?'selected':''}"/>>작성자</option>
+							<option value="TC" <c:out value="${pageMaker.cri.type eq 'TC'?'selected':''}"/>>제목 or 내용</option>
+							<option value="TW" <c:out value="${pageMaker.cri.type eq 'TW'?'selected':''}"/>>제목	or 작성자</option>
+							<option value="TWC" <c:out value="${pageMaker.cri.type eq 'TWC'?'selected':''}"/>>제목 or 내용 or 작성자</option>
 						</select> 
-						<input type='text' name='keyword'
-							value='<c:out value="${pageMaker.cri.keyword}"/>' /> <input
-							type='hidden' name='pageNum'
-							value='<c:out value="${pageMaker.cri.pageNum}"/>' /> <input
-							type='hidden' name='amount'
-							value='<c:out value="${pageMaker.cri.amount}"/>' />
+						<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>' /> 
+						<input type='hidden' name='pageNum'	value='<c:out value="${pageMaker.cri.pageNum}"/>' /> 
+						<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>' />
 						<button class="btn btn-default" style="padding: 0.5rem;">
 							<i class="fas fa-search"></i> 검색
 						</button>

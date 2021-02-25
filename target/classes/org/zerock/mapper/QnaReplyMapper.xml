@@ -12,8 +12,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 댓글 등록 -->
  	<insert id="insert">
-		insert into qna_reply_tb (qr_rno, q_bno, qr_reply, qr_replyer)
-		values (seq_qna_reply.nextval, #{q_bno}, #{qr_reply}, #{qr_replyer})
+		insert into qna_reply_tb (qr_rno, q_bno, qr_reply, qr_replyer, qr_regdate)
+		values (seq_qna_reply.nextval, #{q_bno}, #{qr_reply}, #{qr_replyer}, sysdate)
 	</insert>
 
 	<!-- 댓글 1개 조회 -->

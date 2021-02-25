@@ -38,9 +38,9 @@ position: unset;
 						<a class="mmmmm" href="/board/questionsList" style="color:#28a745;">QnA게시판 ></a>
 						<!-- 제목 -->
 						<div class="form-group" style="margin-bottom:0;">
-							<input class="form-control" style="border:none; font-size:1.5rem; background-color:white; height:50px;"name='q_title' value='<c:out value="${board.q_title}"/>' readonly="readonly">
+							<input class="form-control" style="border:none; font-size:1.5rem; background-color:white; height:50px;" name='q_title' value='<c:out value="${board.q_title}"/>' readonly="readonly">
 							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:0.8rem;" name='q_ncnm' value='<c:out value="${board.q_ncnm}"/>' readonly="readonly">
-							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:0.3rem; border-bottom:1px solid #e5e5e5;" name='q_regdate' value='<fmt:formatDate pattern="yyyy-MM-dd" value="${board.q_regdate}" />' readonly="readonly"><br>
+							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:0.3rem; border-bottom:1px solid #e5e5e5;" name='q_regdate' value='<fmt:formatDate pattern="yyyy/MM/dd" value="${board.q_regdate}" />' readonly="readonly"><br>
 						</div>	
 						<!-- 내용 -->
 						<div class="form-group">
@@ -149,7 +149,7 @@ $(document).ready(function() {
 	  
 	  
 		for (var i = 0, len = list.length || 0; i < len; i++) {
-		    str +="<li class='left clearfix' data-rno='"+list[i].qr_rno+"'>";
+		    str +="<li class='left clearfix' data-qr_rno='"+list[i].qr_rno+"'>";
 		    str +="  <div><div class='header'><strong class='primary-font'>[<span class='test'>"
 		 	   +list[i].qr_rno+"</span>] "+list[i].qr_replyer+"</strong>"; 
 		    str +="    <small class='pull-right text-muted'>"

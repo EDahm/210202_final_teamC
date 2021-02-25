@@ -64,11 +64,11 @@
             <!-- <button data-oper='modify' class="btn btn-default">Modify</button>
             <button data-oper='list' class="btn btn-info">List</button> -->
             
-            <button type="submit" data-oper='questionsModify' class="btn btn-default">수정</button>
+            <button type="submit" data-oper='modify' class="btn btn-default">수정</button>
             
-            <button type="submit" data-oper='questionsRemove' class="btn btn-danger">삭제</button>
+            <button type="submit" data-oper='remove' class="btn btn-danger">삭제</button>
             
-            <button type="submit" data-oper='questionsList' class="btn btn-info">목록</button>
+            <button type="submit" data-oper='list' class="btn btn-info">목록</button>
                
          </form>
          
@@ -96,7 +96,7 @@ $(document).ready(function() {
        
        console.log(operation);
        
-       if(operation === 'questionsRemove'){
+       if(operation === 'remove'){
          formObj.attr("action", "/board/questionsRemove");
          
        }else if(operation === 'list'){
@@ -115,7 +115,7 @@ $(document).ready(function() {
          formObj.append(keywordTag);
          formObj.append(typeTag);     
          
-       }else if(operation === 'questionsModify'){
+       }else if(operation === 'modify'){
            
            console.log("submit clicked");
            

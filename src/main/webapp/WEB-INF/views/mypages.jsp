@@ -66,7 +66,7 @@
 											href="#"> 플라스틱 수거 예약내역 </a></li>
 
 										<li class="list-styled-item"><a class="list-styled-link"
-											href="#"> 경매 참여내역 </a></li>
+											href="/auc/myAuction"> 경매 참여내역 </a></li>
 									</ul>
 								</div>
 							</div>

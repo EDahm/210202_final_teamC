@@ -38,7 +38,12 @@
 				</div>
 				<div>
 					<label>배송현황</label>				
-					<input name="s_shpng_stts" value='<c:out value="${shipget.s_shpng_stts}"/>' >
+					<input id="shpng_stts" type="hidden">
+					<select id="s_shpng_stts" name="s_shpng_stts">
+						<option value="배송준비중" selected="selected">배송준비중</option>
+						<option value="배송진행중">배송진행중</option>
+						<option value="배송완료">배송완료</option>
+					</select>
 				</div>
 				
 				<button type="submit" data-oper='ship_mod'>수정</button>
@@ -50,6 +55,15 @@
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	$('select[name=s_shpng_stts]').change(function(){
+		if($(this).val()=="준비중"){
+			$('#shpng_stts').val("준비중");
+		} else {
+			$('#shpng_stts').val($(this).val());
+		}
+		
+	});
 	
 	var formObj = $("form");
 	

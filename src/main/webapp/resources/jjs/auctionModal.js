@@ -50,7 +50,7 @@ var BidService = (function(){
 	$.getJSON("/bid/pages/" + a_bno + "/" + page + ".json",
 		function(data){
 			if(callback){
-			callback(data);
+			callback(data.bidCnt, data.bid_list);
 			}
 		}).fail(function(xhr,status,err){
 		if(error){
@@ -58,9 +58,27 @@ var BidService = (function(){
 			}
 		});
 		}
+		
+	function bidMember(m_num, callback, error){
+	
+		$.get("/bid/" + m_num + ".json", function(result){
+		
+			if(callback){
+				callback(result);
+			}
+			
+		}).fail(function(xhr, status, err){
+			if(error){
+				error();
+			}
+		});	
+	}
+	
 			return {
 	 		bidAdd : bidAdd,
 	 		bidRemove : bidRemove,
-	 		bidList : bidList
+	 		bidList : bidList,
+	 		bidMember : bidMember
 	 		};
+	 
 })();

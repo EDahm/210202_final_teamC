@@ -438,7 +438,6 @@ public class AuctionController {
 				log.info("total: "+ total);
 				
 				model.addAttribute("pageMaker", new PageDTO(cri, total));
-				model.addAttribute("bid_ncnm", service.bidNcnmShow());
 				
 				
 			}
@@ -452,6 +451,21 @@ public class AuctionController {
 				service.nowPrice();
 				
 			}
-	
+			
+			//입찰정보 전체 조회(마이페이지)
+			@GetMapping("/myAuction")
+			public void myAucList(Criteria cri, Model model) {
+				
+				model.addAttribute("myAuclist", service.myAucList(cri));
+				
+				int total = service.getTotalBid(cri);
+				
+				log.info("total: "+ total);
+				
+				model.addAttribute("pageMaker", new PageDTO(cri, total));
+				
+				
+			}
+
 			
 }

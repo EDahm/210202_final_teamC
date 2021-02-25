@@ -104,23 +104,31 @@ public class auctionMapperTests {
 //	}
 	
 	
-	@Test
-	public void testCreate() {
-			
-			aucBidVO vo = new aucBidVO();
-			
-			vo.setA_bno("A2021-02-19-209");
-			vo.setM_num("M111111");
-			vo.setB_bid_price(1300);
-			
-			int count = auMapper.bidInsert(vo);
-			
-			log.info("BID INSERT : " + count);
-
-	}
+//	@Test
+//	public void testCreate() {
+//			
+//			aucBidVO vo = new aucBidVO();
+//			
+//			vo.setA_bno("A2021-02-19-209");
+//			vo.setM_num("M111111");
+//			vo.setB_bid_price(1300);
+//			
+//			int count = auMapper.bidInsert(vo);
+//			
+//			log.info("BID INSERT : " + count);
+//
+//	}
 	
 //	@Test
 //	public void testBidList() {
 //		auMapper.bidNcnm().forEach(auc -> log.info(auc));
 //	}
+	
+	@Test
+	public void testBidMember() {
+		
+		String result = auMapper.bidNcnm("M100281");
+		
+		log.info(result);
+	}
 }

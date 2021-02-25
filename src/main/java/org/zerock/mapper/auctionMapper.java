@@ -61,6 +61,11 @@ public interface auctionMapper {
 	public auctionVO aucIngSel(String a_bno);
 	public aucApplyVO aucNowItem();
 	
+	//진행중인 경매 입찰내역 조회
+	public List<aucBidVO> getBidListPaging(@Param("cri") Criteria cri, @Param("a_bno") String a_bno);
+	
+	public int getCountByAbno(String a_bno);
+	
 	
 	
 	//배송정보 등록 m
@@ -104,7 +109,8 @@ public interface auctionMapper {
 	
 	//경매 현재가를 입찰한 회원 닉네임 가져오기 m
 	public String bidNowMember();
-	public List<MemberVO> bidNcnm();
+	
+	public String bidNcnm(String m_num);
 	
 	
 	
@@ -135,7 +141,14 @@ public interface auctionMapper {
 	public int getTotalCountCom(Criteria cri);
 	////입찰 조회페이지
 	public int getTotalCountBid(Criteria cri);
+	////마이페이지-조회페이지
+	public int getTotalCountmyBid(Criteria cri);
 	
 	//입찰자 수 카운트
 	public int getCountBid(Criteria cri);
+	
+	//내 참여내역 리스트 출력
+	public List<aucBidVO> myAucList();
+	public List<aucBidVO> myAucListWithPaging(Criteria cri);
+
 }

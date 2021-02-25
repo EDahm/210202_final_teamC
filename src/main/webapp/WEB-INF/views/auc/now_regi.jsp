@@ -40,7 +40,13 @@
 				</div>
 				<div>
 					<label>경매상태</label>
-					<input name="a_state">
+					<input name="state" type="hidden">
+					<select id="a_state" name="a_state">
+						<option value="준비중" selected="selected">준비중</option>
+						<option value="경매종료">종료</option>
+						<option value="진행중">진행중</option>
+						<option value="유찰">유찰</option>
+					</select>
 				</div>
 				<div>
 					<label>진행기간</label>
@@ -56,6 +62,19 @@
 	
 </div>
 </div>
-			
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$('select[name=a_state]').change(function(){
+		if($(this).val()=="준비중"){
+			$('#state').val("준비중");
+		} else {
+			$('#state').val($(this).val());
+		}
+		
+	});
+});
+</script>			
 
 <%@include file="../includes/footer.jsp"%>

@@ -81,6 +81,7 @@
 						<c:forEach items="${listforsearch}" var="store">
 							<tr>
 								<td><a href="#" style="cursor: point;"><input style="border:none; background: none; color: #44A379;" name='t_vstng_cmpny'	value='<c:out value="${store.t_vstng_cmpny }" />' readonly="readonly"></a></td>
+								<td><button style="border:none; background: none;"><c:out value="${store.t_vstng_cmpny}" /></button></td>
 								<td><c:out value="${store.s_address}" /></td>
 							</tr>
 						</c:forEach>

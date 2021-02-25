@@ -12,8 +12,8 @@ import lombok.extern.log4j.Log4j;
 @Component
 public class AucCheckTask {
 
-//	@Setter(onMethod_ = @Autowired)
-//	private auctionMapper aucMapper;
+	@Setter(onMethod_ = @Autowired)
+	private auctionMapper aucMapper;
 		
 	
 	/*

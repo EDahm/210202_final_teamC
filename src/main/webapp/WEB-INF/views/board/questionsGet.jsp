@@ -2,66 +2,67 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
-
+<%@include file="../includes/header.jsp"%>
 <head>
 <script type="text/javascript" src="/resources/jjs/reply.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">QnA Read</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">QnA Read Page</div>
-			<!-- /.panel-heading -->
-			<div class="panel-body">
-				
-			<form id='operForm' action="/board/questionsGet" method="post">	
-				<div class="form-group">
-					<label>게시글 번호</label> <input class="form-control" name='q_bno'
-						value='<c:out value="${board.q_bno}"/>' readonly="readonly">
-				</div>
+<style>
+.modal {
+display: contents; 
+position: unset;
+}
+</style>
 
-				<div class="form-group">
-					<label>제목</label> 
-					<input class="form-control" name='q_title'
-						value='<c:out value="${board.q_title}"/>' readonly="readonly">
-				</div>
-
-				<div class="form-group">
-					<label>내용</label> <input class="form-control" name='q_content'
-						value='<c:out value="${board.q_content}"/>'>
-				</div>
-
-				<div class="form-group">
-					<label>작성자</label> <input class="form-control" name='q_ncnm'
-						value='<c:out value="${board.q_ncnm}"/>'>
-				</div>
-				
-				<div class="form-group">
-					<label>작성일</label> 
-					<input class="form-control" name='q_regdate' value='<fmt:formatDate pattern="yyyy-MM-dd"
-							value="${board.q_regdate}" />' readonly="readonly">
-				</div>
-				
-				<button data-oper='questionsModify' class="btn btn-default">수정</button>
-				<button data-oper='questionsList' class="btn btn-info">목록</button>
-				<button data-oper='questionsRemove' class="btn btn-default">삭제</button>
-
-				<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
-			    <input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
-			</form>
-				
+<section class="pt-7 pb-12">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 text-left">
+				<h3 class="mb-10">Test</h3>
 			</div>
-			<!-- /.panel-body -->
 		</div>
+		<div class="row">
+			<div class="col-12 col-md-3">
+				<nav class="mb-10 mb-md-0">
+					<div class="list-group list-group-sm list-group-strong list-group-flush-x">
+						<a class="list-group-item list-group-item-action dropright-toggle "	href="#">공지사항 </a> 
+						<a class="list-group-item list-group-item-action dropright-toggle "	href="/board/questionsList">게시판 </a>
+					</div>
+				</nav>		
+			</div>
+			
+			<div class="col-12 col-md-9 col-lg-8 offset-lg-1" style="border:1px solid #e5e5e5; border-radius:15px;">
+				<div class="table table-boardered table-hover" id="board2" style="font-size:0.8rem;" style="border:1px solid #e5e5e5;">
+					<form id='operForm' action="/board/questionsGet" method="post">
+						<a class="mmmmm" href="/board/questionsList" style="color:#28a745;">QnA게시판 ></a>
+						<!-- 제목 -->
+						<div class="form-group" style="margin-bottom:0;">
+							<input class="form-control" style="border:none; font-size:1.5rem; background-color:white; height:50px;"name='q_title' value='<c:out value="${board.q_title}"/>' readonly="readonly">
+							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:0.8rem;" name='q_ncnm' value='<c:out value="${board.q_ncnm}"/>' readonly="readonly">
+							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:0.3rem; border-bottom:1px solid #e5e5e5;" name='q_regdate' value='<fmt:formatDate pattern="yyyy-MM-dd" value="${board.q_regdate}" />' readonly="readonly"><br>
+						</div>	
+						<!-- 내용 -->
+						<div class="form-group">
+							<input class="form-control" style="border:none; background:white; border-bottom:1px solid #e5e5e5; height:200px; font-size:1rem;" name='q_content' value='<c:out value="${board.q_content}"/>' readonly="readonly">
+						</div>
+					
+						<!-- 게시글 번호 hidden -->
+						<div class="form-group"> 
+							<input class="form-control" type="hidden" style="border:none;" name='q_bno' value='<c:out value="${board.q_bno}"/>' readonly="readonly">
+						</div>
+						
+						<button data-oper='questionsModify' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">수정</button>
+						<button data-oper='questionsList' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">목록</button>
+						<button data-oper='questionsRemove' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">삭제</button>
+	
+						<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+			    		<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+					</form>
+				</div>
+			
+			<!-- /.panel-body -->
+		
 		<div class="modal">
 		
 			<div class="form-group">
@@ -100,14 +101,15 @@
 					</div>
 				</li>
 			<!-- End reply -->
-			
 			</ul>
 		<!-- ./ end ul -->
 		</div>
-		<div class="panel-footer"></div>
+		<div class="panel-footer" id="replyList"></div>
+		</div>
 	</div>
-	<!-- /.col-lg-6 -->
 </div>
+
+</section>
 <!-- /.row -->
 <!-- <script type="text/javascript">
 
@@ -282,7 +284,7 @@ $(document).ready(function() {
 	});
 	
 	var pageNum = 1;
-	var replyPageFooter = $(".panel-footer");
+	var replyPageFooter = $("#replyList");
 	
 	function showReplyPage(q_replyCnt){
 	 
@@ -341,3 +343,4 @@ $(document).ready(function() {
 	}); 
 });
 </script>
+<%@include file="../includes/footer.jsp"%>

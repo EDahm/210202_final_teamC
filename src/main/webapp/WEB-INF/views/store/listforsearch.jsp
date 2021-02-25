@@ -56,12 +56,10 @@
 
 							<form id='searchForm' action="/store/listforsearch" method='get'>
 								<select name='type'>
-									<option value=""
-										<c:out value="${pageMaker.cri.type == null?'selected':''}"/>>--</option>
+									<option value="A"
+										<c:out value="${pageMaker.cri.type eq 'A'?'selected':''}"/>>지역명</option>
 									<option value="T"
 										<c:out value="${pageMaker.cri.type eq 'T'?'selected':''}"/>>업체명</option>
-									<option value="A"
-										<c:out value="${pageMaker.cri.type eq 'A'?'selected':''}"/>>업체주소</option>
 								</select> <input type='text' name='keyword'
 									value='<c:out value="${pageMaker.cri.keyword}"/>' /> <input
 									type='hidden' name='pageNum'

@@ -40,7 +40,9 @@ public interface auctionService {
 	public boolean nowStateUp(String a_bno, String a_state);
 	
 	//진행중인 경매 정보만 출력
-	public List<auctionVO> nowStateList();
+	public auctionVO nowStateList();
+	
+	public auctionVO nowStateGet(String a_bno);
 	
 	
 	//신청페이지
@@ -83,10 +85,13 @@ public interface auctionService {
 	//입찰페이지
 	
 	//입찰하기+포인트적립
-	public void bidInsPoint(aucBidVO aucbidvo);
+	public int bidInsPoint(aucBidVO aucbidvo);
 	
 	//입찰정보 삭제
-	public boolean bidRemove(@Param("m_num") String m_num, @Param("b_bid_price") int b_bid_price) throws Exception;
+	public int bidRemove(Long b_bno);
+	
+	//입찰정보 조회
+	public aucBidVO bidGet(Long b_bno);
 	
 	//입찰정보 전체 조회
 	public List<aucBidVO> bidGetList(Criteria cri);

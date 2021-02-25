@@ -217,6 +217,7 @@ return false;
 $(function(){
 
 	  $('#searchCmpny').click(function(event) {
+		  event.preventDefault();
 		  oPopupOpen();
 	  });
 	  

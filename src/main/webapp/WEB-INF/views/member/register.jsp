@@ -17,69 +17,80 @@ background-color:white;
 }
 
 .correct{
-color : green;
+color : grey;
 }
 
 .incorrect{
-color : red;
+color : grey;
 }
 
 #final_mail_ck{
+color : #ff7052;
 display: none;
 }
 
 #final_pw_ck{
+color : #ff7052;
 display: none;
 }
 
 #final_pwck_ck{
+color : #ff7052;
 display: none;
 }
 
 #final_name_ck{
+color : #ff7052;
 display: none;
 }
 
 #final_ncnm_ck{
+color : #ff7052;
 display: none;
 }
 
 #final_contact_ck{
+color : #ff7052;
 display: none;
 }
 
 /* 중복아이디 존재하지 않는 경우 */
 #id_input_re_1{
-color : green;
+color : grey;
 display : none;
 }
 
 /* 중복아이디 존재하는 경우 */
 #id_input_re_2{
-color : red;
+color : grey;
 display : none;
 }
 
 /* 중복아이디 존재하지 않는 경우 */
 #ncnm_input_re_1{
-color : green;
+color : grey;
 display : none;
 }
 
 /* 중복아이디 존재하는 경우 */
 #ncnm_input_re_2{
-color : red;
+color : grey;
 display : none;
 }
 
 /* 비밀번호 확인 일치 유효성 검사 */
 #pwck_input_re_1{
-color : green;
+color : grey;
 display : none;
 }
 
 #pwck_input_re_2{
-color : red;
+color : grey;
+display : none;
+}
+
+#ncnm_type_ck{
+color : grey;
 display : none;
 }
 
@@ -89,8 +100,8 @@ background : #44A379;
 color : white;
 text-align : center;
 height: calc(1.5rem + 1.75rem + 2px);
-vertical-align: middle;
 cursor: pointer;
+line-height: calc(1.5rem + 1.75rem + 2px)
 
 </style>
 <!-- BREADCRUMB -->
@@ -182,10 +193,11 @@ cursor: pointer;
 							<div class="form-group">
 								<label>닉네임 *</label> <input
 									class="form-control form-control-sm" name='m_ncnm'
-									placeholder="닉네임을 입력하세요" id="ncnm_input"> <span
+									placeholder="닉네임을 입력하세요(2자 이상 20자 이내, 특수문자 입력 불가)" id="ncnm_input"> <span
 									id="final_ncnm_ck">닉네임을 입력해주세요.</span> <span
 									id="ncnm_input_re_1">사용 가능한 닉네임입니다.</span> <span
 									id="ncnm_input_re_2">이미 존재하는 닉네임입니다.</span>
+									<span id="ncnm_type_ck">한글,영문,숫자로 이루어진 2~20자의 닉네임을 입력해주세요.</span>
 							</div>
 						</div>
 						<div class="col-12">
@@ -277,12 +289,31 @@ cursor: pointer;
 	            nameCheck = true;
 	        }
 	        
+	        var specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
+	        
 	        /* 닉네임 유효성 검사 */
 	        if(ncnm == ""){
-	            $('#final_ncnm_ck').css('display','block');
+	        	$('#ncnm_input_re_1').css("display", "none");
+	        	$('#final_ncnm_ck').css('display','block');
 	            ncnmCheck = false;
+	        }else if(ncnm.search(/\s/) != -1) { 
+	        	$('#ncnm_input_re_1').css("display", "none");
+	        	$('#ncnm_type_ck').css('display','block');
+	        	alert("닉네임은 빈 칸을 포함 할 수 없습니다."); //닉네임 한글 1~10자, 영문 및 숫자 2~20자 
+	        	ncnmCheck = false;
+	        }else if (ncnm.length<2 || ncnm.length>20) {
+	        	$('#ncnm_input_re_1').css("display", "none");
+	        	$('#ncnm_type_ck').css('display','block');	        	
+	        	alert("2~20자의 닉네임만 가능합니다."); 
+	        	ncnmCheck = false;
+	        }else if (specialCheck.test(ncnm)) { 
+	        	$('#ncnm_input_re_1').css("display", "none");
+	        	$('#ncnm_type_ck').css('display','block');
+	        	alert("닉네임은 특수문자를 포함 할 수 없습니다.");
+	        	ncnmCheck = false;
 	        }else{
-	            $('#final_ncnm_ck').css('display', 'none');
+	        	$('#ncnm_type_ck').css('display','none');
+	        	$('#final_ncnm_ck').css('display', 'none');
 	            ncnmCheck = true;
 	        }
 	        
@@ -413,6 +444,7 @@ cursor: pointer;
 				success : function(result){
 					//console.log("성공여부" + result);
 					if(result != 'fail'){
+						$('#ncnm_type_ck').css('display','none');
 						$('#ncnm_input_re_1').css("display","inline-block"); 
 						$('#ncnm_input_re_2').css("display", "none"); 
 						ncnmckCheck = true;

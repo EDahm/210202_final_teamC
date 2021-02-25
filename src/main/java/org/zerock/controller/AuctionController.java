@@ -12,9 +12,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -49,6 +52,7 @@ public class AuctionController {
 		model.addAttribute("now", service.nowStateList());
 		model.addAttribute("countBid", service.getCountBid(cri));
 		model.addAttribute("bestmember", service.nowBestMember());
+	
 	}
 	
 	//경매 전체 조회
@@ -436,40 +440,7 @@ public class AuctionController {
 				
 				
 			}
-			
-			
-			//입찰정보 등록+적립
-			@PostMapping("/bid_regi")
-			public String aucBidRegi(aucBidVO aucbidvo, RedirectAttributes rttr) {
-				
-				log.info("register: " + aucbidvo);
-				
-				service.bidInsPoint(aucbidvo);
-				
-				rttr.addFlashAttribute("result", aucbidvo.getB_bid_price());
-				
-				return "redirect:/auc/now";
-			}
-			
-			//입찰정보 삭제
-			@PostMapping("/bid_rem")
-			public String bidRemove(@RequestParam("m_num") String m_num, @Param("b_bid_price") int b_bid_price, @ModelAttribute Criteria cri, RedirectAttributes rttr) throws Exception {
-				
-				log.info("remove..." + m_num + " : " + b_bid_price);
-				
-				if(service.bidRemove(m_num, b_bid_price)) {
-					rttr.addFlashAttribute("result","success");
-				}
-				
-				rttr.addAttribute("pageNum", cri.getPageNum());
-				rttr.addAttribute("amount", cri.getAmount());
-				rttr.addAttribute("type", cri.getType());
-				rttr.addAttribute("keyword", cri.getKeyword());
-				
-				return "redirect:/auc/bid_list";
-				
-			}
-			
+
 			//입찰정보 현재 최고가 갱신
 			@GetMapping("/bid_now")
 			public void bidNowPrice() {

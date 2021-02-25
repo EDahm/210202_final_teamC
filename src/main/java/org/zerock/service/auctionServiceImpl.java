@@ -95,6 +95,15 @@ public class auctionServiceImpl implements auctionService {
 		return aucMapper.aucStaUpdate(a_bno, a_state) == 1;
 	}
 	
+	@Override
+	public auctionVO nowStateGet(String a_bno) {
+
+		log.info("Now State Get.........");
+		
+		return aucMapper.aucIngSel(a_bno);
+	}
+	
+	
 	@Transactional
 	@Override
 	public void applyIns(aucApplyVO aucapplyvo) {
@@ -204,21 +213,29 @@ public class auctionServiceImpl implements auctionService {
 	}
 	
 	@Override
-	public void bidInsPoint(aucBidVO aucbidvo) {
+	public int bidInsPoint(aucBidVO aucbidvo) {
 
 		log.info("BID INSERT WITH POINT ...... ");
 		
-		aucMapper.bidInsert(aucbidvo);
+		return aucMapper.bidInsert(aucbidvo);
 		
 		
 	}
 	
 	@Override
-	public boolean bidRemove(@Param("m_num") String m_num, @Param("b_bid_price") int b_bid_price) throws Exception {
+	public aucBidVO bidGet(Long b_bno) {
+		
+		log.info("Bid Get");
+		
+		return aucMapper.bidRead(b_bno);
+	}
+	
+	@Override
+	public int bidRemove(Long b_bno) {
 
 		log.info("BID REMOVE......");
 		
-		return aucMapper.bidDelete(m_num, b_bid_price) == 1;
+		return aucMapper.bidDelete(b_bno);
 				
 	}
 	
@@ -277,7 +294,7 @@ public class auctionServiceImpl implements auctionService {
 	}
 	
 	@Override
-	public List<auctionVO> nowStateList() {
+	public auctionVO nowStateList() {
 		log.info("AUCTION NOW ING GET....");
 		
 		return aucMapper.aucIng();

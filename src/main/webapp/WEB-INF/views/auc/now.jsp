@@ -35,10 +35,10 @@
                         	</div>
                         </div>
 						<div>
-						<c:forEach items="${now}" var="now">                    
+						            
                         	<div>
                         		<div>현재가</div>
-                        			<div><fmt:formatNumber value="${now.a_crnt_prc}"/> 원 </div>
+                        		<div><fmt:formatNumber value="${now.a_crnt_prc}"/> 원 </div>
                         		<div>현재입찰자</div>
                         			<div>님</div>
                         	</div>
@@ -48,35 +48,71 @@
 		                        <div>바로 구매하기</div>
                         			<div><fmt:formatNumber value="${now.a_wnng_prc}"/> 원 </div>
                         	</div>
-                        <form role="form" action="/auc/bid_regi" method="post">
-                        <input name="a_bno" value='<c:out value="${now.a_bno}"/>' readonly="readonly">
-                        <input name="m_num" value="M100009" readonly="readonly">
-                        <input name="b_bid_price">
-                        <input type="hidden" name="b_bid_time">
-                        <input type="hidden" name="b_bid_state">
-                        <button data-oper='bid_regi'>입찰하기</button>
-                        </form>
-                        <button id="checkout">바로 구매하기</button>
-                        </c:forEach>
+                        
+                        <button id="checkout" name="ship_regi" value="${now.a_bno}">바로 구매하기</button>
                         </div>
-                       	 <ul>
-                        	    <li><b>원산지</b> <span>용암동 혜윤하우스</span></li>
-                            	<li><b>배송</b> <span>2~3일 소요 <samp>직접 수령 가능</samp></span></li>
-                            	<li><b>중량</b> <span>10 kg</span></li>
-                        </ul>
                     </div>
                 </div>
-  
                         </div>
                     </div>         
     </section>
     
     <!-- Product Details Section End -->
-    
+ <div>
+ 	<div>
+ 		<div>
+ 			<div>
+				입찰 참가 내역 출력 
+				<button type="button" id="bid_regi" value="${now.a_bno}">나도 입찰하기</button> 			
+ 			</div>
+ 			
+ 			<div>
+ 				<ul class="joinBid">
+ 					<li class="left clearfix" data-rno='12'>
+ 						<div>
+ 							<div class="header">
+ 								<strong>닉네임</strong>
+ 								<small>입찰시간</small>
+ 							</div>
+ 							<p>700원 입찰했어요!</p>
+ 						</div>
+ 					</li>
+ 				</ul>
+			</div> 				
+ 		</div>		
+ 	</div>
+
+                <!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog">
+
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 id="modal-title" class="modal-title"></h4>
+			</div>
+			<div class="modal-body">
+				<table class="table">
+					<tr>
+						<td>입찰금액</td>
+						<td><input class="form-control" id="b_bid_price" type="text"></td>
+						<td><input type="hidden" value="M100002" id="m_num"></td>
+					</tr>				
+				</table>
+			</div>
+			<div class="modal-footer">
+				<button id="modalRegisterBtn" type="button" class="btn btn-warning">submit</button>
+				<button id="modalCloseBtn" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
   </div>
  </div>     
         
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="/resources/jjs/auctionModal.js"></script>
 <script>
 function remaindTime() {
     var now = new Date(); //현재시간을 구한다. 
@@ -133,13 +169,64 @@ function remaindTime() {
 </script>
 <script>
 $(document).ready(function(){
+
+var a_bnoValue = '<c:out value= "${now.a_bno}"/>';
+var bidUL = $(".joinBid");
+
+	showList(1);
 	
-	$("#checkout").on("click",function(e){
+	function showList(page){
+		
+		BidService.bidList({ a_bno : a_bnoValue, page : page || 1}, function(bid_list){
+				var str = "";
+			if(bid_list == null || bid_list.length == 0){
+				bidUL.html("");
+				
+				return;
+			}
+			for(var i = 0, len = bid_list.length || 0; i < len; i++){
+				str += "<li data-rno=''"+bid_list[i].b_bno+"'>";
+				str += " <div><div><strong>"+bid_list[i].m_num+"</strong>";
+				str += " <small>" + bid_list[i].b_bid_time+"</small></div>";
+				str += " <p>"+bid_list[i].b_bid_price+"</p></div></li>";
+			}
+			
+			bidUL.html(str);
+			
+		});
+		}
+	
+	var modal = $(".modal");
+	var modalInputReply = modal.find("input[name='b_bid_price']");
+	
+	var modalRegisterBtn = $("#modalRegisterBtn");
+	var modalRemoveBtn = $("#modalRemoveBtn");
+	
+	$("#bid_regi").on("click", function(e){
+		
+		modal.find("input").val("");
+		modal.find("button[id !='modalCloseBtn']").hide();
+		
+		modalRegisterBtn.show();
+		
+		$(".modal").modal("show");
+		
+		});
+	
+	});
+</script>
+<script>
+$(document).ready(function(){
+	
+	$("#checkout").on("click",function(e){ //바로 구매하기 관련(confirm 필요)
 		
 		e.preventDefault();
 		
 		self.location = "/auc/ship_regi"
 	});
+	
+	  
 });
 </script>
+
 <%@include file="../includes/footer.jsp"%>

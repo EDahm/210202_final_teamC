@@ -42,7 +42,7 @@ public interface auctionMapper {
 	public List<auctionVO> aucListWithPaging(Criteria cri);
 	
 	//경매 진행 단일 조회 m
-	public auctionVO aucSelect(String aa_bno);
+	public auctionVO aucSelect(String a_bno);
 	
 	//경매 진행 수정 m
 	public int aucUpdate(auctionVO auctionvo);
@@ -51,10 +51,13 @@ public interface auctionMapper {
 	public int aucStaUpdate(String a_bno, String a_state);
 	
 	//경매 진행 정보 삭제 m
-	public int aucDelete(String aa_bno);
+	public int aucDelete(String a_bno);
 	
 	//진행중인 경매 정보만 출력
-	public List<auctionVO> aucIng();
+	public auctionVO aucIng();
+	
+	//진행중인 경매 정보 조회
+	public auctionVO aucIngSel(String a_bno);
 	
 	
 	
@@ -80,15 +83,19 @@ public interface auctionMapper {
 	
 	
 	//입찰하기+포인트적립(2점씩) m
-	public void bidInsert(aucBidVO aucbidvo);
+	public int bidInsert(aucBidVO aucbidvo);
+	
+	//입찰정보 조회
+	public aucBidVO bidRead(Long b_bno);
+	
 	
 	//입찰정보 삭제 m
-	public int bidDelete(@Param("m_num") String m_num, @Param("b_bid_price") int b_bid_price) 
-	throws Exception;
+	public int bidDelete(Long b_bno); 
 	
 	//입찰정보 전체 조회 m
 	public List<aucBidVO> bidList();	
 	public List<aucBidVO> bidListWithPaging(Criteria cri);	
+	
 	
 	//경매 현재가 수정 m
 	public int bidNowPrice();

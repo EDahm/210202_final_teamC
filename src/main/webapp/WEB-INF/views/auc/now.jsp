@@ -12,78 +12,80 @@
 				<div class="row">
 					<div class="col-12 col-md-6">
 
+						<!-- 이미지부분 -->
 						<div class="card">
 							<div class="mb-4">
 								<img src='/resources/img/fruit_mikan_set.png' />
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 col-md-6 pl-lg-10">
-				<div>
-					<h3 class="mb-2">
-						<c:out value="${apply.aa_item_nm}" />
-					</h3>
-					<div>
-						<div>
-							<span>입찰 수</span> <span><c:out value="${countBid}" />명</span>
-						</div>
-						<div>
-							<p class="time-title">경매 마감까지 남은 시간</p>
-							<div class="time font40">
-								<span class="hours"></span> <span class="col">:</span> <span
-									class="minutes"></span> <span class="col">:</span> <span
-									class="seconds"></span>
-							</div>
-						</div>
-					</div>
-					<div>
-
-						<div>
-							<div>현재가</div>
-							<div>
-								<fmt:formatNumber value="${now.a_crnt_prc}" />
-								원
-							</div>
-							<div>현재입찰자</div>
-							<div>
-								<c:out value="${bestmember}" />
-								님
-							</div>
-						</div>
-						<div>
-							<div>시작가</div>
-							<div>
-								<fmt:formatNumber value="${now.a_versifier}" />
-								원
-							</div>
-							<div>바로 구매하기</div>
-							<div>
-								<fmt:formatNumber value="${now.a_wnng_prc}" />
-								원
-							</div>
-						</div>
-						<button data-oper='ship_regi' 
-						onclick="location.href='/auc/ship_regi?a_bno=<c:out value="${now.a_bno}"/>&c_num=<c:out value="${apply.c_num}"/>'">바로 구매하기</button>
+						<!-- 이미지부분 끝 -->
 					</div>
 
-					<div>
-						<ul>
-							<li><b>중량</b> <span><c:out value="${apply.aa_weight}" /></span></li>
-							<li><b>원산지</b> <span><c:out
-										value="${apply.aa_cntry_orgn}" /></span></li>
-							<li><b>배송</b> <span>수령까지 2~3일 정도 예상 <samp>직접
-										수령 가능!!</samp></span></li>
-							<li><b>Share on</b>
-								<div class="share">
-									<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-										class="fa fa-twitter"></i></a> <a href="#"><i
-										class="fa fa-instagram"></i></a> <a href="#"><i
-										class="fa fa-pinterest"></i></a>
-								</div></li>
-						</ul>
+					<div class="col-12 col-md-6 pl-lg-10">
+						<div class="itemname">
+							<h3 class="mb-2"><c:out value="${apply.aa_item_nm}" /></h3>
+							<div class="nowstyle1">
+								<div class="countstyle">
+									<span>입찰 수</span> <span><c:out value="${countBid}" />명</span>
+								</div>
+								<div class="timestyle">
+									<p class="time-title">경매 마감까지 남은 시간</p>
+									<div class="time font40">
+										<span class="hours"></span> <span class="col">:</span> <span
+											class="minutes"></span> <span class="col">:</span> <span
+											class="seconds"></span>
+									</div>
+								</div>
+							</div>
+							<div>
+
+								<div>
+									<div>현재가</div>
+									<div>
+										<fmt:formatNumber value="${now.a_crnt_prc}" />
+										원
+									</div>
+									<div>현재입찰자</div>
+									<div>
+										<c:out value="${bestmember}" />
+										님
+									</div>
+								</div>
+								<div>
+									<div>시작가</div>
+									<div>
+										<fmt:formatNumber value="${now.a_versifier}" />
+										원
+									</div>
+									<div>바로 구매하기</div>
+									<div>
+										<fmt:formatNumber value="${now.a_wnng_prc}" />
+										원
+									</div>
+								</div>
+								<button data-oper='ship_regi'
+									onclick="location.href='/auc/ship_regi?a_bno=<c:out value="${now.a_bno}"/>&c_num=<c:out value="${apply.c_num}"/>'">바로
+									구매하기</button>
+							</div>
+
+							<div>
+								<ul>
+									<li><b>중량</b> <span><c:out
+												value="${apply.aa_weight}" /></span></li>
+									<li><b>원산지</b> <span><c:out
+												value="${apply.aa_cntry_orgn}" /></span></li>
+									<li><b>배송</b> <span>수령까지 2~3일 정도 예상 <samp>직접
+												수령 가능!!</samp></span></li>
+									<li><b>Share on</b>
+										<div class="share">
+											<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
+												class="fa fa-twitter"></i></a> <a href="#"><i
+												class="fa fa-instagram"></i></a> <a href="#"><i
+												class="fa fa-pinterest"></i></a>
+										</div></li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -94,61 +96,67 @@
 <!-- Product Details Section End -->
 <div class="container">
 	<div class="row">
-	<div class="col-12">
-				<div class="row">
-					<div class="col-12 col-md-6">
-		<div>
-			<div>
-				입찰 참가 내역 출력
-				<button type="button" id="bid_regi" value="${now.a_bno}">나도
-					입찰하기</button>
-			</div>
+		<div class="col-12">
+			<div class="row">
+				<div class="col-12 col-md-6">
+					<div>
+						<div>
+							입찰 참가 내역 출력
+							<button type="button" id="bid_regi" value="${now.a_bno}">나도
+								입찰하기</button>
+						</div>
 
-			<div>
-			</div>
-			<div class="panel-body">
-				<ul class="joinBid">
-				</ul>
-			</div>
-			<div class="panel-footer">
-			
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" role="dialog">
-		<div class="modal-dialog">
-
-			<!-- Modal content-->
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 id="modal-title" class="modal-title"></h4>
-				</div>
-				<div class="modal-body">
-					<table class="table">
-						<tr>
-							<td>입찰금액</td>
-							<td><input class="form-control" name="b_bid_price"
-								type="text"></td>
-							<td><input class="form-control" name="m_num"></td>
-						</tr>
-					</table>
-				</div>
-				<div class="modal-footer">
-					<button id="modalRegisterBtn" type="button" class="btn btn-warning">submit</button>
-					<button id="modalCloseBtn" type="button" class="btn btn-default"
-						data-dismiss="modal">Close</button>
+						<div></div>
+						<div class="panel-body">
+							<ul class="joinBid">
+							</ul>
+						</div>
+						<div class="panel-footer"></div>
+					</div>
 				</div>
 			</div>
 		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" role="dialog">
+			<div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 id="modal-title" class="modal-title"></h4>
+					</div>
+					<div class="modal-body">
+						<table class="table">
+							<tr>
+								<td>입찰금액</td>
+								<td><input class="form-control" name="b_bid_price"
+									type="text"></td>
+								<td><input class="form-control" name="m_num"></td>
+							</tr>
+						</table>
+					</div>
+					<div class="modal-footer">
+						<button id="modalRegisterBtn" type="button"
+							class="btn btn-warning">submit</button>
+						<button id="modalCloseBtn" type="button" class="btn btn-default"
+							data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
-
 </div>
-</div>
+<style>
+.timestyle{
+	display : flex;
+}
 
+.nowstyle1{
+	display : flex;
+}
+</style>
 <script type="text/javascript" src="/resources/jjs/auctionModal.js"></script>
 <script>
 function remaindTime() {

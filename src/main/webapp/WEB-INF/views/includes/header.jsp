@@ -94,7 +94,7 @@
 														<!-- Links -->
 														<ul class="list-styled mb-6 mb-md-0 font-size-sm">
 															<li class="list-styled-item"><a
-																class="list-styled-link" href="#">제로웨이스트</a></li>
+																class="list-styled-link" href="/about_zerowaste">제로웨이스트</a></li>
 															<li class="list-styled-item"><a
 																class="list-styled-link" href="#">얼쑤좋다 사업소개가튼거</a></li>
 															<li class="list-styled-item"><a

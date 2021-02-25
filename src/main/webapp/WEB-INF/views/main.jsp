@@ -27,7 +27,7 @@
 							<h5 class="mt-n4 mb-8">지구를 살리는 제로웨이스트를 소개합니다</h5>
 
 							<!-- Button -->
-							<a class="btn btn-dark" href="#"> With us! <i
+							<a class="btn btn-dark" href="/about_zerowaste"> With us! <i
 								class="fe fe-arrow-right ml-2"></i>
 							</a>
 
@@ -39,6 +39,26 @@
 			<!-- Item -->
 			<div class="w-100 bg-cover"
 				style="background-image: url(/resources/assets/img/main2.jpg);">
+				<div class="container d-flex flex-column">
+					<div class="row align-items-center justify-content-end py-12"
+						style="min-height: 550px;">
+						<div class="col-12 col-md-6 col-lg-5 col-xl-4 offset-md-n1"><a href = "#" style="cursor : point;">
+
+							<!-- Heading -->
+							<h1 class="mb-5">플라스틱 빨대, 아직도 재활용 하시나요?</h1>
+
+							<!-- Text -->
+							<p class="mb-8 font-size-lg text-gray-500">햇반 용기, 플라스틱 빨대, 영수증 종이 등 재활용 여부 알아보기</p>
+							
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Item -->
+			<div class="w-100 bg-cover"
+				style="background-image: url(/resources/assets/img/main3.jpg);">
 				<div class="container d-flex flex-column">
 					<div class="row align-items-center justify-content-end py-12"
 						style="min-height: 550px;">
@@ -57,34 +77,6 @@
 								class="fe fe-arrow-right ml-2"></i>
 							</a>
 
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Item -->
-			<div class="w-100 bg-cover"
-				style="background-image: url(/resources/assets/img/covers/cover-16.jpg);">
-				<div class="bg-dark-20">
-					<div class="container d-flex flex-column">
-						<div class="row align-items-center justify-content-end"
-							style="min-height: 550px;">
-							<div class="col-12 text-center text-white">
-
-								<!-- Preheading -->
-								<h4 class="mb-0">Summer Styles</h4>
-
-								<!-- Heading -->
-								<h1 class="display-1">50% OFF</h1>
-
-								<!-- Links -->
-								<p class="mb-0">
-									<a href="shop.html" class="link-underline text-reset mx-4 my-4">Shop
-										Women</a> <a href="shop.html"
-										class="link-underline text-reset mx-4 my-4">Shop Men</a>
-								</p>
-
-							</div>
 						</div>
 					</div>
 				</div>

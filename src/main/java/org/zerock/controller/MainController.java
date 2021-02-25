@@ -40,6 +40,13 @@ public class MainController {
 		
 	}
 	
+
+	@GetMapping("/about_zerowaste")
+	public void about_zerowaste() {
+		
+		
+	}
+	
 	
 
 }

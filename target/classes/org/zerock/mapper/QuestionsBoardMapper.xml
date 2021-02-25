@@ -28,11 +28,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<![CDATA[
 		select
-			q_bno, q_title, q_content, q_ncnm, q_regdate, q_replyCnt, q_hits
+			q_bno, q_title, q_content, q_ncnm, q_regdate, q_replycnt, q_hits
 		from
        (
 		select /*+INDEX_DESC(qna_tb pk_qna_tb) */
-			rownum rn, q_bno, q_title, q_content, q_ncnm, q_regdate, q_replyCnt, q_hits
+			rownum rn, q_bno, q_title, q_content, q_ncnm, q_regdate, q_replycnt, q_hits
 		from 
 			qna_tb
 		where
@@ -96,7 +96,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 </update>
 	 
 	 <update id="updateReplyCnt">
-		update qna_tb set q_replyCnt = q_replyCnt + #{amount} where q_bno = #{q_bno}
+		update qna_tb set q_replycnt = q_replycnt + #{amount} where q_bno = #{q_bno}
 	</update>  	
 	
 	<!-- 조회수 -->

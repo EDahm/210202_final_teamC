@@ -17,7 +17,7 @@
                 </div>
                 <div>
                     <div>    
-                        <h3>물품명</h3>
+                        <h3><c:out value="${apply.aa_item_nm}"/></h3>
                         <div>
 	                        <div>
     	                       <span>입찰 수</span>
@@ -40,7 +40,7 @@
                         		<div>현재가</div>
                         		<div><fmt:formatNumber value="${now.a_crnt_prc}"/> 원 </div>
                         		<div>현재입찰자</div>
-                        			<div>님</div>
+                        			<div><c:out value="${bestmember}"/>님</div>
                         	</div>
 	                        <div>
     		                    <div>시작가</div>
@@ -49,8 +49,24 @@
                         			<div><fmt:formatNumber value="${now.a_wnng_prc}"/> 원 </div>
                         	</div>
                         
-                        <button id="checkout" name="ship_regi" value="${now.a_bno}">바로 구매하기</button>
+                        <button id="checkout" value="${now.a_bno}">바로 구매하기</button>
                         </div>
+                        
+                        	<div>
+                        		 <ul>
+                           			 <li><b>중량</b> <span><c:out value="${apply.aa_weight}"/></span></li>
+                            		 <li><b>원산지</b> <span><c:out value="${apply.aa_cntry_orgn}"/></span></li>
+		                             <li><b>배송</b> <span>수령까지 2~3일 정도 예상  <samp>직접 수령 가능!!</samp></span></li>
+                            <li><b>Share on</b>
+                                <div class="share">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-instagram"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                </div>
+                            </li>
+                        </ul>               	
+                        	</div>
                     </div>
                 </div>
                         </div>
@@ -72,6 +88,7 @@
  						<div>
  							<div class="header">
  								<strong>닉네임</strong>
+ 								<button type="button" id="bid_rem" value="${now.a_bno}" class="btn btn-xs btn-danger">입찰 취소</button>
  								<small>입찰시간</small>
  							</div>
  							<p>700원 입찰했어요!</p>
@@ -96,8 +113,8 @@
 				<table class="table">
 					<tr>
 						<td>입찰금액</td>
-						<td><input class="form-control" id="b_bid_price" type="text"></td>
-						<td><input type="hidden" value="M100002" id="m_num"></td>
+						<td><input class="form-control" name="b_bid_price" type="text"></td>
+						<td><input class="form-control" name="m_num"></td>
 					</tr>				
 				</table>
 			</div>
@@ -170,8 +187,8 @@ function remaindTime() {
 <script>
 $(document).ready(function(){
 
-var a_bnoValue = '<c:out value= "${now.a_bno}"/>';
-var bidUL = $(".joinBid");
+	var a_bnoValue = '<c:out value= "${now.a_bno}"/>';
+	var bidUL = $(".joinBid");
 
 	showList(1);
 	
@@ -185,10 +202,10 @@ var bidUL = $(".joinBid");
 				return;
 			}
 			for(var i = 0, len = bid_list.length || 0; i < len; i++){
-				str += "<li data-rno=''"+bid_list[i].b_bno+"'>";
-				str += " <div><div><strong>"+bid_list[i].m_num+"</strong>";
+				str += "<li data-rno='"+bid_list[i].b_bno+"'>";
+				str += " <div><div><strong>"+bid_list[i].m_num+"님이</strong>";
 				str += " <small>" + bid_list[i].b_bid_time+"</small></div>";
-				str += " <p>"+bid_list[i].b_bid_price+"</p></div></li>";
+				str += " <p>"+bid_list[i].b_bid_price+"원 입찰했어요!</p></div></li>";
 			}
 			
 			bidUL.html(str);
@@ -197,7 +214,8 @@ var bidUL = $(".joinBid");
 		}
 	
 	var modal = $(".modal");
-	var modalInputReply = modal.find("input[name='b_bid_price']");
+	var modalInputBid = modal.find("input[name='b_bid_price']");
+	var modalInputMnum = modal.find("input[name='m_num']");
 	
 	var modalRegisterBtn = $("#modalRegisterBtn");
 	var modalRemoveBtn = $("#modalRemoveBtn");
@@ -213,20 +231,50 @@ var bidUL = $(".joinBid");
 		
 		});
 	
-	});
-</script>
-<script>
-$(document).ready(function(){
-	
-	$("#checkout").on("click",function(e){ //바로 구매하기 관련(confirm 필요)
+	$("#checkout").on("click", function(e){
 		
-		e.preventDefault();
+		var goShip = confirm("바로 구매하시겠습니까?");
 		
-		self.location = "/auc/ship_regi"
+		if(goShip == true) {
+			e.preventDefault();
+			
+			self.location = "/auc/ship_regi"
+		}
+		
 	});
 	
-	  
+	modalRegisterBtn.on("click",function(e){
+		var bid = {				
+				b_bid_price : modalInputBid.val(),
+				m_num : modalInputMnum.val(),
+				a_bno : a_bnoValue
+		};
+		
+		BidService.bidAdd(bid, function(result){
+			
+			alert(result);
+			
+			modal.find("input").val("");
+			modal.modal("hide");
+			
+			showList(1);
+		});
+	});
+	
+	$("#bid_rem").on("click", function(e){
+		
+				
+		alert("tttt");
+		
+		BidService.bidRemove(b_bno, function(result){
+			
+			alert(result);
+		
+		});
+			
+	});
 });
 </script>
+
 
 <%@include file="../includes/footer.jsp"%>

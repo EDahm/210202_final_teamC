@@ -110,10 +110,17 @@ public class auctionMapperTests {
 			aucBidVO vo = new aucBidVO();
 			
 			vo.setA_bno("A2021-02-19-209");
-			vo.setM_num("M100002");
-			vo.setB_bid_price(500);
+			vo.setM_num("M111111");
+			vo.setB_bid_price(1300);
 			
-			auMapper.bidInsert(vo);
+			int count = auMapper.bidInsert(vo);
+			
+			log.info("BID INSERT : " + count);
 
 	}
+	
+//	@Test
+//	public void testBidList() {
+//		auMapper.bidNcnm().forEach(auc -> log.info(auc));
+//	}
 }

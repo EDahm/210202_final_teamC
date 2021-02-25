@@ -38,7 +38,7 @@ public class AucBidController {
 		
 		log.info("Bid Insert Count: " + bidRegiCount);
 		
-		return bidRegiCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
+		return bidRegiCount == -1 ? new ResponseEntity<>("success", HttpStatus.OK)
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		
 	}

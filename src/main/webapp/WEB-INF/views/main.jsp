@@ -65,7 +65,7 @@
 						<div class="col-12 col-md-6 col-lg-5 col-xl-4 offset-md-n1">
 
 							<!-- Heading -->
-							<h1 class="mb-5">일반쓰레기...? 아니 이건 재활용 되는건가!?!?!?</h1>
+							<h1 class="mb-5">이미지 위치조정, 글자 위치조정 필요</h1>
 
 							<!-- Text -->
 							<p class="mb-8 font-size-lg text-gray-500">So called give,

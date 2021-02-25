@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.zerock.domain.AucAttachVO;
 import org.zerock.domain.Criteria;
+import org.zerock.domain.MemberVO;
 import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
 import org.zerock.domain.aucComVO;
@@ -58,6 +59,7 @@ public interface auctionMapper {
 	
 	//진행중인 경매 정보 조회
 	public auctionVO aucIngSel(String a_bno);
+	public aucApplyVO aucNowItem();
 	
 	
 	
@@ -102,6 +104,7 @@ public interface auctionMapper {
 	
 	//경매 현재가를 입찰한 회원 닉네임 가져오기 m
 	public String bidNowMember();
+	public List<MemberVO> bidNcnm();
 	
 	
 	

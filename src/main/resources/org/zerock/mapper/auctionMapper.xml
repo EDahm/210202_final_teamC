@@ -410,4 +410,13 @@ values('C'||seq_auc_com.nextval, #{c_name}, #{c_email}, #{c_address}, #{c_contac
 <select id="getCountBid" resultType="int">
 	select count(*) from bid_tb where a_bno = (select a_bno from auc_tb where a_state = '진행중')
 </select>
+
+<!-- 진행 중인 상품의 정보출력 -->
+<select id="aucNowItem" resultType="org.zerock.domain.aucApplyVO">
+	select * from auc_aply_tb where aa_bno = (select aa_bno from auc_tb where a_state = '진행중' )
+</select>
+
+<select id="bidNcnm" resultType="org.zerock.domain.MemberVO">
+	select a.m_ncnm from mber_tb a, bid_tb b where a.m_num=b.m_num
+</select>
 </mapper>

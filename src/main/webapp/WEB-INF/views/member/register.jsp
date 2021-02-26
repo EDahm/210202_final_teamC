@@ -118,6 +118,9 @@ line-height: calc(1.5rem + 1.75rem + 2px)
               <li class="breadcrumb-item active">
                회원가입
               </li>
+              <li class="breadcrumb-item active">
+               정보입력
+              </li>
             </ol>
 
           </div>
@@ -209,7 +212,7 @@ line-height: calc(1.5rem + 1.75rem + 2px)
 									id="final_contact_ck">연락처를 입력해주세요.</span>
 							</div>
 						</div>
-						<button class="btn btn-block btn-dark" style="background: #44A379; border-color: white;" type="submit" id="join_button" data-oper='list'>가입하기</button>
+						<button class="btn btn-block btn-dark" style="background: #44A379; border-color: white;" type="submit" id="join_button" data-oper='afterSignUp'>가입하기</button>
 
 					</div>
 				</form>

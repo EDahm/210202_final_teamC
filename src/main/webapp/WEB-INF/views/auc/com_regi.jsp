@@ -6,50 +6,46 @@
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/nav.jsp"%>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">업체 정보 등록</h1>
-	</div>
-</div>
-<!-- /.row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				업체 정보 등록
-			</div>
-			<!-- /.panel-heading -->
+ <section class="pt-7 pb-12" style="width: 70%;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+			<h3 class="mb-10">
+			업체 정보 등록
+</h3>
+		  </div>
+		 </div>
 			
-			<div>
+			<div class="row">
+				<div class="col-12 col-md-9 col-lg-8 offset-lg-1">
 			<form role="form" action="/auc/com_regi" method="post">
-				<div>
+				<div class="form-group">
 					<label>업체명</label>
-					<input name="c_name">
+					<input name="c_name" class="form-control">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>이메일</label>
-					<input name="c_email">
+					<input name="c_email" class="form-control">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>주소</label>
-					<input name="c_address">
+					<input name="c_address" class="form-control">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>연락처</label>
-					<input name="c_contact">
+					<input name="c_contact" class="form-control">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>업종</label>
-					<input name="c_sector">
+					<input name="c_sector" class="form-control">
 				</div>
-				<button type="submit">신청</button>
-				<button type="reset">리셋</button>
+				<button type="submit" class="btn btn-success btn-xs">신청</button>
+				<button type="reset" class="btn btn-outline-success btn-xs">리셋</button>
 			</form>				
 			</div>
 		</div>
 	</div>
-</div>
-
+</section>
 </div>
 </div>
 	

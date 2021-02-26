@@ -6,22 +6,17 @@
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/nav.jsp"%>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">업체 정보 수정</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				업체 정보 수정
-			</div>
-			<!-- /.panel-heading -->
+ <section class="pt-7 pb-12" style="width: 70%;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+			<h3 class="mb-10"> 업체 정보 수정
+</h3>
+		  </div>
+		 </div>
 			
-			<div>
+			<div class="row">
+				<div class="col-12 col-md-9 col-lg-8 offset-lg-1">
 			<form role="form" action="/auc/com_mod" method="post">
 				<!-- add -->
 	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>	
@@ -29,38 +24,38 @@
 	<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
 	<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
 	
-				<div>
+				<div class="form-group">
 					<label>업체번호</label>
 					<input class="form-control" name="c_num" value='<c:out value="${comget.c_num}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>업체명</label>
 					<input class="form-control" name="c_name" value='<c:out value="${comget.c_name}"/>'>
 				</div>
-				<div>
+				<div class="form-group">
 					<label>이메일</label>
 					<input class="form-control" name="c_email" value='<c:out value="${comget.c_email}"/>'>
 				</div>
-				<div>
+				<div class="form-group">
 					<label>주소</label>
 					<input class="form-control" name="c_address" value='<c:out value="${comget.c_address}"/>'>
 				</div>
-				<div>
+				<div class="form-group">
 					<label>연락처</label>
 					<input class="form-control" name="c_contact" value='<c:out value="${comget.c_contact}"/>'>
 				</div>
-				<div>
+				<div class="form-group">
 					<label>업종</label>
 					<input class="form-control" name="c_sector" value='<c:out value="${comget.c_sector}"/>'>
 				</div>
-				<button type="submit" data-oper='com_mod'>수정</button>
-				<button type="submit" data-oper='com_rem'>삭제</button>
-				<button type="submit" data-oper='com_list'>목록</button>
+				<button class="btn btn-success btn-xs" type="submit" data-oper='com_mod'>수정</button>
+				<button class="btn btn-danger btn-xs" type="submit" data-oper='com_rem'>삭제</button>
+				<button class="btn btn-outline-success btn-xs" type="submit" data-oper='com_list'>목록</button>
 				</form>				
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
 </div>
 </div>

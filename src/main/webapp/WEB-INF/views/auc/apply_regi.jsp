@@ -6,76 +6,72 @@
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/nav.jsp"%>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">경매 신청하기</h1>
-	</div>
-</div>
-<!-- /.row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
+<section class="pt-7 pb-12" style="width: 70%;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+			<h3 class="mb-10">
 				경매 신청
-			</div>
-			<!-- /.panel-heading -->
+			</h3>
+		  </div>
+		 </div>
 			
+			<div class="row">
+			<div class="col-12 col-md-9 col-lg-8 offset-lg-1">
 			
 			<form role="form" action="/auc/apply_regi" method="post">
-				<div>
+				<div class="form-group">
 					<label>업체번호</label>
 					<input class="form-control" name="c_num">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>물품명</label>
 					<input class="form-control" name="aa_item_nm">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>시장가격</label>
 					<input class="form-control" name="aa_markt_prc">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>중량</label>
 					<input class="form-control" name="aa_weight">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>원산지</label>
 					<input class="form-control" name="aa_cntry_orgn">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>희망기간</label><!-- datepicker 써야함 -->
-					<input type="date" name="aa_hope_prd">
+					<input type="date" class="form-control" name="aa_hope_prd">
 				</div>
-				<button type="submit">신청</button>
-				<button type="reset">리셋</button>				
+				<div class="form-group">
+				<div>경매물품 이미지 첨부</div>
+				<div class="border rounded">
+				<div class='uploadDiv'>
+					<p class="mt-2">반드시 이미지 파일(jpg, png 등)을 첨부해주세요.</p>
+				<div class="input-group mb-3">
+ 					 <div class="input-group-prepend">
+   						 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+ 					 </div>
+  					<div class="custom-file">
+    					<input type="file" class="custom-file-input" name='uploadFile' multiple="multiple" aria-describedby="inputGroupFileAddon01">
+					<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+  					</div>
+				</div>
+				</div>
+						<div class='uploadResult'>
+						<ul class="mt-4">
+						</ul>
+						</div>
+					</div>
+				</div>				
+				<button class="btn btn-success btn-xs" type="submit">신청</button>
+				<button class="btn btn-outline-success btn-xs" type="reset">리셋</button>				
 			</form>
 		</div>
 	</div>
 </div>
-
-<div>
-	<div>
-		<div>
-		
-			<div>경매물품 이미지 첨부</div>
-			<div>
-				<div class='uploadDiv'>
-					<p>반드시 이미지 파일(jpg, png 등)을 첨부해주세요.</p>
-					<input type='file' name='uploadFile' multiple>
-				</div>
-				<div class='uploadResult'>
-					<ul>
-					
-					</ul>
-				</div>
-				
-				
-			</div>
-		
-		</div>
-	</div>
-</div>
-
+</section>
 </div>
 </div>
 
@@ -191,7 +187,7 @@
  					str +" ><div>";
  					str += "<span> "+ obj.fileName + "</span>";
  					str += "<button type='button' data-file=\'"+fileCallPath+"\' "
- 					str += "data-type='image' class='btn btn-warning btn-circle'> x </button><br>";
+ 					str += "data-type='image' class='btn btn-success btn-circle btn-xxs mb-1 ml-1'> <i class='fas fa-times'></i></button><br>";
  					str += "<img src='/display?fileName="+fileCallPath+"'>";
  					str += "</div>";
  					str + "</li>";

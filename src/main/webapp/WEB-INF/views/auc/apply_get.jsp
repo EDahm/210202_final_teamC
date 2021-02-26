@@ -59,7 +59,7 @@
 					<div>첨부 이미지</div>
 					<div class="border rounded">			
 						<div class='uploadResult'>
-							<ul>
+							<ul class="mt-4">
 							</ul>
 						</div>
 					</div>

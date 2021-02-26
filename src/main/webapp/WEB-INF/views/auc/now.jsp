@@ -412,7 +412,7 @@ $(document).ready(function(){
 			
 				for(var i = 0, len = bid_list.length || 0; i < len; i++){
 				str += "<li class='bidstyle2 mb-5 font-size-h6 border-bottom' data-rno='"+bid_list[i].b_bno+"'>";
-				str += " <strong><span class='material-icons md-36'>eco</span>"+bid_list[i].m_num+"님이";
+				str += " <strong><i class='fas fa-leaf'></i>"+bid_list[i].m_num+"님이";
 				str += "<span class='forGreen bidstyle2' >"+bid_list[i].b_bid_price+"</span>원 입찰했어요!</strong>";
 				str += " <small class='bidstyle2 font-size-xs text-gray-400'>" + bid_list[i].b_bid_time+"</small></li>";
 			}

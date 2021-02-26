@@ -6,59 +6,57 @@
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/nav.jsp"%>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">업체 정보 조회</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				업체 정보
-			</div>
-			<!-- /.panel-heading -->
+<section class="pt-7 pb-12" style="width: 70%;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+			<h3 class="mb-10">
+			업체 정보 조회
+			</h3>
+		  </div>
+		 </div>
 			
-			<div>
-				<div>
+			<div class="row">
+				<div class="col-12 col-md-9 col-lg-8 offset-lg-1">
+			
+				<div class="form-group">
 					<label>업체번호</label>
 					<input class="form-control" name="c_num" value='<c:out value="${comget.c_num}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>업체명</label>
 					<input class="form-control" name="c_name" value='<c:out value="${comget.c_name}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>이메일</label>
 					<input class="form-control" name="c_email" value='<c:out value="${comget.c_email}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>주소</label>
 					<input class="form-control" name="c_address" value='<c:out value="${comget.c_address}"/>'readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>연락처</label>
 					<input class="form-control" name="c_contact" value='<c:out value="${comget.c_contact}"/>'readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>업종</label>
 					<input class="form-control" name="c_sector" value='<c:out value="${comget.c_sector}"/>'readonly="readonly">
 				</div>
-				<button data-oper='com_mod' onclick="location.href='/auc/com_mod?c_num=<c:out value="${comget.c_num}"/>'">수정</button>
-				<button data-oper='com_list' onclick="location.href='/auc/com_list'">목록</button>				
-			</div>
+				<button data-oper='com_mod' class="btn btn-success btn-xs" onclick="location.href='/auc/com_mod?c_num=<c:out value="${comget.c_num}"/>'">수정</button>
+				<button data-oper='com_list' class="btn btn-outline-success btn-xs" onclick="location.href='/auc/com_list'">목록</button>				
+			
 			<form id='operForm' action="/auc/com_mod" method= "get">
-	<input type='hidden' id='c_num' value='<c:out value="${comget.c_num}"/>'>
-	<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
-	<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
-	<input type='hidden' name='keyword' value='<c:out value="${cri.keyword }"/>'>
-    <input type='hidden' name='type' value='<c:out value="${cri.type }"/>'>
-</form>	
+				<input type='hidden' id='c_num' value='<c:out value="${comget.c_num}"/>'>
+				<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
+				<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+				<input type='hidden' name='keyword' value='<c:out value="${cri.keyword }"/>'>
+    			<input type='hidden' name='type' value='<c:out value="${cri.type }"/>'>
+			</form>	
 		</div>
 	</div>
 </div>
+</section>
 
 </div>
 </div>

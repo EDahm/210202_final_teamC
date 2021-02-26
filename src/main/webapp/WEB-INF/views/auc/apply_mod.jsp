@@ -70,7 +70,7 @@
 </div>
 						</div>
 						<div class='uploadResult'>
-						<ul>
+						<ul class="mt-4">
 						</ul>
 						</div>
 					</div>
@@ -187,11 +187,11 @@ $(document).ready(function(){
   				
   				var fileCallPath = encodeURIComponent(attach.aa_upload_path+"/s_"+attach.aa_uuid+"_"+attach.aa_file_name);
 
-					str += "<li data-path='"+attach.aa_upload_path+"' data-uuid='"+attach.aa_uuid+"' "
+					str += "<li class='font-size-lg' data-path='"+attach.aa_upload_path+"' data-uuid='"+attach.aa_uuid+"' "
 					str += " data-filename='"+attach.aa_file_name+"' data-type='"+attach.aa_file_type+"' ><div>";
 					str += "<span> " + attach.aa_file_name + "</span>";
-					str += "<button type='button' class='btn btn-warning btn-circle btn-xxs mb-1' data-file=\'"+fileCallPath+"\'data-type='image' "
-					str += "> X </button><br>";
+					str += "<button type='button' class='btn btn-success btn-circle btn-xxs mb-1 ml-1' data-file=\'"+fileCallPath+"\'data-type='image' "
+					str += "><i class='fas fa-times'></i></button><br>";
 					str += "<img src='/display?fileName="+fileCallPath+"'>";
 					str += "</div>";
 					str + "</li>";

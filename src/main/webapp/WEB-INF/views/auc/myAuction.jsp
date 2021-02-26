@@ -76,9 +76,9 @@
 			
 <div class="row">
 	<div class="panel-body">
-				<table class="table table-striped table-bordered table-hover">
+				<table class="table table-bordered table-sm mb-4">
 					<thead>
-						<tr>
+						<tr class="font-size-h5">
 							<th>입찰번호</th> 
 							<th>경매번호</th> 
 							<th>회원번호</th>
@@ -124,21 +124,27 @@
 					<ul class="pagination">
 						
 						<c:if test="${pageMaker.prev}">
-							<li class="paginate_button previous"><a href="${pageMaker.startPage -1}">PREVIOUS</a></li>
+							<li class="paginate_button page-item"><a class="page-link page-link-arrow" href="${pageMaker.startPage -1}">PREVIOUS</a></li>
 						</c:if>
 						
 						<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-							<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":""}"><a href="${num}">${num}</a></li>
+							<li class="paginate_button page-item ${pageMaker.cri.pageNum == num ? "active":""}"><a class="page-link" href="${num}">${num}</a></li>
 						</c:forEach>
 						
 						<c:if test="${pageMaker.next}">
-							<li class="paginate_button next"><a href="${pageMaker.endPage +1 }">NEXT</a></li>
+							<li class="paginate_button page-item"><a class="page-link" href="${pageMaker.endPage +1 }">NEXT</a></li>
 						</c:if>
 						
 					
 					</ul>
 				</div>
 				<!-- END PAGINATION -->
+			<form id='actionForm' action="/auc/bid_list" method='get'>
+				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
+				<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>			
+					<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
+			</form>	
 			</div>
 	
 			</div>
@@ -147,12 +153,6 @@
 </section>
 
 
-			<form id='actionForm' action="/auc/bid_list" method='get'>
-				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
-				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
-				<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>			
-					<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
-			</form>	
 <script type="text/javascript">
 $(document).ready(function(){
 

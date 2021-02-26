@@ -5,7 +5,30 @@
 <!DOCTYPE html>
 <%@include file="../includes/header.jsp"%>
 
-<section>
+    <nav class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+
+            <!-- Breadcrumb -->
+            <ol class="breadcrumb mb-0 font-size-xs text-gray-400">
+              <li class="breadcrumb-item">
+                <a class="text-gray-400" href="/main">Home</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a class="text-gray-400" href="shop.html">Auction</a>
+              </li>
+              <li class="breadcrumb-item active">
+                경매 참여하기
+              </li>
+            </ol>
+
+          </div>
+        </div>
+      </div>
+    </nav>
+<!-- item -->
+<section class="secStyle">
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
@@ -14,23 +37,78 @@
 
 						<!-- 이미지부분 -->
 						<div class="card">
-							<div class="mb-4">
-								<img src='/resources/img/fruit_mikan_set.png' />
-							</div>
-						</div>
-						<!-- 이미지부분 끝 -->
-					</div>
+							   <!-- Badge -->
+                  				<div class="badge badge-primary card-badge text-uppercase">
+                  				  <c:out value='${now.a_state}'/>
+                  				</div>
+
+                  		<!-- Slider -->
+                  		<div class="mb-4" data-flickity='{"draggable": false, "fade": true}' id="productSlider">
+
+                    	<!-- Item -->
+                    	<a href="/resources/img/peanuta.jpg" data-fancybox>
+                      	<img src="/resources/img/peanuta.jpg" alt="..." class="card-img-top">
+                    	</a>
+
+                    	<!-- Item -->
+                    	<a href="/resources/img/peanutb.jpeg" data-fancybox>
+                      	<img src="/resources/img/peanutb.jpeg" alt="..." class="card-img-top">
+                    	</a>
+
+                    	<!-- Item -->
+                    	<a href="/resources/img/peanut.jpg" data-fancybox>
+                      	<img src="/resources/img/peanut.jpg" alt="..." class="card-img-top">
+                    	</a>
+
+                  </div>
+
+                </div>
+
+                <!-- Slider -->
+                <div class="flickity-nav mx-n2 mb-10 mb-md-0" data-flickity='{"asNavFor": "#productSlider", "contain": true, "wrapAround": false}'>
+
+                  <!-- Item -->
+                  <div class="col-12 px-2" style="max-width: 113px;">
+
+                    <!-- Image -->
+                    <div class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(/resources/img/peanuta.jpg);"></div>
+
+                  </div>
+
+                  <!-- Item -->
+                  <div class="col-12 px-2" style="max-width: 113px;">
+
+                    <!-- Image -->
+                    <div class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(/resources/img/peanutb.jpeg);"></div>
+
+                  </div>
+
+                  <!-- Item -->
+                  <div class="col-12 px-2" style="max-width: 113px;">
+
+                    <!-- Image -->
+                    <div class="embed-responsive embed-responsive-1by1 bg-cover" style="background-image: url(/resources/img/peanut.jpg);"></div>
+
+                  </div>
+
+                </div>
+
+              </div>			
+		<!-- 이미지부분 끝 -->
 
 					<div class="col-12 col-md-6 pl-lg-10">
+	 <!-- Header -->
+                <div class="row mb-1">
+                  <div class="col">
+					
 						<div class="itemname">
-							<h3 class="mb-2"><c:out value="${apply.aa_item_nm}" /></h3>
+							<h3 class="mb-4 border-bottom">
+								<c:out value="${apply.aa_item_nm}" />
+							</h3>
 							<div class="nowstyle1">
-								<div class="countstyle">
-									<span>입찰 수</span> <span><c:out value="${countBid}" />명</span>
-								</div>
 								<div class="timestyle">
-									<p class="time-title">경매 마감까지 남은 시간</p>
-									<div class="time font40">
+									<div><p class="time-title font-size-h6">경매 마감까지 남은 시간</p></div>
+									<div class="time font-size-h5">
 										<span class="hours"></span> <span class="col">:</span> <span
 											class="minutes"></span> <span class="col">:</span> <span
 											class="seconds"></span>
@@ -38,55 +116,58 @@
 								</div>
 							</div>
 							<div>
-
-								<div>
+							<div class="mb-5 font-size-h6">
+								<span>입찰 수</span> 
+								<span class="forGreen"><c:out value="${countBid}" /></span>
+								<span>회</span>
+							</div>
+								<div class="nowstyle1 mb-5 font-size-h6">
 									<div>현재가</div>
-									<div>
+									<div class="forGreen">
 										<fmt:formatNumber value="${now.a_crnt_prc}" />
-										원
+										<span>원</span>
 									</div>
-									<div>현재입찰자</div>
-									<div>
+									<div class="forGreen">
 										<c:out value="${bestmember}" />
-										님
+									<span>님이 입찰했어요!</span>
 									</div>
 								</div>
-								<div>
+								<div class="nowstyle1 mb-7 font-size-h6">
+									<div class="nowstyle1 width50">
 									<div>시작가</div>
-									<div>
+									<div class="forGreen">
 										<fmt:formatNumber value="${now.a_versifier}" />
-										원
+										<span>원</span>
 									</div>
-									<div>바로 구매하기</div>
-									<div>
-										<fmt:formatNumber value="${now.a_wnng_prc}" />
-										원
+									</div>
+									
+									<div class="nowstyle1 width50" style="margin-left: 3.2rem;">
+										<div>바로 구매하기</div>
+											<div class="forGreen">
+												<fmt:formatNumber value="${now.a_wnng_prc}" />
+												<span>원</span>
+											</div>
 									</div>
 								</div>
-								<button data-oper='ship_regi'
+								<div class="mb-5" style="text-align-last: justify;">
+								<button class="btn btn-success btn-sm butstyle1" type="button" id="bid_regi" value="${now.a_bno}">나도 입찰하기</button>
+								<button class="btn btn-success btn-sm butstyle1" data-oper='ship_regi'
 									onclick="location.href='/auc/ship_regi?a_bno=<c:out value="${now.a_bno}"/>&c_num=<c:out value="${apply.c_num}"/>'">바로
 									구매하기</button>
+								</div>
 							</div>
-
+							
 							<div>
-								<ul>
-									<li><b>중량</b> <span><c:out
-												value="${apply.aa_weight}" /></span></li>
-									<li><b>원산지</b> <span><c:out
-												value="${apply.aa_cntry_orgn}" /></span></li>
-									<li><b>배송</b> <span>수령까지 2~3일 정도 예상 <samp>직접
-												수령 가능!!</samp></span></li>
-									<li><b>Share on</b>
-										<div class="share">
-											<a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i
-												class="fa fa-twitter"></i></a> <a href="#"><i
-												class="fa fa-instagram"></i></a> <a href="#"><i
-												class="fa fa-pinterest"></i></a>
-										</div></li>
-								</ul>
+							<ul class="list-group list-group-flush">
+                 				 <li class="list-group-item active"><b>중량</b> <span><c:out value="${apply.aa_weight}" /></span></li>
+              					 <li class="list-group-item"><b>원산지</b> <span><c:out value="${apply.aa_cntry_orgn}" /></span></li>
+                  				 <li class="list-group-item"><b>배송</b> <span>수령까지 2~3일 정도 예상</span> <span class="forGreen text-decoration-underline">직접 수령 가능!!</span></li>
+               				</ul>
 							</div>
 						</div>
 					</div>
+				</div>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -94,68 +175,156 @@
 </section>
 
 <!-- Product Details Section End -->
+<section>
 <div class="container">
 	<div class="row">
 		<div class="col-12">
-			<div class="row">
-				<div class="col-12 col-md-6">
-					<div>
-						<div>
-							입찰 참가 내역 출력
-							<button type="button" id="bid_regi" value="${now.a_bno}">나도
-								입찰하기</button>
-						</div>
-
-						<div></div>
-						<div class="panel-body">
+			
+			<!-- Nav -->
+            <div class="nav nav-tabs nav-overflow justify-content-start justify-content-md-center border-bottom">
+              <a class="nav-link active" data-toggle="tab" href="#bidlistTab">
+                 입찰 내역
+              </a>
+              <a class="nav-link" data-toggle="tab" href="#descriptionTab">
+                제품 설명
+              </a>
+            </div>
+			
+ <!-- Content -->
+            <div class="tab-content">
+              <div class="tab-pane fade show active" id="bidlistTab">
+                <div class="row justify-content-center py-9">
+                  <div class="col-12 col-lg-10 col-xl-8">
+                    <div class="row">
+                      <div class="col-12">
+                      <!-- 입찰내역출력 -->
+							<div class="panel-body">
 							<ul class="joinBid">
 							</ul>
-						</div>
-						<div class="panel-footer"></div>
+							</div>
+							<div class="panel-footer"></div>
+						<!-- 입찰내역끝 -->
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Modal -->
-		<div class="modal fade" id="myModal" role="dialog">
-			<div class="modal-dialog">
-
-				<!-- Modal content-->
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4 id="modal-title" class="modal-title"></h4>
-					</div>
-					<div class="modal-body">
-						<table class="table">
-							<tr>
-								<td>입찰금액</td>
-								<td><input class="form-control" name="b_bid_price"
-									type="text"></td>
-								<td><input class="form-control" name="m_num"></td>
-							</tr>
-						</table>
-					</div>
-					<div class="modal-footer">
-						<button id="modalRegisterBtn" type="button"
-							class="btn btn-warning">submit</button>
-						<button id="modalCloseBtn" type="button" class="btn btn-default"
-							data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-	</div>
+		
+		<div class="tab-pane fade" id="descriptionTab">
+                <div class="row justify-content-center py-9">
+                  <div class="col-12 col-lg-10 col-xl-8">
+                    <div class="row">
+                      <div class="col-12 col-md-6">
+                      
+                       <p class="mb-4">
+                          <strong>제품설명아이우에오</strong>
+                        </p>
+                       </div>
+                      </div>
+                     </div>
+                    </div>
+                   </div>
+                   
+          </div>
+         </div>
 </div>
+</div>
+</div>
+</section>
+<!-- modal -->
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">나도 입찰하기</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      	<div>
+      		<p>반드시 100원 단위로 입력해주세요.</p>
+      	</div>
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">입찰금액</label>
+            <input class="form-control" name="b_bid_price"	type="text">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">회원번호(임시)</label>
+            <input class="form-control" name="m_num">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="modalRegisterBtn" class="btn btn-secondary" data-dismiss="modal">입찰하기</button>
+        <button type="button" id="modalCloseBtn" class="btn btn-primary">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>		
+
+
 <style>
-.timestyle{
-	display : flex;
+.secStyle {
+	margin-top: 3rem;
 }
 
-.nowstyle1{
-	display : flex;
+.timestyle {
+	display: flex;
+	width : 100%;
+	justify-content : space-between;
 }
+
+.hours, .minutes, .seconds {
+	color: #44A379;
+}
+
+.nowstyle1 {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.width50 {
+	width : 50%;
+}
+
+.itemname h3 {
+	color: #44A379;
+	margin : 5px;
+	margin-top : 1rem;
+}
+
+
+.forGreen {
+	color: #44A379;
+}
+
+.forGreen span{
+	color: #000000;
+}
+
+.butstyle1 {
+	background : #44A379;
+	color : #ffffff;
+	border-radius : 5px;
+	border : none;
+}
+
+
+.bidstyle1{
+	display : flex;
+    justify-content: space-between;
+}
+
+.bidstyle2{
+	margin-left: 10px;
+}
+
+ul, li{
+	list-style : none;
+}
+
 </style>
 <script type="text/javascript" src="/resources/jjs/auctionModal.js"></script>
 <script>
@@ -241,11 +410,11 @@ $(document).ready(function(){
 				return;
 			}
 			
-			for(var i = 0, len = bid_list.length || 0; i < len; i++){
-				str += "<li data-rno='"+bid_list[i].b_bno+"'>";
-				str += " <div><div><strong>"+bid_list[i].m_num+"님이</strong>";
-				str += " <small>" + bid_list[i].b_bid_time+"</small></div>";
-				str += " <p>"+bid_list[i].b_bid_price+"원 입찰했어요!</p></div></li>";
+				for(var i = 0, len = bid_list.length || 0; i < len; i++){
+				str += "<li class='bidstyle2 mb-5 font-size-h6 border-bottom' data-rno='"+bid_list[i].b_bno+"'>";
+				str += " <strong><span class='material-icons md-36'>eco</span>"+bid_list[i].m_num+"님이";
+				str += "<span class='forGreen bidstyle2' >"+bid_list[i].b_bid_price+"</span>원 입찰했어요!</strong>";
+				str += " <small class='bidstyle2 font-size-xs text-gray-400'>" + bid_list[i].b_bid_time+"</small></li>";
 			}
 			
 			bidUL.html(str);
@@ -260,7 +429,12 @@ $(document).ready(function(){
 	var modalInputMnum = modal.find("input[name='m_num']");
 	
 	var modalRegisterBtn = $("#modalRegisterBtn");
-	var modalRemoveBtn = $("#modalRemoveBtn");
+	var modalCloseBtn = $("#modalCloseBtn");
+	
+	modalCloseBtn.on("click",function(e){
+		$(".modal").modal("hide");
+	});
+	
 	
 	$("#bid_regi").on("click", function(e){
 		
@@ -294,14 +468,13 @@ $(document).ready(function(){
 		
 		BidService.bidAdd(bid, function(result){
 			
-			alert(result);
-			
 			modal.find("input").val("");
 			modal.modal("hide");
 			
 			showList(-1);
 		});
 	});
+	
 	
 	$("#bid_rem").on("click", function(e){
 		
@@ -335,20 +508,20 @@ $(document).ready(function(){
 			next = true;
 		}
 		
-		var str = "<ul class='pagination pull-right'>";
+		var str = "<ul class='pagination pagination-sm'>";
 		
 		if(prev){
-			str += "<li class='page-item'><a class='page-link' href='"+(startNum -1) + "'>Previous</a></li>";
+			str += "<li class='page-item'><a class='page-link page-link-arrow' href='"+(startNum -1) + "'> <i class='fa fa-caret-left'></i></a></li>";
 		}
 		
 		for(var i = startNum ; i <= endNum; i++){
 			
 			var active = pageNum == i? "active":"";
 			
-			str += "<li class='page-item" + active + "'><a class='page-link' href='"+i+"'>"+i+"</a></li>";
+			str += "<li class='page-item " + active + " '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
 			
 			if(next){
-				str += "<li class='page-item'><a class='page-link' href='"+(endNum + 1)+"'>Next</a></li>";
+				str += "<li class='page-item'><a class='page-link page-link-arrow' href='"+(endNum + 1)+"'><i class='fa fa-caret-right'></i></a></li>";
 				
 			}
 				str += "</ul></div>";
@@ -360,6 +533,21 @@ $(document).ready(function(){
 				
 			}
 	}
+	
+	bidPageFooter.on("click","li a",function(e){
+		
+		e.preventDefault();
+		console.log("page click");
+		
+		var targetPageNum = $(this).attr("href");
+		
+		console.log("targetPageNum: " + targetPageNum);
+		
+		pageNum = targetPageNum;
+		
+		showList(pageNum);
+		
+	});
 		
 });
 </script>

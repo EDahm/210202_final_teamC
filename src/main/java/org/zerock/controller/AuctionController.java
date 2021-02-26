@@ -30,6 +30,7 @@ import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
 import org.zerock.domain.aucComVO;
 import org.zerock.domain.aucShipVO;
+import org.zerock.domain.auctionDTO;
 import org.zerock.domain.auctionVO;
 import org.zerock.service.auctionService;
 
@@ -467,5 +468,6 @@ public class AuctionController {
 				
 			}
 
+			
 			
 }

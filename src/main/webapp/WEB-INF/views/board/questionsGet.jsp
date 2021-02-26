@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
@@ -245,6 +244,7 @@ background : #f2f2f2;
 									value='' placeholder="작성자 닉네임 시큐리티후 알아서 써져야됨">
 							</div>
 							<div class="form-group" style="margin-bottom: .3rem;"s>
+							<div class="form-group" style="margin-bottom: .3rem;">
 								<input class="form-control" name='qr_reply'
 									value='' placeholder="댓글을 입력해주세요." id="reply_reply">
 							</div>
@@ -272,6 +272,7 @@ background : #f2f2f2;
 		</div>
 	</div>
 
+</div>
 </section>
 
 <script type="text/javascript">
@@ -353,7 +354,6 @@ $(document).ready(function() {
 			showList(-1);
 		})
 	});
-	
 	
 	$(document).on("click", '#modalModBtn', function(){
 		

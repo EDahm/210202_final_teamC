@@ -146,13 +146,14 @@
 <update id="aucUpdate">
 	update auc_tb set a_versifier = #{a_versifier},
 	a_wnng_prc = #{a_wnng_prc},
-	a_prgrs_prd = #{a_prgrs_prd}
+	a_prgrs_prd = #{a_prgrs_prd},
+	a_state = #{a_state}
 	where a_bno = #{a_bno}
 </update>
 
 <!-- 경매 진행 상태 변경 -->
 <update id="aucStaUpdate">
-	update auc_tb set a_state = #{a_state}
+	update auc_tb set 
 	where a_bno = #{a_bno}
 </update>
 
@@ -170,7 +171,8 @@
 <!-- 배송정보 수정 -->
 <update id="shipUpdate">
 	update shpng_tb set s_shpng_addr = #{s_shpng_addr},
-	s_shpng_cntct = #{s_shpng_cntct}
+	s_shpng_cntct = #{s_shpng_cntct},
+	s_shpng_stts = #{s_shpng_stts}
 	where a_bno = #{a_bno}
 </update>
 
@@ -411,12 +413,85 @@ values('C'||seq_auc_com.nextval, #{c_name}, #{c_email}, #{c_address}, #{c_contac
 	select count(*) from bid_tb where a_bno = (select a_bno from auc_tb where a_state = '진행중')
 </select>
 
+<select id="getCountmyBid" resultType="int">
+	select count(*) from bid_tb where m_num = "M100281"
+</select>
+
 <!-- 진행 중인 상품의 정보출력 -->
 <select id="aucNowItem" resultType="org.zerock.domain.aucApplyVO">
 	select * from auc_aply_tb where aa_bno = (select aa_bno from auc_tb where a_state = '진행중' )
 </select>
 
-<select id="bidNcnm" resultType="org.zerock.domain.MemberVO">
-	select a.m_ncnm from mber_tb a, bid_tb b where a.m_num=b.m_num
+<!-- 진행페이지 입찰자 닉네임출력 관련(보류) -->
+<select id="bidNcnm" resultType="String">
+	select m_ncnm from mber_tb where m_num = #{m_num}
+</select>
+
+<!-- 진행페이지 입찰리스트 페이징 -->
+<select id="getBidListPaging" resultType="org.zerock.domain.aucBidVO">
+<![CDATA[
+	select a_bno, b_bno, m_num, b_bid_price, b_bid_time, b_bid_state
+	from
+		(
+		select /*+INDEX(bid_tb pk_auc_bid_tb) */
+			rownum rn, a_bno, b_bno, m_num, b_bid_price, b_bid_time, b_bid_state
+		from bid_tb
+		where a_bno = #{a_bno}
+		and b_bno > 0
+		and rownum <= #{cri.pageNum} * #{cri.amount}
+		) where rn > (#{cri.pageNum} -1) * #{cri.amount}
+		order by b_bid_price desc
+]]>
+</select>
+
+<select id="getCountByAbno" resultType="int">
+<![CDATA[
+	select count(b_bno) from bid_tb where a_bno = #{a_bno} 
+]]>
+</select>
+
+	<!-- 마이페이지 -->
+	<!-- 전체 조회 -->
+	<select id="myAucList"  resultType="org.zerock.domain.aucBidVO">
+	select * from bid_tb where m_num = "M100281"
+	</select>
+
+	<!--  전체 조회 페이징 -->
+<select id="myAucListWithPaging" resultType="org.zerock.domain.aucBidVO">
+<![CDATA[
+	select
+		b_bno, a_bno, m_num, b_bid_price, b_bid_time, b_bid_state
+	from
+		(
+		select /*+INDEX_DESC(bid_tb PK_AUC_BID_TB)*/
+			rownum rn, b_bno, a_bno, m_num, b_bid_price, b_bid_time, b_bid_state
+		from
+			bid_tb
+		where 
+]]>
+	<trim prefix="(" suffix=") AND " prefixOverrides="OR">
+		<foreach item='type' collection="typeArr">
+			<trim prefix="OR">
+				<choose>
+					<when test="type == 'T'.toString()">
+						a_bno like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'C'.toString()">
+						b_bid_price like '%'||#{keyword}||'%'
+					</when>
+					<when test="type == 'W'.toString()">
+						b_bid_state like '%'||#{keyword}||'%'
+					</when>
+				</choose>
+			</trim>
+		</foreach>	
+	</trim>
+	
+	<![CDATA[
+	
+	rownum <= #{pageNum} * #{amount}
+		)
+	where rn > (#{pageNum} -1) * #{amount}		
+]]>
 </select>
 </mapper>

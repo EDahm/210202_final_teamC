@@ -10,6 +10,7 @@ import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
 import org.zerock.domain.aucComVO;
 import org.zerock.domain.aucShipVO;
+import org.zerock.domain.auctionDTO;
 import org.zerock.domain.auctionVO;
 
 public interface auctionService {
@@ -33,6 +34,7 @@ public interface auctionService {
 	
 	//경매 현재가 닉네임 호출
 	public String nowBestMember();
+	public String nowBidMember(String m_num);
 	
 	//경매 현재가 수정
 	public boolean nowPrice();
@@ -101,9 +103,6 @@ public interface auctionService {
 	//입찰자 수 카운트
 	public int getCountBid(Criteria cri);
 	
-	//입찰자 닉네임 표시ㅠㅠ
-	public List<MemberVO> bidNcnmShow();
-	
 	
 	//업체페이지
 	//업체정보 등록
@@ -132,4 +131,9 @@ public interface auctionService {
 	//첨부파일 관련
 	public List<AucAttachVO> getAttachList(String aa_bno);
 	
+	//진행페이지 입찰내역 페이징
+	public auctionDTO getListPageNow(Criteria cri, String a_bno);
+	
+	//마이페이지 출력
+	public List<aucBidVO> myAucList(Criteria cri);
 }

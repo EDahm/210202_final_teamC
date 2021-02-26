@@ -42,8 +42,12 @@
 						<tr>
 							<td><c:out value="${board.q_bno}" /></td>
 							<!-- 조회하면 이동 시 페이지 처리 -->
-							<td><a class='move' href='<c:out value="${board.q_bno}"/>'>
-									<c:out value="${board.q_title}" /><b>[ <c:out value="${board.q_replyCnt}" /> ]</b></a></td>
+							<td>
+								<a class='move' href='<c:out value="${board.q_bno}"/>'>
+									<c:out value="${board.q_title}" />
+									 <b class="badge bg-teal" style="color:#44A379;"> +${board.q_replyCnt}</b>
+								</a>
+							</td>
 							<td><c:out value="${board.q_ncnm}" /></td>
 							<td><fmt:formatDate pattern="yyyy-MM-dd" value="${board.q_regdate}" /></td>
 							<td><c:out value="${board.q_hits}" /></td> <!-- 조회수  -->
@@ -70,12 +74,14 @@
 							<option value="TW" <c:out value="${pageMaker.cri.type eq 'TW'?'selected':''}"/>>제목	or 작성자</option>
 							<option value="TWC" <c:out value="${pageMaker.cri.type eq 'TWC'?'selected':''}"/>>제목 or 내용 or 작성자</option>
 						</select> 
-						<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>' /> 
+					
+						<input type='text' placeholder="Search..." name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>' /> 
 						<input type='hidden' name='pageNum'	value='<c:out value="${pageMaker.cri.pageNum}"/>' /> 
 						<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>' />
 						<button class="btn btn-default" style="padding: 0.5rem;">
 							<i class="fas fa-search"></i> 검색
 						</button>
+					
 					</form>
 
 					<!-- Pagination -->

@@ -8,6 +8,7 @@ import org.zerock.domain.Criteria;
 import org.zerock.domain.QnaReplyVO;
 import org.zerock.domain.ReplyPageDTO;
 import org.zerock.mapper.QnaReplyMapper;
+import org.zerock.mapper.QuestionsBoardMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -22,20 +23,25 @@ public class QnaReplyServiceImpl implements QnaReplyService{
 	@Setter(onMethod_ = @Autowired)
 	private QnaReplyMapper mapper;
 	
+	@Setter(onMethod_ = @Autowired)
+	private QuestionsBoardMapper boardMapper;
+	
 	@Override
 	public int register(QnaReplyVO vo) {
 	
 		log.info("register......" + vo);
 		
+		boardMapper.updateReplyCnt(vo.getQ_bno(), 1);
+		
 		return mapper.insert(vo);
 	}
 
 	@Override
-	public QnaReplyVO get(Long ano) {
+	public QnaReplyVO get(Long qr_rno) {
 
-		log.info("get......" + ano);
+		log.info("get......" + qr_rno);
 		
-		return mapper.read(ano);
+		return mapper.read(qr_rno);
 	}
 
 	@Override
@@ -47,26 +53,29 @@ public class QnaReplyServiceImpl implements QnaReplyService{
 	}
 
 	@Override
-	public int remove(Long ano) {
+	public int remove(Long qr_rno) {
 
-		log.info("remove...." + ano);
+		log.info("remove...." + qr_rno);
 		
-		return mapper.delete(ano);
+		QnaReplyVO vo = mapper.read(qr_rno);
+		
+		boardMapper.updateReplyCnt(vo.getQ_bno(), -1);
+		return mapper.delete(qr_rno);
 	}
 
 	@Override
-	public List<QnaReplyVO> getList(Criteria cri, Long bno) {
+	public List<QnaReplyVO> getList(Criteria cri, Long q_bno) {
 
-		log.info("get Reply List of a Board " + bno);
+		log.info("get Reply List of a Board " + q_bno);
 		
-		return mapper.getListWithPaging(cri, bno);
+		return mapper.getListWithPaging(cri, q_bno);
 	}
 
 	@Override
-	public ReplyPageDTO getListPage(Criteria cri, Long bno) {
+	public ReplyPageDTO getListPage(Criteria cri, Long q_bno) {
 		
 		return new ReplyPageDTO(
-			mapper.getCountByBno(bno),
-			mapper.getListWithPaging(cri, bno));
+			mapper.getCountByBno(q_bno),
+			mapper.getListWithPaging(cri, q_bno));
 	}
 }

@@ -28,11 +28,11 @@
 			<form role="form" action="/auc/ship_regi" method="post">
 				<div>
 					<label>경매번호</label>
-					<input class="form-control" name="a_bno">
+					<input type="hidden" class="form-control" name="a_bno" value='<c:out value="${now.a_bno}"/>'>
 				</div>
 				<div>
 					<label>업체번호</label>
-					<input class="form-control" name="c_num">
+					<input type="hidden" class="form-control" name="c_num" value='<c:out value="${apply.c_num}"/>'>
 				</div>
 				<div>
 					<label>회원번호</label>
@@ -46,7 +46,7 @@
 					<label>배송연락처</label>
 					<input class="form-control" name="s_shpng_cntct">
 				</div>
-					<input name="s_shpng_stts">
+					<input type="hidden" name="s_shpng_stts">
 				
 				<button type="submit">신청</button>
 				<button type="reset">리셋</button>				

@@ -13,6 +13,7 @@ import org.zerock.domain.aucApplyVO;
 import org.zerock.domain.aucBidVO;
 import org.zerock.domain.aucComVO;
 import org.zerock.domain.aucShipVO;
+import org.zerock.domain.auctionDTO;
 import org.zerock.domain.auctionVO;
 import org.zerock.mapper.AucAttachMapper;
 import org.zerock.mapper.auctionMapper;
@@ -79,6 +80,14 @@ public class auctionServiceImpl implements auctionService {
 		
 		return aucMapper.bidNowMember();
 		
+	}
+	
+	@Override
+	public String nowBidMember(String m_num) {
+
+		log.info("Get Bid Member Now....");
+		
+		return aucMapper.bidNcnm(m_num);
 	}
 	
 	@Override
@@ -339,10 +348,18 @@ public class auctionServiceImpl implements auctionService {
 	}
 	
 	@Override
-	public List<MemberVO> bidNcnmShow() {
+	public auctionDTO getListPageNow(Criteria cri, String a_bno) {
+
+		return new auctionDTO(
+				aucMapper.getCountByAbno(a_bno),
+				aucMapper.getBidListPaging(cri, a_bno));
+	}
+	
+	@Override
+	public List<aucBidVO> myAucList(Criteria cri) {
+
+		log.info("get List for my AUCTION");
 		
-		log.info("get Bid Nickname.........");
-				
-		return aucMapper.bidNcnm();
+		return aucMapper.myAucListWithPaging(cri);
 	}
 }

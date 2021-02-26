@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.aucBidVO;
+import org.zerock.domain.auctionDTO;
 import org.zerock.service.auctionService;
 
 import lombok.AllArgsConstructor;
@@ -66,15 +67,25 @@ public class AucBidController {
 	}
 	
 	@GetMapping(value="/pages/{a_bno}/{page}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<List<aucBidVO>> bidList(@PathVariable("page") int page, @PathVariable("a_bno") String a_bno){
-		log.info("getList..............");
+	public ResponseEntity<auctionDTO> bidList(@PathVariable("page") int page, @PathVariable("a_bno") String a_bno){
 
-		Criteria cri = new Criteria(page,10);
+		Criteria cri = new Criteria(page, 10);
+
+		log.info("get Bid List a_bno: " + a_bno);
 		
-		log.info(cri);
+		log.info("cri : " + cri);
 		
-		return new ResponseEntity<>(service.bidGetList(cri), HttpStatus.OK);
+		return new ResponseEntity<>(service.getListPageNow(cri, a_bno), HttpStatus.OK);
 		
 	}
+	
+	//입찰정보 닉네임 조회
+		@GetMapping(value = "/{m_num}", produces = {MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_UTF8_VALUE })
+		public ResponseEntity<String> bidMemberGet(@PathVariable("m_num") String m_num){
+			
+			log.info("get : " + m_num);
+			
+			return new ResponseEntity<>(service.nowBidMember(m_num),HttpStatus.OK);
+		}
 	
 }

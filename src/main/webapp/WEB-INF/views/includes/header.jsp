@@ -37,6 +37,9 @@
  <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+<!-- 아이콘 https://github.com/google/material-design-icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+      rel="stylesheet">
 
 <!-- Theme CSS -->
 <!-- build:css /resources//resources/assets/css/theme.min.css -->

@@ -45,7 +45,7 @@
             </p>
 
             <!-- Button -->
-            <a class="btn btn-dark" href="/logIn" style="background: #44A379; border: none;">
+            <a class="btn btn-dark" href="/logIn_earth" style="background: #44A379; border: none;">
               	로그인하기
             </a>
 

@@ -37,7 +37,7 @@
 				<div class="row mb-9">
 					<div class="col-12">
 						<input type="checkbox" id="chk1"
-							style="margin-bottom: 1rem;"> (필수) 이용약관 동의 *
+							style="margin-bottom: 1rem;" required name="chk1"> (필수) 이용약관 동의 *
 
 						<div class="form-group"
 							style="overflow: scroll; width: 100%; height: 200px; border-top: 1px solid black; overflow-x: hidden; color: grey; font-size: .9rem;">
@@ -141,7 +141,7 @@
 
 
 						<input type="checkbox" id="chk2"
-							style="margin-top: 2rem; margin-bottom: 1rem;"> (필수) 개인정보
+							style="margin-top: 2rem; margin-bottom: 1rem;" required> (필수) 개인정보
 						수집 및 이용약관 동의 *
 
 						<div class="form-group"
@@ -166,9 +166,12 @@
 					</div>
 
 
-					<button class="btn btn-block btn-dark" id="forJoin"
+					<!-- <button class="btn btn-block btn-dark" id="forJoin"
 						style="background: #44A379; border-color: white;"
-						onclick="confirm(); return false;">회원가입</button>
+						onclick="confirm(); return false;">회원가입</button> -->
+						<button type="submit" class="btn btn-block btn-dark" id="forJoin"
+						style="background: #44A379; border-color: white;"
+						>회원가입</button>
 				</div>
 			</div>
 		</div>
@@ -178,23 +181,21 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+
 	
 	
-	
-	function confirm(){
+	$("#forJoin").click(function(e){
+		e.preventDefault();
 		
-		var chk1 = document.getElementsById('chk1'); 
-		var chk2 = document.getElementsById('chk2'); 
-		
-			if(!chk1.checked || !chk2.checked) { 
-				alert("약관의 동의가 필요합니다.");
-				return false; 
+			if($('#chk1').is(":checked") && $('#chk2').is(":checked")) { 
+				location.href="/member/register";
 			} else { 
-				rocation.href="/member/register";
+				alert("약관의 동의가 필요합니다.");
+				return; 
 			}
-			
-		
-	}
+	});
+	
+
 });
 
 

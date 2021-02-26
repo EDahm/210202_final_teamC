@@ -59,6 +59,12 @@ public class MainController {
 		
 	}
 	
+	@GetMapping("/logIn_earth")
+	public void logIn_earth() {
+		
+		
+	}
+	
 	
 
 }

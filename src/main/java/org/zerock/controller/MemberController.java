@@ -64,11 +64,11 @@ public class MemberController {
 		log.info("register: " + member);
 
 		service.register(member);
-		;
+		
 
-		rttr.addFlashAttribute("result", member.getM_num());
+		rttr.addFlashAttribute("result", member.getM_name());
 
-		return "redirect:/member/list";
+		return "redirect:/member/afterSignUp";
 	}
 
 	@GetMapping({ "/get", "/modify" })
@@ -239,6 +239,19 @@ public class MemberController {
 			 
 			 return "success";
 		 }
+	}
+	
+	/* 회원가입 전 개인정보이용내역 동의 페이지 */
+	@GetMapping("/beforeSignUp")
+	public void beforeSignUp() {
+		
+	}
+	
+	
+	/* 회원가입 완료 페이지 */
+	@GetMapping("/afterSignUp")
+	public void afterSignUp() {
+		
 	}
 	
 	

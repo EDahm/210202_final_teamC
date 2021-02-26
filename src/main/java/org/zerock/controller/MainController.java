@@ -47,6 +47,24 @@ public class MainController {
 		
 	}
 	
+	@GetMapping("/intro")
+	public void intro() {
+		
+		
+	}
+	
+	@GetMapping("/contactUs")
+	public void contactUs() {
+		
+		
+	}
+	
+	@GetMapping("/logIn_earth")
+	public void logIn_earth() {
+		
+		
+	}
+	
 	
 
 }

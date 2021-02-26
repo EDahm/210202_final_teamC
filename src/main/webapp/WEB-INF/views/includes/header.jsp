@@ -37,9 +37,6 @@
  <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
-<!-- 아이콘 https://github.com/google/material-design-icons -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Icons"
-      rel="stylesheet">
 
 <!-- Theme CSS -->
 <!-- build:css /resources//resources/assets/css/theme.min.css -->
@@ -99,11 +96,11 @@
 															<li class="list-styled-item"><a
 																class="list-styled-link" href="/about_zerowaste">제로웨이스트</a></li>
 															<li class="list-styled-item"><a
-																class="list-styled-link" href="#">얼쑤좋다 사업소개가튼거</a></li>
+																class="list-styled-link" href="/intro">얼쑤좋다 사업소개가튼거</a></li>
 															<li class="list-styled-item"><a
 																class="list-styled-link" href="/storelocation">오프라인 제로웨이스트 상점</a></li>
 															<li class="list-styled-item"><a
-																class="list-styled-link" href="#">제휴문의</a></li>
+																class="list-styled-link" href="/contactUs">제휴문의</a></li>
 														</ul>
 
 													</div>
@@ -381,7 +378,7 @@
 				<ul class="navbar-nav flex-row" style="font-size:0.8rem;">
 					
 					<li class="nav-item ml-lg-n4"><a class="nav-link"
-						href="/member/register"><i class="fas fa-sign-in-alt"></i> SignUp
+						href="/member/beforeSignUp"><i class="fas fa-sign-in-alt"></i> SignUp
 					</a></li>
 					<li class="nav-item ml-lg-n4"><a class="nav-link"
 						href="/mypages"> <i class="fe fe-user"></i> MyPages

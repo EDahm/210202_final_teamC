@@ -6,46 +6,44 @@
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/nav.jsp"%>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">경매 신청 조회</h1>
-	</div>
-</div>
-<!-- /.row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
+<section class="pt-7 pb-12" style="width: 70%;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+			<h3 class="mb-10">
 				경매 신청
-			</div>
-			<!-- /.panel-heading -->
-			
-			<div>
-				<div>
+			</h3>
+		  </div>
+		 </div>
+		 
+			<div class="row">
+				<div class="col-12 col-md-9 col-lg-8 offset-lg-1">
+				
+				<div class="form-group">
 					<label>신청번호</label>
 					<input class="form-control" name="aa_bno" value='<c:out value="${applyget.aa_bno}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>업체번호</label>
 					<input class="form-control" name="c_num" value='<c:out value="${applyget.c_num}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>물품명</label>
 					<input class="form-control" name="aa_item_nm" value='<c:out value="${applyget.aa_item_nm}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>시장가격</label>
 					<input class="form-control" name="aa_markt_prc" value='<c:out value="${applyget.aa_markt_prc}"/>'readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>중량</label>
 					<input class="form-control" name="aa_weight" value='<c:out value="${applyget.aa_weight}"/>'readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>원산지</label>
 					<input class="form-control" name="aa_cntry_orgn" value='<c:out value="${applyget.aa_cntry_orgn}"/>'readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>희망기간</label>
 					<input type="hidden">
 					<fmt:parseDate var="aa_hope_prd" value="${applyget.aa_hope_prd}" pattern="yyyy-MM-dd" />
@@ -53,8 +51,21 @@
 					value="${aa_hope_prd}" />' readonly="readonly">
 					
 				</div>
-				<button data-oper='apply_mod' onclick="location.href='/auc/apply_mod?aa_bno=<c:out value="${applyget.aa_bno}"/>'">수정</button>
-				<button data-oper='apply_list' onclick="location.href='/auc/apply_list'">목록</button>				
+				<div class='bigPictureWrapper'>
+					<div class='bigPicture'>
+					</div>
+				</div>
+				<div class="form-group">		
+					<div>첨부 이미지</div>
+					<div class="border rounded">			
+						<div class='uploadResult'>
+							<ul>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<button data-oper='apply_mod' class="btn btn-success btn-xs" onclick="location.href='/auc/apply_mod?aa_bno=<c:out value="${applyget.aa_bno}"/>'">수정</button>
+				<button data-oper='apply_list' class="btn btn-outline-success btn-xs" onclick="location.href='/auc/apply_list'">목록</button>				
 				<form id='operForm' action="/auc/apply_mod" method="get">
                         		<input type='hidden' id='bno' name='aa_bno' value='<c:out value="${applyget.aa_bno}"/>'>
                         		<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
@@ -65,11 +76,10 @@
 			</div>
 		</div>
 	</div>
-</div>
 
-<div class='bigPictureWrapper'>
-	<div class='bigPicture'>
-	</div>
+
+</section>
+</div>
 </div>
 
 <style>
@@ -96,26 +106,12 @@
 .bigPicture img{
 	width:600px;
 }
+
+ul li {
+	list-style : none;
+}
 </style>
 
-<div>
-	<div>
-		<div>
-		
-			<div>첨부 이미지</div>
-			<div>
-			
-				<div class='uploadResult'>
-					<ul>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-</div>
-</div>
 
 <script>
 $(document).ready(function(){

@@ -5,73 +5,70 @@
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/nav.jsp"%>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">경매 진행 수정</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				경매 진행 상황
-			</div>
-			<!-- /.panel-heading -->
+
+ <section class="pt-7 pb-12" style="width: 70%;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+			<h3 class="mb-10">
+				경매 진행 수정
+				</h3>
+		  </div>
+		 </div>
 			
-			<div>
+			<div class="row">
+				<div class="col-12 col-md-9 col-lg-8 offset-lg-1">
 				<form role="form" action="/auc/now_mod" method="post">
-				
 				<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
 				<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
 				<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
 				<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
-				<div>
+					<div class="form-group">
 					<label>경매번호</label>
 					<input class="form-control" name="a_bno" value='<c:out value="${nowlist.a_bno}"/>' readonly="readonly">
 				</div>
-				<div>
+					<div class="form-group">
 					<label>신청번호</label>
 					<input class="form-control" name="aa_bno" value='<c:out value="${nowlist.aa_bno}"/>' readonly="readonly">
 				</div>
-				<div>
+					<div class="form-group">
 					<label>시작가</label>
 					<input class="form-control" name="a_versifier" value='<c:out value="${nowlist.a_versifier}"/>'>
 				</div>
-				<div>
+					<div class="form-group">
 					<label>현재가</label>
 					<input class="form-control" name="a_crnt_prc" value='<c:out value="${nowlist.a_crnt_prc}"/>' >
 				</div>
-				<div>
+					<div class="form-group">
 					<label>바로 구매가격</label>
 					<input class="form-control" name="a_wnng_prc" value='<c:out value="${nowlist.a_wnng_prc}"/>' >
 				</div>
-				<div>
+				<div class="form-group">
 					<label>경매상태</label>
 					<input id="state" type="hidden">
-					<select id="a_state" name="a_state">
+					<select class="custom-select" id="a_state" name="a_state">
 						<option value="준비중" selected="selected">준비중</option>
 						<option value="경매종료">종료</option>
 						<option value="진행중">진행중</option>
 						<option value="유찰">유찰</option>
 					</select>
 				</div>
-				<div>
+					<div class="form-group">
 					<label>진행기간</label> <!-- datepicker님 도와주세요 -->
 					<input type="hidden">
 					<fmt:parseDate var="a_prgrs_prd" value="${nowlist.a_prgrs_prd}" pattern="yyyy-MM-dd" />
 					<input type='date' class="form-control" name='a_prgrs_prd' value='<fmt:formatDate pattern="yyyy-MM-dd"
 					value="${a_prgrs_prd}" />'>
 				</div>
-				<button type="submit" data-oper='now_mod'>수정</button>
-				<button type="submit" data-oper='now_rem'>삭제</button>
-				<button type="submit" data-oper='now_list'>목록</button>
+				<button type="submit" class="btn btn-success btn-xs" data-oper='now_mod'>수정</button>
+				<button type="submit" class="btn btn-danger btn-xs" data-oper='now_rem'>삭제</button>
+				<button type="submit" class="btn btn-outline-success btn-xs" data-oper='now_list'>목록</button>
 				</form>
+			
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
 </div>
 </div>

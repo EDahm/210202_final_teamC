@@ -6,18 +6,20 @@
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/nav.jsp"%>
 
-
-<div>
-	<div>
-		<div>
-			<div>
-				경매 리스트
+<section class="pt-7 pb-12">
+  <div class="container">
+        <div class="row">
+		<div class="col-12">
+			<div class="font-size-h4 mb-4" style="color : #44A379;">
+				경매 진행 리스트
+				<button id='NowRegiBtn' type="button" class="btn btn-success btn-xs">
+					경매 진행 등록</button>
 			</div>
 			<!-- /.panel-heading -->
 			<div>
-				<table>
+				<table class="table table-bordered table-sm mb-4">
 					<thead>
-						<tr>
+						<tr class="font-size-h5">
 							<th>경매번호</th> 
 							<th>신청번호</th>
 							<th>시작가</th>
@@ -32,7 +34,8 @@
 						<tr>
 							<td><a class='moveNow' href='<c:out value="${nowlist.a_bno}"/>'>
 									<c:out value="${nowlist.a_bno}" /></a></td>						
-							<td><c:out value="${nowlist.aa_bno}" /></td>
+							<td><a class='moveApply' href='<c:out value="${nowlist.aa_bno}"/>'>
+							<c:out value="${nowlist.aa_bno}" /></a></td>
 							<td><c:out value="${nowlist.a_versifier}" /></td>
 							<td><c:out value="${nowlist.a_crnt_prc}" /></td>
 							<td><c:out value="${nowlist.a_wnng_prc}" /></td>
@@ -43,7 +46,7 @@
 					</c:forEach>
 				</table>
 								<div>
-					<div>
+					<div class="input-group input-group-merge">
 						<form id='searchForm' action="/auc/now_list" method="get">
 							<select name='type'>
 								<option value=""
@@ -58,24 +61,24 @@
 						<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'/>
 						<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>'/>
 						<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>'/>						
-						<button>Search</button>
+						<button class="btn btn-success btn-circle btn-xxs mb-1"> <i class="fe fe-search"></i></button>
 						</form>
 					</div>
 				</div>
 								<div>
-					<ul>
+					<ul class="pagination">
 					
 						<c:if test="${pageMaker.prev}">
-							<li class="paginate_button"><a href="${pageMaker.startPage -1}">Previous</a></li>
+							<li class="paginate_button page-item"><a class="page-link page-link-arrow" href="${pageMaker.startPage -1}">Previous</a></li>
 						</c:if>
 						
 						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-							<li class="paginate_button ${pagemaker.cri.pageNum == num ? "active" : "" } ">
-							<a href="${num}"></a></li>
+							<li class="paginate_button page-item ${pagemaker.cri.pageNum == num ? "active" : "" } ">
+							<a class="page-link" href="${num}">${num}</a></li>
 						</c:forEach>
 						
 						<c:if test="${pageMaker.next}">
-							<li class="paginate_button"><a href="${pageMaker.endPage +1 }">Next</a></li>
+							<li class="paginate_button page-item"><a class="page-link" href="${pageMaker.endPage +1 }">Next</a></li>
 						</c:if>
 					</ul>
 				</div>
@@ -89,12 +92,18 @@
 			</div>
 		</div>
 	</div>
-</div>	
+</div>
+</section>	
 </div>
 </div>
 
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	$("#NowRegiBtn").on("click",function(){
+		self.location = "/auc/now_regi"
+	});
+
 		
 	var actionForm = $("#actionForm");
 	
@@ -114,6 +123,15 @@ $(document).ready(function(){
 		actionForm.append("<input type='hidden' name='a_bno' value='"+
 				$(this).attr("href")+"'>");
 		actionForm.attr("action","/auc/now_get");
+		actionForm.submit();
+	});
+	
+	$(".moveApply").on("click", function(e){
+		
+		e.preventDefault();
+		actionForm.append("<input type='hidden' name='aa_bno' value='"+
+				$(this).attr("href")+"'>");
+		actionForm.attr("action","/auc/apply_get");
 		actionForm.submit();
 	});
 	

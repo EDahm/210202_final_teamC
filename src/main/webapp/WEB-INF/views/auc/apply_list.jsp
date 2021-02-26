@@ -6,28 +6,21 @@
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/nav.jsp"%>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">경매 신청 조회</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
+
+<section class="pt-7 pb-12">
+  <div class="container">
+        <div class="row">
+		<div class="col-12">
+			<div class="font-size-h4 mb-4" style="color : #44A379;">
 				신청 리스트
-				<button id='NowRegiBtn' type="button" class="btn btn-xs pull-right">
-					경매 진행 등록</button>
-				<button id='ApplyBtn' type="button" class="btn btn-xs pull-right">
+				<button id='ApplyBtn' type="button" class="btn btn-success btn-xs">
 					경매 신청하기</button>
 			</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
-				<table class="table table-striped table-bordered table-hover">
+				<table class="table table-bordered table-sm mb-4">
 					<thead>
-						<tr>
+						<tr class="font-size-h5">
 							<th>#신청번호</th> 
 							<th>업체번호</th>
 							<th>물품명</th>
@@ -37,11 +30,9 @@
 
 					<c:forEach items="${apply_list}" var="apply">
 						<tr>
-							<td><c:out value="${apply.aa_bno}" /></td>
-							<td><c:out value="${apply.c_num}" /></td>
-							<td><a class='moveApply' href='<c:out value="${apply.aa_bno}"/>'>
-									<c:out value="${apply.aa_item_nm}" /></a></td>
-							<!-- <td><c:out value="${apply.aa_hope_prd}" /></td> -->
+							<td><a class='moveApply' href='<c:out value="${apply.aa_bno}"/>'><c:out value="${apply.aa_bno}" /></a></td>
+							<td><a class='moveCom' href='<c:out value="${apply.c_num}"/>'><c:out value="${apply.c_num}" /></a></td>
+							<td><c:out value="${apply.aa_item_nm}" /></td>
 							<td> <fmt:parseDate value="${apply.aa_hope_prd}" pattern="yyyy-MM-dd HH:mm:ss" var="hopeprd"/>
 							 <fmt:formatDate value="${hopeprd}" pattern="yyyy-MM-dd"/>
 						</tr>
@@ -49,7 +40,7 @@
 				</table>
 				
 				<div>
-					<div>
+					<div class="input-group input-group-merge">
 						<form id='searchForm' action="/auc/apply_list" method="get">
 							<select name='type'>
 								<option value=""
@@ -64,25 +55,25 @@
 						<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'/>
 						<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>'/>
 						<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>'/>						
-						<button>Search</button>
+						<button class="btn btn-success btn-circle btn-xxs mb-1"> <i class="fe fe-search"></i></button>
 						</form>
 					</div>
 				</div>
 				
 				<div>
-					<ul>
+					<ul class="pagination">
 					
 						<c:if test="${pageMaker.prev}">
-							<li class="paginate_button"><a href="${pageMaker.startPage -1}">Previous</a></li>
+							<li class="paginate_button page-item"><a class="page-link page-link-arrow" href="${pageMaker.startPage -1}">Previous</a></li>
 						</c:if>
 						
 						<c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-							<li class="paginate_button ${pagemaker.cri.pageNum == num ? "active" : "" } ">
-							<a href="${num}"></a></li>
+							<li class="paginate_button page-item ${pagemaker.cri.pageNum == num ? "active" : "" } ">
+							<a class="page-link" href="${num}">${num}</a></li>
 						</c:forEach>
 						
 						<c:if test="${pageMaker.next}">
-							<li class="paginate_button"><a href="${pageMaker.endPage +1 }">Next</a></li>
+							<li class="paginate_button page-item"><a class="page-link" href="${pageMaker.endPage +1 }">Next</a></li>
 						</c:if>
 					</ul>
 				</div>
@@ -97,6 +88,7 @@
 		</div>
 	</div>
 </div>
+</section>
 <!-- 이 페이지 ./div -->
 </div>
 </div>
@@ -105,10 +97,7 @@
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	$("#NowRegiBtn").on("click",function(){
-		self.location = "/auc/now_regi"
-	});
-
+	
 	$("#ApplyBtn").on("click",function(){
 		self.location = "/auc/apply_regi"
 	});
@@ -131,6 +120,15 @@ $(document).ready(function(){
 		actionForm.append("<input type='hidden' name='aa_bno' value='"+
 				$(this).attr("href")+"'>");
 		actionForm.attr("action","/auc/apply_get");
+		actionForm.submit();
+	});
+
+	$(".moveCom").on("click", function(e){
+		
+		e.preventDefault();
+		actionForm.append("<input type='hidden' name='c_num' value='"+
+				$(this).attr("href")+"'>");
+		actionForm.attr("action","/auc/com_get");
 		actionForm.submit();
 	});
 	

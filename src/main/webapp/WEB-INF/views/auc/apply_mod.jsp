@@ -5,65 +5,84 @@
 <!DOCTYPE html>
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/nav.jsp"%>
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">경매 진행 수정</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
+
+<section class="pt-7 pb-12" style="width: 70%;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+			<h3 class="mb-10">
 				경매 진행정보 수정
-			</div>
-			<!-- /.panel-heading -->
+				</h3>
+		  </div>
+		 </div>
 			
-			<div>
+			<div class="row">
+				<div class="col-12 col-md-9 col-lg-8 offset-lg-1">
+				
 			<form role="form" action="/auc/apply_mod" method="post">
-			
 			<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'>
 			<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
 			<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
 			<input type='hidden' name='keyword' value='<c:out value="${cri.keyword}"/>'>
-				<div>
+				<div class="form-group">
 					<label>신청번호</label>
 					<input class="form-control" name="aa_bno" value='<c:out value="${applyget.aa_bno}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>업체번호</label>
 					<input class="form-control" name="c_num" value='<c:out value="${applyget.c_num}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>물품명</label>
 					<input class="form-control" name="aa_item_nm" value='<c:out value="${applyget.aa_item_nm}"/>'>
 				</div>
-				<div>
+				<div class="form-group">
 					<label>시장가격</label>
 					<input class="form-control" name="aa_markt_prc" value='<c:out value="${applyget.aa_markt_prc}"/>'>
 				</div>
-				<div>
+				<div class="form-group">
 					<label>중량</label>
 					<input class="form-control" name="aa_weight" value='<c:out value="${applyget.aa_weight}"/>'>
 				</div>
-				<div>
+				<div class="form-group">
 					<label>원산지</label>
 					<input class="form-control" name="aa_cntry_orgn" value='<c:out value="${applyget.aa_cntry_orgn}"/>'>
 				</div>
-				<div>
+				<div class="form-group">
 					<label>희망기간</label><!-- datepicker 써야함 -->
 					<input type="hidden">
 					<fmt:parseDate var="aa_hope_prd" value="${applyget.aa_hope_prd}" pattern="yyyy-MM-dd" />
 					<input type='date' class="form-control" name='aa_hope_prd' value='<fmt:formatDate pattern="yyyy-MM-dd"
 					value="${aa_hope_prd}" />'>
 				</div>
-				<button type="submit" data-oper='apply_mod'>수정</button>
-				<button type="submit" data-oper='apply_rem'>삭제</button>
-				<button type="submit" data-oper='apply_list'>목록</button>
+				<div class="form-group">
+					<div>첨부 이미지</div>
+					<div class="border rounded">
+						<div class='uploadDiv'>
+							<div class="input-group mb-3">
+ 								 <div class="input-group-prepend">
+   								 <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+ 								 </div>
+  							<div class="custom-file">
+    						<input type="file" class="custom-file-input" name='uploadFile' multiple="multiple" aria-describedby="inputGroupFileAddon01">
+							<label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+  </div>
+</div>
+						</div>
+						<div class='uploadResult'>
+						<ul>
+						</ul>
+						</div>
+					</div>
+				</div>				
+				<button class="btn btn-success btn-xs" type="submit" data-oper='apply_mod'>수정</button>
+				<button class="btn btn-danger btn-xs" type="submit" data-oper='apply_rem'>삭제</button>
+				<button class="btn btn-outline-success btn-xs" type="submit" data-oper='apply_list'>목록</button>
 				</form>				
 			</div>
 		</div>
+		</div>
+	</section>
 	</div>
 </div>
 
@@ -96,29 +115,11 @@
 .bigPicture img{
 	width:600px;
 }
+
+ul li {
+	list-style : none;
 </style>
 
-<div>
-	<div>
-		<div>
-		
-			<div>첨부 이미지</div>
-			<div>
-			
-			<div class='uploadDiv'>
-				<input type='file' name='uploadFile' multiple="multiple">
-			</div>
-				<div class='uploadResult'>
-					<ul>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-</div>
-</div>
 
 	<script type="text/javascript">
 $(document).ready(function(){
@@ -189,8 +190,8 @@ $(document).ready(function(){
 					str += "<li data-path='"+attach.aa_upload_path+"' data-uuid='"+attach.aa_uuid+"' "
 					str += " data-filename='"+attach.aa_file_name+"' data-type='"+attach.aa_file_type+"' ><div>";
 					str += "<span> " + attach.aa_file_name + "</span>";
-					str += "<button type='button' data-file=\'"+fileCallPath+"\'data-type='image' "
-					str += "> x </button><br>";
+					str += "<button type='button' class='btn btn-warning btn-circle btn-xxs mb-1' data-file=\'"+fileCallPath+"\'data-type='image' "
+					str += "> X </button><br>";
 					str += "<img src='/display?fileName="+fileCallPath+"'>";
 					str += "</div>";
 					str + "</li>";

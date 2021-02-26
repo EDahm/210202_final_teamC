@@ -151,9 +151,7 @@
 								</div>
 								<div class="mb-5" style="text-align-last: justify;">
 								<button class="btn btn-success btn-sm butstyle1" type="button" id="bid_regi" value="${now.a_bno}">나도 입찰하기</button>
-								<button class="btn btn-success btn-sm butstyle1" data-oper='ship_regi'
-									onclick="location.href='/auc/ship_regi?a_bno=<c:out value="${now.a_bno}"/>&c_num=<c:out value="${apply.c_num}"/>'">바로
-									구매하기</button>
+								<button class="btn btn-success btn-sm butstyle1" id="checkout" data-oper='ship_regi'>바로 구매하기</button>
 								</div>
 							</div>
 							
@@ -161,7 +159,7 @@
 							<ul class="list-group list-group-flush">
                  				 <li class="list-group-item active"><b>중량</b> <span><c:out value="${apply.aa_weight}" /></span></li>
               					 <li class="list-group-item"><b>원산지</b> <span><c:out value="${apply.aa_cntry_orgn}" /></span></li>
-                  				 <li class="list-group-item"><b>배송</b> <span>수령까지 2~3일 정도 예상</span> <span class="forGreen text-decoration-underline">직접 수령 가능!!</span></li>
+                  				 <li class="list-group-item"><b>배송</b> <span>수령까지 2~3일 정도 예상</span> <span class="forGreen text-decoration-underline font-size-xs">직접 수령 가능!!</span></li>
                				</ul>
 							</div>
 						</div>
@@ -199,16 +197,17 @@
                       <div class="col-12">
                       <!-- 입찰내역출력 -->
 							<div class="panel-body">
-							<ul class="joinBid">
-							</ul>
+								<ul class="joinBid">
+								</ul>
 							</div>
-							<div class="panel-footer"></div>
+							<div class="panel-footer">
+							</div>
 						<!-- 입찰내역끝 -->
 					</div>
 				</div>
 			</div>
 		</div>
-		
+	</div>
 		<div class="tab-pane fade" id="descriptionTab">
                 <div class="row justify-content-center py-9">
                   <div class="col-12 col-lg-10 col-xl-8">
@@ -217,6 +216,7 @@
                       
                        <p class="mb-4">
                           <strong>제품설명아이우에오</strong>
+                                <i class="fa fa-caret-left"></i>
                         </p>
                        </div>
                       </div>
@@ -224,45 +224,45 @@
                     </div>
                    </div>
                    
-          </div>
+         	 </div>
          </div>
-</div>
-</div>
+	</div>
 </div>
 </section>
+
 <!-- modal -->
 <div class="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">나도 입찰하기</h5>
+        <h5 class="modal-title"><span class='material-icons md-36'>eco</span> 나도 입찰하기</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-      	<div>
+      	<div class="font-size-sm forGreen">
       		<p>반드시 100원 단위로 입력해주세요.</p>
+      		<p>총 3번 입찰 가능합니다. (현재입찰수) / 3 </p>
       	</div>
         <form>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">입찰금액</label>
+            <label for="recipient-name" class="col-form-label font-size-h6">입찰금액</label>
             <input class="form-control" name="b_bid_price"	type="text">
           </div>
           <div class="form-group">
-            <label for="message-text" class="col-form-label">회원번호(임시)</label>
+            <label for="message-text" class="col-form-label font-size-h6">회원번호(임시)</label>
             <input class="form-control" name="m_num">
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="modalRegisterBtn" class="btn btn-secondary" data-dismiss="modal">입찰하기</button>
-        <button type="button" id="modalCloseBtn" class="btn btn-primary">닫기</button>
+        <button type="button" id="modalRegisterBtn" class="btn btn-success" data-dismiss="modal">입찰하기</button>
+        <button type="button" id="modalCloseBtn" class="btn btn-dark">닫기</button>
       </div>
     </div>
   </div>
 </div>		
-
 
 <style>
 .secStyle {
@@ -449,7 +449,7 @@ $(document).ready(function(){
 	
 	$("#checkout").on("click", function(e){
 		
-		var goShip = confirm("바로 구매하시겠습니까?");
+		var goShip = confirm("바로 구매하시겠습니까? 진행 시 취소가 불가합니다.");
 		
 		if(goShip == true) {
 			e.preventDefault();
@@ -476,19 +476,6 @@ $(document).ready(function(){
 	});
 	
 	
-	$("#bid_rem").on("click", function(e){
-		
-				
-		alert("tttt");
-		
-		BidService.bidRemove(b_bno, function(result){
-			
-			alert(result);
-		
-		});
-			
-	});
-	
 	var pageNum = 1;
 	var bidPageFooter = $(".panel-footer");
 	
@@ -496,6 +483,7 @@ $(document).ready(function(){
 		
 		var endNum = Math.ceil(pageNum / 10.0) * 10;
 		var startNum = endNum - 9;
+		
 		
 		var prev = startNum != 1;
 		var next = false;
@@ -508,10 +496,11 @@ $(document).ready(function(){
 			next = true;
 		}
 		
+		
 		var str = "<ul class='pagination pagination-sm'>";
 		
 		if(prev){
-			str += "<li class='page-item'><a class='page-link page-link-arrow' href='"+(startNum -1) + "'> <i class='fa fa-caret-left'></i></a></li>";
+			str += "<li class='page-item'><a class='page-link page-link-arrow' href='"+ (startNum -1) + "'><i class='fa fa-caret-left'></i></a></li>";
 		}
 		
 		for(var i = startNum ; i <= endNum; i++){
@@ -519,6 +508,7 @@ $(document).ready(function(){
 			var active = pageNum == i? "active":"";
 			
 			str += "<li class='page-item " + active + " '><a class='page-link' href='"+i+"'>"+i+"</a></li>";
+		}
 			
 			if(next){
 				str += "<li class='page-item'><a class='page-link page-link-arrow' href='"+(endNum + 1)+"'><i class='fa fa-caret-right'></i></a></li>";
@@ -526,13 +516,12 @@ $(document).ready(function(){
 			}
 				str += "</ul></div>";
 				
-				console.log(str);
 				
 				bidPageFooter.html(str);
 				
 				
 			}
-	}
+	
 	
 	bidPageFooter.on("click","li a",function(e){
 		

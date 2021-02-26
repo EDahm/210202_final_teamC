@@ -6,17 +6,18 @@
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/nav.jsp"%>
 
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
+<section class="pt-7 pb-12">
+  <div class="container">
+        <div class="row">
+		<div class="col-12">
+			<div class="font-size-h4 mb-4" style="color : #44A379;">
 				배송 리스트
 			</div>
 			<!-- /.panel-heading -->
-			<div class="panel-body">
-				<table class="table table-striped table-bordered table-hover">
+			<div>
+				<table class="table table-bordered table-sm mb-4">
 					<thead>
-						<tr>
+						<tr class="font-size-h5">
 							<th>경매번호</th> 
 							<th>업체번호</th>
 							<th>배송현황</th>
@@ -49,7 +50,7 @@
 						<input type='text' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'/>
 						<input type='hidden' name='pageNum' value='<c:out value="${pageMaker.cri.pageNum}"/>'/>
 						<input type='hidden' name='amount' value='<c:out value="${pageMaker.cri.amount}"/>'/>						
-						<button>Search</button>
+							<button class="btn btn-success btn-circle btn-xxs mb-1"> <i class="fe fe-search"></i></button>
 						</form>
 					</div>
 				</div>
@@ -58,33 +59,32 @@
 					<ul class="pagination">
 						
 						<c:if test="${pageMaker.prev}">
-							<li class="paginate_button previous"><a href="${pageMaker.startPage -1}">PREVIOUS</a></li>
+							<li class="paginate_button page-item"><a class="page-link page-link-arrow" href="${pageMaker.startPage -1}">PREVIOUS</a></li>
 						</c:if>
 						
 						<c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
-							<li class="paginate_button ${pageMaker.cri.pageNum == num ? "active":""}"><a href="${num}">${num}</a></li>
+							<li class="paginate_button page-item ${pageMaker.cri.pageNum == num ? "active":""}"><a class="page-link" href="${num}">${num}</a></li>
 						</c:forEach>
 						
 						<c:if test="${pageMaker.next}">
-							<li class="paginate_button next"><a href="${pageMaker.endPage +1 }">NEXT</a></li>
+							<li class="paginate_button page-item"><a class="page-link" href="${pageMaker.endPage +1 }">NEXT</a></li>
 						</c:if>
-						
-					
 					</ul>
 				</div>
 				<!-- END PAGINATION -->
-			</div>
-		</div>
-	</div>
-</div>	
-</div>
-</div>
 			<form id='actionFormShip' action="/auc/ship_list" method='get'>
 				<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
 				<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>
 				<input type='hidden' name='type' value='<c:out value="${pageMaker.cri.type}"/>'>			
 					<input type='hidden' name='keyword' value='<c:out value="${pageMaker.cri.keyword}"/>'>
 			</form>	
+			</div>
+		</div>
+	</div>
+</div>
+</section>	
+</div>
+</div>
 			
 <script type="text/javascript">
 $(document).ready(function(){ 

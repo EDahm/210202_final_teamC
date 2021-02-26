@@ -6,54 +6,52 @@
 <%@include file="../includes/header.jsp"%>
 <%@include file="../includes/nav.jsp"%>
 
-<div class="row">
-	<div class="col-lg-12">
-		<h1 class="page-header">경매 진행 조회</h1>
-	</div>
-	<!-- /.col-lg-12 -->
-</div>
-<!-- /.row -->
-<div class="row">
-	<div class="col-lg-12">
-		<div class="panel panel-default">
-			<div class="panel-heading">
+
+ <section class="pt-7 pb-12" style="width: 70%;">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center">
+			<h3 class="mb-10">
 				경매 진행 상황
-			</div>
-			<!-- /.panel-heading -->
-			
-			<div>
-				<div>
+			</h3>
+		  </div>
+		 </div>
+		 
+			<div class="row">
+				<div class="col-12 col-md-9 col-lg-8 offset-lg-1">
+				
+				<div class="form-group">
 					<label>경매번호</label>
 					<input class="form-control" name="a_bno" value='<c:out value="${nowlist.a_bno}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>신청번호</label>
 					<input class="form-control" name="aa_bno" value='<c:out value="${nowlist.aa_bno}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>시작가</label>
-					<input class="form-control" name="a_cversifier" value='<c:out value="${nowlist.a_versifier}"/>' readonly="readonly">
+					<input class="form-control" name="a_versifier" value='<c:out value="${nowlist.a_versifier}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>현재가</label>
 					<input class="form-control" name="a_crnt_prc" value='<c:out value="${nowlist.a_crnt_prc}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>바로 구매가격</label>
 					<input class="form-control" name="a_wnng_prc" value='<c:out value="${nowlist.a_wnng_prc}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>경매상태</label>
 					<input class="form-control" name="a_state" value='<c:out value="${nowlist.a_state}"/>' readonly="readonly">
 				</div>
-				<div>
+				<div class="form-group">
 					<label>진행기간</label>
 					<fmt:parseDate var="a_prgrs_prd" value="${nowlist.a_prgrs_prd}" pattern="yyyy-MM-dd" />
 					<input type='date' class="form-control" name='a_prgrs_prd' value='<fmt:formatDate pattern="yyyy-MM-dd"
 					value="${a_prgrs_prd}" />' readonly="readonly">
 				</div>
-				<button data-oper='now_mod' onclick="location.href='/auc/now_mod?a_bno=<c:out value="${nowlist.a_bno}"/>'">수정</button>
-				<button data-oper='now_list' onclick="location.href='/auc/now_list'">목록</button>
+				<button data-oper='now_mod' class="btn btn-success btn-xs" onclick="location.href='/auc/now_mod?a_bno=<c:out value="${nowlist.a_bno}"/>'">수정</button>
+				<button data-oper='now_list' class="btn btn-outline-success btn-xs" onclick="location.href='/auc/now_list'">목록</button>
 				
 				<form id='operForm' action="/auc/now_mod" method="get">
                         		<input type='hidden' id='a_bno' name='a_bno' value='<c:out value="${nowlist.a_bno}"/>'>
@@ -66,7 +64,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</section>
 
 </div>
 </div>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@include file="../includes/header.jsp"%>
@@ -13,6 +12,125 @@
 display: contents; 
 position: unset;
 }
+
+#button1{
+padding:0.25rem 0.5rem; 
+border-radius:5px; 
+margin-bottom:20px;
+}
+
+#button2{
+padding:0.25rem 0.5rem; 
+border-radius:5px; 
+margin: 0px 10px 20px 10px;
+}
+
+#button3{
+padding:0.25rem 0.5rem; 
+border-radius:5px; 
+margin-bottom:20px;
+ }
+ 
+ #button4{
+padding:0.25rem 0.5rem; 
+border-radius:5px; 
+margin-top:20px;
+ }
+ 
+ #button5{
+padding:0.25rem 0.5rem; 
+border-radius:5px; 
+margin-top:20px;
+margin-left: 10px;
+margin-right: 10px;
+ }
+ 
+ #button6{
+padding:0.25rem 0.5rem; 
+border-radius:5px; 
+margin-top:20px;
+ }
+ 
+#writeBox{
+font-size:0.8rem; 
+padding: 0 20px;
+}
+
+#category{
+color:#44A379;
+}
+
+#categoryForDiv{
+height: 3rem; 
+line-height: 5rem; 
+padding-left : 1.5rem;
+}
+
+#titleBox{
+border:none; 
+font-size:1.5rem; 
+background-color:white; 
+height:50px;
+}
+
+#ncnmBox{
+border:none; 
+background:white; 
+padding:0rem 1.5rem; 
+height:20px; 
+font-size:1rem;
+}
+
+#regdateBox{
+border:none; 
+background:white; 
+padding:0rem 1.5rem; 
+height:2rem; 
+padding-bottom : 1rem; 
+font-size:0.3rem; 
+border-bottom:1px solid #e5e5e5; 
+color: grey;
+}
+
+#contentBox{
+border:none; 
+background:white; 
+border-bottom:1px solid #e5e5e5; 
+height:200px; font-size:1rem;
+}
+
+#replyBox{
+border : 2px solid #e5e5e5;
+width: 95%;
+margin:0 auto; 
+border-radius: 10px;
+}
+
+#reply_replyer{
+border : none;
+font-size: 0.8rem;
+color : black;
+padding: 10px 20px;
+height: 2rem;
+}
+
+#reply_reply{
+border : none;
+}
+
+#modalRegisterBtn{
+border : none;
+background: none;
+color: #44A379;
+margin-left: 85%;
+}
+
+#replyList1{
+list-style: none;
+margin-left : 0;
+background : #f2f2f2;
+}
+
 </style>
 
 <section class="pt-7 pb-12">
@@ -47,9 +165,11 @@ position: unset;
 						</div>
 						<!-- 제목 -->
 						<div class="form-group" style="margin-bottom:0;">
+
 							<input class="form-control" style="border:none; font-size:1.5rem; background-color:white; height:50px;"name='q_title' value='<c:out value="${board.q_title}"/>' readonly="readonly">
 							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:20px; font-size:1rem;" name='q_ncnm' value='<c:out value="${board.q_ncnm}"/>' readonly="readonly">
-							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:2rem; padding-bottom : 1rem; font-size:0.3rem; border-bottom:1px solid #e5e5e5; color: grey;" name='q_regdate' value='<fmt:formatDate pattern="yyyy-MM-dd" value="${board.q_regdate}" />' readonly="readonly"><br>
+							<input class="form-control" style="border:none; background:white; padding:0rem 1.5rem; height:2rem; padding-bottom : 1rem; font-size:0.3rem; border-bottom:1px solid #e5e5e5; color: grey;" name='q_regdate' value='<fmt:formatDate pattern="yyyy/MM/dd" value="${board.q_regdate}" />' readonly="readonly"><br>
+
 						</div>	
 						<!-- 내용 -->
 						<div class="form-group">
@@ -60,8 +180,17 @@ position: unset;
 						<div class="form-group"> 
 							<input class="form-control" type="hidden" style="border:none;" name='q_bno' value='<c:out value="${board.q_bno}"/>' readonly="readonly">
 						</div>
-						
-						
+
+						<button data-oper='questionsModify' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">수정</button>
+						<button data-oper='questionsList' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">목록</button>
+						<button data-oper='questionsRemove' class="btn btn-success btn-xs" style="padding:0.25rem 0.5rem; border-radius:5px; margin:3px;">삭제</button>
+	
+						<input type='hidden' id='q_bno' name='q_bno' value='<c:out value="${board.q_bno}"/>'> 
+						<input type='hidden' name='pageNum' value='<c:out value="${cri.pageNum}"/>'> 
+						<input type='hidden' name='amount' value='<c:out value="${cri.amount}"/>'>
+						<input type='hidden' name='keyword'	value='<c:out value="${cri.keyword}"/>'>
+						<input type='hidden' name='type' value='<c:out value="${cri.type}"/>'>
+
 					</form>
 					</div>
 				
@@ -114,45 +243,12 @@ position: unset;
 			</div>
 			
 			<button id='modalRegisterBtn' type="button" class="btn btn-primary">등록</button>
+		</div>	
 		</div>
-		
-		</div>
-		
 	</div>
-		</div>
-				</div>
-
+</div>
+</div>
 </section>
-<!-- /.row -->
-<!-- <script type="text/javascript">
-$(document).ready(function() {
- 	  var formObj = $("form");
-	  $('button').on("click", function(e){
-	    
-		e.preventDefault();
-	    
-	    var operation = $(this).data("oper");
-	    
-	    console.log(operation);
-	    
-	    if(operation === 'remove'){
-	      formObj.attr("action", "/board/applyRemove");
-	      
-	    } else if(operation === 'list'){
-	      //move to list
-	      formObj.attr("action", "/board/applyList").attr("method","get");
-	      formObj.empty();
-	      
-		} else if(operation === 'applyModify'){
-		  formObj.attr("action", "/board/applyModify").attr("method","post");
-		  formObj.empty();
-		
-		}
-	    
-	    formObj.submit();
-	  });
-});
-</script> -->
 
 <script type="text/javascript">
 $(document).ready(function() {
@@ -166,8 +262,10 @@ $(document).ready(function() {
 	showList(1);
    
 	function showList(page){
+
 		console.log("show list " + page);
 	   
+
  		QnaReplyService.getList({q_bno:bnoValue, page: page|| 1 }, function(q_replyCnt, list) {
  			
 		console.log("replyCnt: "+ q_replyCnt );
@@ -189,20 +287,21 @@ $(document).ready(function() {
 	  
 		for (var i = 0, len = list.length || 0; i < len; i++) {
 		    str +="<li class='left clearfix' data-qr_rno='"+list[i].qr_rno+"'>";
-		    str +="  <div><div class='header'><strong class='primary-font'>[<span class='test'>"
-		 	   +list[i].qr_rno+"</span>] "+list[i].qr_replyer+"</strong>"; 
+		    str +="  <div><div class='header'><strong class='primary-font'>"+list[i].qr_replyer+"</strong>"; 
 		    str +="    <small class='pull-right text-muted'>"
 		        +QnaReplyService.displayTime(list[i].qr_regdate)+"</small>";
 		    str +="    <p id='con'>"+list[i].qr_reply+"</p><input id='inputdis' style='display:none' type='text' value='"+list[i].qr_reply+"'></div>";
 		    str += "<button id='hidebutton' type='button' class='testMod' style='display: none;'>저장</button>";
 		    str +="<button id='modalModBtn' type='button' class='btn btn-default'>" + '수정' + "</button>";
-		    str +="<button id='modalRemoveBtn' type='button' class='btn btn-default'>" + '삭제' + "</button>" + "</div></li>";
+		    str +="<button id='modalRemoveBtn' type='button' class='btn btn-default'>" + '삭제' + "</button>" + "<hr></div></li>";
 		    
 		} 
 	  
 		replyUL.html(str);
 		
 		showReplyPage(q_replyCnt);
+
+
 	});
 	}
 		
@@ -218,6 +317,7 @@ $(document).ready(function() {
 	var modalRegisterBtn = $("#modalRegisterBtn");
 	
 	modalRegisterBtn.on("click", function(){
+
 		var rreply = {
 			qr_reply: modalInputReply.val(),
 			qr_replyer: modalInputReplyer.val(),
@@ -225,6 +325,7 @@ $(document).ready(function() {
 		};
 		
 		QnaReplyService.add(rreply, function(){
+
 			showList(-1);
 		})
 	});
@@ -254,6 +355,7 @@ $(document).ready(function() {
 	});
 	
 	$(document).on("click", '#modalRemoveBtn', function(){
+
 		var qr_rno = $(this).parent().find(".test").text();
 		
 		QnaReplyService.remove(qr_rno, function(){
@@ -265,23 +367,6 @@ $(document).ready(function() {
 	
 	QnaReplyService.get(10, function(data){
 		console.log(data);
-	});
-	
-	
-	
-	var operForm = $("#operForm");
-	
-	$("button[data-oper='questionsModify']").on("click", function(e) {
-		operForm.attr("action", "/board/questionsModify").submit();
-	});
-	
-	$("button[data-oper='questionsList']").on("click", function(e) {
-		operForm.find("#q_bno").remove();
-		operForm.attr("action", "/board/questionsList").attr("method","get").submit();
-	});
-	
-	$("button[data-oper='questionsRemove']").on("click", function(e){
-		operForm.attr("action", "/board/questionsRemove").submit();
 	});
 	
 	var pageNum = 1;
@@ -327,10 +412,12 @@ $(document).ready(function() {
 		replyPageFooter.html(str);
 	}
 //paging - end-------------------------
+
 	//페이지 번호 클릭 이벤트
 	replyPageFooter.on("click","li a", function(e){
 		
 		e.preventDefault();
+		
 		console.log("page click");
 		
 		var targetPageNum = $(this).attr("href");
@@ -341,6 +428,26 @@ $(document).ready(function() {
 		
 		showList(pageNum);
 	}); 
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+	
+
+	var operForm = $("#operForm");
+
+	$("button[data-oper='questionsModify']").on("click", function(e) {
+		operForm.attr("action", "/board/questionsModify").submit();
+	});
+
+	$("button[data-oper='questionsList']").on("click", function(e) {
+		operForm.find("#q_bno").remove();
+		operForm.attr("action", "/board/questionsList").attr("method","get").submit();
+	});
+
+	$("button[data-oper='questionsRemove']").on("click", function(e){
+		operForm.attr("action", "/board/questionsRemove").submit();
+	});
 });
 </script>
 <%@include file="../includes/footer.jsp"%>
